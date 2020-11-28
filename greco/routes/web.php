@@ -19,6 +19,10 @@ Route::get('/', function () {
 Route::get('/produtos', function () {
     return view('produtos.produtos');
 });
+Route::get('/produtoficha', function () {
+    return view('produtos.produtoficha');
+});
+
 Route::get('/clientes', function () {
     return view('clientes.clientes');
 });
