@@ -27,7 +27,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../index3.html" class="nav-link">Home</a>
+        <a href="/" class="nav-link">Home</a>
       </li>
     </ul>
 
@@ -96,7 +96,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../../index3.html" class="brand-link navbar-primary">
+    <a href="/" class="brand-link navbar-primary">
       <img src="../../dist/img/UALogo.png" alt="UA Logo" class="brand-image  elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">GRECO</span>
     </a>
@@ -117,8 +117,8 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item {{ Request::is('movimentos') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ Request::is('movimentos') ? 'active' : '' }}">
               <i class="nav-icon fas fa-clock"></i>
               <p>
                 Movimentos
@@ -127,19 +127,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../index.html" class="nav-link">
+                <a href="/movimentos/entrada" class="nav-link {{ Request::is('entrada') ? 'active' : '' }}">
                   <i class="far fa-arrow-alt-circle-right nav-icon"></i>
                   <p>Registrar Entrada</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../index2.html" class="nav-link">
+                <a href="/movimentos/saida" class="nav-link {{ Request::is('saida') ? 'active' : '' }}">
                   <i class="far fa-arrow-alt-circle-left nav-icon"></i>
                   <p>Registrar Saida</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../index3.html" class="nav-link">
+                <a href="/movimentos/historico" class="nav-link {{ Request::is('historico') ? 'active' : '' }}">
                   <i class="far fa-clock nav-icon"></i>
                   <p>Histórico</p>
                 </a>
