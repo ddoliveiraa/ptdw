@@ -44,7 +44,7 @@
 .stock-button{
     margin: 1.5em 2em;
 }
-.stock-button button{
+.stock-button button, .stock-button input[type=button]{
     width: 100%;
     margin-bottom: 0.5em;
     border-radius: 10px;

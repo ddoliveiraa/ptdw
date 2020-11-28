@@ -58,7 +58,7 @@
                                         <h4>3</h4>
                                     </div>
                                     <div class="stock-button">
-                                        <button class="btn btn-primary">Editar</button>
+                                        <a href="/ficha/editar"><input type="button" class="btn btn-primary" value="Editar"></a>
                                         <button type="submit" class="btn btn-danger">Desativar</button>
                                     </div>
                                 </div>

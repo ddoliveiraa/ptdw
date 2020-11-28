@@ -24,10 +24,10 @@ Route::get('/produtos', function () {
 });
 
 //Ficha
-Route::get('/ficha/{id}', function () {
+Route::get(/* '/ficha/{id}' */'/ficha', function () {
     return view('ficha.show');
 });
-Route::get('/ficha/{id}/editar', function () {
+Route::get(/* '/ficha/{id}/editar' */'/ficha/editar', function () {
     return view('ficha.editar');
 });
 

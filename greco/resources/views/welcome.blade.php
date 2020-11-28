@@ -6,7 +6,7 @@
         <h1 class="text-center display-4">Pesquisa</h1>
         <div class="row">
             <div class="col-md-8 offset-md-2">
-                <form action="simple-results.html">
+                <form action="ficha">
                     <div class="input-group">
                         <input type="search" class="form-control form-control-lg" placeholder="Pesquise por um produto...">
                         <div class="input-group-append">

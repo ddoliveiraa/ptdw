@@ -58,7 +58,7 @@
                                         <h4><input type="text" class="form-control" id="condicoes" value="3" style="text-align: center"></h4>
                                     </div>
                                     <div class="stock-button">
-                                        <a href="ficha/1"><button class="btn btn-default">Voltar</button></a>
+                                        <a href="/ficha"><input type="button" class="btn btn-default" value="Voltar"></a>
                                         <button type="submit" class="btn btn-info">Guardar</button>
                                     </div>
                                 </div>
