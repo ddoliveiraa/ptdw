@@ -55,7 +55,7 @@
                                     </div>
                                     <div class="stock-box">
                                         <h3>Stock Minimo</h3>
-                                        <h4><input type="text" class="form-control" id="condicoes" value="3" style="text-align: center"></h4>
+                                        <h4><input type="number" class="form-control" id="condicoes" min="0" value="3" style="text-align: center"></h4>
                                     </div>
                                     <div class="stock-button">
                                         <a href="/ficha"><input type="button" class="btn btn-default" value="Voltar"></a>

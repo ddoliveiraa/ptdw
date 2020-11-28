@@ -42,6 +42,10 @@
 .stock-box h4{
     padding: 10px;
 }
+.stock-box input{
+    padding: 10px;
+    font-size: 1em;
+}
 .stock-button{
     margin: 1.5em 2em;
 }
