@@ -1,35 +1,76 @@
 /*CUSTOM*/
 
 /*HOME*/
-.search-fliter{
+
+.search-fliter {
     padding: 0.5rem 1rem;
     border-radius: 0.3em;
     background-color: #f8f9fa;
     border: 1px solid #ddd;
     color: #444;
-  }
-  
-  /*----------------PRODUTOS----------------*/
-  /*Ficha Produto*/
-  .ficha{
+}
+
+/*----------------PRODUTOS----------------*/
+
+/*Ficha Produto*/
+
+.ficha {
     width: 80em;
     margin-left: auto;
     margin-right: auto;
-  }
-  .card-title-large{
+}
+
+.card-title-large {
     font-size: 1.7em;
     margin-bottom: 0px;
-  }
-  .informacao{
-    width: 60%;
-  }
-  .stock{
-    
-  }
-  /*----------------Movimentos--------------*/
-  
-  /*-----------------Clientes---------------*/
-  
-  /*----------------Operadores--------------*/
-  
-  /*-----------------Armazem----------------*/
+}
+
+.stock-box{
+    text-align: center;
+    border: 1px solid #ced4da;
+    border-radius: 10px;
+    margin: 20px 50px;
+}
+
+.stock-box h3{
+    background-color: #343a40;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    padding: 5px;
+}
+.stock-box h4{
+    padding: 10px;
+}
+.stock-button{
+    margin: 20px 50px;
+}
+.stock-button button{
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+.row-padding{
+    padding: 20px;
+}
+.avisos{
+    border: 1px solid #ced4da;
+    border-radius: 10px;
+}
+.avisos h3{
+    text-align: center;
+    padding: 5px 20px;
+    background-color: #343a40;
+    color: white;
+    border-radius: 10px 10px 0 0;
+}
+.avisos p{
+    padding: 5px 20px;
+    margin: 0;
+}
+/*----------------Movimentos--------------*/
+
+/*-----------------Clientes---------------*/
+
+/*----------------Operadores--------------*/
+
+/*-----------------Armazem----------------*/

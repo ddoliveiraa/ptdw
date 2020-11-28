@@ -30,8 +30,6 @@
       </li>
     </ul>
 
-  
-
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
@@ -207,5 +205,8 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+
+@yield('scripts')
+
 </body>
 </html>
