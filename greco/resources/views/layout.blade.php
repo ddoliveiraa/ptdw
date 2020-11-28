@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GRECO</title>
-
+  <link rel="shortcut icon" href="../../dist/img/UALogo.png" type="image/x-icon">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
   <!-- CSS do Grupo -->
   <link rel="stylesheet" href="../../dist/css/custom.css">
+  
   
 </head>
 <body class="hold-transition sidebar-mini">
@@ -109,7 +110,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="/produtos" class="nav-link">
+            <a href="/produtos" class="nav-link {{ Request::is('produtos') ? 'active' : '' }}">
               <i class="nav-icon fas fa-flask"></i>
               <p>
                 Produtos
@@ -146,7 +147,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="/clientes" class="nav-link">
+            <a href="/clientes" class="nav-link {{ Request::is('clientes') ? 'active' : '' }}">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Clientes
@@ -154,7 +155,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/operadores" class="nav-link">
+            <a href="/operadores" class="nav-link {{ Request::is('operadores') ? 'active' : '' }}">
               <i class="nav-icon fas fa-shield-alt"></i>
               <p>
                 Operadores
@@ -162,7 +163,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/armazem" class="nav-link">
+            <a href="/armazem" class="nav-link {{ Request::is('armazem') ? 'active' : '' }}">
               <i class="nav-icon fas fa-warehouse"></i>
               <p>
                 Armazém

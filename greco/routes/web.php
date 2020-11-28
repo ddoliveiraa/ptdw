@@ -17,21 +17,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/produtos', function () {
-    return view('produtos.produtos');
+    return view('produtos.index');
 });
-Route::get('/produtoficha', function () {
-    return view('produtos.produtoficha');
+Route::get('/ficha/{id}', function () {
+    return view('ficha.show');
 });
-
+Route::get('/ficha/{id}/editar', function () {
+    return view('ficha.editar');
+});
 Route::get('/clientes', function () {
-    return view('clientes.clientes');
+    return view('clientes.index');
 });
 Route::get('/operadores', function () {
-    return view('operadores.operadores');
+    return view('operadores.index');
 });
 Route::get('/fornecedores', function () {
-    return view('fornecedores.fornecedores');
+    return view('fornecedores.index');
 });
 Route::get('/armazem', function () {
-    return view('armazem.armazem');
+    return view('armazem.index');
 });

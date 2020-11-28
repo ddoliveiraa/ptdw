@@ -7,7 +7,7 @@
     border-radius: 0.3em;
     background-color: #f8f9fa;
     border: 1px solid #ddd;
-    color: #444;
+    color: #343a40;
 }
 
 /*----------------PRODUTOS----------------*/
@@ -29,7 +29,7 @@
     text-align: center;
     border: 1px solid #ced4da;
     border-radius: 10px;
-    margin: 20px 50px;
+    margin: 1.5em 2em;
 }
 
 .stock-box h3{
@@ -42,29 +42,46 @@
     padding: 10px;
 }
 .stock-button{
-    margin: 20px 50px;
+    margin: 1.5em 2em;
 }
 .stock-button button{
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 0.5em;
     border-radius: 10px;
-}
-.row-padding{
-    padding: 20px;
 }
 .avisos{
     border: 1px solid #ced4da;
     border-radius: 10px;
+    height: 100%;
+}
+.pictogramas{
+    padding: 0.5em 1.5em;
+}
+.pictogramas img{
+    width:8em;
+}
+.sorting{
+    background-color: #343a40;
+    color:white;
+}
+.sorting_asc{
+    background-color: #17a2b8;
+    color:white;
+}
+.sorting_desc{
+    background-color: #17a2b8;
+    color:white;
 }
 .avisos h3{
     text-align: center;
-    padding: 5px 20px;
+    padding: 0.25em 1.5em;
     background-color: #343a40;
     color: white;
     border-radius: 10px 10px 0 0;
+    margin: 0;
 }
 .avisos p{
-    padding: 5px 20px;
+    padding: 0.5em 1.5em;
     margin: 0;
 }
 /*----------------Movimentos--------------*/

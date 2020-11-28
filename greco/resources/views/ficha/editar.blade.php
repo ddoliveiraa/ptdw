@@ -16,32 +16,32 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label for="formula">Fórmula</label>
-                                        <input type="text" class="form-control" id="formula" placeholder="HCL">
+                                        <input type="text" class="form-control" id="formula" value="HCL" >
                                     </div>
                                     <div class="form-group">
                                         <label for="designacao">Designação</label>
                                         <input type="text" class="form-control" id="designacao"
-                                            placeholder="Cloreto de Hidrogenio">
+                                        value="Cloreto de Hidrogenio">
                                     </div>
                                     <div class="form-group">
                                         <label for="moles">Peso Molecular</label>
-                                        <input type="text" class="form-control" id="moles" placeholder="36.46 g/mol">
+                                        <input type="text" class="form-control" id="moles" value="36.46 g/mol">
                                     </div>
                                     <div class="form-group">
                                         <label for="cas">Nº CAS</label>
-                                        <input type="text" class="form-control" id="cas" placeholder="7647-01-1">
+                                        <input type="text" class="form-control" id="cas" value="7647-01-1">
                                     </div>
                                     <div class="form-group">
                                         <label for="unidades">Unidades</label>
-                                        <input type="text" class="form-control" id="unidades" placeholder="mililitros">
+                                        <input type="text" class="form-control" id="unidades" value="mililitros" >
                                     </div>
                                     <div class="form-group">
-                                        <label for="vent">Arm.Ventilado</label>
-                                        <input type="text" class="form-control" id="vent" placeholder="Não Necessita">
+                                        <label for="vent">Armário Ventilado</label>
+                                        <input type="text" class="form-control" id="vent" value="Não Necessita">
                                     </div>
                                     <div class="form-group">
                                         <label for="condicoes">Condições de Armazenamento</label>
-                                        <input type="text" class="form-control" id="condicoes" placeholder="Não Necessita">
+                                        <input type="text" class="form-control" id="condicoes" value="Não Necessita">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -55,15 +55,14 @@
                                     </div>
                                     <div class="stock-box">
                                         <h3>Stock Minimo</h3>
-                                        <h4>3</h4>
+                                        <h4><input type="text" class="form-control" id="condicoes" value="3" style="text-align: center"></h4>
                                     </div>
                                     <div class="stock-button">
-                                        <button class="btn btn-primary">Editar</button>
-                                        <button type="submit" class="btn btn-danger">Desativar</button>
+                                        <a href="ficha/1"><button class="btn btn-default">Voltar</button></a>
+                                        <button type="submit" class="btn btn-info">Guardar</button>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </form>
                     <div class="card-body">
@@ -224,7 +223,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="avisos">
-                                    <h3>Pictogramas - Avisos</h3>
+                                    <h3>Avisos</h3>
+                                    <div class="pictogramas">
+                                        <img src="../../dist/img/Pictogramas/Harmful.png" alt="Harmful">
+                                        <img src="../../dist/img/Pictogramas/Corrosive.png" alt="Corrosive" >
+                                    </div>
                                     <p>H290 - Corrosivo a metais</p>
                                     <p>H314 - Corrosivo à pele e olhos</p>
                                     <p>H335 - Causa irritação respiratória</p>
