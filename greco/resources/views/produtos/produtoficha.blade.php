@@ -44,9 +44,10 @@
                                 </div>
                             </div>
                             <div class="stock">
-
+                                <div class="stock-box">
+                                    
+                                </div>
                             </div>
-
                         </div>
                         <!-- /.card-body -->
 

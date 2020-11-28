@@ -1,0 +1,35 @@
+/*CUSTOM*/
+
+/*HOME*/
+.search-fliter{
+    padding: 0.5rem 1rem;
+    border-radius: 0.3em;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    color: #444;
+  }
+  
+  /*----------------PRODUTOS----------------*/
+  /*Ficha Produto*/
+  .ficha{
+    width: 80em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .card-title-large{
+    font-size: 1.7em;
+    margin-bottom: 0px;
+  }
+  .informacao{
+    width: 60%;
+  }
+  .stock{
+    
+  }
+  /*----------------Movimentos--------------*/
+  
+  /*-----------------Clientes---------------*/
+  
+  /*----------------Operadores--------------*/
+  
+  /*-----------------Armazem----------------*/
