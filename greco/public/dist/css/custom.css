@@ -8,6 +8,7 @@
     background-color: #f8f9fa;
     border: 1px solid #ddd;
     color: #343a40;
+    height: calc(2.875rem + 2px);
 }
 
 /*----------------PRODUTOS----------------*/

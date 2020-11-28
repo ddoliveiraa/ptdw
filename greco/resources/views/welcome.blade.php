@@ -10,7 +10,7 @@
                     <div class="input-group">
                         <input type="search" class="form-control form-control-lg" placeholder="Pesquise por um produto...">
                         <div class="input-group-append">
-                            <select class="search-fliter" name="" id="">
+                            <select class="search-fliter custom-select" name="" id="">
                                 <option value="todos">Todos</option>
                                 <option value="quimica">Químicos</option>
                                 <option value="naoquimico">Não Químicos</option>
