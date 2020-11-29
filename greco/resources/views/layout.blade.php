@@ -197,7 +197,7 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper" style="padding-top: 5em ">
+  <div class="content-wrapper">
     @yield('content')
   </div>
   <!-- /.content-wrapper -->
