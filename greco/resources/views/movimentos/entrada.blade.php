@@ -331,7 +331,7 @@
             </div>
             <!-- /.card -->
         </div>
-        </div>
+
     </section>
 @endsection
 
