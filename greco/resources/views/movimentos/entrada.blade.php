@@ -54,13 +54,9 @@
                                             <label for="produto">Produto</label>
                                             <select id="produto" class="form-control select2bs4" style="width: 100%;">
                                                 <option value="" selected disabled>Selecione o Produto</option>
-                                                <option>Alabama</option>
-                                                <option>Alaska</option>
-                                                <option>California</option>
-                                                <option>Delaware</option>
-                                                <option>Tennessee</option>
-                                                <option>Texas</option>
-                                                <option>Washington</option>
+                                                <option>Cloreto de Sódio</option>
+                                                <option>Hidróxido de Carbono</option>
+                                                <option>Cloreto de Ferro</option>
                                             </select>
                                         </div>
                                     </div>
@@ -121,13 +117,11 @@
                                             <label for="armario">Armário</label>
                                             <select id="armario" class="form-control select2bs4" style="width: 100%;">
                                                 <option value="" selected disabled>Selecione o Armário</option>
-                                                <option>Alabama</option>
-                                                <option>Alaska</option>
-                                                <option>California</option>
-                                                <option>Delaware</option>
-                                                <option>Tennessee</option>
-                                                <option>Texas</option>
-                                                <option>Washington</option>
+                                                <option>Armário 1</option>
+                                                <option>Armário 2</option>~
+                                                <option>Armário 3</option>
+                                                <option>Frigorífico 1</option>
+                                                <option>Frigorífico 2</option>
                                             </select>
                                         </div>
                                     </div>
@@ -137,13 +131,11 @@
                                             <label for="prateleira">Prateleira</label>
                                             <select id="prateleira" class="form-control select2bs4" style="width: 100%;">
                                                 <option value="" selected disabled>Selecione a Prateleira</option>
-                                                <option>Alabama</option>
-                                                <option>Alaska</option>
-                                                <option>California</option>
-                                                <option>Delaware</option>
-                                                <option>Tennessee</option>
-                                                <option>Texas</option>
-                                                <option>Washington</option>
+                                                <option>Prateleira 1</option>
+                                                <option>Prateleira 2</option>~
+                                                <option>Prateleira 3</option>
+                                                <option>Gaveta 1</option>
+                                                <option>Gaveta 2</option>
                                             </select>
                                         </div>
                                     </div>
@@ -174,13 +166,7 @@
                                             <select id="tipo_embalagem" class="form-control select2bs4"
                                                 style="width: 100%;">
                                                 <option value="" selected disabled>Selecione o Tipo de Embalagem</option>
-                                                <option>Alabama</option>
-                                                <option>Alaska</option>
-                                                <option>California</option>
-                                                <option>Delaware</option>
-                                                <option>Tennessee</option>
-                                                <option>Texas</option>
-                                                <option>Washington</option>
+                                                <option>Frasco</option>
                                             </select>
                                         </div>
                                     </div>
@@ -200,13 +186,9 @@
                                             <label for="estado">Estado Físico</label>
                                             <select id="estado" class="form-control select2bs4" style="width: 100%;">
                                                 <option value="" selected disabled>Selecione o Estado Físico</option>
-                                                <option>Alabama</option>
-                                                <option>Alaska</option>
-                                                <option>California</option>
-                                                <option>Delaware</option>
-                                                <option>Tennessee</option>
-                                                <option>Texas</option>
-                                                <option>Washington</option>
+                                                <option>Sólido</option>
+                                                <option>Gasoso</option>
+                                                <option>Físico</option>
                                             </select>
                                         </div>
                                     </div>
@@ -216,13 +198,9 @@
                                             <label for="textura">Textura/Viscosidade</label>
                                             <select id="textura" class="form-control select2bs4" style="width: 100%;">
                                                 <option value="" selected disabled>Selecione a Textura/Viscosidade</option>
-                                                <option>Alabama</option>
-                                                <option>Alaska</option>
-                                                <option>California</option>
-                                                <option>Delaware</option>
-                                                <option>Tennessee</option>
-                                                <option>Texas</option>
-                                                <option>Washington</option>
+                                                <option>Viscoso</option>
+                                                <option>Granulado</option>
+                                                <option>Pouco Viscoso</option>
                                             </select>
                                         </div>
                                     </div>
@@ -234,13 +212,9 @@
                                             <label for="cor">Cor</label>
                                             <select id="cor" class="form-control select2bs4" style="width: 100%;">
                                                 <option value="" selected disabled>Selecione a Cor</option>
-                                                <option>Alabama</option>
-                                                <option>Alaska</option>
-                                                <option>California</option>
-                                                <option>Delaware</option>
-                                                <option>Tennessee</option>
-                                                <option>Texas</option>
-                                                <option>Washington</option>
+                                                <option>Vermelho</option>
+                                                <option>Azul</option>
+                                                <option>Verde</option>
                                             </select>
                                         </div>
                                     </div>
