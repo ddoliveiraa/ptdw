@@ -16,6 +16,7 @@
   <!-- CSS do Grupo -->
   <link rel="stylesheet" href="../../dist/css/custom.css">
   
+  @yield('stylesheets')
   
 </head>
 <body class="hold-transition sidebar-mini">
