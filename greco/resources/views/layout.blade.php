@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <!-- flag-icon-css -->
+  <link rel="stylesheet" href="../../plugins/flag-icon-css/css/flag-icon.min.css">
   <!-- CSS do Grupo -->
   <link rel="stylesheet" href="../../dist/css/custom.css">
   
@@ -61,6 +63,23 @@
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
       </li>
+
+      {{-- Language Changer --}}
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="flag-icon flag-icon-pt"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right p-0">
+          <a href="#" class="dropdown-item active">
+            <i class="flag-icon flag-icon-pt mr-2"></i> Português
+          </a>
+          <a href="#" class="dropdown-item">
+            <i class="flag-icon flag-icon-us mr-2"></i> English
+          </a>
+        </div>
+      </li>
+
+      {{-- User Menu --}}
       <li class="nav-item dropdown user-menu">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
           <img src="../../dist/img/UALogo.png" class="user-image img-circle elevation-2" alt="User Image">
