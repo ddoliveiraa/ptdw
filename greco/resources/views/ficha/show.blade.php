@@ -1,5 +1,12 @@
 @extends('layout')
 
+@section('stylesheets')
+    <!-- DataTables -->
+  <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+@endsection
+
 @section('content')
 
     <section class="content-header">
@@ -85,9 +92,9 @@
                                             <h4>3</h4>
                                         </div>
                                         <div class="stock-button">
-                                            <a href="/ficha/editar"><input type="button" class="btn btn-primary"
+                                            <a href="/ficha/editar"><input type="button" class="btn btn-block btn-primary"
                                                     value="Editar"></a>
-                                            <button type="submit" class="btn btn-danger">Desativar</button>
+                                            <button type="submit" class="btn btn-block btn-danger">Desativar</button>
                                         </div>
                                     </div>
                                 </div>

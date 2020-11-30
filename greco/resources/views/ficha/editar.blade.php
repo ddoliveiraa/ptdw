@@ -1,5 +1,13 @@
 @extends('layout')
 
+
+@section('stylesheets')
+    <!-- DataTables -->
+  <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+@endsection
+
 @section('content')
 
 
@@ -82,9 +90,9 @@
                                                     style="text-align: center"></h4>
                                         </div>
                                         <div class="stock-button">
-                                            <a href="/ficha"><input type="button" class="btn btn-default"
+                                            <a href="/ficha"><input type="button" class="btn btn-block btn-default"
                                                     value="Voltar"></a>
-                                            <button type="submit" class="btn btn-info">Guardar</button>
+                                            <button type="submit" class="btn btn-block btn-info">Guardar</button>
                                         </div>
                                     </div>
                                 </div>
