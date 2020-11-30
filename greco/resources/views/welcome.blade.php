@@ -1,9 +1,28 @@
 @extends('layout')
 
 @section('content')
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-left">
+                    <li class="breadcrumb-item active"><a href="#">Home</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h2 class="text-center display-4">Pesquisa</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="content">
     <div class="container-fluid">
-        <h1 class="text-center display-4">Pesquisa</h1>
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <form action="ficha">
