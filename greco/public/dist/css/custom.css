@@ -15,7 +15,7 @@
 
 /*Ficha Produto*/
 .card-title-large {
-    font-size: 1.7em;
+    font-size: 1.7rem;
     margin-bottom: 0px;
 }
 
@@ -23,27 +23,27 @@
     text-align: center;
     border: 1px solid #ced4da;
     border-radius: 10px;
-    margin: 1.5em 2em;
+    margin: 1.5rem 2rem;
 }
 
 .stock-box h3{
     background-color: #343a40;
     color: white;
     border-radius: 10px 10px 0 0;
-    padding: 0.1em;
+    padding: 0.1rem;
 }
 .stock-box h4{
-    padding: 0.5em;
+    padding: 0.5rem;
 }
 .stock-box input{
-    padding:  0.5em;
-    font-size: 1em;
+    padding:  0.5rem;
+    font-size: 1rem;
 }
 .stock-button{
-    margin: 1.5em 2em;
+    margin: 1.5rem 2rem;
 }
 .stock-button button, .stock-button input[type=button]{
-    margin-bottom: 0.5em;
+    margin-bottom: 0.5rem;
 }
 .avisos{
     border: 1px solid #ced4da;
@@ -51,10 +51,10 @@
     height: 100%;
 }
 .pictogramas{
-    padding: 0.5em 1.5em;
+    padding: 0.5rem 1.5rem;
 }
 .pictogramas img{
-    width:8em;
+    width:8rem;
 }
 .sorting{
     background-color: #343a40;
@@ -70,14 +70,14 @@
 }
 .avisos h3{
     text-align: center;
-    padding: 0.25em 1.5em;
+    padding: 0.25rem 1.5rem;
     background-color: #343a40;
     color: white;
     border-radius: 10px 10px 0 0;
     margin: 0;
 }
 .avisos p{
-    padding: 0.5em 1.5em;
+    padding: 0.5rem 1.5rem;
     margin: 0;
 }
 /*----------------Movimentos--------------*/
