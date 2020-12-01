@@ -1,24 +1,33 @@
 @extends('layout')
 
 @section('stylesheets')
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <!-- DataTables -->
     <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+<<<<<<< HEAD
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     
     
+=======
+>>>>>>> fede82f4289027efeca096906e24f743841f934d
 @endsection
 
 @section('content')
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-left">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Produtos</li>
+                </ol>
+            </div>
+        </div>
+    </div>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
@@ -66,8 +75,13 @@
 
               <!-- /.card-header -->
               <div class="card-body">
+<<<<<<< HEAD
                 <table id="tabelaprodutos" class="table table-bordered table-striped">
                   <thead>
+=======
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead class="bg-secondary">
+>>>>>>> fede82f4289027efeca096906e24f743841f934d
                   <tr>
                     <th>Designação</th>
                     <th>Formula</th>
@@ -276,6 +290,7 @@
     <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<<<<<<< HEAD
 
     <script>
         $('#modalAdicionarProduto').on('shown.bs.modal', function () {
@@ -292,4 +307,25 @@
         });
     </script>    
 
+=======
+    <script>
+      $(function() {
+          $("#example1").DataTable({
+              "responsive": true,
+              "lengthChange": false,
+              "autoWidth": false,
+              "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+          }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+          $('#example2').DataTable({
+              "paging": true,
+              "lengthChange": false,
+              "searching": false,
+              "ordering": true,
+              "info": true,
+              "autoWidth": false,
+              "responsive": true,
+          });
+      });
+  </script>
+>>>>>>> fede82f4289027efeca096906e24f743841f934d
 @endsection

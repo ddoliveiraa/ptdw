@@ -77,15 +77,15 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="stock-box">
-                                            <h3>Nº de Inventário</h3>
+                                            <h3 class="bg-secondary">Nº de Inventário</h3>
                                             <h4>1357</h4>
                                         </div>
                                         <div class="stock-box">
-                                            <h3>Stock Existente</h3>
+                                            <h3 class="bg-secondary">Stock Existente</h3>
                                             <h4>20</h4>
                                         </div>
                                         <div class="stock-box">
-                                            <h3>Stock Minimo</h3>
+                                            <h3 class="bg-secondary">Stock Minimo</h3>
                                             <h4><input type="number" class="form-control" id="condicoes" min="0" value="3"
                                                     style="text-align: center"></h4>
                                         </div>
@@ -100,7 +100,7 @@
                         </form>
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
-                                <thead>
+                                <thead class="bg-secondary">
                                     <tr>
                                         <th>Capacidade</th>
                                         <th>Nº de Ordem</th>
@@ -256,7 +256,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="avisos">
-                                        <h3>Avisos</h3>
+                                        <h3 class="bg-secondary">Avisos</h3>
                                         <div class="pictogramas">
                                             <img src="../../dist/img/Pictogramas/Harmful.png" alt="Harmful">
                                             <img src="../../dist/img/Pictogramas/Corrosive.png" alt="Corrosive">
@@ -268,7 +268,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="avisos">
-                                        <h3>Precauções</h3>
+                                        <h3 class="bg-secondary">Precauções</h3>
                                         <p>P280 - Usar luvas e oculos de proteção</p>
                                         <p>P303+361+353 - Se entrar em contacto com a pele, remova roupa contaminada e lave
                                             a
@@ -300,10 +300,6 @@
     <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../../dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../../dist/js/demo.js"></script>
     <!-- Page specific script -->
     <script>
         $(function() {
@@ -323,6 +319,5 @@
                 "responsive": true,
             });
         });
-
     </script>
 @endsection

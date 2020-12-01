@@ -4,11 +4,10 @@
 
 .search-fliter {
     padding: 0.5rem 1rem;
-    border-radius: 0.3em;
+    border-radius: 0;
     background-color: #f8f9fa;
-    border: 1px solid #ddd;
-    color: #343a40;
     height: calc(2.875rem + 2px);
+    box-shadow: none;
 }
 
 /*----------------PRODUTOS----------------*/
@@ -27,7 +26,6 @@
 }
 
 .stock-box h3{
-    background-color: #343a40;
     color: white;
     border-radius: 10px 10px 0 0;
     padding: 0.1rem;
@@ -54,25 +52,16 @@
     padding: 0.5rem 1.5rem;
 }
 .pictogramas img{
-    width:8rem;
+    width: 7rem;
 }
-.sorting{
-    background-color: #343a40;
-    color:white;
-}
-.sorting_asc{
+
+.sorting_asc, .sorting_desc{
     background-color: #17a2b8;
-    color:white;
 }
-.sorting_desc{
-    background-color: #17a2b8;
-    color:white;
-}
+
 .avisos h3{
     text-align: center;
     padding: 0.25rem 1.5rem;
-    background-color: #343a40;
-    color: white;
     border-radius: 10px 10px 0 0;
     margin: 0;
 }
