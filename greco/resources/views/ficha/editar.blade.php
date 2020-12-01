@@ -319,6 +319,5 @@
                 "responsive": true,
             });
         });
-
     </script>
 @endsection
