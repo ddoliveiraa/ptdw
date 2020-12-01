@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 //Produtos
 Route::get('/produtos', function () {
-    return view('produtos.index');
+    return view('produtos.produtos');
 });
 
 //Ficha
