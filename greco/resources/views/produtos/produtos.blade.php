@@ -4,14 +4,7 @@
     <!-- DataTables -->
     <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-<<<<<<< HEAD
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
-    
-    
-=======
->>>>>>> fede82f4289027efeca096906e24f743841f934d
+    <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">    
 @endsection
 
 @section('content')
@@ -77,7 +70,7 @@
               <div class="card-body">
 
                 <table id="tabelaprodutos" class="table table-bordered table-striped">
-                  <thead>
+                  <thead class="bg-secondary">
                   <tr>
                     <th>Designação</th>
                     <th>Formula</th>
