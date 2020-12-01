@@ -23,6 +23,7 @@ Route::get('/produtos', function () {
     return view('produtos.produtos');
 });
 
+
 //Ficha
 Route::get(/* '/ficha/{id}' */'/ficha', function () {
     return view('ficha.show');
