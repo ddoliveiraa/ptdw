@@ -75,13 +75,9 @@
 
               <!-- /.card-header -->
               <div class="card-body">
-<<<<<<< HEAD
+
                 <table id="tabelaprodutos" class="table table-bordered table-striped">
                   <thead>
-=======
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead class="bg-secondary">
->>>>>>> fede82f4289027efeca096906e24f743841f934d
                   <tr>
                     <th>Designação</th>
                     <th>Formula</th>
