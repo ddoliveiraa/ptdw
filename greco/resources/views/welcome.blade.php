@@ -36,7 +36,7 @@
                             </select>
                         </div>
                         <div class="input-group-append">
-                            <button type="submit" class="btn btn-lg btn-default">
+                            <button type="submit" class="btn btn-lg btn-primary">
                                 <i class="fa fa-search"></i>
                             </button>
                         </div>
