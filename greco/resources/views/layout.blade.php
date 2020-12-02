@@ -119,7 +119,7 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar sidebar-dark-primary navbar-grad elevation-4">
             <!-- Brand Logo -->
             <a href="/" class="brand-link navbar-primary">
                 <img src="../../dist/img/UALogo.png" alt="UA Logo" class="brand-image  elevation-3" style="opacity: .8">

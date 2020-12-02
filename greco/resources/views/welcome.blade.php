@@ -36,7 +36,7 @@
                         </div>
                         <input type="search" class="form-control form-control-lg" placeholder="Pesquise por um produto...">
                         <div class="input-group-append">
-                            <button type="submit" class="btn btn-lg btn-primary">
+                            <button type="submit" class="btn btn-lg btn-secondary">
                                 <i class="fa fa-search"></i>
                             </button>
                         </div>

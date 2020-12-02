@@ -10,6 +10,10 @@
     border-radius: 0.3rem 0 0 0.3rem;
 }
 
+.navbar-grad{
+    background: linear-gradient(180deg, rgba(52,58,64,1) 0%, rgba(50,75,80,1) 57%, rgba(0,48,68,1) 100%);
+}
+
 /*----------------PRODUTOS----------------*/
 
 /*Ficha Produto*/
@@ -56,7 +60,8 @@
 }
 
 .sorting_asc, .sorting_desc{
-    background-color: #17a2b8;
+    background-color: white;
+    color: #343a40;
 }
 
 .avisos h3{
@@ -69,6 +74,7 @@
     padding: 0.5rem 1.5rem;
     margin: 0;
 }
+
 /*----------------Movimentos--------------*/
 
 /*-----------------Clientes---------------*/

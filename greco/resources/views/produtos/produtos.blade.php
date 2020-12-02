@@ -40,13 +40,13 @@
                             </div>
                         </div>
                         <div class="float-left">
-                            <button type="button" class="btn btn-block btn-default btn-sm">Filtrar</button>
+                            <button type="button" class="btn btn-block btn-secondary btn-sm">Filtrar</button>
                         </div>
                 </div>
 
                 <div class="col-md-2">
                     <div class="float-right">
-                        <button type="button" class="btn btn-block btn-default btn-sm" data-toggle="modal" data-target="#modal-lg">Adicionar Produto</button>
+                        <button type="button" class="btn btn-block btn-secondary btn-sm" data-toggle="modal" data-target="#modal-lg">Adicionar Produto</button>
                     </div>
                 </div>
                 
