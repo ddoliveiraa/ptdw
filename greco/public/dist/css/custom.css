@@ -2,10 +2,10 @@
 
 /*HOME*/
 
-.search-fliter {
+.search-fliter{
     padding: 0.5rem 1rem;
     background-color: #ebebeb;
-    height: calc(2.875rem + 2px);
+    height: 100%;
     box-shadow: none;
     border-radius: 0.3rem 0 0 0.3rem;
 }
@@ -15,7 +15,6 @@
 }
 
 /*----------------PRODUTOS----------------*/
-
 /*Ficha Produto*/
 .card-title-large {
     font-size: 1.7rem;

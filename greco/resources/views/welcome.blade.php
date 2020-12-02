@@ -27,7 +27,7 @@
             <div class="col-md-8 offset-md-2">
                 <form action="ficha">
                     <div class="input-group">
-                        <div class="input-group-append">
+                        <div class="input-group-prepend">
                             <select class="search-fliter custom-select" name="" id="">
                                 <option value="todos">Todos</option>
                                 <option value="quimica">Químicos</option>
