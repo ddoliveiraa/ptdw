@@ -100,7 +100,11 @@
                                 </div>
                             </div>
                         </form>
+                        
+                            
+                        
                         <div class="card-body">
+                            <h3>Embalagens</h3>
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead class="bg-secondary">
                                     <tr>
@@ -305,13 +309,7 @@
     <!-- Page specific script -->
     <script>
         $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
+            $('#example1').DataTable({
                 "paging": true,
                 "lengthChange": false,
                 "searching": false,

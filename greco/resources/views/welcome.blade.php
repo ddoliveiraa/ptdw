@@ -27,7 +27,6 @@
             <div class="col-md-8 offset-md-2">
                 <form action="ficha">
                     <div class="input-group">
-                        <input type="search" class="form-control form-control-lg" placeholder="Pesquise por um produto...">
                         <div class="input-group-append">
                             <select class="search-fliter custom-select" name="" id="">
                                 <option value="todos">Todos</option>
@@ -35,6 +34,7 @@
                                 <option value="naoquimico">Não Químicos</option>
                             </select>
                         </div>
+                        <input type="search" class="form-control form-control-lg" placeholder="Pesquise por um produto...">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-lg btn-primary">
                                 <i class="fa fa-search"></i>

@@ -154,7 +154,7 @@
                                         <div class="form-group">
                                             <label for="preco">Preço</label>
                                             <input type="number" class="form-control" id="preco"
-                                                placeholder="Insira o Preço">
+                                                placeholder="Insira o Preço" step="0.05">
                                         </div>
                                     </div>
                                 </div>
@@ -234,7 +234,7 @@
                                             <label>Data de Entrada</label>
                                             <div class="input-group date" id="data_entrada" data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input"
-                                                    data-target="#data_entrada" />
+                                                    data-target="#data_entrada" placeholder="DD/MM/YYYY"/>
                                                 <div class="input-group-append" data-target="#data_entrada"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -248,7 +248,7 @@
                                             <label for="produto">Data de Abertura</label>
                                             <div class="input-group date" id="data_abertura" data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input"
-                                                    data-target="#data_abertura" />
+                                                    data-target="#data_abertura" placeholder="DD/MM/YYYY"/>
                                                 <div class="input-group-append" data-target="#data_abertura"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -264,7 +264,7 @@
                                             <label for="produto">Data de Validade</label>
                                             <div class="input-group date" id="data_validade" data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input"
-                                                    data-target="#data_validade" />
+                                                    data-target="#data_validade" placeholder="DD/MM/YYYY"/>
                                                 <div class="input-group-append" data-target="#data_validade"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -278,7 +278,7 @@
                                             <label for="produto">Data de Término</label>
                                             <div class="input-group date" id="data_termino" data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input"
-                                                    data-target="#data_termino" />
+                                                    data-target="#data_termino" placeholder="DD/MM/YYYY"/>
                                                 <div class="input-group-append" data-target="#data_termino"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -296,8 +296,8 @@
                             </div>
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Guardar</button>
-                                <button type="submit" class="btn btn-default float-right">Cancelar</button>
+                                <button type="submit" class="btn btn-default">Cancelar</button>
+                                <button type="submit" class="btn btn-primary float-right">Guardar</button>
                             </div>
                         </form>
                     </div>

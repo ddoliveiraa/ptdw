@@ -73,14 +73,14 @@
                 {{-- Language Changer --}}
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="flag-icon flag-icon-pt"></i>
+                        PT
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right p-0">
+                    <div class="dropdown-menu dropdown-menu-right p-0" style="min-width: 0">
                         <a href="#" class="dropdown-item active">
-                            <i class="flag-icon flag-icon-pt mr-2"></i> Português
+                            PT
                         </a>
                         <a href="#" class="dropdown-item">
-                            <i class="flag-icon flag-icon-us mr-2"></i> English
+                            EN
                         </a>
                     </div>
                 </li>
@@ -88,16 +88,16 @@
                 {{-- User Menu --}}
                 <li class="nav-item dropdown user-menu">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                        <img src="../../dist/img/UALogo.png" class="user-image img-circle elevation-2" alt="User Image">
-                        <span class="d-none d-md-inline">Grupo 3</span>
+                        <img src="../../dist/img/user2-160x160.jpg" class="user-image img-circle elevation-2" alt="User Image">
+                        <span class="d-none d-md-inline">Fernando Silva</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <!-- User image -->
                         <li class="user-header bg-primary">
-                            <img src="../../dist/img/UALogo.png" class="img-circle elevation-2" alt="User Image">
+                            <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
 
                             <p>
-                                Grupo 3
+                                Fernando Silva
                                 <small>Fiel de Armazém</small>
                             </p>
                         </li>
@@ -105,7 +105,7 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <a href="#" class="btn btn-default btn-flat">Profile</a>
-                            <a href="#" class="btn btn-default btn-flat float-right">Sign out</a>
+                            <a href="#" class="btn btn-default btn-flat float-right">Log out</a>
                         </li>
                     </ul>
                 </li>
