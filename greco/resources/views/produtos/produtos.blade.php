@@ -248,8 +248,8 @@
                             </div>
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary">Guardar Produto</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" tabindex="13">Cancelar</button>
+                            <button type="button" class="btn btn-primary" tabindex="14" >Guardar Produto</button>
                         </div>
                 </div>
                 <!-- /.modal-content -->
