@@ -187,6 +187,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="/operadores" class="nav-link {{ Request::is('operadores') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-truck"></i>
+                                <p>
+                                    Fornecedores
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="/armazem" class="nav-link {{ Request::is('armazem') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-warehouse"></i>
                                 <p>
