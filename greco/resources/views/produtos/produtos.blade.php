@@ -49,7 +49,7 @@
                 <div class="col-md-2">
                     <div class="float-right">
                         <button type="button" class="btn btn-block btn-secondary btn-sm" data-toggle="modal"
-                            data-target="#modal-lg">Adicionar Produto</button>
+                            data-target="#modalAdicionarProduto">Adicionar Produto</button>
                     </div>
                 </div>
             </div>
@@ -148,7 +148,7 @@
         <!-- Modal -->
 
         <!-- Default Model Large -->
-        <div class="modal fade" id="modal-lg">
+        <div class="modal fade" id="modalAdicionarProduto">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -164,13 +164,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="produto_designacao" class="control-label">Designação</label>
-                                        <input type="text" class="form-control" id="produto_designacao" required>
+                                        <input type="text" class="form-control" id="produto_designacao" tabindex="1" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="produto_formula" class="control-label">Formula</label>
-                                        <input type="text" class="form-control" id="produto_formula" required>
+                                        <input type="text" class="form-control" id="produto_formula" tabindex="2" required>
                                     </div>
                                 </div>
                             </div>
@@ -179,13 +179,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="produto_peso" class="control-label">Peso molecular</label>
-                                        <input type="text" class="form-control" id="produto_peso" required>
+                                        <input type="text" class="form-control" id="produto_peso" tabindex="3" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="produto_cas" class="control-label">CAS Nº</label>
-                                        <input type="text" class="form-control" id="produto_cas" required>
+                                        <input type="text" class="form-control" id="produto_cas" tabindex="4" required>
                                     </div>
                                 </div>
                             </div>
@@ -195,14 +195,14 @@
                                     <div class="form-group">
                                         <label for="produto_condicoes_armazenamento" class="control-label">Condições de
                                             Armazenamento</label>
-                                        <input type="text" class="form-control" id="produto_condicoes_armazenamento"
+                                        <input type="text" class="form-control" id="produto_condicoes_armazenamento" tabindex="5"
                                             required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="produto_armario" class="control-label">Armário ventilado</label>
-                                        <input type="text" class="form-control" id="produto_armario" required>
+                                        <input type="text" class="form-control" id="produto_armario" tabindex="6" required>
                                     </div>
                                 </div>
                             </div>
@@ -211,13 +211,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="produto_pictogramas" class="control-label">Pictogramas</label>
-                                        <input type="text" class="form-control" id="produto_pictogramas" required>
+                                        <input type="text" class="form-control" id="produto_pictogramas" tabindex="7" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="produto_unidades" class="control-label">Unidades</label>
-                                        <input type="text" class="form-control" id="produto_unidades" required>
+                                        <input type="text" class="form-control" id="produto_unidades" tabindex="8" required>
                                     </div>
                                 </div>
                             </div>
@@ -227,7 +227,7 @@
                                     <div class="form-group">
                                         <label for="produto_cod_recomendacoes_prudencia" class="control-label">Códigos de
                                             Recomendações de Prudência</label>
-                                        <input type="text" class="form-control" id="produto_cod_recomendacoes_prudencia"
+                                        <input type="text" class="form-control" id="produto_cod_recomendacoes_prudencia" tabindex="9"
                                             required>
                                     </div>
                                 </div>
@@ -235,7 +235,7 @@
                                     <div class="form-group">
                                         <label for="produto_cod_advertencias_perigo" class="control-label">Codigos de
                                             Advertências de Perigo</label>
-                                        <input type="text" class="form-control" id="produto_cod_advertencias_perigo"
+                                        <input type="text" class="form-control" id="produto_cod_advertencias_perigo" tabindex="10"
                                             required>
                                     </div>
                                 </div>
@@ -245,13 +245,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="produto_stock_existente" class="control-label">Stock Existente</label>
-                                        <input type="text" class="form-control" id="produto_stock_existente" required>
+                                        <input type="text" class="form-control" id="produto_stock_existente" tabindex="11" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="produto_stock_minimo" class="control-label">Stock Minimo</label>
-                                        <input type="text" class="form-control" id="produto_stock_minimo" required>
+                                        <input type="text" class="form-control" id="produto_stock_minimo" tabindex="12" required>
                                     </div>
                                 </div>
                             </div>
@@ -288,7 +288,7 @@
 
     <script>
         $('#modalAdicionarProduto').on('shown.bs.modal', function() {
-            $('#myInput').focus();
+            $('#produto_designacao').focus();
         });
 
         $(function() {
