@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-/* Route::get('/', 'App\Http\Controllers\LocalizationController@index'); */
+/* Route::get('/{locale}', 'App\Http\Controllers\LocalizationController@index'); */
 //Pesquisa
 Route::get('/', function () {
     return view('welcome');
