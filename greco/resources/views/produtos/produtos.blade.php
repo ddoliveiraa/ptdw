@@ -39,8 +39,8 @@
 
                 <div class="col-md-2">
                     <div class="float-right">
-                        <button type="button" class="btn btn-block btn-secondary btn-sm" data-toggle="modal"
-                            data-target="#modalAdicionarProduto">Adicionar Produto</button>
+                        <button type="button" class="btn btn-block btn-secondary" data-toggle="modal"
+                            data-target="#modalAdicionarProduto">Adicionar</button>
                     </div>
                 </div>
             </div>

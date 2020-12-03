@@ -116,6 +116,7 @@
                                         <th>Nº de Ordem</th>
                                         <th>Armário</th>
                                         <th>Prataleira</th>
+                                        <th>Data de Abertura</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -124,132 +125,155 @@
                                         <td>3</td>
                                         <td>5</td>
                                         <td>4</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>500 ml</td>
                                         <td>3</td>
                                         <td>5</td>
                                         <td>4</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>500 ml</td>
                                         <td>3</td>
                                         <td>5</td>
                                         <td>4</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>500 ml</td>
                                         <td>3</td>
                                         <td>5</td>
                                         <td>4</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>500 ml</td>
                                         <td>3</td>
                                         <td>5</td>
                                         <td>4</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>500 ml</td>
                                         <td>3</td>
                                         <td>5</td>
                                         <td>4</td>
+                                        <td>22/10/2020</td>
                                     </tr>
                                     <tr>
                                         <td>250 ml</td>
                                         <td>5</td>
                                         <td>8</td>
                                         <td>10</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>250 ml</td>
                                         <td>5</td>
                                         <td>8</td>
                                         <td>10</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>250 ml</td>
                                         <td>5</td>
                                         <td>8</td>
                                         <td>10</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>250 ml</td>
                                         <td>5</td>
                                         <td>8</td>
                                         <td>10</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>250 ml</td>
                                         <td>5</td>
                                         <td>8</td>
                                         <td>10</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>250 ml</td>
                                         <td>5</td>
                                         <td>8</td>
                                         <td>10</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>250 ml</td>
                                         <td>5</td>
                                         <td>8</td>
                                         <td>10</td>
+                                        <td>5/11/2020</td>
+                                        
                                     </tr>
                                     <tr>
                                         <td>125 ml</td>
                                         <td>10</td>
                                         <td>3</td>
                                         <td>6</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>125 ml</td>
                                         <td>10</td>
                                         <td>3</td>
                                         <td>6</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>125 ml</td>
                                         <td>10</td>
                                         <td>3</td>
                                         <td>6</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>125 ml</td>
                                         <td>10</td>
                                         <td>3</td>
                                         <td>6</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>125 ml</td>
                                         <td>10</td>
                                         <td>3</td>
                                         <td>6</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>125 ml</td>
                                         <td>10</td>
                                         <td>3</td>
                                         <td>6</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>125 ml</td>
                                         <td>10</td>
                                         <td>3</td>
                                         <td>6</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>125 ml</td>
                                         <td>10</td>
                                         <td>3</td>
                                         <td>6</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>125 ml</td>
                                         <td>10</td>
                                         <td>3</td>
                                         <td>6</td>
+                                        <td>1/11/2020</td>
                                     </tr>
                                 </tbody>
                             </table>
