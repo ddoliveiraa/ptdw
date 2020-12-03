@@ -24,7 +24,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h2 class="text-center display-4">Ficha do Produto</h2>
+                    <h2 class="text-left display-4">Ficha do Produto</h2>
                 </div>
             </div>
         </div>
@@ -79,16 +79,20 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4">
+                                        <div class="pictogramas">
+                                            <img src="../../dist/img/Pictogramas/Harmful.png" alt="Harmful">
+                                            <img src="../../dist/img/Pictogramas/Corrosive.png" alt="Corrosive">
+                                        </div>
                                         <div class="stock-box">
-                                            <h3 class="bg-secondary">Nº de Inventário</h3>
+                                            <h3 class="bg-dark">Nº de Inventário</h3>
                                             <h4>1357</h4>
                                         </div>
                                         <div class="stock-box">
-                                            <h3 class="bg-secondary">Stock Existente</h3>
+                                            <h3 class="bg-dark">Stock Existente</h3>
                                             <h4>20</h4>
                                         </div>
                                         <div class="stock-box">
-                                            <h3 class="bg-secondary">Stock Minimo</h3>
+                                            <h3 class="bg-dark">Stock Minimo</h3>
                                             <h4>3</h4>
                                         </div>
                                         <div class="stock-button">
@@ -106,7 +110,7 @@
                         <div class="card-body">
                             <h3>Embalagens</h3>
                             <table id="example1" class="table table-bordered table-striped">
-                                <thead class="bg-secondary">
+                                <thead class="bg-dark">
                                     <tr>
                                         <th>Capacidade</th>
                                         <th>Nº de Ordem</th>
@@ -248,25 +252,13 @@
                                         <td>6</td>
                                     </tr>
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>Capacidade</th>
-                                        <th>Nº de Ordem</th>
-                                        <th>Armário</th>
-                                        <th>Pratleira</th>
-                                    </tr>
-                                </tfoot>
                             </table>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="avisos">
-                                        <h3 class="bg-secondary">Avisos</h3>
-                                        <div class="pictogramas">
-                                            <img src="../../dist/img/Pictogramas/Harmful.png" alt="Harmful">
-                                            <img src="../../dist/img/Pictogramas/Corrosive.png" alt="Corrosive">
-                                        </div>
+                                        <h3 class="bg-dark">Advertências de Perigo</h3>
                                         <p>H290 - Corrosivo a metais</p>
                                         <p>H314 - Corrosivo à pele e olhos</p>
                                         <p>H335 - Causa irritação respiratória</p>
@@ -274,7 +266,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="avisos">
-                                        <h3 class="bg-secondary">Precauções</h3>
+                                        <h3 class="bg-dark">Recomendações de Prudência</h3>
                                         <p>P280 - Usar luvas e oculos de proteção</p>
                                         <p>P303+361+353 - Se entrar em contacto com a pele, remova roupa contaminada e lave
                                             a

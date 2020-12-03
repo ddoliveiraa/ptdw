@@ -109,11 +109,6 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                        <i class="fas fa-th-large"></i>
-                    </a>
-                </li>
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -121,7 +116,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary navbar-grad elevation-4">
             <!-- Brand Logo -->
-            <a href="/" class="brand-link navbar-primary">
+            <a href="/" class="brand-link navbar-dark">
                 <img src="../../dist/img/UALogo.png" alt="UA Logo" class="brand-image  elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">GRECO</span>
             </a>
@@ -192,6 +187,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="/operadores" class="nav-link {{ Request::is('operadores') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-truck"></i>
+                                <p>
+                                    Fornecedores
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="/armazem" class="nav-link {{ Request::is('armazem') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-warehouse"></i>
                                 <p>
@@ -214,7 +217,7 @@
 
         <footer class="main-footer">
             <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.1.0-rc
+                
             </div>
             <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
             reserved.

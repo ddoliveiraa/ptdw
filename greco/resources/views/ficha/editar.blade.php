@@ -76,6 +76,10 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4">
+                                        <div class="pictogramas">
+                                            <img src="../../dist/img/Pictogramas/Harmful.png" alt="Harmful">
+                                            <img src="../../dist/img/Pictogramas/Corrosive.png" alt="Corrosive">
+                                        </div>
                                         <div class="stock-box">
                                             <h3 class="bg-secondary">Nº de Inventário</h3>
                                             <h4>1357</h4>
@@ -256,11 +260,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="avisos">
-                                        <h3 class="bg-secondary">Avisos</h3>
-                                        <div class="pictogramas">
-                                            <img src="../../dist/img/Pictogramas/Harmful.png" alt="Harmful">
-                                            <img src="../../dist/img/Pictogramas/Corrosive.png" alt="Corrosive">
-                                        </div>
+                                        <h3 class="bg-secondary">Advertências de Perigo</h3>
                                         <p>H290 - Corrosivo a metais</p>
                                         <p>H314 - Corrosivo à pele e olhos</p>
                                         <p>H335 - Causa irritação respiratória</p>
@@ -268,7 +268,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="avisos">
-                                        <h3 class="bg-secondary">Precauções</h3>
+                                        <h3 class="bg-secondary">Recomendações de Prudência</h3>
                                         <p>P280 - Usar luvas e oculos de proteção</p>
                                         <p>P303+361+353 - Se entrar em contacto com a pele, remova roupa contaminada e lave
                                             a

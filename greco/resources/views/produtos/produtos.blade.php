@@ -34,15 +34,6 @@
                 <!-- SEARCH FORM & FILTRO & ADICIONAR PRODUTO-->
                 <div class="col-md-10">
                     <div class="float-left">
-
-{{--                         <div class="input-group">
-                            <select class="custom-select" name="tipo" id="tipo">
-                                <option value="Todos">Todos</option>
-                                <option value="Sim">Químicos</option>
-                                <option value="Não">Não Químicos</option>
-                            </select>
-                        </div> --}}
-
                     </div>
                 </div>
 
