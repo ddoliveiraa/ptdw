@@ -104,9 +104,9 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="marca">Marca do Produto</label>
+                                            <label for="marca">{{ __('lang.nome da marca') }}</label>
                                             <input type="text" class="form-control" id="marca"
-                                                placeholder="Insira o nome do Marca">
+                                                placeholder="{{ __('lang.insera o') }} {{ __('lang.nome da marca') }}">
                                         </div>
                                     </div>
                                 </div>
@@ -172,10 +172,10 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="tipo_embalagem">Tipo de Embalagem</label>
+                                            <label for="tipo_embalagem">{{ __('lang.tipo de embalagem') }}</label>
                                             <select id="tipo_embalagem" class="form-control select2bs4"
                                                 style="width: 100%;">
-                                                <option value="" selected disabled>Selecione o Tipo de Embalagem</option>
+                                                <option value="" selected disabled>{{ __('lang.insira o') }} {{ __('lang.tipo de embalagem') }}</option>
                                                 <option>Frasco</option>
                                             </select>
                                         </div>
@@ -183,9 +183,9 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="cap_embalagem">Capacidade da Embalagem</label>
+                                            <label for="cap_embalagem">{{ __('lang.capacidade da embalagem') }}</label>
                                             <input type="number" class="form-control" id="cap_embalagem"
-                                                placeholder="Insira Capacidade da Embalagem">
+                                                placeholder="{{ __('lang.insira a') }} {{ __('lang.capacidade da Embalagem') }}">
                                         </div>
                                     </div>
                                 </div>
@@ -193,9 +193,9 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="estado">Estado Físico</label>
+                                            <label for="estado">{{ __('lang.estado fisico') }}</label>
                                             <select id="estado" class="form-control select2bs4" style="width: 100%;">
-                                                <option value="" selected disabled>Selecione o Estado Físico</option>
+                                                <option value="" selected disabled>{{ __('lang.selecione o') }} {{ __('lang.estado fisico') }}</option>
                                                 <option>Sólido</option>
                                                 <option>Gasoso</option>
                                                 <option>Físico</option>
@@ -205,9 +205,9 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="textura">Textura/Viscosidade</label>
+                                            <label for="textura">{{ __('lang.textura/viscosidade') }}</label>
                                             <select id="textura" class="form-control select2bs4" style="width: 100%;">
-                                                <option value="" selected disabled>Selecione a Textura/Viscosidade</option>
+                                                <option value="" selected disabled>{{ __('lang.selecione a') }} {{ __('lang.textura/viscosidade') }}</option>
                                                 <option>Viscoso</option>
                                                 <option>Granulado</option>
                                                 <option>Pouco Viscoso</option>
@@ -221,7 +221,7 @@
                                         <div class="form-group">
                                             <label for="cor">Cor</label>
                                             <select id="cor" class="form-control select2bs4" style="width: 100%;">
-                                                <option value="" selected disabled>Selecione a Cor</option>
+                                                <option value="" selected disabled>{{ __('lang.selecione a') }} {{ __('lang.cor') }}</option>
                                                 <option>Vermelho</option>
                                                 <option>Azul</option>
                                                 <option>Verde</option>
@@ -231,9 +231,9 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="peso">Peso Bruto</label>
+                                            <label for="peso">{{ __('lang.peso bruto') }}</label>
                                             <input type="peso" class="form-control" id="peso"
-                                                placeholder="Insira o Peso Bruto">
+                                                placeholder="{{ __('lang.insira o') }} {{ __('lang.peso bruto') }}">
                                         </div>
                                     </div>
                                 </div>
@@ -241,7 +241,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Data de Entrada</label>
+                                            <label>{{ __('lang.data de entrada') }}</label>
                                             <div class="input-group date" id="data_entrada" data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input"
                                                     data-target="#data_entrada" placeholder="DD/MM/YYYY" />
@@ -255,7 +255,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="produto">Data de Abertura</label>
+                                            <label for="produto">{{ __('lang.data de abertura') }}</label>
                                             <div class="input-group date" id="data_abertura" data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input"
                                                     data-target="#data_abertura" placeholder="DD/MM/YYYY" />
@@ -271,7 +271,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="produto">Data de Validade</label>
+                                            <label for="produto">{{ __('lang.data de validade') }}</label>
                                             <div class="input-group date" id="data_validade" data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input"
                                                     data-target="#data_validade" placeholder="DD/MM/YYYY" />
@@ -285,7 +285,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="produto">Data de Término</label>
+                                            <label for="produto">{{ __('lang.data de termino') }}</label>
                                             <div class="input-group date" id="data_termino" data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input"
                                                     data-target="#data_termino" placeholder="DD/MM/YYYY" />
@@ -299,15 +299,15 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="obvs">Observações</label>
+                                    <label for="obvs">{{ __('lang.observacoes') }}</label>
                                     <textarea id="obvs" class="form-control" rows="4"></textarea>
 
                                 </div>
                             </div>
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-default">Cancelar</button>
-                                <button type="submit" class="btn btn-primary float-right">Guardar</button>
+                                <button type="submit" class="btn btn-default">{{ __('lang.cancelar') }}</button>
+                                <button type="submit" class="btn btn-primary float-right">{{ __('lang.guardar') }}</button>
                             </div>
                         </form>
                     </div>

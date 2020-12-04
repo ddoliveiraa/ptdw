@@ -70,9 +70,21 @@ return [
     'advertencias de perigo' => 'Advertências de Perigo',
     'recomendacoes de prudencia' => 'Recomendações de Prudência',
     'fornecedor' => 'Fornecedor',
+    'nome da marca' => 'Nome da Marca',
+    'pictograma' => 'Pictograma',
 
     /*Movimentos*/
     'referencia' => 'Referência',
     'taxa de iva' => 'Taxa de IVA',
-    'preco' => 'Preço'
+    'preco' => 'Preço',
+    'tipo de embalagem' => 'Tipo de Embalagem',
+    'capacidade da embalagem' =>'Capacidade da Embalagem',
+    'estado fisico' => 'Estado Físico',
+    'textura/viscosidade' => 'Textura/Viscosidade',
+    'cor' => 'colour',
+    'peso bruto' => 'Peso Bruto',
+    'data de entrada' => 'Data de Entrada',
+    'data de validade' => 'Data de Validade',
+    'data de termino' => 'Data de Termíno',
+    'observacoes' => 'Observações',
 ];

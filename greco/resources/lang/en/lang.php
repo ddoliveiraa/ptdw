@@ -68,11 +68,21 @@ return [
     'advertencias de perigo' => 'Hazard Statments',
     'recomendacoes de prudencia' => 'Precautionary Statements',
     'fornecedor' => 'Supplier',
+    'nome da marca' => 'Brand Name',
+    'pictograma' => 'Pictogram',
 
     /*Movimentos*/
     'referencia' => 'Reference',
     'taxa de iva' => 'IVA Tax',
     'preco' => 'Price',
-    
-
+    'tipo de embalagem' => 'Container Type',
+    'capacidade da embalagem' =>'Container Capacity',
+    'estado fisico' => 'Physical State',
+    'textura/viscosidade' => 'Texture/Viscosity',
+    'cor' => 'colour',
+    'peso bruto' => 'Gross Weight',
+    'data de entrada' => 'Entry Date',
+    'data de validade' => 'Expiration date',
+    'data de termino' => 'End Date',
+    'observacoes' => 'Observations',
 ];

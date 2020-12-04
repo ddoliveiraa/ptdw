@@ -20,7 +20,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Produtos</li>
+                        <li class="breadcrumb-item active">{{ __('lang.produtos') }}</li>
                     </ol>
                 </div>
             </div>
@@ -28,7 +28,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h2 class="text-center display-4">Produtos</h2>
+                    <h2 class="text-center display-4">{{ __('lang.produtos') }}</h2>
                 </div>
 
                 <!-- SEARCH FORM & FILTRO & ADICIONAR PRODUTO-->
@@ -143,7 +143,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Adicionar Produto</h4>
+                        <h4 class="modal-title">{{ __('lang.adicionar') }} {{ __('lang.produto') }}</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -154,13 +154,13 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="produto_designacao" class="control-label">Designação</label>
+                                        <label for="produto_designacao" class="control-label">{{ __('lang.designacao') }}</label>
                                         <input type="text" class="form-control" id="produto_designacao" tabindex="1" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="produto_formula" class="control-label">Formula</label>
+                                        <label for="produto_formula" class="control-label">{{ __('lang.formula') }}</label>
                                         <input type="text" class="form-control" id="produto_formula" tabindex="2" required>
                                     </div>
                                 </div>
@@ -169,13 +169,13 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="produto_peso" class="control-label">Peso molecular</label>
+                                        <label for="produto_peso" class="control-label">{{ __('lang.peso molecular') }}</label>
                                         <input type="text" class="form-control" id="produto_peso" tabindex="3" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="produto_cas" class="control-label">CAS Nº</label>
+                                        <label for="produto_cas" class="control-label">{{ __('lang.n cas') }}</label>
                                         <input type="text" class="form-control" id="produto_cas" tabindex="4" required>
                                     </div>
                                 </div>
@@ -184,15 +184,14 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="produto_condicoes_armazenamento" class="control-label">Condições de
-                                            Armazenamento</label>
+                                        <label for="produto_condicoes_armazenamento" class="control-label">{{ __('lang.condicoes de armazenamento') }}</label>
                                         <input type="text" class="form-control" id="produto_condicoes_armazenamento" tabindex="5"
                                             required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="produto_armario" class="control-label">Armário ventilado</label>
+                                        <label for="produto_armario" class="control-label">{{ __('lang.armario ventilado') }}</label>
                                         <input type="text" class="form-control" id="produto_armario" tabindex="6" required>
                                     </div>
                                 </div>
@@ -201,13 +200,13 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="produto_pictogramas" class="control-label">Pictogramas</label>
+                                        <label for="produto_pictogramas" class="control-label">{{ __('lang.pictograma') }}</label>
                                         <input type="text" class="form-control" id="produto_pictogramas" tabindex="7" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="produto_unidades" class="control-label">Unidades</label>
+                                        <label for="produto_unidades" class="control-label">{{ __('lang.unidades') }}</label>
                                         <input type="text" class="form-control" id="produto_unidades" tabindex="8" required>
                                     </div>
                                 </div>
@@ -216,16 +215,14 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="produto_cod_recomendacoes_prudencia" class="control-label">Códigos de
-                                            Recomendações de Prudência</label>
+                                        <label for="produto_cod_recomendacoes_prudencia" class="control-label">{{ __('lang.recomendacoes de prudencia') }}</label>
                                         <input type="text" class="form-control" id="produto_cod_recomendacoes_prudencia" tabindex="9"
                                             required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="produto_cod_advertencias_perigo" class="control-label">Codigos de
-                                            Advertências de Perigo</label>
+                                        <label for="produto_cod_advertencias_perigo" class="control-label">{{ __('lang.advertencias de perigo') }}</label>
                                         <input type="text" class="form-control" id="produto_cod_advertencias_perigo" tabindex="10"
                                             required>
                                     </div>
@@ -235,13 +232,13 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="produto_stock_existente" class="control-label">Stock Existente</label>
+                                        <label for="produto_stock_existente" class="control-label">{{ __('lang.stock existente') }}</label>
                                         <input type="text" class="form-control" id="produto_stock_existente" tabindex="11" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="produto_stock_minimo" class="control-label">Stock Minimo</label>
+                                        <label for="produto_stock_minimo" class="control-label">{{ __('lang.stock minimo') }}</label>
                                         <input type="text" class="form-control" id="produto_stock_minimo" tabindex="12" required>
                                     </div>
                                 </div>
@@ -307,9 +304,9 @@
             var selects = $("<select></select>").attr('id', 'tipo');
             selects.addClass('custom-select .form-control-sm');
             $('#tabelaprodutos_filter').append(selects);
-            $('#tipo').append(new Option("Todos", "Todos"));
-            $('#tipo').append(new Option("Quimico", "Sim"));
-            $('#tipo').append(new Option("Não Quimico", "Não"));
+            $('#tipo').append(new Option("{{ __('lang.todos') }}", "Todos"));
+            $('#tipo').append(new Option("{{ __('lang.quimicos') }}", "Sim"));
+            $('#tipo').append(new Option("{{ __('lang.nao quimicos') }}", "Não"));
 
 
             $(document).ready(function() {
