@@ -26,7 +26,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h2 class="text-left display-5 text-secondary">{{ __('lang.ficha do produto') }}</h2>
+                    <h2 class="text-left display-4">{{ __('lang.ficha do produto') }}</h2>
                 </div>
             </div>
         </div>

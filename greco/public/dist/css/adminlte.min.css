@@ -159,12 +159,12 @@ sup {
 }
 
 a {
-  color: #17a2b8;
+  color: #005267;
   text-decoration: none;
   background-color: transparent;
 }
 a:hover {
-  color: #0f6674;
+  color: #008fb4;
   text-decoration: none;
 }
 
@@ -364,7 +364,7 @@ h1, h2, h3, h4, h5, h6,
   font-family: inherit;
   font-weight: 500;
   line-height: 1.2;
-  color: inherit;
+  color: #005267;
 }
 
 h1, .h1 {
@@ -2883,11 +2883,11 @@ fieldset:disabled a.btn {
 
 .btn-link {
   font-weight: 400;
-  color: #17a2b8;
+  color: #005267;
   text-decoration: none;
 }
 .btn-link:hover {
-  color: #0f6674;
+  color: #008fb4;
   text-decoration: none;
 }
 .btn-link:focus, .btn-link.focus {
@@ -4586,13 +4586,13 @@ input[type=button].btn-block {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #17a2b8;
+  color: #005267;
   background-color: #fff;
   border: 1px solid #dee2e6;
 }
 .page-link:hover {
   z-index: 2;
-  color: #0f6674;
+  color: #008fb4;
   text-decoration: none;
   background-color: #e9ecef;
   border-color: #dee2e6;
@@ -5792,7 +5792,7 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
   padding: 0.5rem 0.75rem;
   margin-bottom: 0;
   font-size: 1rem;
-  color: inherit;
+  color: #005267;
   background-color: #f7f7f7;
   border-bottom: 1px solid #ebebeb;
   border-top-left-radius: calc(0.3rem - 1px);
@@ -27272,7 +27272,7 @@ blockquote.quote-dark-blue h6 {
 }
 
 .dark-mode a:not(.btn):hover {
-  color: #1fc8e3;
+  color: #007b9a;
 }
 .dark-mode .attachment-block {
   background-color: #3d444b;
