@@ -15,7 +15,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8 offset-md-2">
-                <h2 class="text-center display-4">{{ __('lang.pesquisa') }}</h2>
+                <h2 class="text-center display-4 text-secondary">{{ __('lang.pesquisa') }}</h2>
             </div>
         </div>
     </div>
@@ -30,8 +30,8 @@
                         <div class="input-group-prepend">
                             <select class="search-fliter custom-select" name="" id="">
                                 <option value="todos">{{ __('lang.todos') }}</option>
-                                <option value="quimica">{{ __('lang.químicos') }}</option>
-                                <option value="naoquimico">{{ __('lang.não químicos') }}</option>
+                                <option value="quimica">{{ __('lang.quimicos') }}</option>
+                                <option value="naoquimico">{{ __('lang.nao quimicos') }}</option>
                             </select>
                         </div>
                         <input type="search" class="form-control form-control-lg" placeholder="{{ __('lang.pesquise por um produto...') }}">

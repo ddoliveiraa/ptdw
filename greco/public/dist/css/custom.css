@@ -30,10 +30,13 @@
     margin: 1.5rem 2rem;
 }
 
-.stock-box h3 {
+.stock-box h5, .avisos h5 {
     color: white;
     border-radius: 10px 10px 0 0;
-    padding: 0.1rem;
+    padding: 0.2rem;
+    text-align: center;
+    font-weight: bold;
+
 }
 
 .stock-box h4 {
@@ -53,11 +56,6 @@
     margin-bottom: 0.5rem;
 }
 
-.avisos {
-    border: 1px solid #ced4da;
-    border-radius: 10px;
-    height: 100%;
-}
 
 .pictogramas {
     padding: 0.5rem 1.5rem;
@@ -73,12 +71,12 @@
     color: #343a40;
 }
 
-.avisos h3 {
-    text-align: center;
-    padding: 0.25rem 1.5rem;
-    border-radius: 10px 10px 0 0;
-    margin: 0;
+.avisos {
+    border: 1px solid #ced4da;
+    border-radius: 10px;
+    height: 100%;
 }
+
 
 .avisos p {
     padding: 0.5rem 1.5rem;

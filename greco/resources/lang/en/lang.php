@@ -11,6 +11,21 @@ return [
     |
     */
 
+    /*Layout*/
+    'produtos' => 'Products',
+    'movimentos' => 'Movements',
+    'registar entrada' => 'Log Entry',
+    'registar saida' => 'Log Exit',
+    'historico' => 'History',
+    'clientes' => 'Clients',
+    'operadores' => 'Operatores',
+    'fornecedores' => 'Suppliers',
+    'armazem' => 'Warehouse',
+    'cliente' => 'Client',
+    'fiel de armazem' =>'Warehouse Worker',
+    'supervisor sectorial' => 'Section Supervisor',
+    'supervisor geral' => 'General Supervisor',
+
     /*Operações*/
     'editar' => 'Edit',
     'adicionar' => 'Add',
@@ -20,29 +35,29 @@ return [
     'pesquisa' => 'Search',
     'pesquise por um produto...' => 'Search for a product...',
     'todos' => 'All',
-    'químicos' => 'Chemicals',
-    'não químicos' => 'Non-Chemicals',
+    'quimicos' => 'Chemicals',
+    'nao quimicos' => 'Non-Chemicals',
     'resultados' => 'Results',
 
     /*Produtos*/
     'ficha do produto' => 'Product File',
-    'fórmula' => 'Formula',
+    'formula' => 'Formula',
     'designação' => 'Designation',
     'peso molecular' => 'Molecular Weight',
-    'nº cas' => 'CAS Number',
+    'n cas' => 'CAS Number',
     'unidades' => 'Units',
-    'armário ventilado' => 'Ventilated Cabinet',
-    'condições de armazenamento' => 'Storage Conditions',
-    'nº de inventário' => 'Inventory Number',
+    'armario ventilado' => 'Ventilated Cabinet',
+    'condicoes de armazenamento' => 'Storage Conditions',
+    'n de inventario' => 'Inventory Number',
     'stock existente' => 'Existing Stock',
-    'stock mínimo' => 'Minimum Stock',
+    'stock minimo' => 'Minimum Stock',
     'capacidade' => 'Capacity',
-    'nº de ordem' => 'Order Number',
+    'n de ordem' => 'Order Number',
     'armário' => 'Closet',
     'prataleira' => 'Shelf',
     'data de abertura' => 'Date Opened',
-    'advertências de perigo' => 'Hazard Statments',
-    'recomendações de prudência' => 'Precautionary Statements'
+    'advertencias de perigo' => 'Hazard Statments',
+    'recomendacoes de prudencia' => 'Precautionary Statements'
 
 
 ];

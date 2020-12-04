@@ -17,7 +17,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Resultados</a></li>
+                        <li class="breadcrumb-item"><a href="#">{{ __('lang.resultados') }}</a></li>
                         <li class="breadcrumb-item active">HCL</li>
                     </ol>
                 </div>
@@ -26,7 +26,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h2 class="text-center display-4">Ficha do Produto</h2>
+                    <h2 class="text-left display-5 text-secondary">{{ __('lang.ficha do produto') }}</h2>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <div class="card card-primary">
+                    <div class="card card-light">
                         <div class="card-header">
                             <h2 class="card-title-large">Cloreto de Hidrogénio</h2>
                         </div>
@@ -46,32 +46,32 @@
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group">
-                                            <label for="formula">Fórmula</label>
+                                            <label for="formula">{{ __('lang.formula') }}</label>
                                             <input type="text" class="form-control" id="formula" value="HCL">
                                         </div>
                                         <div class="form-group">
-                                            <label for="designacao">Designação</label>
+                                            <label for="designacao">{{ __('lang.designacao') }}</label>
                                             <input type="text" class="form-control" id="designacao"
                                                 value="Cloreto de Hidrogenio">
                                         </div>
                                         <div class="form-group">
-                                            <label for="moles">Peso Molecular</label>
+                                            <label for="moles">{{ __('lang.peso molecular') }}</label>
                                             <input type="text" class="form-control" id="moles" value="36.46 g/mol">
                                         </div>
                                         <div class="form-group">
-                                            <label for="cas">Nº CAS</label>
+                                            <label for="cas">{{ __('lang.n cas') }}</label>
                                             <input type="text" class="form-control" id="cas" value="7647-01-1">
                                         </div>
                                         <div class="form-group">
-                                            <label for="unidades">Unidades</label>
+                                            <label for="unidades">{{ __('lang.unidades') }}</label>
                                             <input type="text" class="form-control" id="unidades" value="mililitros">
                                         </div>
                                         <div class="form-group">
-                                            <label for="vent">Armário Ventilado</label>
+                                            <label for="vent">{{ __('lang.armário ventilado') }}</label>
                                             <input type="text" class="form-control" id="vent" value="Não Necessita">
                                         </div>
                                         <div class="form-group">
-                                            <label for="condicoes">Condições de Armazenamento</label>
+                                            <label for="condicoes">{{ __('lang.condicoes de armazenamento') }}</label>
                                             <input type="text" class="form-control" id="condicoes" value="Não Necessita">
                                         </div>
                                     </div>
@@ -81,22 +81,22 @@
                                             <img src="../../dist/img/Pictogramas/Corrosive.png" alt="Corrosive">
                                         </div>
                                         <div class="stock-box">
-                                            <h3 class="bg-secondary">Nº de Inventário</h3>
+                                            <h5 class="bg-dark">{{ __('lang.n de inventario') }}</h5>
                                             <h4>1357</h4>
                                         </div>
                                         <div class="stock-box">
-                                            <h3 class="bg-secondary">Stock Existente</h3>
+                                            <h5 class="bg-dark">{{ __('lang.stock existente') }}</h5>
                                             <h4>20</h4>
                                         </div>
                                         <div class="stock-box">
-                                            <h3 class="bg-secondary">Stock Minimo</h3>
+                                            <h5 class="bg-dark">{{ __('lang.stock minimo') }}</h5>
                                             <h4><input type="number" class="form-control" id="condicoes" min="0" value="3"
                                                     style="text-align: center"></h4>
                                         </div>
                                         <div class="stock-button">
                                             <a href="/ficha"><input type="button" class="btn btn-block btn-default"
-                                                    value="Voltar"></a>
-                                            <button type="submit" class="btn btn-block btn-info">Guardar</button>
+                                                    value="{{ __('lang.editar') }}"></a>
+                                            <button type="submit" class="btn btn-block btn-info">{{ __('lang.desativar') }}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -104,13 +104,13 @@
                         </form>
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
-                                <thead class="bg-secondary">
+                                <thead class="bg-dark">
                                     <tr>
-                                        <th>Capacidade</th>
-                                        <th>Nº de Ordem</th>
-                                        <th>Armário</th>
-                                        <th>Prataleira</th>
-                                        <th>Data de Abertura</th>
+                                        <th>{{ __('lang.capacidade') }}</th>
+                                        <th>{{ __('lang.n de ordem') }}</th>
+                                        <th>{{ __('lang.armario') }}</th>
+                                        <th>{{ __('lang.prataleira') }}</th>
+                                        <th>{{ __('lang.data de abertura') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -276,7 +276,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="avisos">
-                                        <h3 class="bg-secondary">Advertências de Perigo</h3>
+                                        <h5 class="bg-dark">{{ __('lang.advertencias de perigo') }}</h5>
                                         <p>H290 - Corrosivo a metais</p>
                                         <p>H314 - Corrosivo à pele e olhos</p>
                                         <p>H335 - Causa irritação respiratória</p>
@@ -284,7 +284,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="avisos">
-                                        <h3 class="bg-secondary">Recomendações de Prudência</h3>
+                                        <h5 class="bg-dark">{{ __('lang.recomendaçcos de prudencia') }}</h5>
                                         <p>P280 - Usar luvas e oculos de proteção</p>
                                         <p>P303+361+353 - Se entrar em contacto com a pele, remova roupa contaminada e lave
                                             a

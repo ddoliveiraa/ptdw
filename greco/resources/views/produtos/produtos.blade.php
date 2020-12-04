@@ -28,7 +28,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h2 class="text-center display-4">Produtos</h2>
+                    <h2 class="text-center display-4 text-secondary">Produtos</h2>
                 </div>
 
                 <!-- SEARCH FORM & FILTRO & ADICIONAR PRODUTO-->
@@ -60,7 +60,7 @@
                         <div class="card-body">
 
                             <table id="tabelaprodutos" class="table table-bordered table-striped">
-                                <thead class="bg-secondary">
+                                <thead class="bg-dark">
                                     <tr>
                                         <th>Designação</th>
                                         <th>Formula</th>

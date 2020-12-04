@@ -106,7 +106,7 @@
 
                                 <p>
                                     Fernando Silva
-                                    <small>{{ __('layout.fiel de armazem') }}</small>
+                                    <small>{{ __('lang.fiel de armazem') }}</small>
                                 </p>
                             </li>
                             <!-- Menu Body -->
@@ -142,7 +142,7 @@
                                 <a href="/produtos" class="nav-link {{ Request::is('produtos') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-flask"></i>
                                     <p>
-                                        {{ __('layout.produtos') }}
+                                        {{ __('lang.produtos') }}
                                     </p>
                                 </a>
                             </li>
@@ -150,7 +150,7 @@
                                 <a href="#" class="nav-link {{ Request::is('movimentos/*') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-clock"></i>
                                     <p>
-                                        {{ __('layout.movimentos') }}
+                                        {{ __('lang.movimentos') }}
                                         <i class="right fas fa-angle-left"></i>
                                     </p>
                                 </a>
@@ -159,21 +159,21 @@
                                         <a href="/movimentos/entrada"
                                             class="nav-link {{ Request::is('movimentos/entrada') ? 'active' : '' }}">
                                             <i class="far fa-arrow-alt-circle-right nav-icon"></i>
-                                            <p>{{ __('layout.registar entrada') }}</p>
+                                            <p>{{ __('lang.registar entrada') }}</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="/movimentos/saida"
                                             class="nav-link {{ Request::is('movimentos/saida') ? 'active' : '' }}">
                                             <i class="far fa-arrow-alt-circle-left nav-icon"></i>
-                                            <p>{{ __('layout.registar saida') }}</p>
+                                            <p>{{ __('lang.registar saida') }}</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="/movimentos/historico"
                                             class="nav-link {{ Request::is('movimentos/historico') ? 'active' : '' }}">
                                             <i class="far fa-clock nav-icon"></i>
-                                            <p>{{ __('layout.histórico') }}</p>
+                                            <p>{{ __('lang.histórico') }}</p>
                                         </a>
                                     </li>
                                 </ul>
@@ -182,7 +182,7 @@
                                 <a href="/clientes" class="nav-link {{ Request::is('clientes') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-user"></i>
                                     <p>
-                                        {{ __('layout.clientes') }}
+                                        {{ __('lang.clientes') }}
                                     </p>
                                 </a>
                             </li>
@@ -190,7 +190,7 @@
                                 <a href="/operadores" class="nav-link {{ Request::is('operadores') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-shield-alt"></i>
                                     <p>
-                                        {{ __('layout.operadores') }}
+                                        {{ __('lang.operadores') }}
                                     </p>
                                 </a>
                             </li>
@@ -198,7 +198,7 @@
                                 <a href="/fornecedores" class="nav-link {{ Request::is('fornecedores') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-truck"></i>
                                     <p>
-                                        {{ __('layout.fornecedores') }}
+                                        {{ __('lang.fornecedores') }}
                                     </p>
                                 </a>
                             </li>
@@ -206,7 +206,7 @@
                                 <a href="/armazem" class="nav-link {{ Request::is('armazem') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-warehouse"></i>
                                     <p>
-                                        {{ __('layout.armazém') }}
+                                        {{ __('lang.armazem') }}
                                     </p>
                                 </a>
                             </li>

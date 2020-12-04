@@ -11,6 +11,22 @@ return [
     |
     */
 
+    /*Layout*/
+    'produtos' => 'Produtos',
+    'movimentos' => 'Movimentos',
+    'registar entrada' => 'Registar Entrada',
+    'registar saida' => 'Registar Saida',
+    'historico' => 'Histórico',
+    'clientes' => 'Clientes',
+    'operadores' => 'Operadores',
+    'fornecedores' => 'Forncedores',
+    'armazem' => 'Armazém',
+    'cliente' => 'Cliente',
+    'fiel de armazem' =>'Fiel de Armazém',
+    'supervisor sectorial' => 'Supervisor Sectorial',
+    'supervisor geral' => 'Supervisor Geral',
+
+
     /*Operações*/
     'editar' => 'Editar',
     'adicionar' => 'Adicionar',
@@ -21,27 +37,27 @@ return [
     'pesquisa' => 'Pesquisa',
     'pesquise por um produto...' => 'Pesquise por um produto...',
     'todos' => 'Todos',
-    'químicos' => 'Químicos',
-    'não químicos' => 'Não Químicos',
+    'quimicos' => 'Químicos',
+    'nao quimicos' => 'Não Químicos',
     'resultados' => 'Resultados',
 
     /*Produtos*/
     'ficha do produto' => 'Ficha do Produto',
-    'fórmula' => 'Fórmula',
-    'designação' => 'Designação',
+    'formula' => 'Fórmula',
+    'designacao' => 'Designação',
     'peso molecular' => 'Peso Molecular',
-    'nº cas' => 'Nº CAS',
+    'n cas' => 'Nº CAS',
     'unidades' => 'Unidades',
-    'armário ventilado' => 'Armário Ventilado',
-    'condições de armazenamento' => 'Condições de Armazenamento',
-    'nº de inventário' => 'Nº de Inventário',
+    'armario ventilado' => 'Armário Ventilado',
+    'condicoes de armazenamento' => 'Condições de Armazenamento',
+    'n de inventario' => 'Nº de Inventário',
     'stock existente' => 'Stock Existente',
-    'stock mínimo' => 'Stock Mínimo',
+    'stock minimo' => 'Stock Mínimo',
     'capacidade' => 'Capacidade',
-    'nº de ordem' => 'Nº de Ordem',
-    'armário' => 'Armário',
+    'n de ordem' => 'Nº de Ordem',
+    'armario' => 'Armário',
     'prataleira' => 'Prataleira',
     'data de abertura' => 'Data de Abertura',
-    'advertências de perigo' => 'Advertências de Perigo',
-    'recomendações de prudência' => 'Recomendações de Prudência'
+    'advertencias de perigo' => 'Advertências de Perigo',
+    'recomendacoes de prudencia' => 'Recomendações de Prudência'
 ];
