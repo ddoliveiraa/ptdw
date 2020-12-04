@@ -14,11 +14,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-/* Route::get('/{locale}', 'App\Http\Controllers\LocalizationController@index'); */
+
 //Pesquisa
 Route::get('/', function () {
+    return redirect('welcome');
+});
+
+Route::get('/welcome', function () {
     return view('welcome');
 });
+
+
+Route::get('/welcome/{locale}', 'App\Http\Controllers\LocalizationController@index');
 
 //Produtos
 Route::get('/produtos', function () {

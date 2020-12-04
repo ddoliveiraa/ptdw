@@ -87,8 +87,8 @@
                                 @endswitch
                             </a>
                             <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/{{-- pt --}}">Português</a>
-                                <a class="dropdown-item" href="/{{-- en --}}">English</a>
+                                <a class="dropdown-item" href="/welcome/pt">Português</a>
+                                <a class="dropdown-item" href="/welcome/en">English</a>
                             </div>
                         </li>
 
