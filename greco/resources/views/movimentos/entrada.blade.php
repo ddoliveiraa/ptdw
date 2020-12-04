@@ -106,7 +106,7 @@
                                         <div class="form-group">
                                             <label for="marca">{{ __('lang.nome da marca') }}</label>
                                             <input type="text" class="form-control" id="marca"
-                                                placeholder="{{ __('lang.insera o') }} {{ __('lang.nome da marca') }}">
+                                                placeholder="{{ __('lang.insira o') }} {{ __('lang.nome da marca') }}">
                                         </div>
                                     </div>
                                 </div>
@@ -185,7 +185,7 @@
                                         <div class="form-group">
                                             <label for="cap_embalagem">{{ __('lang.capacidade da embalagem') }}</label>
                                             <input type="number" class="form-control" id="cap_embalagem"
-                                                placeholder="{{ __('lang.insira a') }} {{ __('lang.capacidade da Embalagem') }}">
+                                                placeholder="{{ __('lang.insira a') }} {{ __('lang.capacidade da embalagem') }}">
                                         </div>
                                     </div>
                                 </div>
