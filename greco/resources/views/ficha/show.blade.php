@@ -15,7 +15,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Resultados</a></li>
+                        <li class="breadcrumb-item"><a href="#">{{ __('lang.resultados') }}</a></li>
                         <li class="breadcrumb-item active">HCL</li>
                     </ol>
                 </div>
@@ -24,7 +24,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h2 class="text-left display-4">Ficha do Produto</h2>
+                    <h2 class="text-left display-4">{{ __('lang.ficha do produto') }}</h2>
                 </div>
             </div>
         </div>
@@ -46,34 +46,34 @@
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group">
-                                            <label for="formula">Fórmula</label>
+                                            <label for="formula">{{ __('lang.fórmula') }}</label>
                                             <input type="text" class="form-control" id="formula" value="HCL" readonly>
                                         </div>
                                         <div class="form-group">
-                                            <label for="designacao">Designação</label>
+                                            <label for="designacao">{{ __('lang.designação') }}</label>
                                             <input type="text" class="form-control" id="designacao"
                                                 value="Cloreto de Hidrogenio" readonly>
                                         </div>
                                         <div class="form-group">
-                                            <label for="moles">Peso Molecular</label>
+                                            <label for="moles">{{ __('lang.peso molecular') }}</label>
                                             <input type="text" class="form-control" id="moles" value="36.46 g/mol" readonly>
                                         </div>
                                         <div class="form-group">
-                                            <label for="cas">Nº CAS</label>
+                                            <label for="cas">{{ __('lang.nº cas') }}</label>
                                             <input type="text" class="form-control" id="cas" value="7647-01-1" readonly>
                                         </div>
                                         <div class="form-group">
-                                            <label for="unidades">Unidades</label>
+                                            <label for="unidades">{{ __('lang.unidades') }}</label>
                                             <input type="text" class="form-control" id="unidades" value="mililitros"
                                                 readonly>
                                         </div>
                                         <div class="form-group">
-                                            <label for="vent">Armário Ventilado</label>
+                                            <label for="vent">{{ __('lang.armário ventilado') }}</label>
                                             <input type="text" class="form-control" id="vent" value="Não Necessita"
                                                 readonly>
                                         </div>
                                         <div class="form-group">
-                                            <label for="condicoes">Condições de Armazenamento</label>
+                                            <label for="condicoes">{{ __('lang.condições de armazenamento') }}</label>
                                             <input type="text" class="form-control" id="condicoes" value="Não Necessita"
                                                 readonly>
                                         </div>
@@ -84,21 +84,21 @@
                                             <img src="../../dist/img/Pictogramas/Corrosive.png" alt="Corrosive">
                                         </div>
                                         <div class="stock-box">
-                                            <h3 class="bg-dark">Nº de Inventário</h3>
+                                            <h3 class="bg-dark">{{ __('lang.nº de inventário') }}</h3>
                                             <h4>1357</h4>
                                         </div>
                                         <div class="stock-box">
-                                            <h3 class="bg-dark">Stock Existente</h3>
+                                            <h3 class="bg-dark">{{ __('lang.stock existente') }}</h3>
                                             <h4>20</h4>
                                         </div>
                                         <div class="stock-box">
-                                            <h3 class="bg-dark">Stock Minimo</h3>
+                                            <h3 class="bg-dark">{{ __('lang.stock mínimo') }}</h3>
                                             <h4>3</h4>
                                         </div>
                                         <div class="stock-button">
                                             <a href="/ficha/editar"><input type="button" class="btn btn-block btn-primary"
-                                                    value="Editar"></a>
-                                            <button type="submit" class="btn btn-block btn-danger">Desativar</button>
+                                                    value="{{ __('lang.editar') }}"></a>
+                                            <button type="submit" class="btn btn-block btn-danger">{{ __('lang.desativar') }}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -112,11 +112,11 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead class="bg-dark">
                                     <tr>
-                                        <th>Capacidade</th>
-                                        <th>Nº de Ordem</th>
-                                        <th>Armário</th>
-                                        <th>Prataleira</th>
-                                        <th>Data de Abertura</th>
+                                        <th>{{ __('lang.capacidade') }}</th>
+                                        <th>{{ __('lang.nº de ordem') }}</th>
+                                        <th>{{ __('lang.armário') }}</th>
+                                        <th>{{ __('lang.prataleira') }}</th>
+                                        <th>{{ __('lang.data de abertura') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -282,7 +282,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="avisos">
-                                        <h3 class="bg-dark">Advertências de Perigo</h3>
+                                        <h3 class="bg-dark">{{ __('lang.advertências de perigo') }}</h3>
                                         <p>H290 - Corrosivo a metais</p>
                                         <p>H314 - Corrosivo à pele e olhos</p>
                                         <p>H335 - Causa irritação respiratória</p>
@@ -290,7 +290,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="avisos">
-                                        <h3 class="bg-dark">Recomendações de Prudência</h3>
+                                        <h3 class="bg-dark">{{ __('lang.recomendações de prudência') }}</h3>
                                         <p>P280 - Usar luvas e oculos de proteção</p>
                                         <p>P303+361+353 - Se entrar em contacto com a pele, remova roupa contaminada e lave
                                             a
