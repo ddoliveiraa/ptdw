@@ -40,7 +40,7 @@
                 <div class="col-md-2">
                     <div class="float-right">
                         <button type="button" class="btn btn-block btn-secondary" data-toggle="modal"
-                            data-target="#modalAdicionarProduto">Adicionar</button>
+                            data-target="#modalAdicionarProduto">{{ __('lang.adicionar') }}</button>
                     </div>
                 </div>
             </div>
@@ -62,13 +62,13 @@
                             <table id="tabelaprodutos" class="table table-bordered table-striped">
                                 <thead class="bg-dark">
                                     <tr>
-                                        <th>Designação</th>
-                                        <th>Formula</th>
-                                        <th>CAS nº</th>
-                                        <th>Químico</th>
-                                        <th>Unidades</th>
-                                        <th>Stock Existente</th>
-                                        <th>Stock Minimo</th>
+                                        <th>{{ __('lang.designacao') }}</th>
+                                        <th>{{ __('lang.formula') }}</th>
+                                        <th>{{ __('lang.n cas') }}</th>
+                                        <th>{{ __('lang.quimico') }}</th>
+                                        <th>{{ __('lang.unidades') }}</th>
+                                        <th>{{ __('lang.stock existente') }}</th>
+                                        <th>{{ __('lang.stock minimo') }}</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -248,8 +248,8 @@
                             </div>
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal" tabindex="13">Cancelar</button>
-                            <button type="button" class="btn btn-primary" tabindex="14" >Guardar Produto</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" tabindex="13">{{ __('lang.cancelar') }}</button>
+                            <button type="button" class="btn btn-primary" tabindex="14" >{{ __('lang.adicionar') }}</button>
                         </div>
                 </div>
                 <!-- /.modal-content -->

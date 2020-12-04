@@ -173,7 +173,7 @@
                                         <a href="/movimentos/historico"
                                             class="nav-link {{ Request::is('movimentos/historico') ? 'active' : '' }}">
                                             <i class="far fa-clock nav-icon"></i>
-                                            <p>{{ __('lang.histórico') }}</p>
+                                            <p>{{ __('lang.historico') }}</p>
                                         </a>
                                     </li>
                                 </ul>

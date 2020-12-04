@@ -30,6 +30,13 @@ return [
     'editar' => 'Edit',
     'adicionar' => 'Add',
     'desativar' => 'Disable',
+    'cancelar' => 'Cancel',
+    'guardar' => 'Save',
+    'submeter' => 'Submit',
+    'selecione o' => 'Select the',
+    'selecione a' => 'Select the',
+    'insira o' => 'Insert the',
+    'insira a' => 'Insert the',
 
     /* Pesquisa*/
     'pesquisa' => 'Search',
@@ -40,9 +47,11 @@ return [
     'resultados' => 'Results',
 
     /*Produtos*/
+    'produto' => 'Product',
     'ficha do produto' => 'Product File',
+    'quimico' => 'Chemical',
     'formula' => 'Formula',
-    'designação' => 'Designation',
+    'designacao' => 'Designation',
     'peso molecular' => 'Molecular Weight',
     'n cas' => 'CAS Number',
     'unidades' => 'Units',
@@ -57,7 +66,13 @@ return [
     'prataleira' => 'Shelf',
     'data de abertura' => 'Date Opened',
     'advertencias de perigo' => 'Hazard Statments',
-    'recomendacoes de prudencia' => 'Precautionary Statements'
+    'recomendacoes de prudencia' => 'Precautionary Statements',
+    'fornecedor' => 'Supplier',
 
+    /*Movimentos*/
+    'referencia' => 'Reference',
+    'taxa de iva' => 'IVA Tax',
+    'preco' => 'Price',
+    
 
 ];

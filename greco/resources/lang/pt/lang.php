@@ -31,6 +31,13 @@ return [
     'editar' => 'Editar',
     'adicionar' => 'Adicionar',
     'desativar' => 'Desativar',
+    'cancelar' => 'Cancelar',
+    'guardar' => 'Guardar',
+    'submeter' => 'Submeter',
+    'selecione o' => 'Selecione o',
+    'selecione a' => 'Selecione a',
+    'insira o' => 'Insira o',
+    'insira a' => 'Insira a',
     
 
     /* Pesquisa*/
@@ -42,7 +49,9 @@ return [
     'resultados' => 'Resultados',
 
     /*Produtos*/
+    'produto' => 'Produto',
     'ficha do produto' => 'Ficha do Produto',
+    'quimico' => 'Químico',
     'formula' => 'Fórmula',
     'designacao' => 'Designação',
     'peso molecular' => 'Peso Molecular',
@@ -59,5 +68,11 @@ return [
     'prataleira' => 'Prataleira',
     'data de abertura' => 'Data de Abertura',
     'advertencias de perigo' => 'Advertências de Perigo',
-    'recomendacoes de prudencia' => 'Recomendações de Prudência'
+    'recomendacoes de prudencia' => 'Recomendações de Prudência',
+    'fornecedor' => 'Fornecedor',
+
+    /*Movimentos*/
+    'referencia' => 'Referência',
+    'taxa de iva' => 'Taxa de IVA',
+    'preco' => 'Preço'
 ];

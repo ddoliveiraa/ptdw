@@ -23,8 +23,8 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Movimentos</a></li>
-                        <li class="breadcrumb-item active">Registo Entrada</li>
+                        <li class="breadcrumb-item"><a href="#">{{ __('lang.movimentos') }}</a></li>
+                        <li class="breadcrumb-item active">{{ __('lang.registar entrada') }}</li>
                     </ol>
                 </div>
             </div>
@@ -33,7 +33,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h2 class="text-center display-4">Registo Entrada</h2>
+                    <h2 class="text-center display-4">{{ __('lang.registar entrada') }}</h2>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -51,9 +51,9 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="produto">Produto</label>
+                                            <label for="produto">{{ __('lang.produto') }}</label>
                                             <select id="produto" class="form-control select2bs4" style="width: 100%;">
-                                                <option value="" selected disabled>Selecione o Produto</option>
+                                                <option value="" selected disabled>{{ __('lang.selecione o') }} {{ __('lang.produto') }}</option>
                                                 <option>Cloreto de Sódio</option>
                                                 <option>Hidróxido de Carbono</option>
                                                 <option>Cloreto de Ferro</option>
@@ -65,9 +65,9 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="n_inventario">Nº de Inventário</label>
+                                            <label for="n_inventario">{{ __('lang.n de inventario') }}</label>
                                             <select class="form-control select2bs4" id="n_inventario" style="width: 100%;">
-                                                <option value="" selected disabled>Selecione o nº do Inventário</option>
+                                                <option value="" selected disabled>{{ __('lang.selecione o') }} {{ __('lang.n de inventario') }}</option>
                                                 <option>1234</option>
                                                 <option>2137</option>
                                                 <option>1223</option>
@@ -78,9 +78,9 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="referencia">Referência</label>
+                                            <label for="referencia">{{ __('lang.referencia') }}</label>
                                             <input type="text" class="form-control" id="referencia"
-                                                placeholder="Insira a Referência">
+                                                placeholder="{{ __('lang.insira a') }} {{ __('lang.referencia') }}">
                                         </div>
                                     </div>
                                 </div>
@@ -88,9 +88,9 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="fornecedor">Fornecedor</label>
+                                            <label for="fornecedor">{{ __('lang.fornecedor') }}</label>
                                             <select id="fornecedor" class="form-control select2bs4" style="width: 100%;">
-                                                <option value="" selected disabled>Selecione o Fornecedor</option>
+                                                <option value="" selected disabled>{{ __('lang.selecione o') }} {{ __('lang.fornecedor') }}</option>
                                                 <option>Alabama</option>
                                                 <option>Alaska</option>
                                                 <option>California</option>
@@ -114,9 +114,9 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="armario">Armário</label>
+                                            <label for="armario">{{ __('lang.armario') }}</label>
                                             <select id="armario" class="form-control select2bs4" style="width: 100%;">
-                                                <option value="" selected disabled>Selecione o Armário</option>
+                                                <option value="" selected disabled>{{ __('lang.selecione o') }} {{ __('lang.armario') }}</option>
                                                 <option>Armário 1</option>
                                                 <option>Armário 2</option>~
                                                 <option>Armário 3</option>
@@ -128,9 +128,9 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="prateleira">Prateleira</label>
+                                            <label for="prateleira">{{ __('lang.prataleira') }}</label>
                                             <select id="prateleira" class="form-control select2bs4" style="width: 100%;">
-                                                <option value="" selected disabled>Selecione a Prateleira</option>
+                                                <option value="" selected disabled>{{ __('lang.selecione a') }} {{ __('lang.prataleira') }}</option>
                                                 <option>Prateleira 1</option>
                                                 <option>Prateleira 2</option>~
                                                 <option>Prateleira 3</option>
@@ -144,10 +144,10 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="iva">Taxa de Iva</label>
+                                            <label for="iva">{{ __('lang.taxa de iva') }}</label>
                                             <div class="input-group">
                                                 <input type="number" class="form-control" id="iva"
-                                                    placeholder="Insira Taxa de Iva">
+                                                    placeholder="{{ __('lang.insira a') }} {{ __('lang.taxa de iva') }}">
                                                     <div class="input-group-append">
                                                         <span class="input-group-text"><i class="fa fa-percentage"></i></span>
                                                     </div>
@@ -157,10 +157,10 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="preco">Preço</label>
+                                            <label for="preco">{{ __('lang.preco') }}</label>
                                             <div class="input-group">
                                                 <input type="number" class="form-control" id="preco"
-                                                    placeholder="Insira o Preço" step="0.05">
+                                                    placeholder="{{ __('lang.insira o') }} {{ __('lang.preco') }}" step="0.05">
                                                     <div class="input-group-append">
                                                         <span class="input-group-text"><i class="fa fa-euro-sign"></i></span>
                                                     </div>
