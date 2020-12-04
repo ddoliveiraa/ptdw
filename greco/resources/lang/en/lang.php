@@ -53,7 +53,7 @@ return [
     'stock minimo' => 'Minimum Stock',
     'capacidade' => 'Capacity',
     'n de ordem' => 'Order Number',
-    'armário' => 'Closet',
+    'armario' => 'Closet',
     'prataleira' => 'Shelf',
     'data de abertura' => 'Date Opened',
     'advertencias de perigo' => 'Hazard Statments',
