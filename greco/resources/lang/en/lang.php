@@ -97,6 +97,12 @@ return [
     'data-criacao' => 'Creation Date',
     'data-desativ' => 'Deactivation Date',
 
+    'historico operadores' => 'Operator History',
+    'operacao' => 'Operation',
+    'data-operacao' => 'Operations Date',
+    'lista' => 'Operators List',
+
+
     /*Date Pickers*/
     'locale-date' => 'en-gb'
 ];

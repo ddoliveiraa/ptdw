@@ -22,8 +22,8 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">{{ __('lang.movimentos') }}</a></li>
+                        <li class="breadcrumb-item"><a href="/welcome">Home</a></li>
+                        <li class="breadcrumb-item"><a href="">{{ __('lang.movimentos') }}</a></li>
                         <li class="breadcrumb-item active">{{ __('lang.registar entrada') }}</li>
                     </ol>
                 </div>

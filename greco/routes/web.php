@@ -62,6 +62,10 @@ Route::get('/operadores', function () {
     return view('operadores.index');
 });
 
+Route::get('/operadores/historico', function () {
+    return view('operadores.historico');
+});
+
 //Forncedores
 Route::get('/fornecedores', function () {
     return view('fornecedores.index');

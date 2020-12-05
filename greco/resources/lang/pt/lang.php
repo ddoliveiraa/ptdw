@@ -99,6 +99,12 @@ return [
     'data-criacao' => 'Data de Criação',
     'data-desativ' => 'Data de Desativação',
 
+    'historico operadores' => 'Histórico dos Operadores',
+    'operacao' => 'Operação',
+    'data-operacao' => 'Data da Operação',
+    'lista' => 'Lista Operadores',
+    
+
     /*Date Pickers*/
     'locale-date' => 'pt'
 ];
