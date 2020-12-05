@@ -134,14 +134,14 @@
                     <form>
                         <div class="modal-body">
                             <div class="form-row">
-                                <div class="col">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="nome_operador" class="control-label">{{ __('lang.nome') }}</label>
                                         <input type="text" class="form-control" id="nome_operador" required>
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="email_operador" class="control-label">{{ __('lang.email') }}</label>
                                         <input type="text" class="form-control" id="email_operador" required>
@@ -150,7 +150,7 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="col">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="perfil_operador">{{ __('lang.perfil') }}</label>
                                         <select class="form-control select" id="perfil_operador" style="width: 100%;">
@@ -162,7 +162,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="data_criacao">{{ __('lang.data-criacao') }}</label>
                                         <div class="input-group date" id="data_criacao" data-target-input="nearest">
@@ -178,7 +178,7 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="col">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="obvs">{{ __('lang.observacoes') }}</label>
                                         <textarea id="obvs" maxlength="100" class="form-control" rows="2"></textarea>
