@@ -65,7 +65,7 @@ return [
     'capacidade' => 'Capacidade',
     'n de ordem' => 'Nº de Ordem',
     'armario' => 'Armário',
-    'prataleira' => 'Prataleira',
+    'prataleira' => 'Prateleira',
     'data de abertura' => 'Data de Abertura',
     'advertencias de perigo' => 'Advertências de Perigo',
     'recomendacoes de prudencia' => 'Recomendações de Prudência',
@@ -81,10 +81,24 @@ return [
     'capacidade da embalagem' =>'Capacidade da Embalagem',
     'estado fisico' => 'Estado Físico',
     'textura/viscosidade' => 'Textura/Viscosidade',
-    'cor' => 'colour',
+    'cor' => 'Cor',
     'peso bruto' => 'Peso Bruto',
     'data de entrada' => 'Data de Entrada',
     'data de validade' => 'Data de Validade',
-    'data de termino' => 'Data de Termíno',
+    'data de termino' => 'Data de Término',
     'observacoes' => 'Observações',
+
+    'cliente' => 'Cliente',
+    'solicitante' => 'Solicitante',
+    'operador' => 'Operador',
+
+    /*Operadores*/
+    'nome' => 'Nome',
+    'email' => 'E-Mail',
+    'perfil' => 'Perfil',
+    'data-criacao' => 'Data de Criação',
+    'data-desativ' => 'Data de Desativação',
+
+    /*Date Pickers*/
+    'locale-date' => 'pt'
 ];

@@ -33,7 +33,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h2 class="text-center display-4">{{ __('lang.registar entrada') }}</h2>
+                    <h2 class="text-left display-4">{{ __('lang.registar entrada') }}</h2>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -53,7 +53,9 @@
                                         <div class="form-group">
                                             <label for="produto">{{ __('lang.produto') }}</label>
                                             <select id="produto" class="form-control select2bs4" style="width: 100%;">
-                                                <option value="" selected disabled>{{ __('lang.selecione o') }} {{ __('lang.produto') }}</option>
+                                                <option value="" selected disabled>{{ __('lang.selecione o') }}
+                                                    {{ __('lang.produto') }}
+                                                </option>
                                                 <option>Cloreto de Sódio</option>
                                                 <option>Hidróxido de Carbono</option>
                                                 <option>Cloreto de Ferro</option>
@@ -67,7 +69,9 @@
                                         <div class="form-group">
                                             <label for="n_inventario">{{ __('lang.n de inventario') }}</label>
                                             <select class="form-control select2bs4" id="n_inventario" style="width: 100%;">
-                                                <option value="" selected disabled>{{ __('lang.selecione o') }} {{ __('lang.n de inventario') }}</option>
+                                                <option value="" selected disabled>{{ __('lang.selecione o') }}
+                                                    {{ __('lang.n de inventario') }}
+                                                </option>
                                                 <option>1234</option>
                                                 <option>2137</option>
                                                 <option>1223</option>
@@ -90,7 +94,9 @@
                                         <div class="form-group">
                                             <label for="fornecedor">{{ __('lang.fornecedor') }}</label>
                                             <select id="fornecedor" class="form-control select2bs4" style="width: 100%;">
-                                                <option value="" selected disabled>{{ __('lang.selecione o') }} {{ __('lang.fornecedor') }}</option>
+                                                <option value="" selected disabled>{{ __('lang.selecione o') }}
+                                                    {{ __('lang.fornecedor') }}
+                                                </option>
                                                 <option>Alabama</option>
                                                 <option>Alaska</option>
                                                 <option>California</option>
@@ -116,7 +122,9 @@
                                         <div class="form-group">
                                             <label for="armario">{{ __('lang.armario') }}</label>
                                             <select id="armario" class="form-control select2bs4" style="width: 100%;">
-                                                <option value="" selected disabled>{{ __('lang.selecione o') }} {{ __('lang.armario') }}</option>
+                                                <option value="" selected disabled>{{ __('lang.selecione o') }}
+                                                    {{ __('lang.armario') }}
+                                                </option>
                                                 <option>Armário 1</option>
                                                 <option>Armário 2</option>~
                                                 <option>Armário 3</option>
@@ -130,7 +138,9 @@
                                         <div class="form-group">
                                             <label for="prateleira">{{ __('lang.prataleira') }}</label>
                                             <select id="prateleira" class="form-control select2bs4" style="width: 100%;">
-                                                <option value="" selected disabled>{{ __('lang.selecione a') }} {{ __('lang.prataleira') }}</option>
+                                                <option value="" selected disabled>{{ __('lang.selecione a') }}
+                                                    {{ __('lang.prataleira') }}
+                                                </option>
                                                 <option>Prateleira 1</option>
                                                 <option>Prateleira 2</option>~
                                                 <option>Prateleira 3</option>
@@ -148,9 +158,9 @@
                                             <div class="input-group">
                                                 <input type="number" class="form-control" id="iva"
                                                     placeholder="{{ __('lang.insira a') }} {{ __('lang.taxa de iva') }}">
-                                                    <div class="input-group-append">
-                                                        <span class="input-group-text"><i class="fa fa-percentage"></i></span>
-                                                    </div>
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text"><i class="fa fa-percentage"></i></span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -160,10 +170,11 @@
                                             <label for="preco">{{ __('lang.preco') }}</label>
                                             <div class="input-group">
                                                 <input type="number" class="form-control" id="preco"
-                                                    placeholder="{{ __('lang.insira o') }} {{ __('lang.preco') }}" step="0.05">
-                                                    <div class="input-group-append">
-                                                        <span class="input-group-text"><i class="fa fa-euro-sign"></i></span>
-                                                    </div>
+                                                    placeholder="{{ __('lang.insira o') }} {{ __('lang.preco') }}"
+                                                    step="0.05">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text"><i class="fa fa-euro-sign"></i></span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -175,7 +186,9 @@
                                             <label for="tipo_embalagem">{{ __('lang.tipo de embalagem') }}</label>
                                             <select id="tipo_embalagem" class="form-control select2bs4"
                                                 style="width: 100%;">
-                                                <option value="" selected disabled>{{ __('lang.insira o') }} {{ __('lang.tipo de embalagem') }}</option>
+                                                <option value="" selected disabled>{{ __('lang.insira o') }}
+                                                    {{ __('lang.tipo de embalagem') }}
+                                                </option>
                                                 <option>Frasco</option>
                                             </select>
                                         </div>
@@ -195,7 +208,9 @@
                                         <div class="form-group">
                                             <label for="estado">{{ __('lang.estado fisico') }}</label>
                                             <select id="estado" class="form-control select2bs4" style="width: 100%;">
-                                                <option value="" selected disabled>{{ __('lang.selecione o') }} {{ __('lang.estado fisico') }}</option>
+                                                <option value="" selected disabled>{{ __('lang.selecione o') }}
+                                                    {{ __('lang.estado fisico') }}
+                                                </option>
                                                 <option>Sólido</option>
                                                 <option>Gasoso</option>
                                                 <option>Físico</option>
@@ -207,7 +222,9 @@
                                         <div class="form-group">
                                             <label for="textura">{{ __('lang.textura/viscosidade') }}</label>
                                             <select id="textura" class="form-control select2bs4" style="width: 100%;">
-                                                <option value="" selected disabled>{{ __('lang.selecione a') }} {{ __('lang.textura/viscosidade') }}</option>
+                                                <option value="" selected disabled>{{ __('lang.selecione a') }}
+                                                    {{ __('lang.textura/viscosidade') }}
+                                                </option>
                                                 <option>Viscoso</option>
                                                 <option>Granulado</option>
                                                 <option>Pouco Viscoso</option>
@@ -221,7 +238,9 @@
                                         <div class="form-group">
                                             <label for="cor">Cor</label>
                                             <select id="cor" class="form-control select2bs4" style="width: 100%;">
-                                                <option value="" selected disabled>{{ __('lang.selecione a') }} {{ __('lang.cor') }}</option>
+                                                <option value="" selected disabled>{{ __('lang.selecione a') }}
+                                                    {{ __('lang.cor') }}
+                                                </option>
                                                 <option>Vermelho</option>
                                                 <option>Azul</option>
                                                 <option>Verde</option>
@@ -306,8 +325,16 @@
                             </div>
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-default">{{ __('lang.cancelar') }}</button>
-                                <button type="submit" class="btn btn-primary float-right">{{ __('lang.guardar') }}</button>
+                                <div class="row justify-content-end">
+                                    <div class="col-md-3 mb-2 mt-2">
+                                        <button type="submit"
+                                            class="btn btn-block btn-default">{{ __('lang.cancelar') }}</button>
+                                    </div>
+                                    <div class="col-md-3 mb-2 mt-2">
+                                        <button type="submit"
+                                            class="btn btn-block btn-secondary">{{ __('lang.guardar') }}</button>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -330,6 +357,8 @@
 
     <!-- Language DatePicker -->
     <script src="../../plugins/moment/locale/pt.js"></script>
+    <script src="../../plugins/moment/locale/en-gb.js"></script>
+
 
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
@@ -344,24 +373,9 @@
                 theme: 'bootstrap4'
             })
 
-            $('#data_entrada').datetimepicker({
+            $('.date').datetimepicker({
                 format: 'L',
-                locale: 'pt'
-            });
-
-            $('#data_abertura').datetimepicker({
-                format: 'L',
-                locale: 'pt'
-            });
-
-            $('#data_termino').datetimepicker({
-                format: 'L',
-                locale: 'pt'
-            });
-
-            $('#data_validade').datetimepicker({
-                format: 'L',
-                locale: 'pt'
+                locale: "{{ __('lang.locale-date') }}"
             });
         })
 
