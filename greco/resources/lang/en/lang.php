@@ -22,7 +22,7 @@ return [
     'fornecedores' => 'Suppliers',
     'armazem' => 'Warehouse',
     'cliente' => 'Client',
-    'fiel de armazem' =>'Warehouse Worker',
+    'fiel de armazem' => 'Warehouse Worker',
     'supervisor sectorial' => 'Section Supervisor',
     'supervisor geral' => 'General Supervisor',
 
@@ -76,10 +76,10 @@ return [
     'taxa de iva' => 'IVA Tax',
     'preco' => 'Price',
     'tipo de embalagem' => 'Container Type',
-    'capacidade da embalagem' =>'Container Capacity',
+    'capacidade da embalagem' => 'Container Capacity',
     'estado fisico' => 'Physical State',
     'textura/viscosidade' => 'Texture/Viscosity',
-    'cor' => 'colour',
+    'cor' => 'Colour',
     'peso bruto' => 'Gross Weight',
     'data de entrada' => 'Entry Date',
     'data de validade' => 'Expiration date',
@@ -90,8 +90,12 @@ return [
     'solicitante' => 'Requester',
     'operador' => 'Operator',
 
-
-
+    /*Operadores*/
+    'nome' => 'Name',
+    'email' => 'E-Mail',
+    'perfil' => 'Profile',
+    'data-criacao' => 'Creation Date',
+    'data-desativ' => 'Deactivation Date',
 
     /*Date Pickers*/
     'locale-date' => 'en-gb'

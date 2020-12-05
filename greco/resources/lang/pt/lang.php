@@ -81,7 +81,7 @@ return [
     'capacidade da embalagem' =>'Capacidade da Embalagem',
     'estado fisico' => 'Estado Físico',
     'textura/viscosidade' => 'Textura/Viscosidade',
-    'cor' => 'colour',
+    'cor' => 'Cor',
     'peso bruto' => 'Peso Bruto',
     'data de entrada' => 'Data de Entrada',
     'data de validade' => 'Data de Validade',
@@ -92,6 +92,12 @@ return [
     'solicitante' => 'Solicitante',
     'operador' => 'Operador',
 
+    /*Operadores*/
+    'nome' => 'Nome',
+    'email' => 'E-Mail',
+    'perfil' => 'Perfil',
+    'data-criacao' => 'Data de Criação',
+    'data-desativ' => 'Data de Desativação',
 
     /*Date Pickers*/
     'locale-date' => 'pt'
