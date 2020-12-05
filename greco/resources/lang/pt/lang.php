@@ -85,7 +85,7 @@ return [
     'peso bruto' => 'Peso Bruto',
     'data de entrada' => 'Data de Entrada',
     'data de validade' => 'Data de Validade',
-    'data de termino' => 'Data de Termíno',
+    'data de termino' => 'Data de Término',
     'observacoes' => 'Observações',
 
     'cliente' => 'Cliente',
