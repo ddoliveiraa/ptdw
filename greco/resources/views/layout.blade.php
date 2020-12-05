@@ -25,6 +25,8 @@
 
 
 <body class="hold-transition sidebar-mini">
+    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
@@ -218,7 +220,7 @@
             </aside>
 
             <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
+            <div class="content-wrapper" id="content" tabindex="-1">
                 @yield('content')
             </div>
             <!-- /.content-wrapper -->

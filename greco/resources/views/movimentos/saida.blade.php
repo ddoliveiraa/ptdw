@@ -116,11 +116,7 @@
 
                             <div class="card-footer">
                                 <div class="row justify-content-end">
-                                    <div class="col-md-3 mb-2 mt-2">
-                                        <button type="submit"
-                                            class="btn btn-block btn-default">{{ __('lang.cancelar') }}</button>
-                                    </div>
-                                    <div class="col-md-3 mb-2 mt-2">
+                                    <div class="col-md-3">
                                         <button type="submit"
                                             class="btn btn-block btn-secondary">{{ __('lang.guardar') }}</button>
                                     </div>

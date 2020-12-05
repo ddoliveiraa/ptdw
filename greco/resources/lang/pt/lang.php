@@ -19,7 +19,7 @@ return [
     'historico' => 'Histórico',
     'clientes' => 'Clientes',
     'operadores' => 'Operadores',
-    'fornecedores' => 'Forncedores',
+    'fornecedores' => 'Fornecedores',
     'armazem' => 'Armazém',
     'cliente' => 'Cliente',
     'fiel de armazem' =>'Fiel de Armazém',
