@@ -65,7 +65,7 @@ return [
     'capacidade' => 'Capacidade',
     'n de ordem' => 'Nº de Ordem',
     'armario' => 'Armário',
-    'prataleira' => 'Prataleira',
+    'prataleira' => 'Prateleira',
     'data de abertura' => 'Data de Abertura',
     'advertencias de perigo' => 'Advertências de Perigo',
     'recomendacoes de prudencia' => 'Recomendações de Prudência',
@@ -87,4 +87,12 @@ return [
     'data de validade' => 'Data de Validade',
     'data de termino' => 'Data de Termíno',
     'observacoes' => 'Observações',
+
+    'cliente' => 'Cliente',
+    'solicitante' => 'Solicitante',
+    'operador' => 'Operador',
+
+
+    /*Date Pickers*/
+    'locale-date' => 'pt'
 ];

@@ -85,4 +85,14 @@ return [
     'data de validade' => 'Expiration date',
     'data de termino' => 'End Date',
     'observacoes' => 'Observations',
+
+    'cliente' => 'Client',
+    'solicitante' => 'Requester',
+    'operador' => 'Operator',
+
+
+
+
+    /*Date Pickers*/
+    'locale-date' => 'en-gb'
 ];
