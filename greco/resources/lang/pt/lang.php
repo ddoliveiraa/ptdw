@@ -47,6 +47,9 @@ return [
     'quimicos' => 'Químicos',
     'nao quimicos' => 'Não Químicos',
     'resultados' => 'Resultados',
+    'entrada' => 'Entrada',
+    'saida' => 'Saída',
+    'entradas e saidas' => 'Entradas e Saídas',
 
     /*Produtos*/
     'produto' => 'Produto',
@@ -91,6 +94,19 @@ return [
     'cliente' => 'Cliente',
     'solicitante' => 'Solicitante',
     'operador' => 'Operador',
+
+    /*Historico*/
+    'historico' => 'Histórico',
+    'designacao' => 'Designação',
+    'fornecedor' => 'Fornecedor',
+    'cliente' => 'Cliente',
+    'embalagem' => 'Embalagem',
+    'localização' => 'Localização',
+    'data registo' => 'Data Registo',
+    'movimento' => 'Movimento',
+    'operador' => 'Operador',
+    'intervalo' => 'Intervalo',
+    
 
     /*Operadores*/
     'nome' => 'Nome',
