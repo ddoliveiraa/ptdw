@@ -203,12 +203,13 @@
                 $('#escolha').change(function() {
                     table.draw();
                 });
-/*                 $('#intervalo').on('apply.daterangepicker', function() {
+                $('#intervalo').on('apply.daterangepicker', function() {
                     $.fn.dataTable.ext.search.push(
                         function(settings, searchData, index, rowData, counter) {
-                            var inicio = start.format('DD-MM-YYYY');
-                            var fim = end.format('DD-MM-YYYY');
+                            var inicio = $('#intervalo').data('daterangepicker').startDate.format("DD-MM-YYYY");
+                            var fim = $('#intervalo').data('daterangepicker').endDate.format("DD-MM-YYYY");
                             var datas = searchData[6]; // using the data from the 6th column
+                            console.log('incio = ' + inicio, ', ' + 'fim = ' + fim);
 
                             if ((isNaN(inicio) && isNaN(fim)) ||
                                 (isNaN(inicio) && datas <= fim) ||
@@ -220,7 +221,7 @@
                         }
                     );
                     table.draw();
-                }); */
+                });
             });
         });
 
