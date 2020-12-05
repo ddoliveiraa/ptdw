@@ -15,11 +15,11 @@ return [
     'produtos' => 'Produtos',
     'movimentos' => 'Movimentos',
     'registar entrada' => 'Registar Entrada',
-    'registar saida' => 'Registar Saida',
+    'registar saida' => 'Registar Saída',
     'historico' => 'Histórico',
     'clientes' => 'Clientes',
     'operadores' => 'Operadores',
-    'fornecedores' => 'Forncedores',
+    'fornecedores' => 'Fornecedores',
     'armazem' => 'Armazém',
     'cliente' => 'Cliente',
     'fiel de armazem' =>'Fiel de Armazém',
@@ -114,6 +114,17 @@ return [
     'perfil' => 'Perfil',
     'data-criacao' => 'Data de Criação',
     'data-desativ' => 'Data de Desativação',
+
+    'historico operadores' => 'Histórico dos Operadores',
+    'operacao' => 'Operação',
+    'data-operacao' => 'Data da Operação',
+    'lista' => 'Lista Operadores',
+
+    /*Armazém*/
+    'produtos-quimicos' => 'Produtos Químicos',
+    'produtos-n-quimicos' => 'Produtos Não Químicos',
+    'localizacoes' => 'Localizações',
+    
 
     /*Date Pickers*/
     'locale-date' => 'pt'

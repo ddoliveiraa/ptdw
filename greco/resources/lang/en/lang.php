@@ -114,6 +114,16 @@ return [
     'data-criacao' => 'Creation Date',
     'data-desativ' => 'Deactivation Date',
 
+    'historico operadores' => 'Operator History',
+    'operacao' => 'Operation',
+    'data-operacao' => 'Operations Date',
+    'lista' => 'Operators List',
+
+    /*Armazém*/
+    'produtos-quimicos' => 'Chemical Products',
+    'produtos-n-quimicos' => 'Non-Chemicals Products',
+    'localizacoes' => 'Locations',
+
     /*Date Pickers*/
     'locale-date' => 'en-gb'
 ];

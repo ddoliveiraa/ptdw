@@ -6,13 +6,6 @@
     <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
-    <!-- daterange picker -->
-    <link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker.css">
-
-    <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="../../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-
-
 @endsection
 
 @section('content')
@@ -24,7 +17,8 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="/welcome">Home</a></li>
-                        <li class="breadcrumb-item active">{{ __('lang.operadores') }}</li>
+                        <li class="breadcrumb-item"><a href="/operadores">{{ __('lang.operadores') }}</a></li>
+                        <li class="breadcrumb-item active">{{ __('lang.historico') }}</li>
                     </ol>
                 </div>
             </div>
@@ -33,7 +27,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h2 class="text-center display-4">{{ __('lang.operadores') }}</h2>
+                    <h2 class="text-center display-4">{{ __('lang.historico operadores') }}</h2>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -45,79 +39,64 @@
 
             <div class="row justify-content-end">
                 <div class="col-md-2 mb-2 mt-2">
-                    <a href="/operadores/historico"><input type="button" class="btn btn-block btn-secondary"
-                        value="{{ __('lang.historico') }}"></a>
+                    <a href="/operadores"><input type="button" class="btn btn-block btn-secondary"
+                            value="{{ __('lang.lista') }}"></a>
                 </div>
-                <div class="col-md-2 mb-2 mt-2">
-                    <button type="button" class="btn btn-block btn-secondary" data-toggle="modal"
-                        data-target="#modal_add_operador">{{ __('lang.adicionar') }}</button>
-                </div>
-
             </div>
-            <div class="row">
-                <div class="col-12">
 
-                    <div class="card">
+        </div>
+        <div class="row">
+            <div class="col-12">
 
-                        <!-- /.card-header -->
-                        <div class="card-body">
+                <div class="card">
 
-                            <table id="tabela_operadores" class="table table-bordered table-striped">
-                                <thead class="bg-dark">
-                                    <tr>
-                                        <th>{{ __('lang.nome') }}</th>
-                                        <th>{{ __('lang.email') }}</th>
-                                        <th>{{ __('lang.perfil') }}</th>
-                                        <th>{{ __('lang.data-criacao') }}</th>
-                                        <th>{{ __('lang.data-desativ') }}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Carolina</td>
-                                        <td>carol@ua.pt</td>
-                                        <td>Supervisor Setorial</td>
-                                        <td>01/11/2018</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Austin</td>
-                                        <td>austin@ua.pt</td>
-                                        <td>Fiel de Armazém</td>
-                                        <td>02/12/2018</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Bruno</td>
-                                        <td>bruno@ua.pt</td>
-                                        <td>Fiel de Armazém</td>
-                                        <td>21/11/2018</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td>João Feijão</td>
-                                        <td>jf@ua.pt</td>
-                                        <td>Supervisor Setorial</td>
-                                        <td>01/11/2018</td>
-                                        <td>02/12/2019</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ana Silva</td>
-                                        <td>ana@ua.pt</td>
-                                        <td>Fiel de Armazém</td>
-                                        <td>01/09/2018</td>
-                                        <td>03/05/2019</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
+                    <!-- /.card-header -->
+                    <div class="card-body">
+
+                        <table id="tabela_operadores" class="table table-bordered table-striped">
+                            <thead class="bg-dark">
+                                <tr>
+                                    <th>{{ __('lang.nome') }}</th>
+                                    <th>{{ __('lang.perfil') }}</th>
+                                    <th>{{ __('lang.data-operacao') }}</th>
+                                    <th>{{ __('lang.operacao') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Carolina</td>
+                                    <td>Supervisor Setorial</td>
+                                    <td>01/11/2018</td>
+                                    <td>Registo Operador</td>
+                                </tr>
+                                <tr>
+                                    <td>Bruno</td>
+                                    <td>Fiel de Armazém</td>
+                                    <td>21/11/2018</td>
+                                    <td>Registo Entrada</td>
+                                </tr>
+                                <tr>
+                                    <td>Bruno</td>
+                                    <td>Fiel de Armazém</td>
+                                    <td>11/11/2018</td>
+                                    <td>Registo Saida</td>
+                                </tr>
+                                <tr>
+                                    <td>Bruno</td>
+                                    <td>Fiel de Armazém</td>
+                                    <td>21/12/2018</td>
+                                    <td>Registo Saída</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <!-- /.card -->
+                    <!-- /.card-body -->
                 </div>
-                <!-- /.col -->
+                <!-- /.card -->
             </div>
-            <!-- /.row -->
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
 
@@ -134,14 +113,14 @@
                     <form>
                         <div class="modal-body">
                             <div class="form-row">
-                                <div class="col-md-6">
+                                <div class="col">
                                     <div class="form-group">
                                         <label for="nome_operador" class="control-label">{{ __('lang.nome') }}</label>
                                         <input type="text" class="form-control" id="nome_operador" required>
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col">
                                     <div class="form-group">
                                         <label for="email_operador" class="control-label">{{ __('lang.email') }}</label>
                                         <input type="text" class="form-control" id="email_operador" required>
@@ -150,7 +129,7 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="col-md-6">
+                                <div class="col">
                                     <div class="form-group">
                                         <label for="perfil_operador">{{ __('lang.perfil') }}</label>
                                         <select class="form-control select" id="perfil_operador" style="width: 100%;">
@@ -162,7 +141,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col">
                                     <div class="form-group">
                                         <label for="data_criacao">{{ __('lang.data-criacao') }}</label>
                                         <div class="input-group date" id="data_criacao" data-target-input="nearest">
@@ -178,7 +157,7 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="col-md-12">
+                                <div class="col">
                                     <div class="form-group">
                                         <label for="obvs">{{ __('lang.observacoes') }}</label>
                                         <textarea id="obvs" maxlength="100" class="form-control" rows="2"></textarea>
@@ -253,13 +232,6 @@
                 });
             });
         });
-
-        $(function() {
-            $('.date').datetimepicker({
-                format: 'L',
-                locale: "{{ __('lang.locale-date') }}"
-            });
-        })
 
     </script>
 @endsection

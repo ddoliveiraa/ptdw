@@ -22,8 +22,8 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">{{ __('lang.movimentos') }}</a></li>
+                        <li class="breadcrumb-item"><a href="/welcome">Home</a></li>
+                        <li class="breadcrumb-item"><a href="">{{ __('lang.movimentos') }}</a></li>
                         <li class="breadcrumb-item active">{{ __('lang.registar entrada') }}</li>
                     </ol>
                 </div>
@@ -320,17 +320,12 @@
                                 <div class="form-group">
                                     <label for="obvs">{{ __('lang.observacoes') }}</label>
                                     <textarea id="obvs" class="form-control" rows="4"></textarea>
-
                                 </div>
                             </div>
 
                             <div class="card-footer">
                                 <div class="row justify-content-end">
-                                    <div class="col-md-3 mb-2 mt-2">
-                                        <button type="submit"
-                                            class="btn btn-block btn-default">{{ __('lang.cancelar') }}</button>
-                                    </div>
-                                    <div class="col-md-3 mb-2 mt-2">
+                                    <div class="col-md-3">
                                         <button type="submit"
                                             class="btn btn-block btn-secondary">{{ __('lang.guardar') }}</button>
                                     </div>
@@ -358,7 +353,6 @@
     <!-- Language DatePicker -->
     <script src="../../plugins/moment/locale/pt.js"></script>
     <script src="../../plugins/moment/locale/en-gb.js"></script>
-
 
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
