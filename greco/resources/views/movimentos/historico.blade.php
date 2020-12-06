@@ -30,7 +30,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h2 class="text-center display-4">{{ __('lang.historico') }}</h2>
+                    <h1 class="text-center display-4">{{ __('lang.historico') }}</h1>
                 </div>
             </div><!-- /.container-fluid -->
     </section>

@@ -76,7 +76,7 @@
                 @php $locale = session()->get('locale'); @endphp
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 @switch($locale)
                                     @case('pt')
                                     PT
@@ -189,7 +189,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/operadores" class="nav-link {{ Request::is('operadores') ? 'active' : '' }}">
+                                <a href="/operadores" class="nav-link {{ Request::is('operadores/*') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-shield-alt"></i>
                                     <p>
                                         {{ __('lang.operadores') }}

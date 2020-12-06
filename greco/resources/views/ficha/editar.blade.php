@@ -26,7 +26,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h2 class="text-left display-4">{{ __('lang.ficha do produto') }}</h2>
+                    <h1 class="text-left display-4">{{ __('lang.ficha do produto') }}</h1>
                 </div>
             </div>
         </div>
@@ -94,9 +94,8 @@
                                                     style="text-align: center"></h4>
                                         </div>
                                         <div class="stock-button">
-                                            <a href="/ficha"><input type="button" class="btn btn-block btn-default"
-                                                    value="{{ __('lang.editar') }}"></a>
-                                            <button type="submit" class="btn btn-block btn-info">{{ __('lang.desativar') }}</button>
+                                            <a href="/ficha" class="btn btn-default btn-block" role="button">{{ __('lang.cancelar') }}</a>
+                                            <a href="/ficha" class="btn btn-primary btn-block" role="button">{{ __('lang.guardar') }}</a>
                                         </div>
                                     </div>
                                 </div>

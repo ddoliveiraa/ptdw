@@ -28,29 +28,21 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h2 class="text-center display-4">{{ __('lang.produtos') }}</h2>
-                </div>
-
-                <!-- SEARCH FORM & FILTRO & ADICIONAR PRODUTO-->
-                <div class="col-md-10">
-                    <div class="float-left">
-                    </div>
-                </div>
-
-                <div class="col-md-2">
-                    <div class="float-right">
-                        <button type="button" class="btn btn-block btn-secondary" data-toggle="modal"
-                            data-target="#modalAdicionarProduto">{{ __('lang.adicionar') }}</button>
-                    </div>
+                    <h1 class="text-center display-4">{{ __('lang.produtos') }}</h1>
                 </div>
             </div>
-
         </div><!-- /.container-fluid -->
     </section>
 
 
     <section class="content">
         <div class="container-fluid">
+            <div class="row justify-content-end">
+                <div class="col-md-2 mb-2 mt-2">
+                    <button type="button" class="btn btn-block btn-secondary" data-toggle="modal"
+                        data-target="#modalAdicionarProduto">{{ __('lang.adicionar') }}</button>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-12">
 
@@ -245,8 +237,8 @@
                             </div>
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal" tabindex="13">{{ __('lang.cancelar') }}</button>
-                            <button type="button" class="btn btn-primary" tabindex="14" >{{ __('lang.adicionar') }}</button>
+                            <button type="button" class="btn btn-default col-md-3" data-dismiss="modal" tabindex="13">{{ __('lang.cancelar') }}</button>
+                            <button type="button" class="btn btn-primary col-md-3" tabindex="14" >{{ __('lang.adicionar') }}</button>
                         </div>
                 </div>
                 <!-- /.modal-content -->

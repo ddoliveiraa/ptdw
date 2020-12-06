@@ -33,7 +33,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h2 class="text-center display-4">{{ __('lang.operadores') }}</h2>
+                    <h1 class="text-center display-4">{{ __('lang.operadores') }}</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -44,17 +44,17 @@
         <div class="container-fluid">
 
             <div class="row justify-content-end">
-                     <div class="col-md-2 mb-2 mt-2">
-                    <a href="/operadores/historico"><input type="button" class="btn btn-block btn-secondary"
-                        value="{{ __('lang.historico') }}"></a>
+                <div class="col-md-2 mb-2 mt-2">
+                    <a href="/operadores/historico" class="btn btn-secondary btn-block"
+                        role="button">{{ __('lang.historico') }}</a>
                 </div>
                 <div class="col-md-2 mb-2 mt-2">
                     <button type="button" class="btn btn-block btn-secondary" data-toggle="modal"
                         data-target="#modal_add_operador">{{ __('lang.adicionar') }}</button>
-                </div>               
+                </div>
 
             </div>
-            
+
             <div class="row">
                 <div class="col-12">
 

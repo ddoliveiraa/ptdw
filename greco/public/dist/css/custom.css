@@ -110,6 +110,23 @@
     display: inline-block;
 }
 
+.page-item.active .page-link {
+    color: #fff !important;
+    background-color: #343a40  !important;
+    border-color: #343a40  !important; 
+}
+
+.page-link {
+    color: #23272b !important;
+    background-color: #fff !important;
+    border: 1px solid #dee2e6 !important; 
+}
+
+.page-link:hover {
+    color: #fff !important;
+    background-color: #343a40cb  !important;
+    border-color: #343a40cb  !important; 
+}
 /*-----------------Clientes---------------*/
 
 /*----------------Operadores--------------*/
