@@ -73,6 +73,7 @@ return [
     'fornecedor' => 'Supplier',
     'nome da marca' => 'Brand Name',
     'pictograma' => 'Pictogram',
+    'selecionar' => 'Select',
 
     /*Movimentos*/
     'referencia' => 'Reference',
