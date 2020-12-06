@@ -251,7 +251,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="peso">{{ __('lang.peso bruto') }}</label>
-                                            <input type="peso" class="form-control" id="peso"
+                                            <input type="number" class="form-control" id="peso"
                                                 placeholder="{{ __('lang.insira o') }} {{ __('lang.peso bruto') }}">
                                         </div>
                                     </div>
@@ -360,7 +360,7 @@
     <script>
         $(function() {
             //Initialize Select2 Elements
-            $('.select2').select2()
+            // $('.select2').select2()
 
             //Initialize Select2 Elements
             $('.select2bs4').select2({

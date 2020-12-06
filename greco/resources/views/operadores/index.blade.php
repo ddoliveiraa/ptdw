@@ -44,16 +44,17 @@
         <div class="container-fluid">
 
             <div class="row justify-content-end">
-                <div class="col-md-2 mb-2 mt-2">
+                     <div class="col-md-2 mb-2 mt-2">
                     <a href="/operadores/historico"><input type="button" class="btn btn-block btn-secondary"
                         value="{{ __('lang.historico') }}"></a>
                 </div>
                 <div class="col-md-2 mb-2 mt-2">
                     <button type="button" class="btn btn-block btn-secondary" data-toggle="modal"
                         data-target="#modal_add_operador">{{ __('lang.adicionar') }}</button>
-                </div>
+                </div>               
 
             </div>
+            
             <div class="row">
                 <div class="col-12">
 

@@ -132,9 +132,7 @@
             <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
-        <!-- Modal -->
-        </div>
-    </section>
+     </section>
     <!-- /.content -->
 
 @endsection

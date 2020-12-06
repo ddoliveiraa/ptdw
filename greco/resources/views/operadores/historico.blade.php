@@ -97,7 +97,6 @@
             <!-- /.col -->
         </div>
         <!-- /.row -->
-        </div>
         <!-- /.container-fluid -->
 
         <!-- Default Model Large -->

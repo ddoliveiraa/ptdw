@@ -23,7 +23,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h2 class="text-center display-4">{{ __('lang.armazem') }}</h2>
+                    <h1 class="text-center display-4">{{ __('lang.armazem') }}</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -59,12 +59,12 @@
                                     <div id="accordion">
                                         <div class="card-secondary">
                                             <div class="card-header">
-                                                <h4 class="card-title w-100">
+                                                <h3 class="card-title w-100">
                                                     <a class="d-block w-100" data-toggle="collapse" href="#collapseOne">
                                                         {{ __('lang.produtos-quimicos') }}
                                                     </a>
 
-                                                </h4>
+                                                </h3>
                                             </div>
                                             <div id="collapseOne" class="collapse show" data-parent="#accordion">
                                                 <div class="card-body">
@@ -74,12 +74,12 @@
                                         </div>
                                         <div class="card-secondary">
                                             <div class="card-header">
-                                                <h4 class="card-title w-100">
+                                                <h3 class="card-title w-100">
                                                     <a class="d-block w-100" data-toggle="collapse" href="#collapseTwo">
                                                         {{ __('lang.produtos-n-quimicos') }}
                                                     </a>
 
-                                                </h4>
+                                                </h3>
                                             </div>
                                             <div id="collapseTwo" class="collapse show" data-parent="#accordion">
                                                 <div class="card-body">
