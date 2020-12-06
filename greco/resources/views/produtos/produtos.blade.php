@@ -193,7 +193,12 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="produto_pictogramas" class="control-label">{{ __('lang.pictograma') }}</label>
-                                        <input type="text" class="form-control" id="produto_pictogramas" tabindex="7" required>
+                                        <div class="input-group margin">
+                                            <input type="text" class="form-control" id="produto_pictogramas" tabindex="7" required readonly>
+                                            <span class="input-group-btn">
+                                            <button type="button" class="btn btn-info btn-flat">{{ __('lang.selecionar') }}</button>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
