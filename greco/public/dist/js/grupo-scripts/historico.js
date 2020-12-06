@@ -1,8 +1,9 @@
 $(function() {
+            
     $("#historico").DataTable({
         "columnDefs": [{
             "visible": false,
-            "targets": [9,10],
+            "targets": [9, 10],
         }],
         "dom": '<"toolbar">frtip',
         "info": false,
@@ -10,8 +11,8 @@ $(function() {
         "lengthChange": false,
         "autoWidth": false,
         "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().prependTo('#historico_paginate');
-
+    }).buttons().container().appendTo('#export-buttons');
+    $('#export-buttons').insertAfter('#historico');
     //filtragem por movimentos
     $.fn.dataTable.ext.search.push(
         function(settings, searchData, index, rowData, counter) {
