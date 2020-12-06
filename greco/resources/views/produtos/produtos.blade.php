@@ -273,11 +273,13 @@
 
         $(function() {
             $("#tabelaprodutos").DataTable({
+                "dom": '<"toolbar">frtip',
+                "info": false,
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#tabelaprodutos_wrapper .col-md-6:eq(0)');
+            }).buttons().container().prependTo('#tabelaprodutos_paginate');
 
             $.fn.dataTable.ext.search.push(
                 function(settings, searchData, index, rowData, counter) {

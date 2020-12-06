@@ -37,20 +37,7 @@
 
     <section class="content">
         <div class="container-fluid">
-            <div class="row justify-content-end">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>{{ __('lang.intervalo') }}</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="far fa-clock"></i></span>
-                            </div>
-                            <input type="text" class="form-control float-right" id="intervalo">
-                        </div>
-                        <!-- /.input group -->
-                    </div>
-                </div>
-            </div>
+            <input type="text" class="form-control float-right" id="intervalo">
         </div>
         <div class="row">
             <div class="col-12">
@@ -69,6 +56,8 @@
                                     <th>{{ __('lang.data registo') }}</th>
                                     <th>{{ __('lang.movimento') }}</th>
                                     <th>{{ __('lang.operador') }}</th>
+                                    <th>{{ __('lang.quimico') }}</th>
+                                    <th>Sub-Familia</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -83,7 +72,9 @@
                                     <td>07-11-2011</td>
                                     <td>Entrada</td>
                                     <td>Fiel 1</td>
-                                    <td>...</td>
+                                    <td>Sim</td>
+                                    <td>Plástico</td>
+                                    <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>Propanol</td>
@@ -95,7 +86,9 @@
                                     <td>07-11-2020</td>
                                     <td>Saída</td>
                                     <td>Fiel 3</td>
-                                    <td>...</td>
+                                    <td>Sim</td>
+                                    <td>Vidro</td>
+                                    <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>Ácido Maleico</td>
@@ -107,7 +100,9 @@
                                     <td>25-12-2017</td>
                                     <td>Saída</td>
                                     <td>Fiel 4</td>
-                                    <td>...</td>
+                                    <td>Não</td>
+                                    <td>Metal</td>
+                                    <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>Epinephrine</td>
@@ -119,7 +114,9 @@
                                     <td>07-11-2020</td>
                                     <td>Saída</td>
                                     <td>Fiel 5</td>
-                                    <td>...</td>
+                                    <td>Não</td>
+                                    <td>Outros</td>
+                                    <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -127,12 +124,13 @@
                     </div>
                     <!-- /.card -->
                 </div>
+                <div id="export-buttons"></div>
                 <!-- /.col -->
             </div>
             <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
-     </section>
+    </section>
     <!-- /.content -->
 
 @endsection
@@ -152,76 +150,157 @@
     <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <script src="../../plugins/moment/moment.min.js"></script>
-
+    
     <!-- date-range-picker -->
     <script src="../../plugins/daterangepicker/daterangepicker.js"></script>
+
+    <!-- script do grupo  NOTA: TRADUÇÕES PAREM DE FUNCIONAR DENTRO DAS COMBOBOXS-->
+    {{-- <script src="../../dist/js/grupo-scripts/historico.js"></script> --}}
+
     <script>
         $(function() {
-            $("#historico").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#historico_wrapper .col-md-6:eq(0)');
+    $("#historico").DataTable({
+        "columnDefs": [{
+            "visible": false,
+            "targets": [9,10],
+        }],
+        "dom": '<"toolbar">frtip',
+        "info": false,
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#export-buttons');
 
-            $.fn.dataTable.ext.search.push(
-                function(settings, searchData, index, rowData, counter) {
-                    var escolha = $('#escolha option:selected').val();
-                    var escolhas = searchData[7]; // using the data from the 7th column
+    //filtragem por movimentos
+    $.fn.dataTable.ext.search.push(
+        function(settings, searchData, index, rowData, counter) {
+            var movimento = $('#movimento option:selected').val();
+            var movimentos = searchData[7]; // using the data from the 7th column
 
-                    if (escolha == escolhas) {
-                        return escolhas;
-                    } else if (escolha == "Entradas e Saídas") {
-                        return true;
-                    }
-                    return false;
-                }
-            );
-            //Date range picker
-            $('#intervalo').daterangepicker({
-                timePicker: true,
-                timePickerIncrement: 30,
-                locale: {
-                    format: 'MM/DD/YYYY hh:mm A'
-                }
-            })
+            if (movimento == movimentos) {
+                return movimentos;
+            } else if (movimento == "Entradas e Saídas") {
+                return true;
+            }
+            return false;
+        }
+    );
 
-            var selects = $("<select></select>").attr('id', 'escolha');
-            selects.addClass('custom-select .form-control-sm');
-            $('#historico_filter').append(selects);
-            $('#escolha').append(new Option("{{ __('lang.entradas e saidas') }}",
-                "Entradas e Saídas"));
-            $('#escolha').append(new Option("{{ __('lang.entrada') }}", "Entrada"));
-            $('#escolha').append(new Option("{{ __('lang.saida') }}", "Saída"));
+    //filtragem por familia
+    $.fn.dataTable.ext.search.push(
+        function(settings, searchData, index, rowData, counter) {
+            var familia = $('#familia option:selected').val();
+            var familias = searchData[9]; // using the data from the 9th column
+
+            if (familia == familias) {
+                return movimentos;
+            } else if (familia == "Familia") {
+                return true;
+            }
+            return false;
+        }
+    );
+    //filtragem por sub-familia
+    $.fn.dataTable.ext.search.push(
+        function(settings, searchData, index, rowData, counter) {
+            var subfamilia = $('#sub-familia option:selected').val();
+            var subfamilias = searchData[10]; // using the data from the 10th column
+
+            if (subfamilia == subfamilias) {
+                return movimentos;
+            } else if (subfamilia == "Sub-Familia") {
+                return true;
+            }
+            return false;
+        }
+    );
 
 
-            $(document).ready(function() {
-                var table = $('#historico').DataTable();
-                // Event listener to the two range filtering inputs to redraw on input
-                $('#escolha').change(function() {
-                    table.draw();
-                });
-                $('#intervalo').on('apply.daterangepicker', function() {
-                    $.fn.dataTable.ext.search.push(
-                        function(settings, searchData, index, rowData, counter) {
-                            var inicio = $('#intervalo').data('daterangepicker').startDate.format("DD-MM-YYYY");
-                            var fim = $('#intervalo').data('daterangepicker').endDate.format("DD-MM-YYYY");
-                            var datas = searchData[6]; // using the data from the 6th column
-                            console.log('incio = ' + inicio, ', ' + 'fim = ' + fim);
+    //Date range picker
+    $('#intervalo').daterangepicker({
+        timePicker: false,
+        locale: {
+            format: 'MM/DD/YYYY'
+        }
+    })
 
-                            if ((isNaN(inicio) && isNaN(fim)) ||
-                                (isNaN(inicio) && datas <= fim) ||
-                                (inicio <= datas && isNaN(fim)) ||
-                                (inicio <= datas && datas <= fim)) {
-                                return true;
-                            }
-                            return false;
-                        }
-                    );
-                    table.draw();
-                });
-            });
+    //criação e inserção do botão pictogramas dentro da div da datatables
+    var pictogramas = $("<button></button>").attr('id', 'pictogramas');
+    pictogramas.addClass('btn btn-secondary col-md-2 float-right');
+    $("div.toolbar").append(pictogramas);
+    $("#pictogramas").text('Pictogramas');
+
+    //Inserção do daterangepicker dentro da div da datatable
+    $("div.toolbar").append($("#intervalo"));
+
+    //criação e inserção da combobox movimentos dentro da div da datatable
+    var movimentos = $("<select></select>").attr('id', 'movimento');
+    movimentos.addClass('tools custom-select  float-right');
+    $('div.toolbar').append(movimentos);
+    $('#movimento').append(new Option("{{ __('lang.entradas e saidas') }}",
+        "Entradas e Saídas"));
+    $('#movimento').append(new Option("{{ __('lang.entrada') }}", "Entrada"));
+    $('#movimento').append(new Option("{{ __('lang.saida') }}", "Saída"));
+
+    //criação e inserção da combobox sub-familia dentro da div da datatable
+    var subfamilia = $("<select></select>").attr('id', 'sub-familia');
+    subfamilia.addClass('tools custom-select  float-right');
+    $('div.toolbar').append(subfamilia);
+    $('#sub-familia').append(new Option("Sub-Familia",
+        "Sub-Familia"));
+    $('#sub-familia').append(new Option("Vidro", "Vidro"));
+    $('#sub-familia').append(new Option("Plástico", "Plástico"));
+    $('#sub-familia').append(new Option("Metal", "Metal"));
+    $('#sub-familia').append(new Option("Outros", "Outros"));
+
+
+    //criação e inserção da combobox familia dentro da div da datatable
+    var familia = $("<select></select>").attr('id', 'familia');
+    familia.addClass('tools custom-select  float-right');
+    $('div.toolbar').append(familia);
+    $('#familia').append(new Option("Familia",
+        "Familia"));
+    $('#familia').append(new Option("{{ __('lang.quimicos') }}", "Sim"));
+    $('#familia').append(new Option("{{ __('lang.nao quimicos') }}", "Não"));
+
+
+
+
+    $(document).ready(function() {
+        var table = $('#historico').DataTable();
+        $('#movimento').change(function() {
+            table.draw();
         });
+        $('#familia').change(function() {
+            table.draw();
+        });
+        $('#sub-familia').change(function() {
+            table.draw();
+        });
+        /*                 $('#intervalo').on('apply.daterangepicker', function() {
+                            $.fn.dataTable.ext.search.push(
+                                function(settings, searchData, index, rowData, counter) {
+                                    var inicio = $('#intervalo').data('daterangepicker').startDate
+                                        .format("DD-MM-YYYY");
+                                    var fim = $('#intervalo').data('daterangepicker').endDate.format(
+                                        "DD-MM-YYYY");
+                                    var datas = searchData[6]; // using the data from the 6th column
+                                    console.log('incio = ' + inicio, ', ' + 'fim = ' + fim);
+
+                                    if ((isNaN(inicio) && isNaN(fim)) ||
+                                        (isNaN(inicio) && datas <= fim) ||
+                                        (inicio <= datas && isNaN(fim)) ||
+                                        (inicio <= datas && datas <= fim)) {
+                                        return true;
+                                    }
+                                    return false;
+                                }
+                            );
+                            table.draw();
+                        }); */
+    });
+});
 
     </script>
 @endsection
