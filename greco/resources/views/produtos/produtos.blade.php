@@ -193,7 +193,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="produto_pictogramas" class="control-label">{{ __('lang.pictograma') }}</label>
-                                        <input type="text" class="form-control" id="produto_pictogramas" tabindex="7" required>
+                                        <div class="input-group margin">
+                                            <input type="text" class="form-control" id="produto_pictogramas" tabindex="7" required readonly>
+                                            <span class="input-group-btn">
+                                            <button type="button" class="btn btn-info btn-flat" data-toggle="modal"
+                                            data-target="#modalSelecionarPictograma">{{ __('lang.selecionar') }}</button>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -246,8 +252,41 @@
             <!-- /.modal-dialog -->
         </div>
 
+        <!-- Modal Selecionar Pictograma-->
+        <div class="modal fade" id="modalSelecionarPictograma" data-backdrop="static">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{ __('lang.pictograma')}}</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="pictograma" class="control-label">{{ __('lang.pictograma') }}</label>
+                                        <input type="text" class="form-control" id="pictograma" tabindex="1" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default col-md-3" data-dismiss="modal" tabindex="13">{{ __('lang.cancelar') }}</button>
+                            <button type="button" class="btn btn-primary col-md-3" tabindex="14" >{{ __('lang.adicionar') }}</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.modal-content -->
+
+
+
     </section>
     <!-- /.content -->
+
 
 @endsection
 
