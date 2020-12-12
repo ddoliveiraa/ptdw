@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
-    
+    <!-- Para Image Picker -->
+    <link rel="stylesheet" href="../../dist/css/image-picker.css">
+
     
 @endsection
 
@@ -266,10 +268,16 @@
                         <div class="modal-body">
 
                             <div class="form-row">
-                                <div class="col-md-6">
+                                <div class="col-md-9">
                                     <div class="form-group">
                                         <label for="pictograma" class="control-label">{{ __('lang.pictograma') }}</label>
-                                        <input type="text" class="form-control" id="pictograma" tabindex="1" required>
+
+                                       <select class="image-picker show-html" data-limit="3" multiple="multiple" name="pictograma" id="imagem_pictograma" required>
+                                            <option data-img-class="picto" data-img-src="../../dist/img/Pictogramas/Corrosive.png" value="1">Corrosive</option>
+                                            <option data-img-class="picto" data-img-src="../../dist/img/Pictogramas/Harmful.png" value="2">Harmful</option>
+                                            <option data-img-class="picto" data-img-src="../../dist/img/Pictogramas/Corrosive.png" value="3">Corrosive</option>
+                                            <option data-img-class="picto" data-img-src="../../dist/img/Pictogramas/Harmful.png" value="4">Harmful</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -303,14 +311,17 @@
     <script src="../../plugins/pdfmake/vfs_fonts.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>~
+    <script src="../../dist/js/image-picker.min.js"></script>
 
     <script>
+
         $('#modalAdicionarProduto').on('shown.bs.modal', function() {
             $('#produto_designacao').focus();
         });
 
         $(function() {
+
             $("#tabelaprodutos").DataTable({
                 "responsive": true,
                 "lengthChange": false,
@@ -341,6 +352,15 @@
 
 
             $(document).ready(function() {
+
+                // Initialize the object
+                $("select").imagepicker({
+                    hide_select : true,
+                    show_label  : true
+                });
+                // Retrieve the picker
+                $("select").data('picker');
+
                 var table = $('#tabelaprodutos').DataTable();
                 // Event listener to the two range filtering inputs to redraw on input
                 $('#tipo').change(function() {

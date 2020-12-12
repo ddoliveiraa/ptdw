@@ -77,6 +77,14 @@ return [
     'pictograma' => 'Pictograma',
     'selecionar' => 'Selecionar',
 
+    /*Fornecedores*/
+    'fornecedores' => 'Fornecedores',
+    'rua lote n' => 'Rua, Lote, Nº',
+    'localidade' => 'Localidade',
+    'codigo postal' => 'Código Postal',
+    'telefone' => 'Telefone',
+    'nif' => 'NIF',
+
     /*Movimentos*/
     'referencia' => 'Referência',
     'taxa de iva' => 'Taxa de IVA',
