@@ -99,6 +99,12 @@ return [
     'data de validade' => 'Data de Validade',
     'data de termino' => 'Data de Término',
     'observacoes' => 'Observações',
+    'familia' => 'Familia',
+    'sub-familia' => 'Sub-Familia',
+    'vidro' => 'Vidro',
+    'plastico' => 'Plástico',
+    'metal' => 'Metal',
+    'outros' => 'Outros',
 
     'cliente' => 'Cliente',
     'solicitante' => 'Solicitante',
@@ -115,6 +121,9 @@ return [
     'movimento' => 'Movimento',
     'operador' => 'Operador',
     'intervalo' => 'Intervalo',
+
+    /*Clientes*/
+    'responsavel' => 'Responsável',
     
 
     /*Operadores*/

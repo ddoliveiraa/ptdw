@@ -97,6 +97,13 @@ return [
     'data de validade' => 'Expiration date',
     'data de termino' => 'End Date',
     'observacoes' => 'Observations',
+    'familia' => 'Family',
+    'sub-familia' => 'Sub-Family',
+    'vidro' => 'Glass',
+    'plastico' => 'Plastic',
+    'metal' => 'Metal',
+    'outros' => 'Others',
+
 
     'cliente' => 'Client',
     'solicitante' => 'Requester',
@@ -115,6 +122,9 @@ return [
     'operador' => 'Operator',
     'intervalo' => 'Date',
     
+    /*Clientes*/
+    'responsavel' => 'Person In Charge',
+
 
     /*Operadores*/
     'nome' => 'Name',

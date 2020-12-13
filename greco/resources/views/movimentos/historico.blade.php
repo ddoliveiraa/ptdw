@@ -57,7 +57,7 @@
                                     <th>{{ __('lang.movimento') }}</th>
                                     <th>{{ __('lang.operador') }}</th>
                                     <th>{{ __('lang.quimico') }}</th>
-                                    <th>Sub-Familia</th>
+                                    <th>{{ __('lang.sub-familia') }}</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -231,7 +231,7 @@
             var pictogramas = $("<button></button>").attr('id', 'pictogramas');
             pictogramas.addClass('btn btn-secondary col-md-2 float-right');
             $("div.toolbar").append(pictogramas);
-            $("#pictogramas").text('Pictogramas');
+            $("#pictogramas").text('{{ __('lang.pictograma') }}s');
 
             //Inserção do daterangepicker dentro da div da datatable
             $("div.toolbar").append($("#intervalo"));
@@ -249,19 +249,19 @@
             var subfamilia = $("<select></select>").attr('id', 'sub-familia');
             subfamilia.addClass('tools custom-select  float-right');
             $('div.toolbar').append(subfamilia);
-            $('#sub-familia').append(new Option("Sub-Familia",
+            $('#sub-familia').append(new Option("{{ __('lang.sub-familia') }}",
                 "Sub-Familia"));
-            $('#sub-familia').append(new Option("Vidro", "Vidro"));
-            $('#sub-familia').append(new Option("Plástico", "Plástico"));
-            $('#sub-familia').append(new Option("Metal", "Metal"));
-            $('#sub-familia').append(new Option("Outros", "Outros"));
+            $('#sub-familia').append(new Option("{{ __('lang.vidro') }}", "Vidro"));
+            $('#sub-familia').append(new Option("{{ __('lang.plastico') }}", "Plástico"));
+            $('#sub-familia').append(new Option("{{ __('lang.metal') }}", "Metal"));
+            $('#sub-familia').append(new Option("{{ __('lang.outros') }}", "Outros"));
 
 
             //criação e inserção da combobox familia dentro da div da datatable
             var familia = $("<select></select>").attr('id', 'familia');
             familia.addClass('tools custom-select  float-right');
             $('div.toolbar').append(familia);
-            $('#familia').append(new Option("Familia",
+            $('#familia').append(new Option("{{ __('lang.familia') }}",
                 "Familia"));
             $('#familia').append(new Option("{{ __('lang.quimicos') }}", "Sim"));
             $('#familia').append(new Option("{{ __('lang.nao quimicos') }}", "Não"));
