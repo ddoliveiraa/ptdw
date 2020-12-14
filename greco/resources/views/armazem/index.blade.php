@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6 col-md-4">
+                        <div class="col-md-4">
                             <div class="card">
                                 <div class="card-header">
                                     <h2 class="card-title">{{ __('lang.localizacoes') }}</h3>
@@ -81,7 +81,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-8">
+                        <div class="col-md-8">
                             <div class="card">
                                 <div class="card-header">
                                     <h2 class="card-title">{{ __('lang.produtos') }}</h3>
