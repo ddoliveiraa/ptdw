@@ -1,7 +1,9 @@
 @extends('layout')
 
 @section('stylesheets')
-    
+    <style>
+
+    </style>
 
 @endsection
 
@@ -45,7 +47,37 @@
                                     <h2 class="card-title">{{ __('lang.localizacoes') }}</h3>
                                 </div>
                                 <div class="card-body">
-                                   
+                                    <nav id="nav-local">
+                                        <ul class="fa-ul" id="local">
+                                            <li><a data-toggle="collapse" href="#lab"><span class="fa-li"><i
+                                                            class="fas fa-warehouse"></i></span>Lab
+                                                    A24</a></li>
+                                            <ul id="lab" class="collapse show" data-parent="#local" class="fa-ul">
+                                                <li><a data-toggle="collapse" href="#frigo">Frigorífico</a>
+                                                </li>
+                                                <ul id="frigo" class="collapse show" data-parent="#lab" class="fa-ul">
+                                                    <li><a href="#"></i></span>Prateleira 1</a>
+                                                    </li>
+                                                    <li><a href="#"></i></span>Prateleira 2</a>
+                                                    </li>
+                                                    <li><a href="#"></i></span>Gaveta
+                                                            1</a></li>
+                                                </ul>
+                                            </ul>
+                                            <ul id="lab" class="collapse show" data-parent="#local" class="fa-ul">
+                                                <li><a data-toggle="collapse" href="#arma">Armário</a>
+                                                </li>
+                                                <ul id="arma" class="collapse show" data-parent="#lab" class="fa-ul">
+                                                    <li><a href="#"></i></span>Prateleira 1</a>
+                                                    </li>
+                                                    <li><a href="#"></i></span>Prateleira 2</a>
+                                                    </li>
+                                                    <li><a href="#"></i></span>Gaveta
+                                                            1</a></li>
+                                                </ul>
+                                            </ul>
+                                        </ul>
+                                    </nav>
                                 </div>
                             </div>
                         </div>
@@ -63,15 +95,49 @@
                                                     <a class="d-block w-100" data-toggle="collapse" href="#collapseOne">
                                                         {{ __('lang.produtos-quimicos') }}
                                                     </a>
-
                                                 </h3>
                                             </div>
                                             <div id="collapseOne" class="collapse show" data-parent="#accordion">
-                                                <div class="card-body">
-                                                    {{ __('lang.produtos-quimicos') }}
-                                                </div>
+                                                    <table id="prod-quimico" class="table table-bordered table-striped">
+                                                        <thead class="bg-dark">
+                                                            <tr>
+                                                                <th>{{ __('lang.produto') }}</th>
+                                                                <th>{{ __('lang.n de ordem') }}</th>
+                                                                <th>{{ __('lang.capacidade') }}</th>
+                                                                <th>{{ __('lang.data de abertura') }}</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Cloreto de Sódio</td>
+                                                                <td>10</td>
+                                                                <td>500ml</td>
+                                                                <td>02/12/2020</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Cloreto de Sódio</td>
+                                                                <td>11</td>
+                                                                <td>500ml</td>
+                                                                <td>-</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Cloreto de Sódio</td>
+                                                                <td>12</td>
+                                                                <td>250ml</td>
+                                                                <td>-</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Cloreto de Sódio</td>
+                                                                <td>13</td>
+                                                                <td>500ml</td>
+                                                                <td>01/11/2020</td>
+                                                            </tr>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                             </div>
                                         </div>
+                                        <br>
                                         <div class="card-secondary">
                                             <div class="card-header">
                                                 <h3 class="card-title w-100">
@@ -82,9 +148,43 @@
                                                 </h3>
                                             </div>
                                             <div id="collapseTwo" class="collapse show" data-parent="#accordion">
-                                                <div class="card-body">
-                                                    {{ __('lang.produtos-n-quimicos') }}
-                                                </div>
+                                                    <table id="prod-n-quimico" class="table table-bordered table-striped">
+                                                        <thead class="bg-dark">
+                                                            <tr>
+                                                                <th>{{ __('lang.produto') }}</th>
+                                                                <th>{{ __('lang.n de ordem') }}</th>
+                                                                <th>{{ __('lang.capacidade') }}</th>
+                                                                <th>{{ __('lang.data de abertura') }}</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Luvas</td>
+                                                                <td>10</td>
+                                                                <td>10 unidades</td>
+                                                                <td>02/12/2020</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Caixa de Petri</td>
+                                                                <td>11</td>
+                                                                <td>500ml</td>
+                                                                <td>-</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Pipeta</td>
+                                                                <td>12</td>
+                                                                <td>250ml</td>
+                                                                <td>-</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Óculos</td>
+                                                                <td>13</td>
+                                                                <td>5 unidades</td>
+                                                                <td>01/11/2020</td>
+                                                            </tr>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                             </div>
                                         </div>
                                     </div>
