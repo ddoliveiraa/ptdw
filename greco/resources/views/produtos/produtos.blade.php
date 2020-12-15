@@ -256,7 +256,7 @@
 
         <!-- Modal Selecionar Pictograma-->
         <div class="modal fade" id="modalSelecionarPictograma" data-backdrop="static">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">{{ __('lang.pictograma')}}</h4>
@@ -268,16 +268,18 @@
                         <div class="modal-body">
 
                             <div class="form-row">
-                                <div class="col-md-9">
+                                <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="pictograma" class="control-label">{{ __('lang.pictograma') }}</label>
+                                        <div class="picto-group">
+                                            <label for="pictograma" class="control-label">{{ __('lang.pictograma') }}</label>
 
-                                       <select class="image-picker show-html" data-limit="3" multiple="multiple" name="pictograma" id="imagem_pictograma" required>
-                                            <option data-img-class="picto" data-img-src="../../dist/img/Pictogramas/Corrosive.png" value="1">Corrosive</option>
-                                            <option data-img-class="picto" data-img-src="../../dist/img/Pictogramas/Harmful.png" value="2">Harmful</option>
-                                            <option data-img-class="picto" data-img-src="../../dist/img/Pictogramas/Corrosive.png" value="3">Corrosive</option>
-                                            <option data-img-class="picto" data-img-src="../../dist/img/Pictogramas/Harmful.png" value="4">Harmful</option>
-                                        </select>
+                                            <select class="image-picker" data-limit="3" multiple="multiple" name="pictograma" id="imagem_pictograma" required>
+                                                <option data-img-class="picto" data-img-src="../../dist/img/Pictogramas/Corrosive.png" value="1">Corrosive</option>
+                                                <option data-img-class="picto" data-img-src="../../dist/img/Pictogramas/Harmful.png" value="2">Harmful</option>
+                                                <option data-img-class="picto" data-img-src="../../dist/img/Pictogramas/Corrosive.png" value="3">Corrosive</option>
+                                                <option data-img-class="picto" data-img-src="../../dist/img/Pictogramas/Harmful.png" value="4">Harmful</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
