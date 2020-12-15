@@ -62,6 +62,7 @@
                                         <th>{{ __('lang.codigo postal') }}</th>
                                         <th>{{ __('lang.telefone') }}</th>
                                         <th>{{ __('lang.nif') }}</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -72,6 +73,7 @@
                                         <td>3860-219</td>
                                         <td>912321321</td>
                                         <td>531321321</td>
+                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Bruno Ferreira</td>
@@ -80,6 +82,7 @@
                                         <td>3860-219</td>
                                         <td>912321321</td>
                                         <td>531321321</td>
+                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Bruno Ferreira</td>
@@ -88,6 +91,7 @@
                                         <td>3860-219</td>
                                         <td>912321321</td>
                                         <td>531321321</td>
+                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Bruno Ferreira</td>
@@ -96,6 +100,7 @@
                                         <td>3860-219</td>
                                         <td>912321321</td>
                                         <td>531321321</td>
+                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Bruno Ferreira</td>
@@ -104,6 +109,7 @@
                                         <td>3860-219</td>
                                         <td>912321321</td>
                                         <td>531321321</td>
+                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Bruno Ferreira</td>
@@ -112,6 +118,7 @@
                                         <td>3860-219</td>
                                         <td>912321321</td>
                                         <td>531321321</td>
+                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Bruno Ferreira</td>
@@ -120,6 +127,7 @@
                                         <td>3860-219</td>
                                         <td>912321321</td>
                                         <td>531321321</td>
+                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Bruno Ferreira</td>
@@ -128,6 +136,7 @@
                                         <td>3860-219</td>
                                         <td>912321321</td>
                                         <td>531321321</td>
+                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Bruno Ferreira</td>
@@ -136,6 +145,7 @@
                                         <td>3860-219</td>
                                         <td>912321321</td>
                                         <td>531321321</td>
+                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     
                                 </tbody>
@@ -145,6 +155,7 @@
                     </div>
                     <!-- /.card -->
                 </div>
+                <div id="export-buttons"></div>
                 <!-- /.col -->
             </div>
             <!-- /.row -->
@@ -346,11 +357,34 @@
 
         $(function() {
             $("#tabelafornecedores").DataTable({
+                "dom": '<"toolbar">frtip',
+                "info": true,
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#tabelafornecedores_wrapper .col-md-6:eq(0)');
+                "buttons": [
+                    {
+                        extend: 'csvHtml5',
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)'
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)'
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)'
+                        }
+                    },
+                    'colvis'
+                ],
+            }).buttons().container().appendTo('#export-buttons');
+            $('#export-buttons').appendTo('div.toolbar');
 
             $.fn.dataTable.ext.search.push(
                 function(settings, searchData, index, rowData, counter) {

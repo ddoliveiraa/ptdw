@@ -13,8 +13,6 @@
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
-    <!-- flag-icon-css -->
-    <link rel="stylesheet" href="../../plugins/flag-icon-css/css/flag-icon.min.css">
     <!-- CSS do Grupo -->
     <link rel="stylesheet" href="../../dist/css/custom.css">
 

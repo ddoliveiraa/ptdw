@@ -28,6 +28,7 @@ return [
 
 
     /*Operações*/
+    'ver' => 'Ver',
     'editar' => 'Editar',
     'adicionar' => 'Adicionar',
     'desativar' => 'Desativar',
@@ -38,6 +39,7 @@ return [
     'selecione a' => 'Selecione a',
     'insira o' => 'Insira o',
     'insira a' => 'Insira a',
+    'voltar' => 'Voltar',
     
 
     /* Pesquisa*/
@@ -121,6 +123,8 @@ return [
     'plastico' => 'Plástico',
     'metal' => 'Metal',
     'outros' => 'Outros',
+    'entrada' => 'Entrada',
+    'saida' => 'Saida',
 
     'cliente' => 'Cliente',
     'solicitante' => 'Solicitante',

@@ -74,7 +74,7 @@
                                     <td>Fiel 1</td>
                                     <td>Sim</td>
                                     <td>Plástico</td>
-                                    <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                    <td><a href="/movimentos/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>Propanol</td>
@@ -160,21 +160,42 @@
 
     <script>
         $(function() {
-            
+
             $("#historico").DataTable({
                 "columnDefs": [{
                     "visible": false,
                     "targets": [9, 10],
                 }],
                 "dom": '<"toolbar">frtip',
-                "info": false,
+                "info": true,
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                "buttons": [
+                    {
+                        extend: 'csvHtml5',
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)'
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)'
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)'
+                        }
+                    },
+                    'colvis'
+                ],
             }).buttons().container().appendTo('#export-buttons');
-            $('#export-buttons').insertAfter('#historico');
+            $('#export-buttons').appendTo('div.toolbar');
             //filtragem por movimentos
+
             $.fn.dataTable.ext.search.push(
                 function(settings, searchData, index, rowData, counter) {
                     var movimento = $('#movimento option:selected').val();
@@ -229,16 +250,16 @@
 
             //criação e inserção do botão pictogramas dentro da div da datatables
             var pictogramas = $("<button></button>").attr('id', 'pictogramas');
-            pictogramas.addClass('btn btn-secondary col-md-2 float-right');
+            pictogramas.addClass('btn btn-secondary float-right');
             $("div.toolbar").append(pictogramas);
-            $("#pictogramas").text('{{ __('lang.pictograma') }}s');
+            $("#pictogramas").text("{{ __('lang.pictograma') }}s");
 
             //Inserção do daterangepicker dentro da div da datatable
             $("div.toolbar").append($("#intervalo"));
 
             //criação e inserção da combobox movimentos dentro da div da datatable
             var movimentos = $("<select></select>").attr('id', 'movimento');
-            movimentos.addClass('tools custom-select  float-right');
+            movimentos.addClass('tools col-2 custom-select  float-right');
             $('div.toolbar').append(movimentos);
             $('#movimento').append(new Option("{{ __('lang.entradas e saidas') }}",
                 "Entradas e Saídas"));
@@ -247,7 +268,7 @@
 
             //criação e inserção da combobox sub-familia dentro da div da datatable
             var subfamilia = $("<select></select>").attr('id', 'sub-familia');
-            subfamilia.addClass('tools custom-select  float-right');
+            subfamilia.addClass('tools custom-select float-right');
             $('div.toolbar').append(subfamilia);
             $('#sub-familia').append(new Option("{{ __('lang.sub-familia') }}",
                 "Sub-Familia"));
@@ -255,6 +276,7 @@
             $('#sub-familia').append(new Option("{{ __('lang.plastico') }}", "Plástico"));
             $('#sub-familia').append(new Option("{{ __('lang.metal') }}", "Metal"));
             $('#sub-familia').append(new Option("{{ __('lang.outros') }}", "Outros"));
+            $('#sub-familia').css('display', 'none');
 
 
             //criação e inserção da combobox familia dentro da div da datatable
@@ -271,10 +293,18 @@
 
             $(document).ready(function() {
                 var table = $('#historico').DataTable();
+                $('#sub-familia').hide(100);
                 $('#movimento').change(function() {
                     table.draw();
                 });
                 $('#familia').change(function() {
+                    var familia = $('#familia option:selected').val();
+                    console.log("familia selecionada: " + familia);
+                    if (familia == "Não") {
+                        $('#sub-familia').show(100);
+                    } else {
+                        $('#sub-familia').hide(100);
+                    }
                     table.draw();
                 });
                 $('#sub-familia').change(function() {

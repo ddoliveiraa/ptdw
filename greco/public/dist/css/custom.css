@@ -80,17 +80,7 @@
     margin: 0;
 }
 
-#tipo {
-    width: 8rem;
-    height: calc(1.8125rem + 2px);
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    border-radius: 0.2rem;
-    margin-left: 2rem;
-    box-shadow: none;
-    display: inline-block;
-}
+
 
 /*----------------Movimentos--------------*/
 
@@ -133,13 +123,16 @@
 }
 
 #export-buttons {
-    float: left;
-    width: 30rem;
-    
+    float: right;
+    margin-left: 1rem;
 }
 
-#historico_filter {
+div.dataTables_filter{
     text-align: left !important;
+}
+
+.dataTables_info{
+    float: left;
 }
 
 /*-----------------Clientes---------------*/

@@ -27,6 +27,7 @@ return [
     'supervisor geral' => 'General Supervisor',
 
     /*Operações*/
+    'ver' => 'See',
     'editar' => 'Edit',
     'adicionar' => 'Add',
     'desativar' => 'Disable',
@@ -37,6 +38,7 @@ return [
     'selecione a' => 'Select the',
     'insira o' => 'Insert the',
     'insira a' => 'Insert the',
+    'voltar' => 'Go Back',
 
     /* Pesquisa*/
     'pesquisa' => 'Search',
@@ -120,6 +122,8 @@ return [
     'plastico' => 'Plastic',
     'metal' => 'Metal',
     'outros' => 'Others',
+    'entrada' => 'Entry',
+    'saida' => 'Exit',
 
 
     'cliente' => 'Client',

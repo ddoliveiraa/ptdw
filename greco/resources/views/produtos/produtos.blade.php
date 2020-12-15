@@ -75,7 +75,7 @@
                                         <td>Gramas</td>
                                         <td>120</td>
                                         <td>40</td>
-                                        <td>...</td>
+                                        <td><a href="/ficha"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Cloreto de hidrogénio</td>
@@ -85,7 +85,7 @@
                                         <td>Gramas</td>
                                         <td>120</td>
                                         <td>40</td>
-                                        <td>...</td>
+                                        <td><a href="/ficha"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Cloreto de hidrogénio</td>
@@ -95,7 +95,7 @@
                                         <td>Gramas</td>
                                         <td>120</td>
                                         <td>40</td>
-                                        <td>...</td>
+                                        <td><a href="/ficha"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Cloreto de Potássio</td>
@@ -105,7 +105,7 @@
                                         <td>Gramas</td>
                                         <td>220</td>
                                         <td>40</td>
-                                        <td>...</td>
+                                        <td><a href="/ficha"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Cloreto de Potássio</td>
@@ -115,7 +115,7 @@
                                         <td>Gramas</td>
                                         <td>220</td>
                                         <td>40</td>
-                                        <td>...</td>
+                                        <td><a href="/ficha"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -124,6 +124,7 @@
                     </div>
                     <!-- /.card -->
                 </div>
+                <div id="export-buttons"></div>
                 <!-- /.col -->
             </div>
             <!-- /.row -->
@@ -211,7 +212,7 @@
                                                     <div class="input-group margin">
                                                         <input type="text" class="form-control" id="produto_pictogramas" tabindex="7" required readonly>
                                                         <span class="input-group-btn">
-                                                        <button type="button" class="btn btn-info btn-flat" data-toggle="modal"
+                                                        <button type="button" class="btn btn-secondary btn-flat" data-toggle="modal"
                                                         data-target="#modalSelecionarPictograma">{{ __('lang.selecionar') }}</button>
                                                         </span>
                                                     </div>
@@ -242,8 +243,8 @@
                                         
                                     </div>
                                     <div class="modal-footer justify-content-between">
-                                        <button type="button" class="btn btn-default col-md-3" data-dismiss="modal" tabindex="13">{{ __('lang.cancelar') }}</button>
-                                        <button type="button" class="btn btn-primary col-md-3" data-dismiss="modal" tabindex="14" >{{ __('lang.adicionar') }}</button>
+                                        <button type="button" class="btn btn-secondary col-md-3" data-dismiss="modal" tabindex="13">{{ __('lang.cancelar') }}</button>
+                                        <button type="button" class="btn btn-secondary col-md-3" data-dismiss="modal" tabindex="14" >{{ __('lang.adicionar') }}</button>
                                     </div>                                  
                                     <!-- FIM MODAL QUIMICOS-->
                                 </form>
@@ -300,7 +301,7 @@
                                     </div>
                                     <div class="modal-footer justify-content-between">
                                         <button type="button" class="btn btn-default col-md-3" data-dismiss="modal" tabindex="13">{{ __('lang.cancelar') }}</button>
-                                        <button type="button" class="btn btn-primary col-md-3" data-dismiss="modal" tabindex="14" >{{ __('lang.adicionar') }}</button>
+                                        <button type="button" class="btn btn-secondary col-md-3" data-dismiss="modal" tabindex="14" >{{ __('lang.adicionar') }}</button>
                                     </div>
                                     <!-- FIM MODAL QUIMICOS-->
                                 </form>
@@ -366,7 +367,7 @@
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default col-md-3" data-dismiss="modal" tabindex="13">{{ __('lang.cancelar') }}</button>
-                            <button type="button" class="btn btn-primary col-md-3" data-dismiss="modal" tabindex="14" >{{ __('lang.adicionar') }}</button>
+                            <button type="button" class="btn btn-secondary col-md-3" data-dismiss="modal" tabindex="14" >{{ __('lang.adicionar') }}</button>
                         </div>
                     </form>
                 </div>
@@ -405,11 +406,34 @@
         $(function() {
 
             $("#tabelaprodutos").DataTable({
+                "dom": '<"toolbar">frtip',
+                "info": true,
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#tabelaprodutos_wrapper .col-md-6:eq(0)');
+                "buttons": [
+                    {
+                        extend: 'csvHtml5',
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)'
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)'
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)'
+                        }
+                    },
+                    'colvis'
+                ],
+            }).buttons().container().appendTo('#export-buttons');
+            $('#export-buttons').appendTo('div.toolbar');
 
             $.fn.dataTable.ext.search.push(
                 function(settings, searchData, index, rowData, counter) {
@@ -426,8 +450,8 @@
                 }
             );
             var selects = $("<select></select>").attr('id', 'tipo');
-            selects.addClass('custom-select .form-control-sm');
-            $('#tabelaprodutos_filter').append(selects);
+            selects.addClass('tools custom-select float-right');
+            $('div.toolbar').append(selects);
             $('#tipo').append(new Option("{{ __('lang.todos') }}", "Todos"));
             $('#tipo').append(new Option("{{ __('lang.quimicos') }}", "Sim"));
             $('#tipo').append(new Option("{{ __('lang.nao quimicos') }}", "Não"));

@@ -59,14 +59,13 @@
                         <!-- /.card-header -->
                         <div class="card-body">
 
-                            <table id="tabela_clientees" class="table table-bordered table-striped">
+                            <table id="tabela_clientes" class="table table-bordered table-striped">
                                 <thead class="bg-dark">
                                     <tr>
                                         <th>{{ __('lang.designacao') }}</th>
                                         <th>{{ __('lang.responsavel') }} - {{ __('lang.nome') }}</th>
                                         <th>{{ __('lang.responsavel') }} - {{ __('lang.email') }}</th>
-                                        <th>{{ __('lang.solicitante') }} - {{ __('lang.nome') }}</th>
-                                        <th>{{ __('lang.solicitante') }} - {{ __('lang.email') }}</th>
+                                        <th>Nº {{ __('lang.solicitante') }}</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -75,61 +74,36 @@
                                         <td>Departamento de Biologia</td>
                                         <td>Carolina Tavares</td>
                                         <td>carol@ua.pt</td>
-                                        <td>Diogo Oliveria</td>
-                                        <td>diogo@ua.pt</td>
-                                        <td class="text-right">
-                                            <button type="button" title="{{ __('lang.observacoes') }}" class="btn btn-secondary"><i class="fas fa-eye"></i></button>
-                                            <button type="button" title="{{ __('lang.editar') }}" class="btn btn-primary"><i class="fas fa-edit"></i></button>
-                                            <button type="button" title="{{ __('lang.desativar') }}" class="btn btn-danger"><i class="fas fa-ban"></i></button>
-                                        </td>
+                                        <td>4</td>
+                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Equipa de Pesquisa 1</td>
                                         <td>Bruno Ferreira</td>
                                         <td>bruno@ua.pt</td>
-                                        <td>Maria Nobre</td>
-                                        <td>maria@ua.pt</td>
-                                        <td class="text-right">
-                                            <button type="button" title="{{ __('lang.observacoes') }}" class="btn btn-secondary"><i class="fas fa-eye"></i></button>
-                                            <button type="button" title="{{ __('lang.editar') }}" class="btn btn-primary"><i class="fas fa-edit"></i></button>
-                                            <button type="button" title="{{ __('lang.desativar') }}" class="btn btn-danger"><i class="fas fa-ban"></i></button>
-                                        </td>
+                                        <td>7</td>
+                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Equipa de Pesquisa 2</td>
                                         <td>Diogo Oliveira</td>
                                         <td>diogo@ua.pt</td>
-                                        <td>Maria Nobre</td>
-                                        <td>maria@ua.pt</td>
-                                        <td class="text-right">
-                                            <button type="button" title="{{ __('lang.observacoes') }}" class="btn btn-secondary"><i class="fas fa-eye"></i></button>
-                                            <button type="button" title="{{ __('lang.editar') }}" class="btn btn-primary"><i class="fas fa-edit"></i></button>
-                                            <button type="button" title="{{ __('lang.desativar') }}" class="btn btn-danger"><i class="fas fa-ban"></i></button>
-                                        </td>
+                                        <td>15</td>
+                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Equipa de Pesquisa 3</td>
                                         <td>Maria Nobre</td>
                                         <td>maria@ua.pt</td>
-                                        <td>Carolina Tavares</td>
-                                        <td>carolina@ua.pt</td>
-                                        <td class="text-right">
-                                            <button type="button" title="{{ __('lang.observacoes') }}" class="btn btn-secondary"><i class="fas fa-eye"></i></button>
-                                            <button type="button" title="{{ __('lang.editar') }}" class="btn btn-primary"><i class="fas fa-edit"></i></button>
-                                            <button type="button" title="{{ __('lang.desativar') }}" class="btn btn-danger"><i class="fas fa-ban"></i></button>
-                                        </td>
+                                        <td>8</td>
+                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Equipa de Pesquisa 4</td>
                                         <td>Carolina Tavares</td>
                                         <td>carol@ua.pt</td>
-                                        <td>Bruno Ferreira</td>
-                                        <td>bruno@ua.pt</td>
-                                        <td class="text-right">
-                                            <button type="button" title="{{ __('lang.observacoes') }}" class="btn btn-secondary"><i class="fas fa-eye"></i></button>
-                                            <button type="button" title="{{ __('lang.editar') }}" class="btn btn-primary"><i class="fas fa-edit"></i></button>
-                                            <button type="button" title="{{ __('lang.desativar') }}" class="btn btn-danger"><i class="fas fa-ban"></i></button>
-                                        </td>
+                                        <td>3</td>
+                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -138,6 +112,7 @@
                     </div>
                     <!-- /.card -->
                 </div>
+                <div id="export-buttons"></div>
                 <!-- /.col -->
             </div>
             <!-- /.row -->
@@ -267,15 +242,38 @@
         });
 
         $(function() {
-            $("#tabela_clientees").DataTable({
+            $("#tabela_clientes").DataTable({
+                "dom": '<"toolbar">frtip',
+                "info": true,
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#tabela_clientees_wrapper .col-md-6:eq(0)');
+                "buttons": [
+                    {
+                        extend: 'csvHtml5',
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)'
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)'
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)'
+                        }
+                    },
+                    'colvis'
+                ],
+            }).buttons().container().appendTo('#export-buttons');
+            $('#export-buttons').appendTo('div.toolbar');
 
             $(document).ready(function() {
-                var table = $('#tabela_clientees').DataTable();
+                var table = $('#tabela_clientes').DataTable();
                 // Event listener to the two range filtering inputs to redraw on input
                 $('#tipo').change(function() {
                     table.draw();

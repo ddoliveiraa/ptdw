@@ -60,6 +60,7 @@
                                     <th>{{ __('lang.perfil') }}</th>
                                     <th>{{ __('lang.data-operacao') }}</th>
                                     <th>{{ __('lang.operacao') }}</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -68,24 +69,28 @@
                                     <td>Supervisor Setorial</td>
                                     <td>01/11/2018</td>
                                     <td>Registo Operador</td>
+                                    <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>Bruno</td>
                                     <td>Fiel de Armazém</td>
                                     <td>21/11/2018</td>
                                     <td>Registo Entrada</td>
+                                    <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>Bruno</td>
                                     <td>Fiel de Armazém</td>
                                     <td>11/11/2018</td>
                                     <td>Registo Saida</td>
+                                    <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>Bruno</td>
                                     <td>Fiel de Armazém</td>
                                     <td>21/12/2018</td>
                                     <td>Registo Saída</td>
+                                    <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -94,6 +99,7 @@
                 </div>
                 <!-- /.card -->
             </div>
+            <div id="export-buttons"></div>
             <!-- /.col -->
         </div>
         <!-- /.row -->
@@ -217,11 +223,34 @@
 
         $(function() {
             $("#tabela_operadores").DataTable({
+                "dom": '<"toolbar">frtip',
+                "info": true,
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#tabela_operadores_wrapper .col-md-6:eq(0)');
+                "buttons": [
+                    {
+                        extend: 'csvHtml5',
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)'
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)'
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        exportOptions: {
+                            columns: ':visible:not(:last-child)'
+                        }
+                    },
+                    'colvis'
+                ],
+            }).buttons().container().appendTo('#export-buttons');
+            $('#export-buttons').appendTo('div.toolbar');
 
             $(document).ready(function() {
                 var table = $('#tabela_operadores').DataTable();

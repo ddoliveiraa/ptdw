@@ -67,7 +67,7 @@
                                             <input type="text" class="form-control" id="unidades" value="mililitros">
                                         </div>
                                         <div class="form-group">
-                                            <label for="vent">{{ __('lang.armário ventilado') }}</label>
+                                            <label for="vent">{{ __('lang.armario ventilado') }}</label>
                                             <input type="text" class="form-control" id="vent" value="Não Necessita">
                                         </div>
                                         <div class="form-group">
@@ -95,182 +95,12 @@
                                         </div>
                                         <div class="stock-button">
                                             <a href="/ficha" class="btn btn-default btn-block" role="button">{{ __('lang.cancelar') }}</a>
-                                            <a href="/ficha" class="btn btn-primary btn-block" role="button">{{ __('lang.guardar') }}</a>
+                                            <a href="/ficha" class="btn btn-secondary btn-block" role="button">{{ __('lang.guardar') }}</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </form>
-                        <div class="card-body">
-                            <table id="example1" class="table table-bordered table-striped">
-                                <thead class="bg-dark">
-                                    <tr>
-                                        <th>{{ __('lang.capacidade') }}</th>
-                                        <th>{{ __('lang.n de ordem') }}</th>
-                                        <th>{{ __('lang.armario') }}</th>
-                                        <th>{{ __('lang.prataleira') }}</th>
-                                        <th>{{ __('lang.data de abertura') }}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>500 ml</td>
-                                        <td>3</td>
-                                        <td>5</td>
-                                        <td>4</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>500 ml</td>
-                                        <td>3</td>
-                                        <td>5</td>
-                                        <td>4</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>500 ml</td>
-                                        <td>3</td>
-                                        <td>5</td>
-                                        <td>4</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>500 ml</td>
-                                        <td>3</td>
-                                        <td>5</td>
-                                        <td>4</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>500 ml</td>
-                                        <td>3</td>
-                                        <td>5</td>
-                                        <td>4</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>500 ml</td>
-                                        <td>3</td>
-                                        <td>5</td>
-                                        <td>4</td>
-                                        <td>22/10/2020</td>
-                                    </tr>
-                                    <tr>
-                                        <td>250 ml</td>
-                                        <td>5</td>
-                                        <td>8</td>
-                                        <td>10</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>250 ml</td>
-                                        <td>5</td>
-                                        <td>8</td>
-                                        <td>10</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>250 ml</td>
-                                        <td>5</td>
-                                        <td>8</td>
-                                        <td>10</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>250 ml</td>
-                                        <td>5</td>
-                                        <td>8</td>
-                                        <td>10</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>250 ml</td>
-                                        <td>5</td>
-                                        <td>8</td>
-                                        <td>10</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>250 ml</td>
-                                        <td>5</td>
-                                        <td>8</td>
-                                        <td>10</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>250 ml</td>
-                                        <td>5</td>
-                                        <td>8</td>
-                                        <td>10</td>
-                                        <td>5/11/2020</td>
-                                        
-                                    </tr>
-                                    <tr>
-                                        <td>125 ml</td>
-                                        <td>10</td>
-                                        <td>3</td>
-                                        <td>6</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>125 ml</td>
-                                        <td>10</td>
-                                        <td>3</td>
-                                        <td>6</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>125 ml</td>
-                                        <td>10</td>
-                                        <td>3</td>
-                                        <td>6</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>125 ml</td>
-                                        <td>10</td>
-                                        <td>3</td>
-                                        <td>6</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>125 ml</td>
-                                        <td>10</td>
-                                        <td>3</td>
-                                        <td>6</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>125 ml</td>
-                                        <td>10</td>
-                                        <td>3</td>
-                                        <td>6</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>125 ml</td>
-                                        <td>10</td>
-                                        <td>3</td>
-                                        <td>6</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>125 ml</td>
-                                        <td>10</td>
-                                        <td>3</td>
-                                        <td>6</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>125 ml</td>
-                                        <td>10</td>
-                                        <td>3</td>
-                                        <td>6</td>
-                                        <td>1/11/2020</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
@@ -283,7 +113,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="avisos">
-                                        <h5 class="bg-dark">{{ __('lang.recomendaçcos de prudencia') }}</h5>
+                                        <h5 class="bg-dark">{{ __('lang.recomendacoes de prudencia') }}</h5>
                                         <p>P280 - Usar luvas e oculos de proteção</p>
                                         <p>P303+361+353 - Se entrar em contacto com a pele, remova roupa contaminada e lave
                                             a
@@ -316,22 +146,4 @@
     <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <!-- Page specific script -->
-    <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
-    </script>
 @endsection
