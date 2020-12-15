@@ -145,8 +145,8 @@
                     
                     <div class="nav-tabs-custom">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#tab_quimicos" data-toggle="tab" aria-expanded="true">{{ __('lang.quimicos') }}</a></li>
-                            <li class=""><a href="#tab_naoquimicos" data-toggle="tab" aria-expanded="true">{{ __('lang.nao quimicos') }}</a></li>
+                            <li><a href="#tab_quimicos" class="btn btn-default" data-toggle="tab" aria-expanded="true">{{ __('lang.quimico') }}</a></li>
+                            <li><a href="#tab_naoquimicos" class="btn btn-default" data-toggle="tab" aria-expanded="false">{{ __('lang.nao quimico') }}</a></li>
                         </ul>
 
                         <!-- tab-content -->
@@ -257,7 +257,7 @@
                                     </div>
                                     <div class="modal-footer justify-content-between">
                                         <button type="button" class="btn btn-default col-md-3" data-dismiss="modal" tabindex="13">{{ __('lang.cancelar') }}</button>
-                                        <button type="button" class="btn btn-primary col-md-3" tabindex="14" >{{ __('lang.adicionar') }}</button>
+                                        <button type="button" class="btn btn-primary col-md-3" data-dismiss="modal" tabindex="14" >{{ __('lang.adicionar') }}</button>
                                     </div>                                  
                                     <!-- FIM MODAL QUIMICOS-->
                                 </form>
@@ -308,7 +308,7 @@
                                     </div>
                                     <div class="modal-footer justify-content-between">
                                         <button type="button" class="btn btn-default col-md-3" data-dismiss="modal" tabindex="13">{{ __('lang.cancelar') }}</button>
-                                        <button type="button" class="btn btn-primary col-md-3" tabindex="14" >{{ __('lang.adicionar') }}</button>
+                                        <button type="button" class="btn btn-primary col-md-3" data-dismiss="modal" tabindex="14" >{{ __('lang.adicionar') }}</button>
                                     </div>
                                     <!-- FIM MODAL QUIMICOS-->
                                 </form>
@@ -336,7 +336,6 @@
                     </div>
                     <form>
                         <div class="modal-body">
-
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -356,7 +355,7 @@
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default col-md-3" data-dismiss="modal" tabindex="13">{{ __('lang.cancelar') }}</button>
-                            <button type="button" class="btn btn-primary col-md-3" tabindex="14" >{{ __('lang.adicionar') }}</button>
+                            <button type="button" class="btn btn-primary col-md-3" data-dismiss="modal" tabindex="14" >{{ __('lang.adicionar') }}</button>
                         </div>
                     </form>
                 </div>
