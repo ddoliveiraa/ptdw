@@ -142,112 +142,182 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form>
-                        <div class="modal-body">
+                    
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab_quimicos" data-toggle="tab" aria-expanded="true">{{ __('lang.quimicos') }}</a></li>
+                            <li class=""><a href="#tab_naoquimicos" data-toggle="tab" aria-expanded="true">{{ __('lang.nao quimicos') }}</a></li>
+                        </ul>
 
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="produto_designacao" class="control-label">{{ __('lang.designacao') }}</label>
-                                        <input type="text" class="form-control" id="produto_designacao" tabindex="1" required>
+                        <!-- tab-content -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_quimicos">
+                                <form>
+                                    <!---MODAL-->                                               
+                                    <div class="modal-body">
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="produto_designacao" class="control-label">{{ __('lang.designacao') }}</label>
+                                                    <input type="text" class="form-control" id="produto_designacao" tabindex="1" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="produto_formula" class="control-label">{{ __('lang.formula') }}</label>
+                                                    <input type="text" class="form-control" id="produto_formula" tabindex="2" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="produto_peso" class="control-label">{{ __('lang.peso molecular') }}</label>
+                                                    <input type="text" class="form-control" id="produto_peso" tabindex="3" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="produto_cas" class="control-label">{{ __('lang.n cas') }}</label>
+                                                    <input type="text" class="form-control" id="produto_cas" tabindex="4" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="produto_condicoes_armazenamento" class="control-label">{{ __('lang.condicoes de armazenamento') }}</label>
+                                                    <input type="text" class="form-control" id="produto_condicoes_armazenamento" tabindex="5"
+                                                        required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="produto_armario" class="control-label">{{ __('lang.armario ventilado') }}</label>
+                                                    <input type="text" class="form-control" id="produto_armario" tabindex="6" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="produto_pictogramas" class="control-label">{{ __('lang.pictograma') }}</label>
+                                                    <div class="input-group margin">
+                                                        <input type="text" class="form-control" id="produto_pictogramas" tabindex="7" required readonly>
+                                                        <span class="input-group-btn">
+                                                        <button type="button" class="btn btn-info btn-flat" data-toggle="modal"
+                                                        data-target="#modalSelecionarPictograma">{{ __('lang.selecionar') }}</button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="produto_unidades" class="control-label">{{ __('lang.unidades') }}</label>
+                                                    <input type="text" class="form-control" id="produto_unidades" tabindex="8" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="produto_cod_recomendacoes_prudencia" class="control-label">{{ __('lang.recomendacoes de prudencia') }}</label>
+                                                    <input type="text" class="form-control" id="produto_cod_recomendacoes_prudencia" tabindex="9"
+                                                        required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="produto_cod_advertencias_perigo" class="control-label">{{ __('lang.advertencias de perigo') }}</label>
+                                                    <input type="text" class="form-control" id="produto_cod_advertencias_perigo" tabindex="10"
+                                                        required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="produto_stock_existente" class="control-label">{{ __('lang.stock existente') }}</label>
+                                                    <input type="text" class="form-control" id="produto_stock_existente" tabindex="11" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="produto_stock_minimo" class="control-label">{{ __('lang.stock minimo') }}</label>
+                                                    <input type="text" class="form-control" id="produto_stock_minimo" tabindex="12" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="produto_formula" class="control-label">{{ __('lang.formula') }}</label>
-                                        <input type="text" class="form-control" id="produto_formula" tabindex="2" required>
-                                    </div>
-                                </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-default col-md-3" data-dismiss="modal" tabindex="13">{{ __('lang.cancelar') }}</button>
+                                        <button type="button" class="btn btn-primary col-md-3" tabindex="14" >{{ __('lang.adicionar') }}</button>
+                                    </div>                                  
+                                    <!-- FIM MODAL QUIMICOS-->
+                                </form>
                             </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="tab_naoquimicos">
+                                <form>
+                                    <!-- MODAL NAO QUIMICOS | nq = nao quimico -->
+                                    <div class="modal-body">
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="produto_designacao_nq" class="control-label">{{ __('lang.designacao') }}</label>
+                                                    <input type="text" class="form-control" id="produto_designacao_nq" tabindex="1" required>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="produto_peso" class="control-label">{{ __('lang.peso molecular') }}</label>
-                                        <input type="text" class="form-control" id="produto_peso" tabindex="3" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="produto_cas" class="control-label">{{ __('lang.n cas') }}</label>
-                                        <input type="text" class="form-control" id="produto_cas" tabindex="4" required>
-                                    </div>
-                                </div>
-                            </div>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="produto_unidades_nq" class="control-label">{{ __('lang.unidades') }}</label>
+                                                    <input type="text" class="form-control" id="produto_unidades_nq" tabindex="8" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="produto_unidades_nq" class="control-label">{{ __('lang.familia') }}</label>
+                                                    <input type="text" class="form-control" id="produto_unidades_nq" tabindex="8" required>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="produto_condicoes_armazenamento" class="control-label">{{ __('lang.condicoes de armazenamento') }}</label>
-                                        <input type="text" class="form-control" id="produto_condicoes_armazenamento" tabindex="5"
-                                            required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="produto_armario" class="control-label">{{ __('lang.armario ventilado') }}</label>
-                                        <input type="text" class="form-control" id="produto_armario" tabindex="6" required>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="produto_pictogramas" class="control-label">{{ __('lang.pictograma') }}</label>
-                                        <div class="input-group margin">
-                                            <input type="text" class="form-control" id="produto_pictogramas" tabindex="7" required readonly>
-                                            <span class="input-group-btn">
-                                            <button type="button" class="btn btn-info btn-flat" data-toggle="modal"
-                                            data-target="#modalSelecionarPictograma">{{ __('lang.selecionar') }}</button>
-                                            </span>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="produto_stock_existente_nq" class="control-label">{{ __('lang.stock existente') }}</label>
+                                                    <input type="text" class="form-control" id="produto_stock_existente_nq" tabindex="11" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="produto_stock_minimo_nq" class="control-label">{{ __('lang.stock minimo') }}</label>
+                                                    <input type="text" class="form-control" id="produto_stock_minimo_nq" tabindex="12" required>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="produto_unidades" class="control-label">{{ __('lang.unidades') }}</label>
-                                        <input type="text" class="form-control" id="produto_unidades" tabindex="8" required>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-default col-md-3" data-dismiss="modal" tabindex="13">{{ __('lang.cancelar') }}</button>
+                                        <button type="button" class="btn btn-primary col-md-3" tabindex="14" >{{ __('lang.adicionar') }}</button>
                                     </div>
-                                </div>
+                                    <!-- FIM MODAL QUIMICOS-->
+                                </form>
                             </div>
-
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="produto_cod_recomendacoes_prudencia" class="control-label">{{ __('lang.recomendacoes de prudencia') }}</label>
-                                        <input type="text" class="form-control" id="produto_cod_recomendacoes_prudencia" tabindex="9"
-                                            required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="produto_cod_advertencias_perigo" class="control-label">{{ __('lang.advertencias de perigo') }}</label>
-                                        <input type="text" class="form-control" id="produto_cod_advertencias_perigo" tabindex="10"
-                                            required>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="produto_stock_existente" class="control-label">{{ __('lang.stock existente') }}</label>
-                                        <input type="text" class="form-control" id="produto_stock_existente" tabindex="11" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="produto_stock_minimo" class="control-label">{{ __('lang.stock minimo') }}</label>
-                                        <input type="text" class="form-control" id="produto_stock_minimo" tabindex="12" required>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- /.tab-pane -->
                         </div>
-                        <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default col-md-3" data-dismiss="modal" tabindex="13">{{ __('lang.cancelar') }}</button>
-                            <button type="button" class="btn btn-primary col-md-3" tabindex="14" >{{ __('lang.adicionar') }}</button>
-                        </div>
+                        <!-- /.tab-content -->
+                    </div>
+                    
                 </div>
                 <!-- /.modal-content -->
             </div>
