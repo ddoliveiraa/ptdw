@@ -82,6 +82,19 @@ return [
     'codigo postal' => 'Postal Code',
     'telefone' => 'Telephone',
     'nif' => 'ID Number',
+    'nomefornecedor' => 'Name',
+    'rua' => 'Street',
+    'lote' => 'Lot',
+    'numero' => 'Nº',
+
+    /*Fornecedores (campos opcionais)*/
+    'email' => 'Email',
+    'telemovel' => 'Mobile phone',
+    'vendedor1' => 'Seller 1',
+    'vendedor2' => 'Seller 2',
+    'condicoes especiais' => 'Special Conditions',
+    'observacoes' => 'Comments',
+
 
     /*Movimentos*/
     'referencia' => 'Reference',

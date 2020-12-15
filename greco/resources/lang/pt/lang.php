@@ -84,6 +84,18 @@ return [
     'codigo postal' => 'Código Postal',
     'telefone' => 'Telefone',
     'nif' => 'NIF',
+    'nomefornecedor' => 'Nome',
+    'rua' => 'Rua',
+    'lote' => 'Lote',
+    'numero' => 'Nº',
+
+    /*Fornecedores (campos opcionais)*/
+    'email' => 'Email',
+    'telemovel' => 'Telemóvel',
+    'vendedor1' => 'Vendedor 1',
+    'vendedor2' => 'Vendedor 2',
+    'condicoes especiais' => 'Condições Especiais',
+    'observacoes' => 'Observações',
 
     /*Movimentos*/
     'referencia' => 'Referência',

@@ -37,6 +37,14 @@
 
     <section class="content">
         <div class="container-fluid">
+            <!-- Botão adicionar Fornecedores -->
+            <div class="row justify-content-end">
+                <div class="col-md-2 mb-2 mt-2">
+                    <button type="button" class="btn btn-block btn-secondary" data-toggle="modal"
+                        data-target="#modalAdicionarFornecedores">{{ __('lang.adicionar') }}</button>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-12">
 
@@ -143,6 +151,170 @@
         </div>
         <!-- /.container-flu-id -->
 
+     <!-- Default Model Large -->
+     <div class="modal fade" id="modalAdicionarFornecedores">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{ __('lang.adicionar') }} {{ __('lang.fornecedores') }}</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+
+                            <div class="form-row">
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label for="fornecedor_designacao" class="control-label">{{ __('lang.nomefornecedor') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_designacao" tabindex="1" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="fornecedor_rua" class="control-label">{{ __('lang.rua') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_rua" tabindex="2" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group">
+                                        <label for="fornecedor_numero" class="control-label">{{ __('lang.numero') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_numero" tabindex="3" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="fornecedor_lote" class="control-label">{{ __('lang.lote') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_lote" tabindex="4" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label for="fornecedor_localidade" class="control-label">{{ __('lang.localidade') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_localidade" tabindex="5"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="fornecedor_codigopostal" class="control-label">{{ __('lang.codigo postal') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_codigopostal" tabindex="6" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="fornecedor_nif" class="control-label">{{ __('lang.nif') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_nif" tabindex=7" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label for="fornecedor_localidade" class="control-label">{{ __('lang.email') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_localidade" tabindex="8">
+                                    </div>
+                                </div>
+                                 <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="fornecedor_telefone" class="control-label">{{ __('lang.telefone') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_telefone" tabindex="9" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="fornecedor_condicoesespeciais" class="control-label">{{ __('lang.condicoes especiais') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_condicoesespeciais" tabindex="10">
+                                    </div>
+                                </div>
+                                 <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label for="fornecedor_observacoes" class="control-label">{{ __('lang.observacoes') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_observacoes" tabindex="11">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--VENDEDOR 1-->
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="fornecedor_vendedor1" class="control-label">{{ __('lang.vendedor1') }}</label>
+                                        <hr class="mt-3 mb-3"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="fornecedor_nomevendedor1" class="control-label">{{ __('lang.nomefornecedor') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_nomevendedor1" tabindex="12">
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label for="fornecedor_emailvendedor1" class="control-label">{{ __('lang.email') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_emailvendedor1" tabindex="13">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="fornecedor_telemovelvendedor1" class="control-label">{{ __('lang.telemovel') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_telemovelvendedor1" tabindex="14">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--VENDEDOR 2-->
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="fornecedor_vendedor2" class="control-label">{{ __('lang.vendedor2') }}</label>
+                                        <hr class="mt-3 mb-3"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="fornecedor_nomevendedor2" class="control-label">{{ __('lang.nomefornecedor') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_nomevendedor2" tabindex="15">
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label for="fornecedor_emailvendedor2" class="control-label">{{ __('lang.email') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_emailvendedor2" tabindex="16">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="fornecedor_telemovelvendedor2" class="control-label">{{ __('lang.telemovel') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_telemovelvendedor2" tabindex="17">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default col-md-3" data-dismiss="modal" tabindex="18">{{ __('lang.cancelar') }}</button>
+                            <button type="button" class="btn btn-primary col-md-3" tabindex="19" >{{ __('lang.adicionar') }}</button>
+                        </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
 
 
     </section>
@@ -167,6 +339,10 @@
     <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
     <script>
+
+        $('#modalAdicionarFornecedores').on('shown.bs.modal', function() {
+                    $('#fornecedor_designacao').focus();
+                });
 
         $(function() {
             $("#tabelafornecedores").DataTable({
