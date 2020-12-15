@@ -77,6 +77,9 @@ return [
     'nome da marca' => 'Nome da Marca',
     'pictograma' => 'Pictograma',
     'selecionar' => 'Selecionar',
+    'foto' => 'Foto',
+    'sim' => 'Sim',
+    'nao' => 'Não',
 
     /*Fornecedores*/
     'fornecedores' => 'Fornecedores',

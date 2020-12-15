@@ -53,6 +53,7 @@ return [
     'produto' => 'Product',
     'ficha do produto' => 'Product File',
     'quimico' => 'Chemical',
+    'nao quimico' => 'Not Chemical',
     'formula' => 'Formula',
     'designacao' => 'Designation',
     'peso molecular' => 'Molecular Weight',
@@ -74,6 +75,9 @@ return [
     'nome da marca' => 'Brand Name',
     'pictograma' => 'Pictogram',
     'selecionar' => 'Select',
+    'foto' => 'Photo',
+    'sim' => 'Yes',
+    'nao' => 'No',
 
     /*Fornecedores*/
     'fornecedores' => 'Suppliers',

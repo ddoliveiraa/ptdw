@@ -196,7 +196,10 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="produto_armario" class="control-label">{{ __('lang.armario ventilado') }}</label>
-                                                    <input type="text" class="form-control" id="produto_armario" tabindex="6" required>
+                                                    <select class="form-control" id="produto_armario" tabindex="6">
+                                                        <option value="1">{{ __('lang.sim') }}</option>
+                                                        <option value="2">{{ __('lang.nao') }}</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -218,23 +221,6 @@
                                                 <div class="form-group">
                                                     <label for="produto_unidades" class="control-label">{{ __('lang.unidades') }}</label>
                                                     <input type="text" class="form-control" id="produto_unidades" tabindex="8" required>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="produto_cod_recomendacoes_prudencia" class="control-label">{{ __('lang.recomendacoes de prudencia') }}</label>
-                                                    <input type="text" class="form-control" id="produto_cod_recomendacoes_prudencia" tabindex="9"
-                                                        required>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="produto_cod_advertencias_perigo" class="control-label">{{ __('lang.advertencias de perigo') }}</label>
-                                                    <input type="text" class="form-control" id="produto_cod_advertencias_perigo" tabindex="10"
-                                                        required>
                                                 </div>
                                             </div>
                                         </div>
@@ -272,6 +258,12 @@
                                                 <div class="form-group">
                                                     <label for="produto_designacao_nq" class="control-label">{{ __('lang.designacao') }}</label>
                                                     <input type="text" class="form-control" id="produto_designacao_nq" tabindex="1" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="produto_designacao_nq" class="control-label">{{ __('lang.foto') }}</label>
+                                                    <input type="file" class="form-control" id="produto_designacao_nq" tabindex="1">
                                                 </div>
                                             </div>
                                         </div>
@@ -348,7 +340,26 @@
                                                 <option data-img-class="picto" data-img-src="../../dist/img/Pictogramas/Corrosive.png" value="3">Corrosive</option>
                                                 <option data-img-class="picto" data-img-src="../../dist/img/Pictogramas/Harmful.png" value="4">Harmful</option>
                                             </select>
+
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="produto_cod_recomendacoes_prudencia" class="control-label">{{ __('lang.recomendacoes de prudencia') }}</label>
+                                        <input type="text" class="form-control" id="produto_cod_recomendacoes_prudencia" tabindex="9"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="produto_cod_advertencias_perigo" class="control-label">{{ __('lang.advertencias de perigo') }}</label>
+                                        <input type="text" class="form-control" id="produto_cod_advertencias_perigo" tabindex="10"
+                                            required>
                                     </div>
                                 </div>
                             </div>
@@ -425,12 +436,12 @@
             $(document).ready(function() {
 
                 // Initialize the object
-                $("select").imagepicker({
+                $("#imagem_pictograma").imagepicker({
                     hide_select : true,
                     show_label  : true
                 });
                 // Retrieve the picker
-                $("select").data('picker');
+                $("#imagem_pictograma").data('picker');
 
                 var table = $('#tabelaprodutos').DataTable();
                 // Event listener to the two range filtering inputs to redraw on input
