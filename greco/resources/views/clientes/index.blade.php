@@ -45,10 +45,8 @@
 
             <div class="row justify-content-end">
                 <div class="col-md-2 mb-2 mt-2">
-                    <button type="button" class="btn btn-block btn-secondary" data-toggle="modal"
-                        data-target="#modal_add_cliente">{{ __('lang.adicionar') }}</button>
+                    <a role="button" href="/clientes/add" class="btn btn-block btn-secondary">{{ __('lang.adicionar') }}</a>
                 </div>
-
             </div>
 
             <div class="row">
@@ -75,35 +73,35 @@
                                         <td>Carolina Tavares</td>
                                         <td>carol@ua.pt</td>
                                         <td>4</td>
-                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                        <td><a href="/clientes/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Equipa de Pesquisa 1</td>
                                         <td>Bruno Ferreira</td>
                                         <td>bruno@ua.pt</td>
                                         <td>7</td>
-                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                        <td><a href="/clientes/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Equipa de Pesquisa 2</td>
                                         <td>Diogo Oliveira</td>
                                         <td>diogo@ua.pt</td>
                                         <td>15</td>
-                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                        <td><a href="/clientes/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Equipa de Pesquisa 3</td>
                                         <td>Maria Nobre</td>
                                         <td>maria@ua.pt</td>
                                         <td>8</td>
-                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                        <td><a href="/clientes/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Equipa de Pesquisa 4</td>
                                         <td>Carolina Tavares</td>
                                         <td>carol@ua.pt</td>
                                         <td>3</td>
-                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                        <td><a href="/clientes/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -118,92 +116,6 @@
             <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
-
-        <!-- Default Model Large -->
-        <div class="modal fade" id="modal_add_cliente">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">{{ __('lang.adicionar') }} {{ __('lang.cliente') }}</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form>
-                        <div class="modal-body">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="designacao" class="control-label">{{ __('lang.designacao') }}</label>
-                                        <input type="text" class="form-control" id="designacao" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="nome_responsavel" class="control-label">{{ __('lang.responsavel') }} -
-                                            {{ __('lang.nome') }}</label>
-                                        <input type="text" class="form-control" id="nome_responsavel" required>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="email_responsavel" class="control-label">{{ __('lang.responsavel') }} -
-                                            {{ __('lang.email') }}</label>
-                                        <div class="input-group">
-                                            <input type="email" class="form-control" id="email_responsavel" required>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text"><i class="fa fa-at"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="nome_solicitante" class="control-label">{{ __('lang.solicitante') }} -
-                                            {{ __('lang.nome') }}</label>
-                                        <input type="text" class="form-control" id="nome_solicitante" required>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="email_solicitante" class="control-label">{{ __('lang.solicitante') }} -
-                                            {{ __('lang.email') }}</label>
-                                        <div class="input-group">
-                                            <input type="email" class="form-control" id="email_solicitante" required>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text"><i class="fa fa-at"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="obvs">{{ __('lang.observacoes') }}</label>
-                                        <textarea id="obvs" maxlength="100" class="form-control" rows="2"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default col-md-3"
-                                data-dismiss="modal">{{ __('lang.cancelar') }}</button>
-                            <button type="submit" class="btn col-md-3 btn-secondary">{{ __('lang.adicionar') }}</button>
-                        </div>
-                    </form>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-
     </section>
     <!-- /.content -->
 
@@ -256,13 +168,7 @@
                         }
                     },
                     {
-                        extend: 'excelHtml5',
-                        exportOptions: {
-                            columns: ':visible:not(:last-child)'
-                        }
-                    },
-                    {
-                        extend: 'pdfHtml5',
+                        extend: 'print',
                         exportOptions: {
                             columns: ':visible:not(:last-child)'
                         }

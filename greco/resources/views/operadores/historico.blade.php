@@ -236,13 +236,7 @@
                         }
                     },
                     {
-                        extend: 'excelHtml5',
-                        exportOptions: {
-                            columns: ':visible:not(:last-child)'
-                        }
-                    },
-                    {
-                        extend: 'pdfHtml5',
+                        extend: 'print',
                         exportOptions: {
                             columns: ':visible:not(:last-child)'
                         }

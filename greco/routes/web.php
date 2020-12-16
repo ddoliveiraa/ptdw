@@ -60,9 +60,21 @@ Route::get('/movimentos/editar', function () {
     return view('movimentos.editar');
 });
 
+
 //Clientes
 Route::get('/clientes', function () {
     return view('clientes.index');
+});
+Route::get('/clientes/show', function () {
+    return view('clientes.show');
+});
+
+Route::get('/clientes/add', function () {
+    return view('clientes.add');
+});
+
+Route::get('/clientes/editar', function () {
+    return view('clientes.editar');
 });
 
 //Operadores
