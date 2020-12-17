@@ -37,7 +37,7 @@
 
     <section class="content">
         <div class="container-fluid">
-            <input type="text" class="form-control float-right" id="intervalo">
+            <input type="text" class="col-md-2 form-control" id="intervalo">
         </div>
         <div class="row">
             <div class="col-12">
@@ -124,7 +124,6 @@
                     </div>
                     <!-- /.card -->
                 </div>
-                <div id="export-buttons"></div>
                 <!-- /.col -->
             </div>
             <!-- /.row -->
@@ -171,8 +170,7 @@
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "buttons": [
-                    {
+                "buttons": [{
                         extend: 'csvHtml5',
                         exportOptions: {
                             columns: ':visible:not(:last-child)'
@@ -186,10 +184,9 @@
                     },
                     'colvis'
                 ],
-            }).buttons().container().appendTo('#export-buttons');
-            $('#export-buttons').appendTo('div.toolbar');
-            //filtragem por movimentos
+            }).buttons().container().appendTo('div.toolbar');
 
+            //filtragem por movimentos
             $.fn.dataTable.ext.search.push(
                 function(settings, searchData, index, rowData, counter) {
                     var movimento = $('#movimento option:selected').val();
@@ -234,6 +231,8 @@
             );
 
 
+            $('#historico_filter').addClass('col-md-2')
+
             //Date range picker
             $('#intervalo').daterangepicker({
                 timePicker: false,
@@ -244,7 +243,7 @@
 
             //criação e inserção do botão pictogramas dentro da div da datatables
             var pictogramas = $("<button></button>").attr('id', 'pictogramas');
-            pictogramas.addClass('btn btn-secondary float-right');
+            pictogramas.addClass('col-md-1 btn btn-secondary');
             $("div.toolbar").append(pictogramas);
             $("#pictogramas").text("{{ __('lang.pictograma') }}s");
 
@@ -253,16 +252,16 @@
 
             //criação e inserção da combobox movimentos dentro da div da datatable
             var movimentos = $("<select></select>").attr('id', 'movimento');
-            movimentos.addClass('tools col-2 custom-select  float-right');
+            movimentos.addClass('col-md-1 custom-select');
             $('div.toolbar').append(movimentos);
-            $('#movimento').append(new Option("{{ __('lang.entradas e saidas') }}",
+            $('#movimento').append(new Option("{{ __('lang.movimento') }}",
                 "Entradas e Saídas"));
             $('#movimento').append(new Option("{{ __('lang.entrada') }}", "Entrada"));
             $('#movimento').append(new Option("{{ __('lang.saida') }}", "Saída"));
 
             //criação e inserção da combobox sub-familia dentro da div da datatable
             var subfamilia = $("<select></select>").attr('id', 'sub-familia');
-            subfamilia.addClass('tools custom-select float-right');
+            subfamilia.addClass('col-md-1 custom-select ');
             $('div.toolbar').append(subfamilia);
             $('#sub-familia').append(new Option("{{ __('lang.sub-familia') }}",
                 "Sub-Familia"));
@@ -275,7 +274,7 @@
 
             //criação e inserção da combobox familia dentro da div da datatable
             var familia = $("<select></select>").attr('id', 'familia');
-            familia.addClass('tools custom-select  float-right');
+            familia.addClass('col-md-1 custom-select');
             $('div.toolbar').append(familia);
             $('#familia').append(new Option("{{ __('lang.familia') }}",
                 "Familia"));
@@ -288,6 +287,7 @@
             $(document).ready(function() {
                 var table = $('#historico').DataTable();
                 $('#sub-familia').hide(100);
+                $("#pictogramas").show(100);
                 $('#movimento').change(function() {
                     table.draw();
                 });
@@ -296,8 +296,10 @@
                     console.log("familia selecionada: " + familia);
                     if (familia == "Não") {
                         $('#sub-familia').show(100);
+                        $("#pictogramas").hide(100);
                     } else {
                         $('#sub-familia').hide(100);
+                        $("#pictogramas").show(100);
                     }
                     table.draw();
                 });

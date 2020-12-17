@@ -124,7 +124,6 @@
                     </div>
                     <!-- /.card -->
                 </div>
-                <div id="export-buttons"></div>
                 <!-- /.col -->
             </div>
             <!-- /.row -->
@@ -394,7 +393,7 @@
     <script src="../plugins/pdfmake/vfs_fonts.js"></script>
     <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>~
+    <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <script src="../dist/js/image-picker.min.js"></script>
 
     <script>
@@ -426,8 +425,7 @@
                     },
                     'colvis'
                 ],
-            }).buttons().container().appendTo('#export-buttons');
-            $('#export-buttons').appendTo('div.toolbar');
+            }).buttons().container().appendTo('div.toolbar');
 
             $.fn.dataTable.ext.search.push(
                 function(settings, searchData, index, rowData, counter) {
@@ -444,7 +442,7 @@
                 }
             );
             var selects = $("<select></select>").attr('id', 'tipo');
-            selects.addClass('tools custom-select float-right');
+            selects.addClass('custom-select col-md-1');
             $('div.toolbar').append(selects);
             $('#tipo').append(new Option("{{ __('lang.todos') }}", "Todos"));
             $('#tipo').append(new Option("{{ __('lang.quimicos') }}", "Sim"));

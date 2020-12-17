@@ -155,7 +155,6 @@
                     </div>
                     <!-- /.card -->
                 </div>
-                <div id="export-buttons"></div>
                 <!-- /.col -->
             </div>
             <!-- /.row -->
@@ -326,8 +325,6 @@
             </div>
             <!-- /.modal-dialog -->
         </div>
-
-
     </section>
     <!-- /.content -->
 
@@ -377,8 +374,7 @@
                     },
                     'colvis'
                 ],
-            }).buttons().container().appendTo('#export-buttons');
-            $('#export-buttons').appendTo('div.toolbar');
+            }).buttons().container().appendTo('div.toolbar');
 
             $.fn.dataTable.ext.search.push(
                 function(settings, searchData, index, rowData, counter) {

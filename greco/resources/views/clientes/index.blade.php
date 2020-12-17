@@ -110,7 +110,6 @@
                     </div>
                     <!-- /.card -->
                 </div>
-                <div id="export-buttons"></div>
                 <!-- /.col -->
             </div>
             <!-- /.row -->
@@ -175,8 +174,7 @@
                     },
                     'colvis'
                 ],
-            }).buttons().container().appendTo('#export-buttons');
-            $('#export-buttons').appendTo('div.toolbar');
+            }).buttons().container().appendTo('div.toolbar');
 
             $(document).ready(function() {
                 var table = $('#tabela_clientes').DataTable();
