@@ -5,16 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>GRECO</title>
-    <link rel="shortcut icon" href="../../dist/img/UALogo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../dist/img/UALogo.png" type="image/x-icon">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
     <!-- CSS do Grupo -->
-    <link rel="stylesheet" href="../../dist/css/custom.css">
+    <link rel="stylesheet" href="../dist/css/custom.css">
 
     @yield('stylesheets')
 </head>
@@ -95,14 +95,14 @@
                     {{-- User Menu --}}
                     <li class="nav-item dropdown user-menu">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            <img src="../../dist/img/user2-160x160.jpg" class="user-image img-circle elevation-2"
+                            <img src="../dist/img/user2-160x160.jpg" class="user-image img-circle elevation-2"
                                 alt="User Image">
                             <span class="d-none d-md-inline">Fernando Silva</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                             <!-- User image -->
                             <li class="user-header bg-primary">
-                                <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                                <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
 
                                 <p>
                                     Fernando Silva
@@ -125,7 +125,7 @@
             <aside class="main-sidebar sidebar-dark-primary navbar-grad elevation-4">
                 <!-- Brand Logo -->
                 <a href="/" class="brand-link navbar-dark">
-                    <img src="../../dist/img/UALogo.png" alt="UA Logo" class="brand-image  elevation-3" style="opacity: .8">
+                    <img src="../dist/img/UALogo.png" alt="UA Logo" class="brand-image  elevation-3" style="opacity: .8">
                     <span class="brand-text font-weight-light">GRECO</span>
                 </a>
 
@@ -240,13 +240,13 @@
         <!-- ./wrapper -->
 
         <!-- jQuery -->
-        <script src="../../plugins/jquery/jquery.min.js"></script>
+        <script src="../plugins/jquery/jquery.min.js"></script>
         <!-- Bootstrap 4 -->
-        <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- AdminLTE App -->
-        <script src="../../dist/js/adminlte.min.js"></script>
+        <script src="../dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
-        <script src="../../dist/js/demo.js"></script>
+        <script src="../dist/js/demo.js"></script>
 
         @yield('scripts')
 

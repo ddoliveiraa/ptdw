@@ -1,9 +1,6 @@
 @extends('layout')
 
 @section('stylesheets')
-    <style>
-
-    </style>
 
 @endsection
 
@@ -202,18 +199,18 @@
 @section('scripts')
 
     <!-- Select2 -->
-    <script src="../../plugins/select2/js/select2.full.min.js"></script>
+    <script src="../plugins/select2/js/select2.full.min.js"></script>
 
     <!-- InputMask -->
-    <script src="../../plugins/moment/moment.min.js"></script>
-    <script src="../../plugins/inputmask/jquery.inputmask.min.js"></script>
+    <script src="../plugins/moment/moment.min.js"></script>
+    <script src="../plugins/inputmask/jquery.inputmask.min.js"></script>
 
     <!-- Language DatePicker -->
-    <script src="../../plugins/moment/locale/pt.js"></script>
-    <script src="../../plugins/moment/locale/en-gb.js"></script>
+    <script src="../plugins/moment/locale/pt.js"></script>
+    <script src="../plugins/moment/locale/en-gb.js"></script>
 
     <!-- Tempusdominus Bootstrap 4 -->
-    <script src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <script>
         $(function() {

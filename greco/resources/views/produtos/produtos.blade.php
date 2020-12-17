@@ -2,13 +2,13 @@
 
 @section('stylesheets')
     <!-- DataTables -->
-    <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
     <!-- Para Image Picker -->
-    <link rel="stylesheet" href="../../dist/css/image-picker.css">
+    <link rel="stylesheet" href="../dist/css/image-picker.css">
 
     
 @endsection
@@ -336,10 +336,10 @@
                                             <label for="pictograma" class="control-label">{{ __('lang.pictograma') }}</label>
 
                                             <select class="image-picker" data-limit="3" multiple="multiple" name="pictograma" id="imagem_pictograma" required>
-                                                <option data-img-class="picto" data-img-src="../../dist/img/Pictogramas/Corrosive.png" value="1">Corrosive</option>
-                                                <option data-img-class="picto" data-img-src="../../dist/img/Pictogramas/Harmful.png" value="2">Harmful</option>
-                                                <option data-img-class="picto" data-img-src="../../dist/img/Pictogramas/Corrosive.png" value="3">Corrosive</option>
-                                                <option data-img-class="picto" data-img-src="../../dist/img/Pictogramas/Harmful.png" value="4">Harmful</option>
+                                                <option data-img-class="picto" data-img-src="../dist/img/Pictogramas/Corrosive.png" value="1">Corrosive</option>
+                                                <option data-img-class="picto" data-img-src="../dist/img/Pictogramas/Harmful.png" value="2">Harmful</option>
+                                                <option data-img-class="picto" data-img-src="../dist/img/Pictogramas/Corrosive.png" value="3">Corrosive</option>
+                                                <option data-img-class="picto" data-img-src="../dist/img/Pictogramas/Harmful.png" value="4">Harmful</option>
                                             </select>
 
                                         </div>
@@ -383,19 +383,19 @@
 
 @section('scripts')
 
-    <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="../../plugins/jszip/jszip.min.js"></script>
-    <script src="../../plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="../../plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>~
-    <script src="../../dist/js/image-picker.min.js"></script>
+    <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="../plugins/jszip/jszip.min.js"></script>
+    <script src="../plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="../plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>~
+    <script src="../dist/js/image-picker.min.js"></script>
 
     <script>
 

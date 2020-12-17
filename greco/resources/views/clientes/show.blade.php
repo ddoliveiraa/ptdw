@@ -3,8 +3,8 @@
 @section('stylesheets')
 
     <!-- Select2 -->
-    <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
-    <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
 @endsection
 
@@ -144,7 +144,7 @@
 @section('scripts')
 
     <!-- Select2 -->
-    <script src="../../plugins/select2/js/select2.full.min.js"></script>
+    <script src="../plugins/select2/js/select2.full.min.js"></script>
 
     <script>
         $(function() {
