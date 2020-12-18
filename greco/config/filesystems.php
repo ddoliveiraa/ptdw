@@ -50,7 +50,7 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/ptdw-2020-gr3/public'),
+            'root' => storage_path('/ptdw-2020-gr3/app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
