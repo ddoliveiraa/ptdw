@@ -10,11 +10,11 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="/~ptdw-2020-gr3/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css">
     <!-- CSS do Grupo -->
-    <link rel="stylesheet" href="../dist/css/custom.css">
+    <link rel="stylesheet" href="/dist/css/custom.css">
 
     @yield('stylesheets')
 </head>
@@ -95,14 +95,14 @@
                     {{-- User Menu --}}
                     <li class="nav-item dropdown user-menu">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            <img src="../dist/img/user2-160x160.jpg" class="user-image img-circle elevation-2"
+                            <img src="/dist/img/user2-160x160.jpg" class="user-image img-circle elevation-2"
                                 alt="User Image">
                             <span class="d-none d-md-inline">Fernando Silva</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                             <!-- User image -->
                             <li class="user-header bg-primary">
-                                <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                                <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
 
                                 <p>
                                     Fernando Silva
@@ -240,13 +240,13 @@
         <!-- ./wrapper -->
 
         <!-- jQuery -->
-        <script src="../plugins/jquery/jquery.min.js"></script>
+        <script src="/plugins/jquery/jquery.min.js"></script>
         <!-- Bootstrap 4 -->
-        <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- AdminLTE App -->
-        <script src="../dist/js/adminlte.min.js"></script>
+        <script src="/dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
-        <script src="../dist/js/demo.js"></script>
+        <script src="/dist/js/demo.js"></script>
 
         @yield('scripts')
 
