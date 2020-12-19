@@ -155,21 +155,21 @@
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="/movimentos/entrada"
+                                        <a href="{{ public_path() }}/movimentos/entrada"
                                             class="nav-link {{ Request::is('movimentos/entrada') ? 'active' : '' }}">
                                             <i class="far fa-arrow-alt-circle-right nav-icon"></i>
                                             <p>{{ __('lang.registar entrada') }}</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="/movimentos/saida"
+                                        <a href="{{ public_path() }}/movimentos/saida"
                                             class="nav-link {{ Request::is('movimentos/saida') ? 'active' : '' }}">
                                             <i class="far fa-arrow-alt-circle-left nav-icon"></i>
                                             <p>{{ __('lang.registar saida') }}</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="/movimentos/historico"
+                                        <a href="{{ public_path() }}/movimentos/historico"
                                             class="nav-link {{ Request::is('movimentos/historico') ? 'active' : '' }}">
                                             <i class="far fa-clock nav-icon"></i>
                                             <p>{{ __('lang.historico') }}</p>
@@ -178,7 +178,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a href="/clientes" class="nav-link {{ Request::is('clientes') ? 'active' : '' }}">
+                                <a href="{{ public_path() }}/clientes" class="nav-link {{ Request::is('clientes') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-user"></i>
                                     <p>
                                         {{ __('lang.clientes') }}
@@ -186,7 +186,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/operadores" class="nav-link {{ Request::is('operadores/*') ? 'active' : '' }}">
+                                <a href="{{ public_path() }}/operadores" class="nav-link {{ Request::is('operadores/*') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-shield-alt"></i>
                                     <p>
                                         {{ __('lang.operadores') }}
@@ -194,7 +194,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/fornecedores" class="nav-link {{ Request::is('fornecedores') ? 'active' : '' }}">
+                                <a href="{{ public_path() }}/fornecedores" class="nav-link {{ Request::is('fornecedores') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-truck"></i>
                                     <p>
                                         {{ __('lang.fornecedores') }}
