@@ -252,7 +252,7 @@
 
             //criação e inserção da combobox movimentos dentro da div da datatable
             var movimentos = $("<select></select>").attr('id', 'movimento');
-            movimentos.addClass('col-md-1 custom-select');
+            movimentos.addClass('col-md-1 select2bs4');
             $('div.toolbar').append(movimentos);
             $('#movimento').append(new Option("{{ __('lang.movimento') }}",
                 "Entradas e Saídas"));
