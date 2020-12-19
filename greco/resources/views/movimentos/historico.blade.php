@@ -56,7 +56,7 @@
                                     <th>{{ __('lang.fornecedor') }}</th>
                                     <th>{{ __('lang.data de entrada') }}</th>
                                     <th>{{ __('lang.data de validade') }}</th>
-                                    <th>{{ __('lang.data de saida') }}</th>
+                                    <th>{{ __('lang.data de termino') }}</th>
                                     <th>{{ __('lang.operador') }}</th>
                                     <th>{{ __('lang.familia') }}</th>
                                     <th>{{ __('lang.sub-familia') }}</th>
@@ -66,7 +66,7 @@
                             <tbody>
                                 <tr>
                                     <td>Cloreto de Hidrogénio</td>
-                                    <td>Saida</td>
+                                    <td>Saída</td>
                                     <td>23</td>
                                     <td>A2-P1</td>
                                     <td>25ml</td>
