@@ -281,7 +281,7 @@
                 $('#familia').change(function() {
                     var familia = $('#familia option:selected').val();
                     console.log("familia selecionada: " + familia);
-                    if (familia == "Não") {
+                    if (familia == "Não Químico") {
                         $('#sub-familia').show(100);
                         $("#pictogramas").hide(100);
                     } else {
