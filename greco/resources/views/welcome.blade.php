@@ -7,7 +7,7 @@
         <div class="row mb-2">
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-left">
-                    <li class="breadcrumb-item active"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active"><a href="{{ public_path() }}">Home</a></li>
                 </ol>
             </div>
         </div>

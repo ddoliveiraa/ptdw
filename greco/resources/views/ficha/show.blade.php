@@ -2,9 +2,9 @@
 
 @section('stylesheets')
     <!-- DataTables -->
-  <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 @endsection
 
 @section('content')
@@ -14,8 +14,8 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">{{ __('lang.resultados') }}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ public_path() }}">Home</a></li>
+                        {{-- <li class="breadcrumb-item"><a href="#">{{ __('lang.resultados') }}</a></li> --}}
                         <li class="breadcrumb-item active">HCL</li>
                     </ol>
                 </div>
@@ -80,8 +80,8 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="pictogramas">
-                                            <img src="../dist/img/Pictogramas/Harmful.png" alt="Harmful">
-                                            <img src="../dist/img/Pictogramas/Corrosive.png" alt="Corrosive">
+                                            <img src="{{ public_path() }}/dist/img/Pictogramas/Harmful.png" alt="Harmful">
+                                            <img src="{{ public_path() }}/dist/img/Pictogramas/Corrosive.png" alt="Corrosive">
                                         </div>
                                         <div class="stock-box">
                                             <h5 class="bg-dark">{{ __('lang.n de inventario') }}</h5>
@@ -96,7 +96,7 @@
                                             <h4>3</h4>
                                         </div>
                                         <div class="stock-button">
-                                            <a href="/ficha/editar" class="btn btn-secondary btn-block" role="button">{{ __('lang.editar') }}</a>
+                                            <a href="{{ public_path() }}/ficha/editar" class="btn btn-secondary btn-block" role="button">{{ __('lang.editar') }}</a>
                                             <button type="submit" class="btn btn-block btn-danger">{{ __('lang.desativar') }}</button>
                                         </div>
                                     </div>
@@ -309,18 +309,18 @@
 @endsection
 
 @section('scripts')
-    <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="../plugins/jszip/jszip.min.js"></script>
-    <script src="../plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="../plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="{{ public_path() }}/plugins/jszip/jszip.min.js"></script>
+    <script src="{{ public_path() }}/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="{{ public_path() }}/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <!-- Page specific script -->
     <script>
         $(function() {

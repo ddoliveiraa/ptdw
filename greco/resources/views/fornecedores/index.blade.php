@@ -2,11 +2,11 @@
 
 @section('stylesheets')
     <!-- DataTables -->
-    <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/dist/css/adminlte.min.css">
     
     
 @endsection
@@ -19,7 +19,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ public_path() }}">Home</a></li>
                         <li class="breadcrumb-item active">{{ __('lang.fornecedores') }}</li>
                     </ol>
                 </div>
@@ -333,18 +333,18 @@
 
 @section('scripts')
 
-    <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="../plugins/jszip/jszip.min.js"></script>
-    <script src="../plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="../plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="{{ public_path() }}/plugins/jszip/jszip.min.js"></script>
+    <script src="{{ public_path() }}/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="{{ public_path() }}/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
     <script>
 

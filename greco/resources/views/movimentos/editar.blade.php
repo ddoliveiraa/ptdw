@@ -3,14 +3,14 @@
 @section('stylesheets')
 
     <!-- Select2 -->
-    <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
-    <link rel="stylesheet" href="../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
     <!-- daterange picker -->
-    <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="{{ public_path() }}/plugins/daterangepicker/daterangepicker.css">
 
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
 
 @endsection
 
@@ -22,7 +22,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
-                        <li class="breadcrumb-item"><a href="/welcome">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ public_path() }}">Home</a></li>
                         <li class="breadcrumb-item"><a href="">{{ __('lang.movimentos') }}</a></li>
                         <li class="breadcrumb-item active">{{ __('lang.editar') }} {{ __('lang.entrada') }}</li>
                     </ol>
@@ -296,11 +296,11 @@
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <a href="/movimentos/show" role="button"
+                                        <a href="{{ public_path() }}/movimentos/show" role="button"
                                             class="btn btn-block btn-default">{{ __('lang.cancelar') }}</a>
                                     </div>
                                         <div class="ml-auto col-3">
-                                            <a href="/movimentos/show" role="button"
+                                            <a href="{{ public_path() }}/movimentos/show" role="button"
                                                 class="btn btn-block btn-secondary">{{ __('lang.guardar') }}</a>
                                         </div>
                                 </div>
@@ -318,18 +318,18 @@
 @section('scripts')
 
     <!-- Select2 -->
-    <script src="../plugins/select2/js/select2.full.min.js"></script>
+    <script src="{{ public_path() }}/plugins/select2/js/select2.full.min.js"></script>
 
     <!-- InputMask -->
-    <script src="../plugins/moment/moment.min.js"></script>
-    <script src="../plugins/inputmask/jquery.inputmask.min.js"></script>
+    <script src="{{ public_path() }}/plugins/moment/moment.min.js"></script>
+    <script src="{{ public_path() }}/plugins/inputmask/jquery.inputmask.min.js"></script>
 
     <!-- Language DatePicker -->
-    <script src="../plugins/moment/locale/pt.js"></script>
-    <script src="../plugins/moment/locale/en-gb.js"></script>
+    <script src="{{ public_path() }}/plugins/moment/locale/pt.js"></script>
+    <script src="{{ public_path() }}/plugins/moment/locale/en-gb.js"></script>
 
     <!-- Tempusdominus Bootstrap 4 -->
-    <script src="../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="{{ public_path() }}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <script>
         $(function() {

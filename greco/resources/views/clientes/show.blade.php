@@ -3,8 +3,8 @@
 @section('stylesheets')
 
     <!-- Select2 -->
-    <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
-    <link rel="stylesheet" href="../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
 @endsection
 
@@ -16,8 +16,8 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
-                        <li class="breadcrumb-item"><a href="/welcome">Home</a></li>
-                        <li class="breadcrumb-item"><a href="/clientes">{{ __('lang.clientes') }}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ public_path() }}/welcome">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ public_path() }}/clientes">{{ __('lang.clientes') }}</a></li>
                         <li class="breadcrumb-item active">Departamento de Biologia</li>
                     </ol>
                 </div>
@@ -122,11 +122,11 @@
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <a href="/clientes"
+                                        <a href="{{ public_path() }}/clientes"
                                             role="button" class="btn btn-block btn-default">{{ __('lang.voltar') }}</a>
                                     </div>
                                     <div class="ml-auto col-3">
-                                        <a href="/clientes/editar" role="button"
+                                        <a href="{{ public_path() }}/clientes/editar" role="button"
                                             class="btn btn-block btn-secondary">{{ __('lang.editar') }}</a>
                                     </div>
                                 </div>
@@ -144,7 +144,7 @@
 @section('scripts')
 
     <!-- Select2 -->
-    <script src="../plugins/select2/js/select2.full.min.js"></script>
+    <script src="{{ public_path() }}/plugins/select2/js/select2.full.min.js"></script>
 
     <script>
         $(function() {

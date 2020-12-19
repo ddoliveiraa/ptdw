@@ -2,13 +2,13 @@
 
 @section('stylesheets')
     <!-- DataTables -->
-    <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/dist/css/adminlte.min.css">
     <!-- Para Image Picker -->
-    <link rel="stylesheet" href="../dist/css/image-picker.css">
+    <link rel="stylesheet" href="{{ public_path() }}/dist/css/image-picker.css">
 
     
 @endsection
@@ -21,7 +21,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ public_path() }}">Home</a></li>
                         <li class="breadcrumb-item active">{{ __('lang.produtos') }}</li>
                     </ol>
                 </div>
@@ -75,7 +75,7 @@
                                         <td>Gramas</td>
                                         <td>120</td>
                                         <td>40</td>
-                                        <td><a href="/ficha"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                        <td><a href="{{ public_path() }}/ficha"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Cloreto de hidrogénio</td>
@@ -85,7 +85,7 @@
                                         <td>Gramas</td>
                                         <td>120</td>
                                         <td>40</td>
-                                        <td><a href="/ficha"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                        <td><a href="{{ public_path() }}/ficha"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Cloreto de hidrogénio</td>
@@ -95,7 +95,7 @@
                                         <td>Gramas</td>
                                         <td>120</td>
                                         <td>40</td>
-                                        <td><a href="/ficha"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                        <td><a href="{{ public_path() }}/ficha"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Cloreto de Potássio</td>
@@ -105,7 +105,7 @@
                                         <td>Gramas</td>
                                         <td>220</td>
                                         <td>40</td>
-                                        <td><a href="/ficha"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                        <td><a href="{{ public_path() }}/ficha"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Cloreto de Potássio</td>
@@ -115,7 +115,7 @@
                                         <td>Gramas</td>
                                         <td>220</td>
                                         <td>40</td>
-                                        <td><a href="/ficha"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                        <td><a href="{{ public_path() }}/ficha"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -335,10 +335,10 @@
                                             <label for="pictograma" class="control-label">{{ __('lang.pictograma') }}</label>
 
                                             <select class="image-picker" data-limit="3" multiple="multiple" name="pictograma" id="imagem_pictograma" required>
-                                                <option data-img-class="picto" data-img-src="../dist/img/Pictogramas/Corrosive.png" value="1">Corrosive</option>
-                                                <option data-img-class="picto" data-img-src="../dist/img/Pictogramas/Harmful.png" value="2">Harmful</option>
-                                                <option data-img-class="picto" data-img-src="../dist/img/Pictogramas/Corrosive.png" value="3">Corrosive</option>
-                                                <option data-img-class="picto" data-img-src="../dist/img/Pictogramas/Harmful.png" value="4">Harmful</option>
+                                                <option data-img-class="picto" data-img-src="{{ public_path() }}/dist/img/Pictogramas/Corrosive.png" value="1">Corrosive</option>
+                                                <option data-img-class="picto" data-img-src="{{ public_path() }}/dist/img/Pictogramas/Harmful.png" value="2">Harmful</option>
+                                                <option data-img-class="picto" data-img-src="{{ public_path() }}/dist/img/Pictogramas/Corrosive.png" value="3">Corrosive</option>
+                                                <option data-img-class="picto" data-img-src="{{ public_path() }}/dist/img/Pictogramas/Harmful.png" value="4">Harmful</option>
                                             </select>
 
                                         </div>
@@ -382,19 +382,19 @@
 
 @section('scripts')
 
-    <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="../plugins/jszip/jszip.min.js"></script>
-    <script src="../plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="../plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-    <script src="../dist/js/image-picker.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="{{ public_path() }}/plugins/jszip/jszip.min.js"></script>
+    <script src="{{ public_path() }}/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="{{ public_path() }}/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src="{{ public_path() }}/dist/js/image-picker.min.js"></script>
 
     <script>
 

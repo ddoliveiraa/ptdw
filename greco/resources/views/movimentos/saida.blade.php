@@ -3,8 +3,8 @@
 @section('stylesheets')
 
     <!-- Select2 -->
-    <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
-    <link rel="stylesheet" href="../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
 @endsection
 
@@ -16,7 +16,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
-                        <li class="breadcrumb-item"><a href="/welcome">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ public_path() }}">Home</a></li>
                         <li class="breadcrumb-item"><a href="">{{ __('lang.movimentos') }}</a></li>
                         <li class="breadcrumb-item active">{{ __('lang.registar saida') }}</li>
                     </ol>
@@ -135,7 +135,7 @@
 @section('scripts')
 
     <!-- Select2 -->
-    <script src="../plugins/select2/js/select2.full.min.js"></script>
+    <script src="{{ public_path() }}/plugins/select2/js/select2.full.min.js"></script>
 
     <script>
         $(function() {
