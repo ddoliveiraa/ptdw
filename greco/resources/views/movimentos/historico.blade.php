@@ -273,6 +273,7 @@
                         $("#pictogramas").hide(100);
                     } else {
                         $('#sub-familia').hide(100);
+                        $('#sub-familia').val('Sub-Familia');
                         $("#pictogramas").show(100);
                     }
                     table.draw();
