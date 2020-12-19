@@ -138,7 +138,7 @@
                             <!-- Add icons to the links using the .nav-icon class
                    with font-awesome or any other icon font library -->
                             <li class="nav-item">
-                                <a href="/produtos" class="nav-link {{ Request::is('produtos') ? 'active' : '' }}">
+                                <a href="{{ public_path() }}/produtos" class="nav-link {{ Request::is('produtos') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-flask"></i>
                                     <p>
                                         {{ __('lang.produtos') }}
