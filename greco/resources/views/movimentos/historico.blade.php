@@ -76,7 +76,7 @@
                                     <td>07-12-2011</td>
                                     <td>07-3-2012</td>
                                     <td>Fiel</td>
-                                    <td>Químico</td>
+                                    <td>Sim</td>
                                     <td>--</td>
                                     <td><a href="{{ public_path() }}/movimentos/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                 </tr>
@@ -92,7 +92,7 @@
                                     <td>--</td>
                                     <td>--</td>
                                     <td>Fiel</td>
-                                    <td>Não Químico</td>
+                                    <td>Não</td>
                                     <td>Plástico</td>
                                     <td><a href="{{ public_path() }}/movimentos/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                 </tr>
@@ -252,8 +252,8 @@
             $('div.toolbar').append(familia);
             $('#familia').append(new Option("{{ __('lang.familia') }}",
                 "Familia"));
-            $('#familia').append(new Option("{{ __('lang.quimicos') }}", "Químico"));
-            $('#familia').append(new Option("{{ __('lang.nao quimicos') }}", "Não Químico"));
+            $('#familia').append(new Option("{{ __('lang.quimicos') }}", "Sim"));
+            $('#familia').append(new Option("{{ __('lang.nao quimicos') }}", "Não"));
 
             //criação e inserção do botão pictogramas dentro da div da datatables
             var filter = $("<button></button>").attr('id', 'filter');
@@ -281,7 +281,7 @@
                 $('#familia').change(function() {
                     var familia = $('#familia option:selected').val();
                     console.log("familia selecionada: " + familia);
-                    if (familia == "Não Químico") {
+                    if (familia == "Não") {
                         $('#sub-familia').show(100);
                         $("#pictogramas").hide(100);
                     } else {
