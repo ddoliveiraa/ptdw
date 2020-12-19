@@ -28,7 +28,7 @@
                 <form action="ficha">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <select class="search-fliter custom-select" name="" id="">
+                            <select class="search-fliter form-control select" name="" id="">
                                 <option value="todos">{{ __('lang.todos') }}</option>
                                 <option value="quimica">{{ __('lang.quimicos') }}</option>
                                 <option value="naoquimico">{{ __('lang.nao quimicos') }}</option>
