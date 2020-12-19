@@ -158,6 +158,7 @@ return [
     'operacao' => 'Operation',
     'data-operacao' => 'Operations Date',
     'lista' => 'Operators List',
+    'novo' => 'New',
 
     /*Armazém*/
     'produtos-quimicos' => 'Chemical Products',

@@ -157,6 +157,7 @@ return [
     'operacao' => 'Operação',
     'data-operacao' => 'Data da Operação',
     'lista' => 'Lista Operadores',
+    'novo' => 'Novo',
 
     /*Armazém*/
     'produtos-quimicos' => 'Produtos Químicos',
