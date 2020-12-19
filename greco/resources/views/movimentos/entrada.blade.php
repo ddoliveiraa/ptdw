@@ -49,11 +49,11 @@
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="quimico-tab" data-toggle="tab" href="#quimico" role="tab"
-                                aria-controls="quimico" aria-selected="true">{{ __('lang.produtos-quimicos') }}</a>
+                                aria-controls="quimico" aria-selected="true">{{ __('lang.quimicos') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="n_quimico-tab" data-toggle="tab" href="#n_quimico" role="tab"
-                                aria-controls="n_quimico" aria-selected="false"> {{ __('lang.produtos-n-quimicos') }}</a>
+                                aria-controls="n_quimico" aria-selected="false"> {{ __('lang.nao quimicos') }}</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
