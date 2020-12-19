@@ -105,11 +105,11 @@
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <a href="/operadores" role="button"
+                                        <a href="{{ public_path() }}/operadores" role="button"
                                             class="btn btn-block btn-default">{{ __('lang.cancelar') }}</a>
                                     </div>
                                     <div class="ml-auto col-3">
-                                        <a href="/operadores" role="button"
+                                        <a href="{{ public_path() }}/operadores" role="button"
                                             class="btn btn-block btn-secondary">{{ __('lang.guardar') }}</a>
                                     </div>
                                 </div>
