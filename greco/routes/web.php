@@ -90,6 +90,14 @@ Route::get('/operadores/add', function () {
     return view('operadores.add');
 });
 
+Route::get('/operadores/show', function () {
+    return view('operadores.show');
+});
+
+Route::get('/operadores/editar', function () {
+    return view('operadores.editar');
+});
+
 //Forncedores
 Route::get('/fornecedores', function () {
     return view('fornecedores.index');
