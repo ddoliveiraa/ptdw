@@ -25,7 +25,7 @@ Route::get('/welcome', function () {
 });
 
 
-Route::get('/welcome/{locale}', 'App\Http\Controllers\LocalizationController@index');
+Route::get('{{ public_path() }}/welcome/{locale}', 'App\Http\Controllers\LocalizationController@index');
 
 //Produtos
 Route::get('/produtos', function () {
