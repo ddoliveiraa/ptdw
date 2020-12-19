@@ -18,7 +18,7 @@
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="/welcome">Home</a></li>
                         <li class="breadcrumb-item"><a href="/clientes">{{ __('lang.clientes') }}</a></li>
-                        <li class="breadcrumb-item active">Novo Cliente</li>
+                        <li class="breadcrumb-item active">{{ __('lang.novo') }} {{ __('lang.cliente') }}</li>
                     </ol>
                 </div>
             </div>
@@ -27,7 +27,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h1 class="text-left display-4">Novo Cliente</h1>
+                    <h1 class="text-left display-4">{{ __('lang.novo') }} {{ __('lang.cliente') }}</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -62,7 +62,7 @@
                                                 style="width: 100%;">
                                                 <option selected value="" disabled>{{ __('lang.selecione o') }}
                                                     {{ __('lang.responsavel') }}
-                                                    < </option>
+                                                     </option>
                                                 <option>carol@ua.pt</option>
                                                 <option>diogo@ua.pt</option>
                                                 <option>maria@ua.pt</option>

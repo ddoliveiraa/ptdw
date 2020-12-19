@@ -112,8 +112,7 @@
                             <!-- Menu Body -->
                             <!-- Menu Footer-->
                             <li class="user-footer">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                <a href="#" class="btn btn-default btn-flat float-right">Log out</a>
+                                <a href="#" role="button" class="btn btn-block btn-default">Log out</a>
                             </li>
                         </ul>
                     </li>
@@ -202,14 +201,14 @@
                                     </p>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a href="/armazem" class="nav-link {{ Request::is('armazem') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-warehouse"></i>
                                     <p>
                                         {{ __('lang.armazem') }}
                                     </p>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </nav>
                     <!-- /.sidebar-menu -->
