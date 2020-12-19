@@ -121,7 +121,7 @@ div.dataTables_filter{
 }
 
 .custom-select{
-    background-image: url("dist/img/chevron-down.svg") !important;
+    background-image: url(".\img\chevron-down.svg") !important;
     
 }
 /*-----------------Clientes---------------*/
