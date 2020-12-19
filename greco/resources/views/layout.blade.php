@@ -5,16 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>GRECO</title>
-    <link rel="shortcut icon" href="../dist/img/UALogo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ public_path() }}/dist/img/UALogo.png" type="image/x-icon">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ public_path() }}/dist/css/adminlte.min.css">
     <!-- CSS do Grupo -->
-    <link rel="stylesheet" href="/dist/css/custom.css">
+    <link rel="stylesheet" href="{{ public_path() }}/dist/css/custom.css">
 
     @yield('stylesheets')
 </head>
@@ -239,13 +239,13 @@
         <!-- ./wrapper -->
 
         <!-- jQuery -->
-        <script src="/plugins/jquery/jquery.min.js"></script>
+        <script src="{{ public_path() }}/plugins/jquery/jquery.min.js"></script>
         <!-- Bootstrap 4 -->
-        <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="{{ public_path() }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- AdminLTE App -->
-        <script src="/dist/js/adminlte.min.js"></script>
+        <script src="{{ public_path() }}/dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
-        <script src="/dist/js/demo.js"></script>
+        <script src="{{ public_path() }}/dist/js/demo.js"></script>
 
         @yield('scripts')
 

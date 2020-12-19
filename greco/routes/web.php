@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 
 //Pesquisa
-Route::get('{{ public_path() }}', function () {
+Route::get('/', function () {
     return redirect('welcome');
 });
 
