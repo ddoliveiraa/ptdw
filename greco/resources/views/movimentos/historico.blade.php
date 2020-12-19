@@ -255,6 +255,12 @@
             $('#familia').append(new Option("{{ __('lang.quimicos') }}", "Sim"));
             $('#familia').append(new Option("{{ __('lang.nao quimicos') }}", "Não"));
 
+            //criação e inserção do botão pictogramas dentro da div da datatables
+            var filter = $("<button></button>").attr('id', 'filter');
+            filter.addClass('btn btn-danger');
+            $("div.toolbar").append(filter);
+            $("#filter").text("Reset");
+
 
 
 
@@ -262,9 +268,16 @@
                 var table = $('#historico').DataTable();
                 $('#sub-familia').hide(100);
                 $("#pictogramas").show(100);
+                $('#filter').click(function() {
+                    $('#familia').val('Familia');
+                    $('#sub-familia').val('Sub-Familia');
+                    $('#movimento').val('Entradas e Saídas');
+                    table.draw();
+                });
                 $('#movimento').change(function() {
                     table.draw();
                 });
+
                 $('#familia').change(function() {
                     var familia = $('#familia option:selected').val();
                     console.log("familia selecionada: " + familia);
