@@ -53,7 +53,3 @@ $response = tap($kernel->handle(
 ))->send();
 
 $kernel->terminate($request, $response);
-
-$app->bind('path.public', function() {
-    return '~ptdw-2020-gr3';
-});
