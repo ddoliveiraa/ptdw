@@ -167,5 +167,8 @@ return [
     'localizacoes' => 'Locations',
 
     /*Date Pickers*/
-    'locale-date' => 'en-gb'
+    'locale-date' => 'en-gb',
+
+    /*Datatable lang */
+    'url-lang-dt' => ''
 ];

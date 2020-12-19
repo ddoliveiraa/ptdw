@@ -167,5 +167,9 @@ return [
     
 
     /*Date Pickers*/
-    'locale-date' => 'pt'
+    'locale-date' => 'pt',
+
+    /*Datatable lang */
+    'url-lang-dt' => "/plugins/datatable_portuguese.json"
+
 ];

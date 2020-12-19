@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="{{ public_path() }}/plugins/daterangepicker/daterangepicker.css">
 
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="{{ public_path() }}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet"
+        href="{{ public_path() }}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
 
 
 @endsection
@@ -167,6 +168,9 @@
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
+                "language": {
+                     "url": '{{ __('lang.url-lang-dt') }}',
+                },
                 "buttons": [{
                         extend: 'csvHtml5',
                         exportOptions: {
