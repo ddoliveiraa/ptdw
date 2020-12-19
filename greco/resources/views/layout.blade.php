@@ -102,7 +102,7 @@
                         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                             <!-- User image -->
                             <li class="user-header bg-primary">
-                                <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                                <img src="{{ public_path() }}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
 
                                 <p>
                                     Fernando Silva
@@ -124,7 +124,7 @@
             <aside class="main-sidebar sidebar-dark-primary navbar-grad elevation-4">
                 <!-- Brand Logo -->
                 <a href="/" class="brand-link navbar-dark">
-                    <img src="../dist/img/UALogo.png" alt="UA Logo" class="brand-image  elevation-3" style="opacity: .8">
+                    <img src="{{ public_path() }}/dist/img/UALogo.png" alt="UA Logo" class="brand-image  elevation-3" style="opacity: .8">
                     <span class="brand-text font-weight-light">GRECO</span>
                 </a>
 
