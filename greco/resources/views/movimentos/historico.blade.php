@@ -256,9 +256,9 @@
             $('#familia').append(new Option("{{ __('lang.nao quimicos') }}", "{{ __('lang.nao quimico') }}"));
 
             var reset = $("<button></button>").attr('id', 'reset');
-            reset.addClass('reset-filter btn-darnger');
+            reset.addClass('reset-filter bg-danger');
             $("div.toolbar").append(reset);
-            $("#reset").text(<i class="fa fa-times"></i>);
+            $("#reset").text('<i class="far fa-bell"></i>');
 
 
 
