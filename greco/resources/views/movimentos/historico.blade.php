@@ -255,12 +255,6 @@
             $('#familia').append(new Option("{{ __('lang.quimicos') }}", "{{ __('lang.quimico') }}"));
             $('#familia').append(new Option("{{ __('lang.nao quimicos') }}", "{{ __('lang.nao quimico') }}"));
 
-            //reset
-            var reset = $("<button></button>").attr('id', 'reset');
-            reset.addClass('btn btn-danger');
-            $("div.toolbar").append(reset);
-            $("#reset").text('Reset');
-
 
 
 
@@ -270,11 +264,6 @@
                 $("#pictogramas").show(100);
                 $('#movimento').change(function() {
                     table.draw();
-                });
-                $('#reset').click(function() {
-                    $('#familia').val('Familia');
-                    $('#sub-familia').val('Sub-Familia');
-                    $('#movimento').val('Entradas e Saídas');
                 });
                 $('#familia').change(function() {
                     var familia = $('#familia option:selected').val();
