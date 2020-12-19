@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind('path.public', function() {
              return '/~ptdw-2020-gr3';
-            // return '';
+            //return '';
           });
     }
 
