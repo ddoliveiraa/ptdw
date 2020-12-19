@@ -255,6 +255,11 @@
             $('#familia').append(new Option("{{ __('lang.quimicos') }}", "{{ __('lang.quimico') }}"));
             $('#familia').append(new Option("{{ __('lang.nao quimicos') }}", "{{ __('lang.nao quimico') }}"));
 
+            var reset = $("<button></button>").attr('id', 'reset');
+            reset.addClass('reset-filter bg-danger');
+            $("div.toolbar").append(reset);
+            $("#reset").text('x');
+
 
 
 
