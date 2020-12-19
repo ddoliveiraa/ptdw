@@ -1,4 +1,4 @@
-@extends('layout')
+{{-- @extends('layout')
 
 @section('stylesheets')
 
@@ -230,4 +230,4 @@
 
     </script>
 
-@endsection
+@endsection --}}
