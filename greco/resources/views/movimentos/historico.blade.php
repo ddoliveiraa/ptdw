@@ -76,7 +76,7 @@
                                     <td>07-12-2011</td>
                                     <td>07-3-2012</td>
                                     <td>Fiel</td>
-                                    <td>Sim</td>
+                                    <td>{{ __('lang.quimico') }}</td>
                                     <td>--</td>
                                     <td><a href="{{ public_path() }}/movimentos/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                 </tr>
@@ -92,7 +92,7 @@
                                     <td>--</td>
                                     <td>--</td>
                                     <td>Fiel</td>
-                                    <td>Não</td>
+                                    <td>{{ __('lang.nao quimico') }}</td>
                                     <td>Plástico</td>
                                     <td><a href="{{ public_path() }}/movimentos/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                 </tr>
@@ -252,8 +252,8 @@
             $('div.toolbar').append(familia);
             $('#familia').append(new Option("{{ __('lang.familia') }}",
                 "Familia"));
-            $('#familia').append(new Option("{{ __('lang.quimicos') }}", "Sim"));
-            $('#familia').append(new Option("{{ __('lang.nao quimicos') }}", "Não"));
+            $('#familia').append(new Option("{{ __('lang.quimicos') }}", "{{ __('lang.quimico') }}"));
+            $('#familia').append(new Option("{{ __('lang.nao quimicos') }}", "{{ __('lang.nao quimico') }}"));
 
 
 

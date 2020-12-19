@@ -56,7 +56,7 @@ return [
     'produto' => 'Product',
     'ficha do produto' => 'Product File',
     'quimico' => 'Chemical',
-    'nao quimico' => 'Not Chemical',
+    'nao quimico' => 'Non-Chemical',
     'formula' => 'Formula',
     'designacao' => 'Designation',
     'peso molecular' => 'Molecular Weight',
