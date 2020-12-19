@@ -16,19 +16,19 @@ use Illuminate\Support\Facades\Route;
 
 
 //Pesquisa
-Route::get('{{ public_path() }}/', function () {
+Route::get('/', function () {
     return redirect('welcome');
 });
 
-Route::get('{{ public_path() }}/welcome', function () {
-    return view('welcome');
+Route::get('/welcome', function () {
+    return view('{{ public_path() }}.welcome');
 });
 
 
-Route::get('{{ public_path() }}/welcome/{locale}', 'App\Http\Controllers\LocalizationController@index');
+Route::get('/welcome/{locale}', 'App\Http\Controllers\LocalizationController@index');
 
 //Produtos
-Route::get('{{ public_path() }}/produtos', function () {
+Route::get('/produtos', function () {
     return view('produtos.produtos');
 });
 
@@ -42,10 +42,10 @@ Route::get(/* '/ficha/{id}/editar' */'/ficha/editar', function () {
 });
 
 //Movimentos
-Route::get('{{ public_path() }}/movimentos/entrada', function () {
+Route::get('/movimentos/entrada', function () {
     return view('movimentos.entrada');
 });
-Route::get('{{ public_path() }}/movimentos/saida', function () {
+Route::get('/movimentos/saida', function () {
     return view('movimentos.saida');
 });
 Route::get('/movimentos/historico', function () {
