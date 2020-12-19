@@ -252,7 +252,7 @@
 
             //criação e inserção da combobox movimentos dentro da div da datatable
             var movimentos = $("<select></select>").attr('id', 'movimento');
-            movimentos.addClass('col-md-1 custom-select dropdown-menu');
+            movimentos.addClass('col-md-1 custom-select');
             $('div.toolbar').append(movimentos);
             $('#movimento').append(new Option("{{ __('lang.movimento') }}",
                 "Entradas e Saídas"));
@@ -261,7 +261,7 @@
 
             //criação e inserção da combobox sub-familia dentro da div da datatable
             var subfamilia = $("<select></select>").attr('id', 'sub-familia');
-            subfamilia.addClass('col-md-1 custom-select dropdown-menu');
+            subfamilia.addClass('col-md-1 custom-select ');
             $('div.toolbar').append(subfamilia);
             $('#sub-familia').append(new Option("{{ __('lang.sub-familia') }}",
                 "Sub-Familia"));
@@ -274,7 +274,7 @@
 
             //criação e inserção da combobox familia dentro da div da datatable
             var familia = $("<select></select>").attr('id', 'familia');
-            familia.addClass('col-md-1 custom-select dropdown-menu');
+            familia.addClass('col-md-1 custom-select');
             $('div.toolbar').append(familia);
             $('#familia').append(new Option("{{ __('lang.familia') }}",
                 "Familia"));
