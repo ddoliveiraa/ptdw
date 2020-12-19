@@ -25,6 +25,7 @@ return [
     'fiel de armazem' =>'Fiel de Armazém',
     'supervisor sectorial' => 'Supervisor Sectorial',
     'supervisor geral' => 'Supervisor Geral',
+    'sair' => 'Sair da Conta',
 
 
     /*Operações*/

@@ -112,7 +112,7 @@
                             <!-- Menu Body -->
                             <!-- Menu Footer-->
                             <li class="user-footer">
-                                <a href="#" role="button" class="btn btn-block btn-default">Log out</a>
+                                <a href="#" role="button" class="btn btn-block btn-default">{{ __('lang.sair') }}</a>
                             </li>
                         </ul>
                     </li>

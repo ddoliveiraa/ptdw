@@ -25,6 +25,7 @@ return [
     'fiel de armazem' => 'Warehouse Worker',
     'supervisor sectorial' => 'Section Supervisor',
     'supervisor geral' => 'General Supervisor',
+    'sair' => 'Log out',
 
     /*Operações*/
     'ver' => 'See',
