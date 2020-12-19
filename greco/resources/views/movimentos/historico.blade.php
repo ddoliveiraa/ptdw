@@ -274,7 +274,7 @@
                 $('#reset').click(function() {
                     $('#familia').val('Familia');
                     $('#sub-familia').val('Sub-Familia');
-                    $('#movimento').val("Entradas e Saídas');
+                    $('#movimento').val('Entradas e Saídas');
                 });
                 $('#familia').change(function() {
                     var familia = $('#familia option:selected').val();
