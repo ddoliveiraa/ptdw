@@ -121,7 +121,7 @@ div.dataTables_filter{
 }
 
 .custom-select{
-    background: #fff url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") no-repeat right 0.75rem center/8px 10px !important;
+    background: #fff url("data:image/svg+xml;utf8,<svg fill='black' height='30' viewBox='0 0 24 24' width='30' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") no-repeat right 0.75rem center/8px 10px !important;
     
 }
 /*-----------------Clientes---------------*/
