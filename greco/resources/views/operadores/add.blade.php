@@ -24,7 +24,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="{{ public_path() }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ public_path() }}/operadores">{{ __('lang.operador') }}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ public_path() }}/operadores">{{ __('lang.operadores') }}</a></li>
                         <li class="breadcrumb-item active">{{ __('lang.novo') }} {{ __('lang.operador') }}</li>
                     </ol>
                 </div>
