@@ -47,76 +47,54 @@
                         <table id="historico" class="table table-bordered table-striped">
                             <thead class="bg-dark">
                                 <tr>
-                                    <th>{{ __('lang.designacao') }}</th>
-                                    <th>{{ __('lang.fornecedor') }}</th>
-                                    <th>{{ __('lang.cliente') }}</th>
-                                    <th>{{ __('lang.n de ordem') }}</th>
-                                    <th>{{ __('lang.embalagem') }}</th>
-                                    <th>{{ __('lang.localização') }}</th>
-                                    <th>{{ __('lang.data registo') }}</th>
+                                    <th>{{ __('lang.produto') }}</th>
                                     <th>{{ __('lang.movimento') }}</th>
+                                    <th>{{ __('lang.n de ordem') }}</th>
+                                    <th>{{ __('lang.localização') }}</th>
+                                    <th>{{ __('lang.embalagem') }}</th>
+                                    <th>{{ __('lang.cliente') }}</th>
+                                    <th>{{ __('lang.fornecedor') }}</th>
+                                    <th>{{ __('lang.data de entrada') }}</th>
+                                    <th>{{ __('lang.data de validade') }}</th>
+                                    <th>{{ __('lang.data de saida') }}</th>
                                     <th>{{ __('lang.operador') }}</th>
-                                    <th>{{ __('lang.quimico') }}</th>
+                                    <th>{{ __('lang.familia') }}</th>
                                     <th>{{ __('lang.sub-familia') }}</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Epinephrine</td>
-                                    <td>Sisma</td>
-                                    <td>Cliente 1</td>
+                                    <td>Cloreto de Hidrogénio</td>
+                                    <td>Saida</td>
                                     <td>23</td>
-                                    <td>25ml</td>
                                     <td>A2-P1</td>
+                                    <td>25ml</td>
+                                    <td>Cliente 1</td>
+                                    <td>Sisma</td>
                                     <td>07-11-2011</td>
-                                    <td>Entrada</td>
-                                    <td>Fiel 1</td>
+                                    <td>07-12-2011</td>
+                                    <td>07-3-2012</td>
+                                    <td>Fiel</td>
                                     <td>Sim</td>
-                                    <td>Plástico</td>
+                                    <td>--</td>
                                     <td><a href="{{ public_path() }}/movimentos/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                 </tr>
                                 <tr>
-                                    <td>Propanol</td>
-                                    <td>Sisma</td>
-                                    <td>Cliente 2</td>
-                                    <td>24</td>
-                                    <td>50ml</td>
-                                    <td>A1-P2</td>
-                                    <td>07-11-2020</td>
-                                    <td>Saída</td>
-                                    <td>Fiel 3</td>
-                                    <td>Sim</td>
-                                    <td>Vidro</td>
-                                    <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>Ácido Maleico</td>
-                                    <td>Opera</td>
-                                    <td>Cliente 3</td>
-                                    <td>26</td>
-                                    <td>10ml</td>
-                                    <td>A1-P5</td>
-                                    <td>25-12-2017</td>
-                                    <td>Saída</td>
-                                    <td>Fiel 4</td>
-                                    <td>Não</td>
-                                    <td>Metal</td>
-                                    <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>Epinephrine</td>
-                                    <td>Sisma</td>
-                                    <td>Cliente 4</td>
-                                    <td>27</td>
-                                    <td>25ml</td>
+                                    <td>Luvas</td>
+                                    <td>Entrada</td>
+                                    <td>--</td>
                                     <td>A2-P1</td>
-                                    <td>07-11-2020</td>
-                                    <td>Saída</td>
-                                    <td>Fiel 5</td>
+                                    <td>200 unidades</td>
+                                    <td>Cliente 1</td>
+                                    <td>Sisma</td>
+                                    <td>07-11-2011</td>
+                                    <td>--</td>
+                                    <td>--</td>
+                                    <td>Fiel</td>
                                     <td>Não</td>
-                                    <td>Outros</td>
-                                    <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                    <td>Plástico</td>
+                                    <td><a href="{{ public_path() }}/movimentos/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -161,10 +139,6 @@
         $(function() {
 
             $("#historico").DataTable({
-                "columnDefs": [{
-                    "visible": false,
-                    "targets": [9, 10],
-                }],
                 "dom": '<"toolbar">frtip',
                 "info": true,
                 "responsive": true,
@@ -190,7 +164,7 @@
             $.fn.dataTable.ext.search.push(
                 function(settings, searchData, index, rowData, counter) {
                     var movimento = $('#movimento option:selected').val();
-                    var movimentos = searchData[7]; // using the data from the 7th column
+                    var movimentos = searchData[1]; // using the data from the 2nd column
 
                     if (movimento == movimentos) {
                         return movimentos;
@@ -205,7 +179,7 @@
             $.fn.dataTable.ext.search.push(
                 function(settings, searchData, index, rowData, counter) {
                     var familia = $('#familia option:selected').val();
-                    var familias = searchData[9]; // using the data from the 9th column
+                    var familias = searchData[11]; // using the data from the 12th column
 
                     if (familia == familias) {
                         return movimentos;
@@ -219,7 +193,7 @@
             $.fn.dataTable.ext.search.push(
                 function(settings, searchData, index, rowData, counter) {
                     var subfamilia = $('#sub-familia option:selected').val();
-                    var subfamilias = searchData[10]; // using the data from the 10th column
+                    var subfamilias = searchData[12]; // using the data from the 13th column
 
                     if (subfamilia == subfamilias) {
                         return movimentos;

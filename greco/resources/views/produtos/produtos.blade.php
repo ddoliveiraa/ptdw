@@ -442,7 +442,7 @@
                 }
             );
             var selects = $("<select></select>").attr('id', 'tipo');
-            selects.addClass('custom-select col-md-1');
+            selects.addClass('form-control select col-md-1');
             $('div.toolbar').append(selects);
             $('#tipo').append(new Option("{{ __('lang.todos') }}", "Todos"));
             $('#tipo').append(new Option("{{ __('lang.quimicos') }}", "Sim"));
