@@ -83,9 +83,9 @@
                                 <tr>
                                     <td>Luvas</td>
                                     <td>Entrada</td>
-                                    <td>--</td>
+                                    <td>34</td>
                                     <td>A2-P1</td>
-                                    <td>200 unidades</td>
+                                    <td>20 unidades</td>
                                     <td>Cliente 1</td>
                                     <td>Sisma</td>
                                     <td>07-11-2011</td>
