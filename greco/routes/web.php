@@ -16,12 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 
 //Pesquisa
-Route::get('/', function () {
-    return redirect('{{ public_path() }}.welcome');
+Route::get('{{ public_path() }}', function () {
+    return redirect('welcome');
 });
 
 Route::get('/welcome', function () {
-    return view('{{ public_path() }}.welcome');
+    return view('welcome');
 });
 
 
