@@ -81,7 +81,7 @@
                                         <td>Supervisor Setorial</td>
                                         <td>01/11/2018</td>
                                         <td>-</td>
-                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                        <td><a href="{{ public_path() }}/operadores/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Austin</td>
@@ -89,7 +89,7 @@
                                         <td>Fiel de Armazém</td>
                                         <td>02/12/2018</td>
                                         <td>-</td>
-                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                        <td><a href="{{ public_path() }}/operadores/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Bruno</td>
@@ -97,7 +97,7 @@
                                         <td>Fiel de Armazém</td>
                                         <td>21/11/2018</td>
                                         <td>-</td>
-                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                        <td><a href="{{ public_path() }}/operadores/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>João Feijão</td>
@@ -105,15 +105,15 @@
                                         <td>Supervisor Setorial</td>
                                         <td>01/11/2018</td>
                                         <td>02/12/2019</td>
-                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                        <td><a href="{{ public_path() }}/operadores/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Ana Silva</td>
                                         <td>ana@ua.pt</td>
                                         <td>Fiel de Armazém</td>
                                         <td>01/09/2018</td>
-                                        <td>03/05/2019</td>
-                                        <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                        <td>-</td>
+                                        <td><a href="{{ public_path() }}/operadores/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                 </tbody>
                             </table>

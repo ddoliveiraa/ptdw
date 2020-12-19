@@ -8,6 +8,7 @@
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet" href="{{ public_path() }}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
 
+
 @endsection
 
 @section('content')
@@ -18,9 +19,10 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
-                        <li class="breadcrumb-item"><a href="{{ public_path() }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ public_path() }}/operadores">{{ __('lang.operadores') }}</a></li>
-                        <li class="breadcrumb-item active">{{ __('lang.novo') }} {{ __('lang.operador') }}</li>
+                        <li class="breadcrumb-item"><a href="{{ public_path() }}/welcome">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ public_path() }}/operadores">{{ __('lang.operadores') }}</a>
+                        </li>
+                        <li class="breadcrumb-item active">Ana Silva</li>
                     </ol>
                 </div>
             </div>
@@ -29,7 +31,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h1 class="text-left display-4">{{ __('lang.novo') }} {{ __('lang.operador') }}</h1>
+                    <h1 class="text-left display-4">{{ __('lang.editar') }} Ana Silva</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -50,30 +52,31 @@
                                             <label for="nome_operador" class="control-label">{{ __('lang.nome') }}</label>
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="nome_operador"
-                                                    placeholder="{{ __('lang.insira o') }} {{ __('lang.nome') }}">
+                                                    value="Ana Silva">
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="email_operador" class="control-label">{{ __('lang.email') }}</label>
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="email_operador"
-                                                    placeholder="{{ __('lang.insira o') }} {{ __('lang.email') }}">
+                                                    value="ana@ua.pt">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                           
                                             <label for="perfil_operador">{{ __('lang.perfil') }}</label>
                                             <select class="form-control select" id="perfil_operador" style="width: 100%;">
-                                                <option value="" selected disabled>{{ __('lang.selecione o') }}
+                                                <option value="" disabled>{{ __('lang.selecione o') }}
                                                     {{ __('lang.perfil') }}
                                                 </option>
-                                                <option>Fiel de Armazém</option>
+                                                <option selected>Fiel de Armazém</option>
                                             </select>
                                         </div>
                                     </div>
@@ -82,7 +85,7 @@
                                             <label for="data_criacao">{{ __('lang.data-criacao') }}</label>
                                             <div class="input-group date" id="data_criacao" data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input"
-                                                    data-target="#data_criacao" placeholder="DD/MM/YYYY" />
+                                                    data-target="#data_criacao" value="01/09/2018" />
                                                 <div class="input-group-append" data-target="#data_criacao"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -91,6 +94,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="form-group">
                                     <label for="obvs">{{ __('lang.observacoes') }}</label>
                                     <textarea id="obvs" class="form-control" rows="4"></textarea>
@@ -100,11 +104,11 @@
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <a href="{{ public_path() }}/operadores" role="button"
+                                        <a href="{{ public_path() }}/operadores/show" role="button"
                                             class="btn btn-block btn-default">{{ __('lang.cancelar') }}</a>
                                     </div>
                                     <div class="ml-auto col-3">
-                                        <a href="{{ public_path() }}/operadores" role="button"
+                                        <a href="{{ public_path() }}/operadores/show" role="button"
                                             class="btn btn-block btn-secondary">{{ __('lang.guardar') }}</a>
                                     </div>
                                 </div>
@@ -142,5 +146,4 @@
             })
         })
     </script>
-
 @endsection
