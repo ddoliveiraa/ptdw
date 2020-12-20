@@ -170,6 +170,6 @@ return [
     'locale-date' => 'pt',
 
     /*Datatable lang */
-    'url-lang-dt' => "/plugins/datatable_portuguese.json"
+    'url-lang-dt' => "/~ptdw-2020-gr3/plugins/datatable_portuguese.json"
 
 ];
