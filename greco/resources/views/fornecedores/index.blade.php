@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ public_path() }}/dist/css/adminlte.min.css">
-    
-    
+
+
 @endsection
 
 @section('content')
@@ -147,7 +147,7 @@
                                         <td>531321321</td>
                                         <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -161,8 +161,8 @@
         </div>
         <!-- /.container-flu-id -->
 
-     <!-- Default Model Large -->
-     <div class="modal fade" id="modalAdicionarFornecedores">
+        <!-- Default Model Large -->
+        <div class="modal fade" id="modalAdicionarFornecedores">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -177,8 +177,10 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="fornecedor_designacao" class="control-label">{{ __('lang.nomefornecedor') }}</label>
-                                        <input type="text" class="form-control" id="fornecedor_designacao" tabindex="1" required>
+                                        <label for="fornecedor_designacao"
+                                            class="control-label">{{ __('lang.nomefornecedor') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_designacao" tabindex="1"
+                                            required>
                                     </div>
                                 </div>
                             </div>
@@ -193,7 +195,8 @@
                                 <div class="col-md-1">
                                     <div class="form-group">
                                         <label for="fornecedor_numero" class="control-label">{{ __('lang.numero') }}</label>
-                                        <input type="text" class="form-control" id="fornecedor_numero" tabindex="3" required>
+                                        <input type="text" class="form-control" id="fornecedor_numero" tabindex="3"
+                                            required>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -207,15 +210,18 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="fornecedor_localidade" class="control-label">{{ __('lang.localidade') }}</label>
+                                        <label for="fornecedor_localidade"
+                                            class="control-label">{{ __('lang.localidade') }}</label>
                                         <input type="text" class="form-control" id="fornecedor_localidade" tabindex="5"
                                             required>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="fornecedor_codigopostal" class="control-label">{{ __('lang.codigo postal') }}</label>
-                                        <input type="text" class="form-control" id="fornecedor_codigopostal" tabindex="6" required>
+                                        <label for="fornecedor_codigopostal"
+                                            class="control-label">{{ __('lang.codigo postal') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_codigopostal" tabindex="6"
+                                            required>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -229,14 +235,17 @@
                             <div class="form-row">
                                 <div class="col-md-7">
                                     <div class="form-group">
-                                        <label for="fornecedor_localidade" class="control-label">{{ __('lang.email') }}</label>
+                                        <label for="fornecedor_localidade"
+                                            class="control-label">{{ __('lang.email') }}</label>
                                         <input type="text" class="form-control" id="fornecedor_localidade" tabindex="8">
                                     </div>
                                 </div>
-                                 <div class="col-md-5">
+                                <div class="col-md-5">
                                     <div class="form-group">
-                                        <label for="fornecedor_telefone" class="control-label">{{ __('lang.telefone') }}</label>
-                                        <input type="text" class="form-control" id="fornecedor_telefone" tabindex="9" required>
+                                        <label for="fornecedor_telefone"
+                                            class="control-label">{{ __('lang.telefone') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_telefone" tabindex="9"
+                                            required>
                                     </div>
                                 </div>
                             </div>
@@ -244,13 +253,16 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="fornecedor_condicoesespeciais" class="control-label">{{ __('lang.condicoes especiais') }}</label>
-                                        <input type="text" class="form-control" id="fornecedor_condicoesespeciais" tabindex="10">
+                                        <label for="fornecedor_condicoesespeciais"
+                                            class="control-label">{{ __('lang.condicoes especiais') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_condicoesespeciais"
+                                            tabindex="10">
                                     </div>
                                 </div>
-                                 <div class="col-md-6">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="fornecedor_observacoes" class="control-label">{{ __('lang.observacoes') }}</label>
+                                        <label for="fornecedor_observacoes"
+                                            class="control-label">{{ __('lang.observacoes') }}</label>
                                         <input type="text" class="form-control" id="fornecedor_observacoes" tabindex="11">
                                     </div>
                                 </div>
@@ -260,28 +272,34 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <hr class="mt-3 mb-3"/>
-                                        <label for="fornecedor_vendedor1" class="control-label">{{ __('lang.vendedor1') }}</label>
+                                        <hr class="mt-3 mb-3" />
+                                        <label for="fornecedor_vendedor1"
+                                            class="control-label">{{ __('lang.vendedor1') }}</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="fornecedor_nomevendedor1" class="control-label">{{ __('lang.nomefornecedor') }}</label>
+                                        <label for="fornecedor_nomevendedor1"
+                                            class="control-label">{{ __('lang.nomefornecedor') }}</label>
                                         <input type="text" class="form-control" id="fornecedor_nomevendedor1" tabindex="12">
                                     </div>
                                 </div>
                                 <div class="col-md-5">
                                     <div class="form-group">
-                                        <label for="fornecedor_emailvendedor1" class="control-label">{{ __('lang.email') }}</label>
-                                        <input type="text" class="form-control" id="fornecedor_emailvendedor1" tabindex="13">
+                                        <label for="fornecedor_emailvendedor1"
+                                            class="control-label">{{ __('lang.email') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_emailvendedor1"
+                                            tabindex="13">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="fornecedor_telemovelvendedor1" class="control-label">{{ __('lang.telemovel') }}</label>
-                                        <input type="text" class="form-control" id="fornecedor_telemovelvendedor1" tabindex="14">
+                                        <label for="fornecedor_telemovelvendedor1"
+                                            class="control-label">{{ __('lang.telemovel') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_telemovelvendedor1"
+                                            tabindex="14">
                                     </div>
                                 </div>
                             </div>
@@ -289,36 +307,44 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <hr class="mt-3 mb-3"/>
-                                        <label for="fornecedor_vendedor2" class="control-label">{{ __('lang.vendedor2') }}</label>
+                                        <hr class="mt-3 mb-3" />
+                                        <label for="fornecedor_vendedor2"
+                                            class="control-label">{{ __('lang.vendedor2') }}</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="fornecedor_nomevendedor2" class="control-label">{{ __('lang.nomefornecedor') }}</label>
+                                        <label for="fornecedor_nomevendedor2"
+                                            class="control-label">{{ __('lang.nomefornecedor') }}</label>
                                         <input type="text" class="form-control" id="fornecedor_nomevendedor2" tabindex="15">
                                     </div>
                                 </div>
                                 <div class="col-md-5">
                                     <div class="form-group">
-                                        <label for="fornecedor_emailvendedor2" class="control-label">{{ __('lang.email') }}</label>
-                                        <input type="text" class="form-control" id="fornecedor_emailvendedor2" tabindex="16">
+                                        <label for="fornecedor_emailvendedor2"
+                                            class="control-label">{{ __('lang.email') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_emailvendedor2"
+                                            tabindex="16">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="fornecedor_telemovelvendedor2" class="control-label">{{ __('lang.telemovel') }}</label>
-                                        <input type="text" class="form-control" id="fornecedor_telemovelvendedor2" tabindex="17">
+                                        <label for="fornecedor_telemovelvendedor2"
+                                            class="control-label">{{ __('lang.telemovel') }}</label>
+                                        <input type="text" class="form-control" id="fornecedor_telemovelvendedor2"
+                                            tabindex="17">
                                     </div>
                                 </div>
                             </div>
 
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default col-md-3" data-dismiss="modal" tabindex="18">{{ __('lang.cancelar') }}</button>
-                            <button type="button" class="btn btn-primary col-md-3" tabindex="19" >{{ __('lang.adicionar') }}</button>
+                            <button type="button" class="btn btn-default col-md-3" data-dismiss="modal"
+                                tabindex="18">{{ __('lang.cancelar') }}</button>
+                            <button type="button" class="btn btn-primary col-md-3"
+                                tabindex="19">{{ __('lang.adicionar') }}</button>
                         </div>
                 </div>
                 <!-- /.modal-content -->
@@ -347,20 +373,21 @@
     <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
     <script>
-
         $('#modalAdicionarFornecedores').on('shown.bs.modal', function() {
-                    $('#fornecedor_designacao').focus();
-                });
+            $('#fornecedor_designacao').focus();
+        });
 
         $(function() {
-            $("#tabelafornecedores").DataTable({
+            var table = $("#tabelafornecedores").DataTable({
                 "dom": '<"toolbar">frtip',
                 "info": true,
+                "language": {
+                    "url": "{{ __('lang.url-lang-dt') }}",
+                },
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "buttons": [
-                    {
+                "buttons": [{
                         extend: 'csvHtml5',
                         exportOptions: {
                             columns: ':visible:not(:last-child)'
@@ -374,31 +401,10 @@
                     },
                     'colvis'
                 ],
-            }).buttons().container().appendTo('div.toolbar');
-
-            $.fn.dataTable.ext.search.push(
-                function(settings, searchData, index, rowData, counter) {
-                    var tipo = $('#tipo option:selected').val();
-                    var tipos = searchData[3]; // using the data from the 4th column
-                    console.log(tipo.localeCompare(tipos))
-
-                    if (tipo == tipos) {
-                        return tipos;
-                    } else if (tipo == "Todos") {
-                        return true;
-                    }
-                    return false;
+                "initComplete": function() {
+                    table.buttons().container().appendTo('div.toolbar');
                 }
-            );
-
-            $(document).ready(function() {
-                var table = $('#tabelafornecedores').DataTable();
-                // Event listener to the two range filtering inputs to redraw on input
-                $('#tipo').change(function() {
-                    table.draw();
-                });
             });
         });
-
     </script>
 @endsection

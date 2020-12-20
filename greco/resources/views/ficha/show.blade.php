@@ -108,7 +108,7 @@
                         
                         <div class="card-body">
                             <h3>Embalagens</h3>
-                            <table id="example1" class="table table-bordered table-striped">
+                            <table id="existencias" class="table table-bordered table-striped">
                                 <thead class="bg-dark">
                                     <tr>
                                         <th>{{ __('lang.capacidade') }}</th>
@@ -293,7 +293,7 @@
                                         <p>P280 - Usar luvas e oculos de proteção</p>
                                         <p>P303+361+353 - Se entrar em contacto com a pele, remova roupa contaminada e lave
                                             a
-                                            pele.s
+                                            pele.
                                         </p>
                                         <p>P305+351+338 - Se entrar nos olhos, lave os olhos e remove os lentes de contacto
                                         </p>
@@ -324,7 +324,7 @@
     <!-- Page specific script -->
     <script>
         $(function() {
-            $('#example1').DataTable({
+            $('#existencias').DataTable({
                 "paging": true,
                 "lengthChange": false,
                 "searching": false,
@@ -332,6 +332,9 @@
                 "info": true,
                 "autoWidth": false,
                 "responsive": true,
+                "language": {
+                    "url": "{{ __('lang.url-lang-dt') }}",
+                },
             });
         });
 

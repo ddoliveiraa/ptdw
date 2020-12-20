@@ -78,7 +78,8 @@
                                     <td>Fiel</td>
                                     <td>Sim</td>
                                     <td>--</td>
-                                    <td><a href="{{ public_path() }}/movimentos/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                    <td><a href="{{ public_path() }}/movimentos/show"> Ver Mais &nbsp<i
+                                                class="fa fa-arrow-right"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td>Luvas</td>
@@ -94,7 +95,8 @@
                                     <td>Fiel</td>
                                     <td>Não</td>
                                     <td>Plástico</td>
-                                    <td><a href="{{ public_path() }}/movimentos/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                    <td><a href="{{ public_path() }}/movimentos/show"> Ver Mais &nbsp<i
+                                                class="fa fa-arrow-right"></i></a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -138,9 +140,12 @@
     <script>
         $(function() {
 
-            $("#historico").DataTable({
+            var table = $("#historico").DataTable({
                 "dom": '<"toolbar">frtip',
                 "info": true,
+                "language": {
+                    "url": "{{ __('lang.url-lang-dt') }}",
+                },
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
@@ -158,142 +163,147 @@
                     },
                     'colvis'
                 ],
-            }).buttons().container().appendTo('div.toolbar');
+                "initComplete": function() {
+                    table.buttons().container().appendTo('div.toolbar');
+                    //filtragem por movimentos
+                    $.fn.dataTable.ext.search.push(
+                        function(settings, searchData, index, rowData, counter) {
+                            var movimento = $('#movimento option:selected').val();
+                            var movimentos = searchData[1]; // using the data from the 2nd column
 
-            //filtragem por movimentos
-            $.fn.dataTable.ext.search.push(
-                function(settings, searchData, index, rowData, counter) {
-                    var movimento = $('#movimento option:selected').val();
-                    var movimentos = searchData[1]; // using the data from the 2nd column
+                            if (movimento == movimentos) {
+                                return movimentos;
+                            } else if (movimento == "Entradas e Saídas") {
+                                return true;
+                            }
+                            return false;
+                        }
+                    );
 
-                    if (movimento == movimentos) {
-                        return movimentos;
-                    } else if (movimento == "Entradas e Saídas") {
-                        return true;
-                    }
-                    return false;
+                    //filtragem por familia
+                    $.fn.dataTable.ext.search.push(
+                        function(settings, searchData, index, rowData, counter) {
+                            var familia = $('#familia option:selected').val();
+                            var familias = searchData[11]; // using the data from the 12th column
+
+                            if (familia == familias) {
+                                return movimentos;
+                            } else if (familia == "Familia") {
+                                return true;
+                            }
+                            return false;
+                        }
+                    );
+                    //filtragem por sub-familia
+                    $.fn.dataTable.ext.search.push(
+                        function(settings, searchData, index, rowData, counter) {
+                            var subfamilia = $('#sub-familia option:selected').val();
+                            var subfamilias = searchData[12]; // using the data from the 13th column
+
+                            if (subfamilia == subfamilias) {
+                                return movimentos;
+                            } else if (subfamilia == "Sub-Familia") {
+                                return true;
+                            }
+                            return false;
+                        }
+                    );
+
+
+                    $('#historico_filter').addClass('col-md-2')
+
+                    //Date range picker
+                    $('#intervalo').daterangepicker({
+                        timePicker: false,
+                        locale: {
+                            format: 'MM/DD/YYYY'
+                        }
+                    })
+
+                    //criação e inserção do botão pictogramas dentro da div da datatables
+                    var pictogramas = $("<button></button>").attr('id', 'pictogramas');
+                    pictogramas.addClass('col-md-1 btn btn-secondary');
+                    $("div.toolbar").append(pictogramas);
+                    $("#pictogramas").text("{{ __('lang.pictograma') }}s");
+
+                    //Inserção do daterangepicker dentro da div da datatable
+                    $("div.toolbar").append($("#intervalo"));
+
+                    //criação e inserção da combobox movimentos dentro da div da datatable
+                    var movimentos = $("<select></select>").attr('id', 'movimento');
+                    movimentos.addClass('col-md-1 form-control select');
+                    $('div.toolbar').append(movimentos);
+                    $('#movimento').append(new Option("{{ __('lang.movimento') }}",
+                        "Entradas e Saídas"));
+                    $('#movimento').append(new Option("{{ __('lang.entrada') }}", "Entrada"));
+                    $('#movimento').append(new Option("{{ __('lang.saida') }}", "Saída"));
+
+                    //criação e inserção da combobox sub-familia dentro da div da datatable
+                    var subfamilia = $("<select></select>").attr('id', 'sub-familia');
+                    subfamilia.addClass('col-md-1 form-control select');
+                    $('div.toolbar').append(subfamilia);
+                    $('#sub-familia').append(new Option("{{ __('lang.sub-familia') }}",
+                        "Sub-Familia"));
+                    $('#sub-familia').append(new Option("{{ __('lang.vidro') }}", "Vidro"));
+                    $('#sub-familia').append(new Option("{{ __('lang.plastico') }}", "Plástico"));
+                    $('#sub-familia').append(new Option("{{ __('lang.metal') }}", "Metal"));
+                    $('#sub-familia').append(new Option("{{ __('lang.outros') }}", "Outros"));
+                    $('#sub-familia').css('display', 'none');
+
+
+                    //criação e inserção da combobox familia dentro da div da datatable
+                    var familia = $("<select></select>").attr('id', 'familia');
+                    familia.addClass('col-md-1 form-control select');
+                    $('div.toolbar').append(familia);
+                    $('#familia').append(new Option("{{ __('lang.familia') }}",
+                        "Familia"));
+                    $('#familia').append(new Option("{{ __('lang.quimicos') }}", "Sim"));
+                    $('#familia').append(new Option("{{ __('lang.nao quimicos') }}", "Não"));
+
+                    //criação e inserção do botão pictogramas dentro da div da datatables
+                    var filter = $("<button></button>").attr('id', 'filter');
+                    filter.addClass('btn btn-danger');
+                    $("div.toolbar").append(filter);
+                    $("#filter").text("Reset");
+
+                    $('#sub-familia').hide(100);
+                    $("#pictogramas").show(100);
+                    $('#filter').click(function() {
+                        $('#familia').val('Familia');
+                        $('#sub-familia').val('Sub-Familia');
+                        $('#movimento').val('Entradas e Saídas');
+                        table.draw();
+                    });
+                    $('#movimento').change(function() {
+                        table.draw();
+                    });
+
+                    $('#familia').change(function() {
+                        var familia = $('#familia option:selected').val();
+                        console.log("familia selecionada: " + familia);
+                        if (familia == "Não") {
+                            $('#sub-familia').show(100);
+                            $("#pictogramas").hide(100);
+                        } else {
+                            $('#sub-familia').hide(100);
+                            $('#sub-familia').val('Sub-Familia');
+                            $("#pictogramas").show(100);
+                        }
+                        table.draw();
+                    });
+                    $('#sub-familia').change(function() {
+                        table.draw();
+                    });
                 }
-            );
-
-            //filtragem por familia
-            $.fn.dataTable.ext.search.push(
-                function(settings, searchData, index, rowData, counter) {
-                    var familia = $('#familia option:selected').val();
-                    var familias = searchData[11]; // using the data from the 12th column
-
-                    if (familia == familias) {
-                        return movimentos;
-                    } else if (familia == "Familia") {
-                        return true;
-                    }
-                    return false;
-                }
-            );
-            //filtragem por sub-familia
-            $.fn.dataTable.ext.search.push(
-                function(settings, searchData, index, rowData, counter) {
-                    var subfamilia = $('#sub-familia option:selected').val();
-                    var subfamilias = searchData[12]; // using the data from the 13th column
-
-                    if (subfamilia == subfamilias) {
-                        return movimentos;
-                    } else if (subfamilia == "Sub-Familia") {
-                        return true;
-                    }
-                    return false;
-                }
-            );
+            });
 
 
-            $('#historico_filter').addClass('col-md-2')
-
-            //Date range picker
-            $('#intervalo').daterangepicker({
-                timePicker: false,
-                locale: {
-                    format: 'MM/DD/YYYY'
-                }
-            })
-
-            //criação e inserção do botão pictogramas dentro da div da datatables
-            var pictogramas = $("<button></button>").attr('id', 'pictogramas');
-            pictogramas.addClass('col-md-1 btn btn-secondary');
-            $("div.toolbar").append(pictogramas);
-            $("#pictogramas").text("{{ __('lang.pictograma') }}s");
-
-            //Inserção do daterangepicker dentro da div da datatable
-            $("div.toolbar").append($("#intervalo"));
-
-            //criação e inserção da combobox movimentos dentro da div da datatable
-            var movimentos = $("<select></select>").attr('id', 'movimento');
-            movimentos.addClass('col-md-1 form-control select');
-            $('div.toolbar').append(movimentos);
-            $('#movimento').append(new Option("{{ __('lang.movimento') }}",
-                "Entradas e Saídas"));
-            $('#movimento').append(new Option("{{ __('lang.entrada') }}", "Entrada"));
-            $('#movimento').append(new Option("{{ __('lang.saida') }}", "Saída"));
-
-            //criação e inserção da combobox sub-familia dentro da div da datatable
-            var subfamilia = $("<select></select>").attr('id', 'sub-familia');
-            subfamilia.addClass('col-md-1 form-control select');
-            $('div.toolbar').append(subfamilia);
-            $('#sub-familia').append(new Option("{{ __('lang.sub-familia') }}",
-                "Sub-Familia"));
-            $('#sub-familia').append(new Option("{{ __('lang.vidro') }}", "Vidro"));
-            $('#sub-familia').append(new Option("{{ __('lang.plastico') }}", "Plástico"));
-            $('#sub-familia').append(new Option("{{ __('lang.metal') }}", "Metal"));
-            $('#sub-familia').append(new Option("{{ __('lang.outros') }}", "Outros"));
-            $('#sub-familia').css('display', 'none');
-
-
-            //criação e inserção da combobox familia dentro da div da datatable
-            var familia = $("<select></select>").attr('id', 'familia');
-            familia.addClass('col-md-1 form-control select');
-            $('div.toolbar').append(familia);
-            $('#familia').append(new Option("{{ __('lang.familia') }}",
-                "Familia"));
-            $('#familia').append(new Option("{{ __('lang.quimicos') }}", "Sim"));
-            $('#familia').append(new Option("{{ __('lang.nao quimicos') }}", "Não"));
-
-            //criação e inserção do botão pictogramas dentro da div da datatables
-            var filter = $("<button></button>").attr('id', 'filter');
-            filter.addClass('btn btn-danger');
-            $("div.toolbar").append(filter);
-            $("#filter").text("Reset");
 
 
 
 
             $(document).ready(function() {
                 var table = $('#historico').DataTable();
-                $('#sub-familia').hide(100);
-                $("#pictogramas").show(100);
-                $('#filter').click(function() {
-                    $('#familia').val('Familia');
-                    $('#sub-familia').val('Sub-Familia');
-                    $('#movimento').val('Entradas e Saídas');
-                    table.draw();
-                });
-                $('#movimento').change(function() {
-                    table.draw();
-                });
-
-                $('#familia').change(function() {
-                    var familia = $('#familia option:selected').val();
-                    console.log("familia selecionada: " + familia);
-                    if (familia == "Não") {
-                        $('#sub-familia').show(100);
-                        $("#pictogramas").hide(100);
-                    } else {
-                        $('#sub-familia').hide(100);
-                        $('#sub-familia').val('Sub-Familia');
-                        $("#pictogramas").show(100);
-                    }
-                    table.draw();
-                });
-                $('#sub-familia').change(function() {
-                    table.draw();
-                });
                 /*                 $('#intervalo').on('apply.daterangepicker', function() {
                                     $.fn.dataTable.ext.search.push(
                                         function(settings, searchData, index, rowData, counter) {

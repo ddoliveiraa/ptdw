@@ -162,15 +162,15 @@
 
     <script>
         $(function() {
-            $("#tabela_operadores").DataTable({
+            var table = $("#tabela_operadores").DataTable({
                 "dom": '<"toolbar">frtip',
                 "info": true,
+                "language": {
+                    "url": "{{ __('lang.url-lang-dt') }}",
+                },
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "language": {
-                     "url": '{{ __('lang.url-lang-dt') }}',
-                },
                 "buttons": [{
                         extend: 'csvHtml5',
                         exportOptions: {
@@ -185,15 +185,10 @@
                     },
                     'colvis'
                 ],
-            }).buttons().container().appendTo('div.toolbar');
-
-            $(document).ready(function() {
-                var table = $('#tabela_operadores').DataTable();
-                // Event listener to the two range filtering inputs to redraw on input
-                $('#tipo').change(function() {
-                    table.draw();
-                });
-            });
+                "initComplete": function() {
+                    table.buttons().container().appendTo( 'div.toolbar' );
+                }
+            })
         });
 
         $(function() {

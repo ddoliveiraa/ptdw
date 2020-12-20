@@ -17,7 +17,8 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="{{ public_path() }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ public_path() }}/operadores">{{ __('lang.operadores') }}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ public_path() }}/operadores">{{ __('lang.operadores') }}</a>
+                        </li>
                         <li class="breadcrumb-item active">{{ __('lang.historico') }}</li>
                     </ol>
                 </div>
@@ -221,14 +222,16 @@
         });
 
         $(function() {
-            $("#tabela_operadores").DataTable({
+            var table = $("#tabela_operadores").DataTable({
                 "dom": '<"toolbar">frtip',
                 "info": true,
+                "language": {
+                    "url": "{{ __('lang.url-lang-dt') }}",
+                },
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "buttons": [
-                    {
+                "buttons": [{
                         extend: 'csvHtml5',
                         exportOptions: {
                             columns: ':visible:not(:last-child)'
@@ -242,13 +245,9 @@
                     },
                     'colvis'
                 ],
-            }).buttons().container().appendTo('div.toolbar');
-            $(document).ready(function() {
-                var table = $('#tabela_operadores').DataTable();
-                // Event listener to the two range filtering inputs to redraw on input
-                $('#tipo').change(function() {
-                    table.draw();
-                });
+                "initComplete": function() {
+                    table.buttons().container().appendTo('div.toolbar');
+                }
             });
         });
 

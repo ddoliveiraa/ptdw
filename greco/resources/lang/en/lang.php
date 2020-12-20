@@ -105,7 +105,7 @@ return [
 
     /*Movimentos*/
     'referencia' => 'Reference',
-    'taxa de iva' => 'IVA Tax',
+    'taxa de iva' => 'VAT',
     'preco' => 'Price',
     'tipo de embalagem' => 'Container Type',
     'capacidade da embalagem' => 'Container Capacity',
@@ -170,5 +170,5 @@ return [
     'locale-date' => 'en-gb',
 
     /*Datatable lang */
-    'url-lang-dt' => ''
+    'url-lang-dt' => '//cdn.datatables.net/plug-ins/1.10.22/i18n/English.json'
 ];

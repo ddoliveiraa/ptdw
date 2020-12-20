@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="{{ public_path() }}/plugins/daterangepicker/daterangepicker.css">
 
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="{{ public_path() }}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet"
+        href="{{ public_path() }}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
 
 
 @endsection
@@ -45,7 +46,8 @@
 
             <div class="row justify-content-end">
                 <div class="col-md-2 mb-2 mt-2">
-                    <a role="button" href="{{ public_path() }}/clientes/add" class="btn btn-block btn-secondary">{{ __('lang.adicionar') }}</a>
+                    <a role="button" href="{{ public_path() }}/clientes/add"
+                        class="btn btn-block btn-secondary">{{ __('lang.adicionar') }}</a>
                 </div>
             </div>
 
@@ -73,35 +75,40 @@
                                         <td>Carolina Tavares</td>
                                         <td>carol@ua.pt</td>
                                         <td>4</td>
-                                        <td><a href="{{ public_path() }}/clientes/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                        <td><a href="{{ public_path() }}/clientes/show"> Ver Mais &nbsp<i
+                                                    class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Equipa de Pesquisa 1</td>
                                         <td>Bruno Ferreira</td>
                                         <td>bruno@ua.pt</td>
                                         <td>7</td>
-                                        <td><a href="{{ public_path() }}/clientes/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                        <td><a href="{{ public_path() }}/clientes/show"> Ver Mais &nbsp<i
+                                                    class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Equipa de Pesquisa 2</td>
                                         <td>Diogo Oliveira</td>
                                         <td>diogo@ua.pt</td>
                                         <td>15</td>
-                                        <td><a href="{{ public_path() }}/clientes/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                        <td><a href="{{ public_path() }}/clientes/show"> Ver Mais &nbsp<i
+                                                    class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Equipa de Pesquisa 3</td>
                                         <td>Maria Nobre</td>
                                         <td>maria@ua.pt</td>
                                         <td>8</td>
-                                        <td><a href="{{ public_path() }}/clientes/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                        <td><a href="{{ public_path() }}/clientes/show"> Ver Mais &nbsp<i
+                                                    class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                     <tr>
                                         <td>Equipa de Pesquisa 4</td>
                                         <td>Carolina Tavares</td>
                                         <td>carol@ua.pt</td>
                                         <td>3</td>
-                                        <td><a href="{{ public_path() }}/clientes/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                        <td><a href="{{ public_path() }}/clientes/show"> Ver Mais &nbsp<i
+                                                    class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -149,14 +156,16 @@
 
     <script>
         $(function() {
-            $("#tabela_clientes").DataTable({
+            var table = $("#tabela_clientes").DataTable({
                 "dom": '<"toolbar">frtip',
                 "info": true,
+                "language": {
+                    "url": "{{ __('lang.url-lang-dt') }}",
+                },
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "buttons": [
-                    {
+                "buttons": [{
                         extend: 'csvHtml5',
                         exportOptions: {
                             columns: ':visible:not(:last-child)'
@@ -170,14 +179,9 @@
                     },
                     'colvis'
                 ],
-            }).buttons().container().appendTo('div.toolbar');
-
-            $(document).ready(function() {
-                var table = $('#tabela_clientes').DataTable();
-                // Event listener to the two range filtering inputs to redraw on input
-                $('#tipo').change(function() {
-                    table.draw();
-                });
+                "initComplete": function() {
+                    table.buttons().container().appendTo('div.toolbar');
+                }
             });
         });
 
