@@ -109,9 +109,9 @@
                                 <div class="row">
                                     <div class="col-md-7">
                                         <div class="form-group">
-                                            <label for="fornecedor_localidade"
+                                            <label for="fornecedor_email"
                                                 class="control-label">{{ __('lang.email') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_localidade" tabindex="8">
+                                            <input type="text" class="form-control" id="fornecedor_email" tabindex="8">
                                         </div>
                                     </div>
                                     <div class="col-md-5">
