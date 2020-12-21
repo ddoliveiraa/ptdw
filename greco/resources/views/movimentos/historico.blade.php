@@ -109,6 +109,87 @@
             <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
+
+        <!-- Modal Selecionar Pictograma-->
+        <div class="modal fade" id="modalSelecionarPictograma" data-backdrop="static">
+
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{ __('lang.filtrar') }} {{ __('lang.pictograma') }}s</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="check-pictogram">
+                                            <ul>
+                                                <li>
+                                                    <input type="checkbox" id="cb1" />
+                                                    <label for="cb1"><img
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Explosive.gif" /></label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" id="cb2" />
+                                                    <label for="cb2"><img
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Flammable.gif" /></label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" id="cb3" />
+                                                    <label for="cb3"><img
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/RoundFlammable.gif" /></label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" id="cb4" />
+                                                    <label for="cb4"><img
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/CompressedGas.gif" /></label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" id="cb5" />
+                                                    <label for="cb5"><img
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Corrosive.gif" /></label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" id="cb6" />
+                                                    <label for="cb6"><img
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Toxic.gif" /></label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" id="cb7" />
+                                                    <label for="cb7"><img
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Danger.gif" /></label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" id="cb8" />
+                                                    <label for="cb8"><img
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Systemic.gif" /></label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" id="cb9" />
+                                                    <label for="cb9"><img
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Pollution.gif" /></label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default col-md-3" data-dismiss="modal"
+                                tabindex="13">{{ __('lang.cancelar') }}</button>
+                            <button type="button" class="btn btn-secondary col-md-3" data-dismiss="modal"
+                                tabindex="14">{{ __('lang.aplicar') }}</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+        </div>
     </section>
     <!-- /.content -->
 
@@ -272,11 +353,16 @@
                         $('#familia').val('Familia');
                         $('#sub-familia').val('Sub-Familia');
                         $('#movimento').val('Entradas e Saídas');
+                        $('input[type=checkbox]').prop('checked', false);
                         table.draw();
                     });
                     $('#movimento').change(function() {
                         table.draw();
                     });
+
+                    $("#pictogramas").click(function(){
+                        $("#modalSelecionarPictograma").modal("show");
+                    })
 
                     $('#familia').change(function() {
                         var familia = $('#familia option:selected').val();

@@ -40,6 +40,8 @@ return [
     'insira o' => 'Insert the',
     'insira a' => 'Insert the',
     'voltar' => 'Go Back',
+    'aplicar' => 'Apply',
+    'filtrar' => 'Filter by',
 
     /* Pesquisa*/
     'pesquisa' => 'Search',
