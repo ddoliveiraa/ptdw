@@ -17,7 +17,8 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="{{ public_path() }}/welcome">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ public_path() }}/produtos">{{ __('lang.produtos') }}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ public_path() }}/produtos">{{ __('lang.produtos') }}</a>
+                        </li>
                         <li class="breadcrumb-item active">{{ __('lang.novo') }} {{ __('lang.produto') }}</li>
                     </ol>
                 </div>
@@ -94,7 +95,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                       
+
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
@@ -195,8 +196,7 @@
                                                 <div class="form-group">
                                                     <label for="produto_foto"
                                                         class="control-label">{{ __('lang.foto') }}</label>
-                                                    <input type="file" class="form-control" id="produto_foto"
-                                                        tabindex="1">
+                                                    <input type="file" class="form-control" id="produto_foto" tabindex="1">
                                                 </div>
                                             </div>
                                         </div>
@@ -254,7 +254,7 @@
                             </div>
                         </div>
                         <!-- /.tab-pane -->
-                    
+
                     </div>
                     <!-- /.tab-content -->
 
@@ -267,7 +267,7 @@
         <!-- Modal Selecionar Pictograma-->
         <div class="modal fade" id="modalSelecionarPictograma" data-backdrop="static">
 
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">{{ __('lang.pictograma') }}</h4>
@@ -280,26 +280,54 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <div class="picto-group">
-                                            <label for="pictograma"
-                                                class="control-label">{{ __('lang.pictograma') }}</label>
-
-                                            <select class="image-picker" data-limit="3" multiple="multiple"
-                                                name="pictograma" id="imagem_pictograma" required>
-                                                <option data-img-class="picto"
-                                                    data-img-src="{{ public_path() }}/dist/img/Pictogramas/Corrosive.png"
-                                                    value="1">Corrosive</option>
-                                                <option data-img-class="picto"
-                                                    data-img-src="{{ public_path() }}/dist/img/Pictogramas/Harmful.png"
-                                                    value="2">Harmful</option>
-                                                <option data-img-class="picto"
-                                                    data-img-src="{{ public_path() }}/dist/img/Pictogramas/Corrosive.png"
-                                                    value="3">Corrosive</option>
-                                                <option data-img-class="picto"
-                                                    data-img-src="{{ public_path() }}/dist/img/Pictogramas/Harmful.png"
-                                                    value="4">Harmful</option>
-                                            </select>
-
+                                        <div class="check-pictogram">
+                                            <ul>
+                                                <li>
+                                                    <input type="checkbox" id="cb1" />
+                                                    <label for="cb1"><img
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Explosive.gif" /></label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" id="cb2" />
+                                                    <label for="cb2"><img
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Flammable.gif" /></label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" id="cb3" />
+                                                    <label for="cb3"><img
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/RoundFlammable.gif" /></label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" id="cb4" />
+                                                    <label for="cb4"><img
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/CompressedGas.gif" /></label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" id="cb5" />
+                                                    <label for="cb5"><img
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Corrosive.gif" /></label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" id="cb6" />
+                                                    <label for="cb6"><img
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Toxic.gif" /></label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" id="cb7" />
+                                                    <label for="cb7"><img
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Danger.gif" /></label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" id="cb8" />
+                                                    <label for="cb8"><img
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Systemic.gif" /></label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" id="cb9" />
+                                                    <label for="cb9"><img
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Pollution.gif" /></label>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -347,7 +375,6 @@
     <script src="{{ public_path() }}/plugins/select2/js/select2.full.min.js"></script>
 
     <script>
-
         $(function() {
             //Initialize Select2 Elements
             $('.select2').select2()
@@ -356,6 +383,11 @@
             $('.select2bs4').select2({
                 theme: 'bootstrap4'
             })
+        });
+        $('input[type=checkbox]').on('change', function(e) {
+            if ($('input[type=checkbox]:checked').length > 4) {
+                $(this).prop('checked', false);
+            }
         });
 
     </script>

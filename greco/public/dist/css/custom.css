@@ -16,7 +16,76 @@
 
 /*----------------PRODUTOS----------------*/
 
-/*Ficha Produto*/
+.check-pictogram ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.check-pictogram li {
+    display: inline-block;
+}
+
+.check-pictogram input[type="checkbox"][id^="cb"] {
+    display: none;
+}
+
+.check-pictogram label {
+    border: 1px solid #fff;
+    padding: 10px;
+    display: block;
+    position: relative;
+    margin: 10px;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.check-pictogram label::before {
+    background-color: white;
+    color: white;
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    border: 1px solid grey;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 28px;
+    transition-duration: 0.4s;
+    transform: scale(0);
+}
+
+.check-pictogram label img {
+    height: 100px;
+    width: 100px;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+}
+
+.check-pictogram :checked+label {
+    border-color: #ddd;
+}
+
+.check-pictogram :checked+label::before {
+    content: "✓";
+    background-color: #17a2b8;
+    transform: scale(1);
+}
+
+.check-pictogram :checked+label img {
+    transform: scale(0.9);
+    box-shadow: 0 0 5px #333;
+    z-index: -1;
+}
+
+/*--------------Ficha--------------*/
 
 .card-title-large {
     font-size: 1.7rem;
@@ -80,14 +149,11 @@
     margin: 0;
 }
 
-
-
 /*----------------Movimentos--------------*/
 
 /*----------------Historico--------------*/
 
-
-.toolbar > *{
+.toolbar>* {
     margin-left: 1rem !important;
     margin-bottom: 0.4rem;
     text-align: center;
@@ -112,13 +178,14 @@
     border-color: #343a40cb !important;
 }
 
-div.dataTables_filter{
+div.dataTables_filter {
     text-align: left !important;
 }
 
-.dataTables_info{
+.dataTables_info {
     float: left;
 }
+
 /*-----------------Clientes---------------*/
 
 /*----------------Operadores--------------*/
