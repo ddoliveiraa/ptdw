@@ -41,6 +41,8 @@ return [
     'insira o' => 'Insira o',
     'insira a' => 'Insira a',
     'voltar' => 'Voltar',
+    'aplicar' => 'Aplicar',
+    'filtrar' => 'Filtrar por',
     
 
     /* Pesquisa*/
