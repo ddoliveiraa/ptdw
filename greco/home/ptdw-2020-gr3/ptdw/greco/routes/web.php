@@ -105,6 +105,9 @@ Route::get('/operadores/editar', function () {
 Route::get('/fornecedores', function () {
     return view('fornecedores.index');
 });
+Route::get('/fornecedores/add', function () {
+    return view('fornecedores.add');
+});
 
 //Armazem
 Route::get('/armazem', function () {
