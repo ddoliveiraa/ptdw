@@ -32,7 +32,7 @@ class CreatePictogramasTable extends Migration
 
             $table->unique(['produto_id', 'pictograma_id']);
             $table->foreign('produto_id')->references('id')->on('produtos');
-            $table->foreign('refeicao_id')->references('id')->on('refeicaos');
+            
         });
     }
 

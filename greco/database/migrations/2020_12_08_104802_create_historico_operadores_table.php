@@ -23,7 +23,7 @@ class CreateHistoricoOperadoresTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('operador')->references('id')->on('operador');
+            $table->foreign('operador')->references('id')->on('operadores');
 
         });
     }

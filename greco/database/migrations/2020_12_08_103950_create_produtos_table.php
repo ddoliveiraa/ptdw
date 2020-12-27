@@ -24,21 +24,16 @@ class CreateProdutosTable extends Migration
             $table->unsignedBigInteger('condicoes_armazenamento');
             $table->boolean('ventilado');
             $table->string('anexo_sds');
-            $table->unsignedBigInteger('pictograma');
-            $table->unsignedBigInteger('unidade');
             $table->double('stock',8,2);
             $table->double('stock_min',8,2);
             $table->string('foto');
             $table->unsignedBigInteger('sub_familia');
-            $table->string('unidades');
 
             $table->timestamps();
 
             $table->foreign('familia')->references('id')->on('familia');
             $table->foreign('sinonimo')->references('id')->on('produtos_sinonimo');
             $table->foreign('condicoes_armazenamento')->references('id')->on('condicoes_armazenamento');
-            $table->foreign('pictograma')->references('id')->on('pictogramas');
-            $table->foreign('unidade')->references('id')->on('unidade');
             $table->foreign('sub_familia')->references('id')->on('sub_familia');
 
         });

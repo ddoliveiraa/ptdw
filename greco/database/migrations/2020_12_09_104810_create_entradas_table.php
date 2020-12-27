@@ -15,13 +15,13 @@ class CreateEntradasTable extends Migration
     {
         Schema::create('entradas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_produto');
+            $table->unsignedBigInteger('id_inventario');
             $table->integer('id_ordem');
             $table->unsignedBigInteger('sala');
             $table->unsignedBigInteger('armario');
             $table->unsignedBigInteger('prateleira');
             $table->unsignedBigInteger('fornecedor');
-            $table->string('marca');
+            $table->unsignedBigInteger('marca');
             $table->string('referencia');
             $table->double('preco',8,2);
             $table->unsignedBigInteger('iva');
@@ -36,11 +36,12 @@ class CreateEntradasTable extends Migration
             $table->date('data_validade');
             $table->date('data_termino');
             $table->unsignedBigInteger('operador');
+            $table->unsignedBigInteger('unidade');
             $table->string('obs');
 
             $table->timestamps();
 
-            $table->foreign('id_produto')->references('id')->on('produtos');
+            $table->foreign('id_inventario')->references('id')->on('produtos');
             $table->foreign('sala')->references('id')->on('sala');
             $table->foreign('armario')->references('id')->on('armario');
             $table->foreign('prateleira')->references('id')->on('prateleira');
@@ -51,7 +52,8 @@ class CreateEntradasTable extends Migration
             $table->foreign('cor')->references('id')->on('cores');
             $table->foreign('textura_viscosidade')->references('id')->on('textura_viscosidade');
             $table->foreign('operador')->references('id')->on('operadores');
-
+            $table->foreign('marca')->references('id')->on('marcas');
+            $table->foreign('unidade')->references('id')->on('unidade');
         });
     }
 

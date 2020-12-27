@@ -25,9 +25,9 @@ class CreateSaidasTable extends Migration
             $table->timestamps();
 
             $table->foreign('id_cliente')->references('id')->on('clientes');
-            $table->foreign('id_produto')->references('id')->on('produto');
-            $table->foreign('id_solicitante')->references('id')->on('solicitante');
-            $table->foreign('id_operador')->references('id')->on('operador');
+            $table->foreign('id_produto')->references('id')->on('produtos');
+            $table->foreign('id_solicitante')->references('id')->on('solicitantes');
+            $table->foreign('id_operador')->references('id')->on('operadores');
         });
     }
 
