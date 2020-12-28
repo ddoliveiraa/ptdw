@@ -63,6 +63,7 @@ return [
     'nao quimico' => 'Não Químico',
     'formula' => 'Fórmula',
     'designacao' => 'Designação',
+    'sinonimo' => 'Sinônimo',
     'peso molecular' => 'Peso Molecular',
     'n cas' => 'Nº CAS',
     'unidades' => 'Unidades',
@@ -85,6 +86,11 @@ return [
     'foto' => 'Foto',
     'sim' => 'Sim',
     'nao' => 'Não',
+    'TMBaixo' => 'Em Temperaturas Extremamente Baixas',
+    'TBaixo' => 'Em Temperaturas Baixas',
+    'TAmbiente' => 'Em Temperatura Ambiente',
+    'TAlta' => 'Em Temperaturas Altas',
+    'TMAlta' => 'Em Temperaturas Extremamente Altas',
 
     /*Fornecedores*/
     'fornecedores' => 'Fornecedores',

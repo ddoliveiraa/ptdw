@@ -61,6 +61,7 @@ return [
     'nao quimico' => 'Non-Chemical',
     'formula' => 'Formula',
     'designacao' => 'Designation',
+    'sinonimo' => 'Synonym',
     'peso molecular' => 'Molecular Weight',
     'n cas' => 'CAS Number',
     'unidades' => 'Units',
@@ -83,6 +84,11 @@ return [
     'foto' => 'Photo',
     'sim' => 'Yes',
     'nao' => 'No',
+    'TMBaixo' => 'In Extremely Low Temperatures',
+    'TBaixo' => 'In Low Temperatures',
+    'TAmbiente' => 'In Ambient Temperatures',
+    'TAlta' => 'In High Temperatures',
+    'TMAlta' => 'In Extremely High Temperatures',
 
     /*Fornecedores*/
     'fornecedores' => 'Suppliers',
