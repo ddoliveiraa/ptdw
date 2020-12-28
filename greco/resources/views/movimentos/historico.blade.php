@@ -357,7 +357,7 @@
 
                     //criação e inserção da combobox familia dentro da div da datatable
                     var familia = $("<select></select>").attr('id', 'familia');
-                    familia.addClass('col-md-2 form-control select');
+                    familia.addClass('col-md-1 form-control select');
                     $('div.toolbar').append(familia);
                     $('#familia').append(new Option("{{ __('lang.familia') }}",
                         "Familia"));
