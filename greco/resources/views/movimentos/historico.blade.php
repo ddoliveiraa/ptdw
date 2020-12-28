@@ -131,47 +131,65 @@
                                                 <li>
                                                     <input type="checkbox" id="cb1" />
                                                     <label for="cb1"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Explosive.gif" /></label>
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Explosive.gif" />
+                                                        <p class="text-center">GHS01</p>
+                                                    </label>
                                                 </li>
                                                 <li>
                                                     <input type="checkbox" id="cb2" />
                                                     <label for="cb2"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Flammable.gif" /></label>
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Flammable.gif" />
+                                                        <p class="text-center">GHS02</p>
+                                                    </label>
                                                 </li>
                                                 <li>
                                                     <input type="checkbox" id="cb3" />
                                                     <label for="cb3"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/RoundFlammable.gif" /></label>
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/RoundFlammable.gif" />
+                                                        <p class="text-center">GHS03</p>
+                                                    </label>
                                                 </li>
                                                 <li>
                                                     <input type="checkbox" id="cb4" />
                                                     <label for="cb4"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/CompressedGas.gif" /></label>
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/CompressedGas.gif" />
+                                                        <p class="text-center">GHS04</p>
+                                                    </label>
                                                 </li>
                                                 <li>
                                                     <input type="checkbox" id="cb5" />
                                                     <label for="cb5"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Corrosive.gif" /></label>
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Corrosive.gif" />
+                                                        <p class="text-center">GHS05</p>
+                                                    </label>
                                                 </li>
                                                 <li>
                                                     <input type="checkbox" id="cb6" />
                                                     <label for="cb6"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Toxic.gif" /></label>
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Toxic.gif" />
+                                                        <p class="text-center">GHS06</p>
+                                                    </label>
                                                 </li>
                                                 <li>
                                                     <input type="checkbox" id="cb7" />
                                                     <label for="cb7"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Danger.gif" /></label>
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Danger.gif" />
+                                                        <p class="text-center">GHS07</p>
+                                                    </label>
                                                 </li>
                                                 <li>
                                                     <input type="checkbox" id="cb8" />
                                                     <label for="cb8"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Systemic.gif" /></label>
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Systemic.gif" />
+                                                        <p class="text-center">GHS08</p>
+                                                    </label>
                                                 </li>
                                                 <li>
                                                     <input type="checkbox" id="cb9" />
                                                     <label for="cb9"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Pollution.gif" /></label>
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Pollution.gif" />
+                                                        <p class="text-center">GHS09</p>
+                                                    </label>
                                                 </li>
                                             </ul>
                                         </div>
@@ -230,6 +248,12 @@
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
+                "columnDefs": [
+                    {
+                        "targets": [3, 11, 12],
+                        "visible": false
+                    }
+                ],
                 "buttons": [{
                         extend: 'csvHtml5',
                         exportOptions: {
@@ -242,7 +266,6 @@
                             columns: ':visible:not(:last-child)'
                         }
                     },
-                    'colvis'
                 ],
                 "initComplete": function() {
                     table.buttons().container().appendTo('div.toolbar');
@@ -297,13 +320,13 @@
                     $('#intervalo').daterangepicker({
                         timePicker: false,
                         locale: {
-                            format: 'MM/DD/YYYY'
+                            format: 'DD/MM/YYYY'
                         }
                     })
 
                     //criação e inserção do botão pictogramas dentro da div da datatables
                     var pictogramas = $("<button></button>").attr('id', 'pictogramas');
-                    pictogramas.addClass('col-md-1 btn btn-secondary');
+                    pictogramas.addClass('col-md-2 btn btn-secondary');
                     $("div.toolbar").append(pictogramas);
                     $("#pictogramas").text("{{ __('lang.pictograma') }}s");
 
@@ -312,7 +335,7 @@
 
                     //criação e inserção da combobox movimentos dentro da div da datatable
                     var movimentos = $("<select></select>").attr('id', 'movimento');
-                    movimentos.addClass('col-md-1 form-control select');
+                    movimentos.addClass('col-md-2 form-control select');
                     $('div.toolbar').append(movimentos);
                     $('#movimento').append(new Option("{{ __('lang.movimento') }}",
                         "Entradas e Saídas"));
@@ -321,7 +344,7 @@
 
                     //criação e inserção da combobox sub-familia dentro da div da datatable
                     var subfamilia = $("<select></select>").attr('id', 'sub-familia');
-                    subfamilia.addClass('col-md-1 form-control select');
+                    subfamilia.addClass('col-md-2 form-control select');
                     $('div.toolbar').append(subfamilia);
                     $('#sub-familia').append(new Option("{{ __('lang.sub-familia') }}",
                         "Sub-Familia"));
@@ -334,7 +357,7 @@
 
                     //criação e inserção da combobox familia dentro da div da datatable
                     var familia = $("<select></select>").attr('id', 'familia');
-                    familia.addClass('col-md-1 form-control select');
+                    familia.addClass('col-md-2 form-control select');
                     $('div.toolbar').append(familia);
                     $('#familia').append(new Option("{{ __('lang.familia') }}",
                         "Familia"));
@@ -354,13 +377,14 @@
                         $('#sub-familia').val('Sub-Familia');
                         $('#movimento').val('Entradas e Saídas');
                         $('input[type=checkbox]').prop('checked', false);
+                        table.search('');
                         table.draw();
                     });
                     $('#movimento').change(function() {
                         table.draw();
                     });
 
-                    $("#pictogramas").click(function(){
+                    $("#pictogramas").click(function() {
                         $("#modalSelecionarPictograma").modal("show");
                     })
 
