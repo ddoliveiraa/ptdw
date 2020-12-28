@@ -65,7 +65,7 @@
                                         <div class="form-group">
                                             <label for="produto_formula"
                                                 class="control-label">{{ __('lang.formula') }}</label>
-                                            <input type="text" class="form-control" id="produto_formula" tabindex="2"
+                                            <input type="text" class="form-control" id="produto_formula" tabindex="3"
                                                 required value="HCL">
                                         </div>
                                     </div>
@@ -83,7 +83,7 @@
                                         <div class="form-group">
                                             <label for="produto_peso"
                                                 class="control-label">{{ __('lang.peso molecular') }}</label>
-                                            <input type="text" class="form-control" id="produto_peso" tabindex="3" required
+                                            <input type="text" class="form-control" id="produto_peso" tabindex="5" required
                                                 value="36.46 g/mol">
                                         </div>
                                     </div>
@@ -91,7 +91,7 @@
                                         <div class="form-group">
                                             <label for="produto_stock_minimo"
                                                 class="control-label">{{ __('lang.stock minimo') }}</label>
-                                            <input type="text" class="form-control" id="produto_stock_minimo" tabindex="12"
+                                            <input type="text" class="form-control" id="produto_stock_minimo" tabindex="6"
                                                 required value="3">
                                         </div>
                                     </div>
@@ -102,7 +102,7 @@
                                         <div class="form-group">
                                             <label for="produto_condicoes_armazenamento"
                                                 class="control-label">{{ __('lang.condicoes de armazenamento') }}</label>
-                                            <select class="form-control" id="produto_armario" tabindex="5">
+                                            <select class="form-control" id="produto_armario" tabindex="7">
                                                 <option value="1">{{ __('lang.TMBaixo') }}</option>
                                                 <option value="2">{{ __('lang.TBaixo') }}</option>
                                                 <option value="3" selected>{{ __('lang.TAmbiente') }}</option>
@@ -118,11 +118,11 @@
                                                 class="control-label">{{ __('lang.pictograma') }}</label>
                                             <div class="input-group margin">
                                                 <input type="text" class="form-control" id="produto_pictogramas"
-                                                    tabindex="7" required readonly value="GHS05; GHS05;">
+                                                    tabindex="7" required readonly value="GHS05; GHS05;" tabindex="8">
                                                 <span class="input-group-btn">
                                                     <button type="button" class="btn btn-secondary btn-flat"
                                                         data-toggle="modal"
-                                                        data-target="#modalSelecionarPictograma">{{ __('lang.selecionar') }}</button>
+                                                        data-target="#modalSelecionarPictograma" tabindex="9">{{ __('lang.selecionar') }}</button>
                                                 </span>
                                             </div>
                                         </div>
@@ -133,7 +133,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                                <input type="checkbox" class="custom-control-input" id="customSwitch1" tabindex="10">
                                                 <label class="custom-control-label"
                                                     for="customSwitch1">{{ __('lang.armario ventilado') }}</label>
                                             </div>
@@ -146,11 +146,11 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <a href="{{ public_path() }}/ficha" role="button"
-                                            class="btn btn-block btn-default">{{ __('lang.cancelar') }}</a>
+                                            class="btn btn-block btn-default" tabindex="11">{{ __('lang.cancelar') }}</a>
                                     </div>
                                     <div class="ml-auto col-3">
                                         <a href="{{ public_path() }}/ficha" role="button"
-                                            class="btn btn-block btn-secondary">{{ __('lang.guardar') }}</a>
+                                            class="btn btn-block btn-secondary" tabindex="12">{{ __('lang.guardar') }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -236,7 +236,7 @@
                                         <label>{{ __('lang.recomendacoes de prudencia') }}</label>
                                         <select class="select2" multiple="multiple"
                                             data-placeholder="{{ __('lang.recomendacoes de prudencia') }}"
-                                            id="produto_cod_recomendacoes_prudencia" tabindex="9" style="width: 100%;">
+                                            id="produto_cod_recomendacoes_prudencia" tabindex="12" style="width: 100%;">
                                             <option>H200</option>
                                             <option>H201</option>
                                             <option>H203</option>
@@ -261,7 +261,7 @@
                                         <select class="select2" multiple="multiple"
                                         data-placeholder="{{ __('lang.advertencias de perigo') }}" style="width: 100%;"
                                         id="produto_cod_advertencias_perigo"
-                                        tabindex="10" required>
+                                        tabindex="13" required>
                                             <option>P101</option>
                                             <option>P102</option>
                                             <option>P103</option>

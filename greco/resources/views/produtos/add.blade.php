@@ -63,61 +63,68 @@
                                                 <div class="form-group">
                                                     <label for="produto_designacao"
                                                         class="control-label">{{ __('lang.designacao') }}</label>
-                                                    <input type="text" class="form-control" id="produto_designacao"
-                                                        tabindex="1" required>
+                                                    <input type="text" class="form-control" id="produto_designacao" tabindex="1"
+                                                        required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="produto_formula"
-                                                        class="control-label">{{ __('lang.formula') }}</label>
-                                                    <input type="text" class="form-control" id="produto_formula"
-                                                        tabindex="2" required>
+                                                    <label for="produto_sinonimo"
+                                                        class="control-label">{{ __('lang.sinonimo') }}</label>
+                                                    <input type="text" class="form-control" id="produto_sinonimo" tabindex="2">
                                                 </div>
                                             </div>
                                         </div>
-
+        
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="produto_formula"
+                                                        class="control-label">{{ __('lang.formula') }}</label>
+                                                    <input type="text" class="form-control" id="produto_formula" tabindex="3">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="produto_cas" class="control-label">{{ __('lang.n cas') }}</label>
+                                                    <input type="text" class="form-control" id="produto_cas" tabindex="4" required>
+                                                </div>
+                                            </div>
+                                        </div>
+        
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="produto_peso"
                                                         class="control-label">{{ __('lang.peso molecular') }}</label>
-                                                    <input type="text" class="form-control" id="produto_peso" tabindex="3"
-                                                        required>
+                                                    <input type="text" class="form-control" id="produto_peso" tabindex="5" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="produto_cas"
-                                                        class="control-label">{{ __('lang.n cas') }}</label>
-                                                    <input type="text" class="form-control" id="produto_cas" tabindex="4"
+                                                    <label for="produto_stock_minimo"
+                                                        class="control-label">{{ __('lang.stock minimo') }}</label>
+                                                    <input type="text" class="form-control" id="produto_stock_minimo" tabindex="6"
                                                         required>
                                                 </div>
                                             </div>
                                         </div>
-
+        
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="produto_condicoes_armazenamento"
                                                         class="control-label">{{ __('lang.condicoes de armazenamento') }}</label>
-                                                    <input type="text" class="form-control"
-                                                        id="produto_condicoes_armazenamento" tabindex="5" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="produto_armario"
-                                                        class="control-label">{{ __('lang.armario ventilado') }}</label>
-                                                    <select class="form-control" id="produto_armario" tabindex="6">
-                                                        <option value="1">{{ __('lang.sim') }}</option>
-                                                        <option value="2">{{ __('lang.nao') }}</option>
+                                                    <select class="form-control" id="produto_armario" tabindex="7">
+                                                        <option value="1">{{ __('lang.TMBaixo') }}</option>
+                                                        <option value="2">{{ __('lang.TBaixo') }}</option>
+                                                        <option value="3">{{ __('lang.TAmbiente') }}</option>
+                                                        <option value="4">{{ __('lang.TAlta') }}</option>
+                                                        <option value="5">{{ __('lang.TMAlta') }}</option>
                                                     </select>
                                                 </div>
                                             </div>
-                                        </div>
-
-                                        <div class="row">
+        
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="produto_pictogramas"
@@ -133,31 +140,16 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="produto_unidades"
-                                                        class="control-label">{{ __('lang.unidades') }}</label>
-                                                    <input type="text" class="form-control" id="produto_unidades"
-                                                        tabindex="8" required>
-                                                </div>
-                                            </div>
                                         </div>
-
+        
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="produto_stock_existente"
-                                                        class="control-label">{{ __('lang.stock existente') }}</label>
-                                                    <input type="text" class="form-control" id="produto_stock_existente"
-                                                        tabindex="11" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="produto_stock_minimo"
-                                                        class="control-label">{{ __('lang.stock minimo') }}</label>
-                                                    <input type="text" class="form-control" id="produto_stock_minimo"
-                                                        tabindex="12" required>
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                                        <label class="custom-control-label"
+                                                            for="customSwitch1">{{ __('lang.armario ventilado') }}</label>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -285,47 +277,47 @@
                                                 <li>
                                                     <input type="checkbox" id="cb1" />
                                                     <label for="cb1"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Explosive.gif" /></label>
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Explosive.gif" /><p class="text-center">GHS01</p></label>
                                                 </li>
                                                 <li>
                                                     <input type="checkbox" id="cb2" />
                                                     <label for="cb2"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Flammable.gif" /></label>
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Flammable.gif" /><p class="text-center">GHS02</p></label>
                                                 </li>
                                                 <li>
                                                     <input type="checkbox" id="cb3" />
                                                     <label for="cb3"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/RoundFlammable.gif" /></label>
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/RoundFlammable.gif" /><p class="text-center">GHS03</p></label>
                                                 </li>
                                                 <li>
                                                     <input type="checkbox" id="cb4" />
                                                     <label for="cb4"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/CompressedGas.gif" /></label>
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/CompressedGas.gif" /><p class="text-center">GHS04</p></label>
                                                 </li>
                                                 <li>
                                                     <input type="checkbox" id="cb5" />
                                                     <label for="cb5"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Corrosive.gif" /></label>
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Corrosive.gif" /><p class="text-center">GHS05</p></label>
                                                 </li>
                                                 <li>
                                                     <input type="checkbox" id="cb6" />
                                                     <label for="cb6"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Toxic.gif" /></label>
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Toxic.gif" /><p class="text-center">GHS06</p></label>
                                                 </li>
                                                 <li>
                                                     <input type="checkbox" id="cb7" />
                                                     <label for="cb7"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Danger.gif" /></label>
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Danger.gif" /><p class="text-center">GHS07</p></label>
                                                 </li>
                                                 <li>
                                                     <input type="checkbox" id="cb8" />
                                                     <label for="cb8"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Systemic.gif" /></label>
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Systemic.gif" /><p class="text-center">GHS08</p></label>
                                                 </li>
                                                 <li>
                                                     <input type="checkbox" id="cb9" />
                                                     <label for="cb9"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Pollution.gif" /></label>
+                                                            src="{{ public_path() }}/dist/img/Pictogramas/Pollution.gif" /><p class="text-center">GHS09</p></label>
                                                 </li>
                                             </ul>
                                         </div>
@@ -335,21 +327,55 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="produto_cod_recomendacoes_prudencia"
-                                            class="control-label">{{ __('lang.recomendacoes de prudencia') }}</label>
-                                        <input type="text" class="form-control" id="produto_cod_recomendacoes_prudencia"
-                                            tabindex="9" required>
+                                        <label>{{ __('lang.recomendacoes de prudencia') }}</label>
+                                        <select class="select2" multiple="multiple"
+                                            data-placeholder="{{ __('lang.recomendacoes de prudencia') }}"
+                                            id="produto_cod_recomendacoes_prudencia" tabindex="9" style="width: 100%;">
+                                            <option>H200</option>
+                                            <option>H201</option>
+                                            <option>H203</option>
+                                            <option>H204</option>
+                                            <option>H205</option>
+                                            <option>H206</option>
+                                            <option>H207</option>
+                                            <option>H208</option>
+                                            <option>H220</option>
+                                            <option>H221</option>
+                                            <option>H290</option>
+                                            <option>H314</option>
+                                            <option>H335</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="produto_cod_advertencias_perigo"
-                                            class="control-label">{{ __('lang.advertencias de perigo') }}</label>
-                                        <input type="text" class="form-control" id="produto_cod_advertencias_perigo"
-                                            tabindex="10" required>
-                                    </div>
+                                        <label>{{ __('lang.advertencias de perigo') }}</label>
+                                        <select class="select2" multiple="multiple"
+                                        data-placeholder="{{ __('lang.advertencias de perigo') }}" style="width: 100%;"
+                                        id="produto_cod_advertencias_perigo"
+                                        tabindex="10" required>
+                                            <option>P101</option>
+                                            <option>P102</option>
+                                            <option>P103</option>
+                                            <option>P201</option>
+                                            <option>P202</option>
+                                            <option>P210</option>
+                                            <option>P211</option>
+                                            <option>P220</option>
+                                            <option>H220</option>
+                                            <option>H221</option>
+                                            <option>P260</option>
+                                            <option>P280</option>
+                                            <option>P303</option>
+                                            <option>+361</option>
+                                            <option>+353</option>
+                                            <option>P305</option>
+                                            <option>+351</option>
+                                            <option>+338</option>
+                                        </select>
+                                      </div>
                                 </div>
                             </div>
                         </div>
@@ -357,7 +383,7 @@
                             <button type="button" class="btn btn-default col-md-3" data-dismiss="modal"
                                 tabindex="13">{{ __('lang.cancelar') }}</button>
                             <button type="button" class="btn btn-secondary col-md-3" data-dismiss="modal"
-                                tabindex="14">{{ __('lang.adicionar') }}</button>
+                                tabindex="14">{{ __('lang.selecionar') }}</button>
                         </div>
                     </form>
                 </div>

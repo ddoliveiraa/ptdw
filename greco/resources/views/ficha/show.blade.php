@@ -88,7 +88,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input" id="customSwitch1" disabled>
+                                                    <input type="checkbox" class="custom-control-input" id="customSwitch1" disabled tabindex="7">
                                                     <label class="custom-control-label"
                                                         for="customSwitch1">{{ __('lang.armario ventilado') }}</label>
                                                 </div>
@@ -113,8 +113,8 @@
                                             <h4>3</h4>
                                         </div>
                                         <div class="stock-button">
-                                            <a href="{{ public_path() }}/ficha/editar" class="btn btn-secondary btn-block" role="button">{{ __('lang.editar') }}</a>
-                                            <button type="submit" class="btn btn-block btn-danger">{{ __('lang.desativar') }}</button>
+                                            <a href="{{ public_path() }}/ficha/editar" class="btn btn-secondary btn-block" role="button" tabindex="8">{{ __('lang.editar') }}</a>
+                                            <button type="submit" class="btn btn-block btn-danger" tabindex="9">{{ __('lang.desativar') }}</button>
                                         </div>
                                     </div>
                                 </div>
