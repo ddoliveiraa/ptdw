@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="{{ public_path() }}/plugins/daterangepicker/daterangepicker.css">
 
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="{{ public_path() }}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet"
+        href="{{ public_path() }}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
 
 
 @endsection
@@ -81,7 +82,8 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="n_embalagem">{{ __('lang.n-embalagem') }}</label>
-                                                    
+                                                    <input type="text" class="form-control" id="n_embalagem" value="230-12"
+                                                        disabled>
                                                 </div>
                                             </div>
                                         </div>
@@ -109,7 +111,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
@@ -157,19 +159,18 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="marca">{{ __('lang.nome da marca') }}</label>
-                                                    <select id="marca" class="form-control select2bs4"
-                                                    style="width: 100%;">
-                                                    <option value="" selected disabled>{{ __('lang.selecione o') }}
-                                                        {{ __('lang.nome da marca') }}
-                                                    </option>
-                                                    <option>Alabama</option>
-                                                    <option>Alaska</option>
-                                                    <option>California</option>
-                                                    <option>Delaware</option>
-                                                    <option>Tennessee</option>
-                                                    <option>Texas</option>
-                                                    <option>Washington</option>
-                                                </select>
+                                                    <select id="marca" class="form-control select2bs4" style="width: 100%;">
+                                                        <option value="" selected disabled>{{ __('lang.selecione o') }}
+                                                            {{ __('lang.nome da marca') }}
+                                                        </option>
+                                                        <option>Alabama</option>
+                                                        <option>Alaska</option>
+                                                        <option>California</option>
+                                                        <option>Delaware</option>
+                                                        <option>Tennessee</option>
+                                                        <option>Texas</option>
+                                                        <option>Washington</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -214,15 +215,16 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="iva">{{ __('lang.taxa de iva') }}</label>
-                                                    <div class="input-group">
-                                                        <input type="number" class="form-control" id="iva"
-                                                            placeholder="{{ __('lang.insira a') }} {{ __('lang.taxa de iva') }}">
-
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text"><i
-                                                                    class="fa fa-percentage"></i></span>
-                                                        </div>
-                                                    </div>
+                                                    <select id="iva" class="form-control select2bs4"
+                                                        style="width: 100%;">
+                                                        <option value="" selected disabled>{{ __('lang.selecione a') }}
+                                                            {{ __('lang.taxa de iva') }}
+                                                        </option>
+                                                        <option>0,13%</option>
+                                                        <option>0,06%</option>~
+                                                        <option>0,23%</option>
+                                                        <option>0,30%</option>
+                                                    </select>
                                                 </div>
                                             </div>
 
@@ -285,6 +287,7 @@
                                                         <option>Vermelho</option>
                                                         <option>Azul</option>
                                                         <option>Verde</option>
+                                                        <option>Branco</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -392,12 +395,6 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-6">
-                                               
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="produto_nq">{{ __('lang.produto') }}</label>
                                                     <select id="produto_nq" class="form-control select2bs4"
@@ -412,11 +409,64 @@
                                                 </div>
                                             </div>
 
+                                            
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="n_embalagem_nq">{{ __('lang.n-embalagem') }}</label>
+                                                    <input type="text" class="form-control" id="n_embalagem_nq" value="230-12"
+                                                        disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="referencia_nq">{{ __('lang.referencia') }}</label>
                                                     <input type="text" class="form-control" id="referencia_nq"
                                                         placeholder="{{ __('lang.insira a') }} {{ __('lang.referencia') }}">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="unidades_nq">{{ __('lang.unidades') }}</label>
+                                                    <select id="unidades_nq" class="form-control select2bs4"
+                                                        style="width: 100%;">
+                                                        <option value="" selected disabled>{{ __('lang.selecionar') }}
+                                                            {{ __('lang.unidades') }}
+                                                        </option>
+                                                        <option>mililitros</option>
+                                                        <option>gramas</option>
+                                                        <option>outro?</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label
+                                                        for="tipo_embalagem_nq">{{ __('lang.tipo de embalagem') }}</label>
+                                                    <select id="tipo_embalagem_nq" class="form-control select2bs4"
+                                                        style="width: 100%;">
+                                                        <option value="" selected disabled>{{ __('lang.insira o') }}
+                                                            {{ __('lang.tipo de embalagem') }}
+                                                        </option>
+                                                        <option>Frasco</option>
+                                                        <option>Vidro</option>
+                                                        <option>Caixa</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label
+                                                        for="cap_embalagem_nq">{{ __('lang.capacidade da embalagem') }}</label>
+                                                    <input type="number" class="form-control" id="cap_embalagem_nq"
+                                                        placeholder="{{ __('lang.insira a') }} {{ __('lang.capacidade da embalagem') }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -444,9 +494,19 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="marca_nq">{{ __('lang.nome da marca') }}</label>
-                                                    <input type="text" class="form-control" id="marca_nq"
-                                                        placeholder="{{ __('lang.insira o') }} {{ __('lang.nome da marca') }}">
-                                                </div>
+                                                    <select id="marca_nq" class="form-control select2bs4" style="width: 100%;">
+                                                        <option value="" selected disabled>{{ __('lang.selecione o') }}
+                                                            {{ __('lang.nome da marca') }}
+                                                        </option>
+                                                        <option>Alabama</option>
+                                                        <option>Alaska</option>
+                                                        <option>California</option>
+                                                        <option>Delaware</option>
+                                                        <option>Tennessee</option>
+                                                        <option>Texas</option>
+                                                        <option>Washington</option>
+                                                    </select>
+                                                 </div>
                                             </div>
                                         </div>
 
@@ -490,14 +550,16 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="iva_nq">{{ __('lang.taxa de iva') }}</label>
-                                                    <div class="input-group">
-                                                        <input type="number" class="form-control" id="iva_nq"
-                                                            placeholder="{{ __('lang.insira a') }} {{ __('lang.taxa de iva') }}">
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text"><i
-                                                                    class="fa fa-percentage"></i></span>
-                                                        </div>
-                                                    </div>
+                                                    <select id="iva_nq" class="form-control select2bs4"
+                                                    style="width: 100%;">
+                                                    <option value="" selected disabled>{{ __('lang.selecione a') }}
+                                                        {{ __('lang.taxa de iva') }}
+                                                    </option>
+                                                    <option>0,13%</option>
+                                                    <option>0,06%</option>~
+                                                    <option>0,23%</option>
+                                                    <option>0,30%</option>
+                                                </select>
                                                 </div>
                                             </div>
 
@@ -520,34 +582,9 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="tipo_embalagem_nq">{{ __('lang.tipo de embalagem') }}</label>
-                                                    <select id="tipo_embalagem_nq" class="form-control select2bs4"
-                                                        style="width: 100%;">
-                                                        <option value="" selected disabled>{{ __('lang.insira o') }}
-                                                            {{ __('lang.tipo de embalagem') }}
-                                                        </option>
-                                                        <option>Frasco</option>
-                                                        <option>Vidro</option>
-                                                        <option>Caixa</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label
-                                                        for="cap_embalagem_nq">{{ __('lang.capacidade da embalagem') }}</label>
-                                                    <input type="number" class="form-control" id="cap_embalagem_nq"
-                                                        placeholder="{{ __('lang.insira a') }} {{ __('lang.capacidade da embalagem') }}">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
                                                     <label for="cor_nq">Cor</label>
-                                                    <select id="cor_nq" class="form-control select2bs4" style="width: 100%;">
+                                                    <select id="cor_nq" class="form-control select2bs4"
+                                                        style="width: 100%;">
                                                         <option value="" selected disabled>{{ __('lang.selecione a') }}
                                                             {{ __('lang.cor') }}
                                                         </option>
