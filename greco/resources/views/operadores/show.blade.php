@@ -86,32 +86,36 @@
                                     </div>
                                 </div>
 
-                                <table id="historico" class="table table-bordered table-striped">
-                                    <thead class="bg-dark">
-                                        <tr>
-                                            <th>{{ __('lang.data-operacao') }}</th>
-                                            <th>{{ __('lang.operacao') }}</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>01/11/2018</td>
-                                            <td>Registo Operador</td>
-                                            <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>21/11/2018</td>
-                                            <td>Registo Entrada</td>
-                                            <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>11/11/2018</td>
-                                            <td>Registo Saida</td>
-                                            <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="card-body">
+
+                                    <h3>{{ __('lang.historico') }}{{ __('lang.operador') }}</h3>
+                                    <table id="historico" class="table table-bordered table-striped">
+                                        <thead class="bg-dark">
+                                            <tr>
+                                                <th>{{ __('lang.data-operacao') }}</th>
+                                                <th>{{ __('lang.operacao') }}</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>01/11/2018</td>
+                                                <td>Registo Operador</td>
+                                                <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>21/11/2018</td>
+                                                <td>Registo Entrada</td>
+                                                <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>11/11/2018</td>
+                                                <td>Registo Saida</td>
+                                                <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
 
                                 <div class="form-group">
                                     <label for="obvs">{{ __('lang.observacoes') }}</label>
@@ -143,35 +147,35 @@
 
 @section('scripts')
 
-<script src="{{ public_path() }}/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="{{ public_path() }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="{{ public_path() }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="{{ public_path() }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="{{ public_path() }}/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="{{ public_path() }}/plugins/jszip/jszip.min.js"></script>
-<script src="{{ public_path() }}/plugins/pdfmake/pdfmake.min.js"></script>
-<script src="{{ public_path() }}/plugins/pdfmake/vfs_fonts.js"></script>
-<script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<!-- Page specific script -->
-<script>
-    $(function() {
-        $('#existencias').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-            "language": {
-                "url": "{{ __('lang.url-lang-dt') }}",
-            },
+    <script src="{{ public_path() }}/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="{{ public_path() }}/plugins/jszip/jszip.min.js"></script>
+    <script src="{{ public_path() }}/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="{{ public_path() }}/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- Page specific script -->
+    <script>
+        $(function() {
+            $('#existencias').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+                "language": {
+                    "url": "{{ __('lang.url-lang-dt') }}",
+                },
+            });
         });
-    });
 
-</script>
+    </script>
 
 @endsection
