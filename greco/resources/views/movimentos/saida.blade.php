@@ -61,15 +61,20 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="n_inventario">{{ __('lang.n de inventario') }}</label>
-                                            <select class="form-control select2bs4" id="n_inventario" style="width: 100%;">
+                                            <label for="n_embalagem_nq">{{ __('lang.n-embalagem') }}</label>
+                                            <input type="text" class="form-control" id="n_embalagem_nq" value="230-12"
+                                                disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="n_embalagem_nq">{{ __('lang.n-embalagem') }}</label>
+                                            <select class="form-control select2bs4" id="n_embalagem_nq" style="width: 100%;">
                                                 <option value="" selected disabled>{{ __('lang.selecione o') }}
-                                                    {{ __('lang.n de inventario') }}
+                                                    {{ __('lang.n-embalagem') }}
                                                 </option>
-                                                <option>1234</option>
-                                                <option>2137</option>
-                                                <option>1223</option>
-                                                <option>453</option>
+                                                <option>1234-12</option>
+                                                <option>2137-12</option>
+                                                <option>1223-22</option>
+                                                <option>453-1</option>
                                             </select>
                                         </div>
                                     </div>
