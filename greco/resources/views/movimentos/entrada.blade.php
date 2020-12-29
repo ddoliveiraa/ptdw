@@ -375,12 +375,6 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-6">
-                                               
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="produto_nq">{{ __('lang.produto') }}</label>
                                                     <select id="produto_nq" class="form-control select2bs4"
