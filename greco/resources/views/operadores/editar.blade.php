@@ -34,6 +34,7 @@
                     <div class="col-md-3 mb-3 mt-3 float-right">
                         <a role="button" href="{{ public_path() }}/operadores"
                         class="btn btn-block btn-danger">{{ __('lang.desativar') }}</a>
+                        {{-- fiel de Armazém nao tem permissoes pra desativar operadores --}}
                  </div>
                     <h1 class="text-left display-4">{{ __('lang.editar') }} Ana Silva</h1>
                     
