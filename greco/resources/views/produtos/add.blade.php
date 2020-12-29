@@ -188,37 +188,21 @@
                                                 <div class="form-group">
                                                     <label for="produto_foto"
                                                         class="control-label">{{ __('lang.foto') }}</label>
-                                                    <input type="file" class="form-control" id="produto_foto" tabindex="1">
+                                                    <input type="file" class="form-control" id="produto_foto" tabindex="2">
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="produto_unidades_nq"
-                                                        class="control-label">{{ __('lang.unidades') }}</label>
-                                                    <input type="text" class="form-control" id="produto_unidades_nq"
-                                                        tabindex="8" required>
-                                                </div>
-                                            </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="produto_familia_nq"
                                                         class="control-label">{{ __('lang.familia') }}</label>
-                                                    <input type="text" class="form-control" id="produto_familia_nq"
-                                                        tabindex="8" required>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="produto_stock_existente_nq"
-                                                        class="control-label">{{ __('lang.stock existente') }}</label>
-                                                    <input type="text" class="form-control" id="produto_stock_existente_nq"
-                                                        tabindex="11" required>
+                                                    <select class="form-control" id="produto_familia_nq" tabindex="3">
+                                                        <option value="1">Familia 1</option>
+                                                        <option value="2">Familia 2</option>
+                                                        <option value="3">Familia 3</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -226,11 +210,10 @@
                                                     <label for="produto_stock_minimo_nq"
                                                         class="control-label">{{ __('lang.stock minimo') }}</label>
                                                     <input type="text" class="form-control" id="produto_stock_minimo_nq"
-                                                        tabindex="12" required>
+                                                        tabindex="4" required>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
 
                                     <div class="card-footer">
