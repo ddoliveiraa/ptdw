@@ -63,43 +63,31 @@
                                 <form>
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label for="produto">{{ __('lang.produto') }}</label>
-                                                    <select id="produto" class="form-control select2bs4"
-                                                        style="width: 100%;">
-                                                        <option value="" selected disabled>{{ __('lang.selecione o') }}
-                                                            {{ __('lang.produto') }}
-                                                        </option>
-                                                        <option>Cloreto de Sódio</option>
-                                                        <option>Hidróxido de Carbono</option>
-                                                        <option>Cloreto de Ferro</option>
-                                                    </select>
-                                                </div>
+                                            <div class="col-md-6">
+                                               
                                             </div>
                                         </div>
 
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="n_inventario">{{ __('lang.n de inventario') }}</label>
-                                                    <select class="form-control select2bs4" id="n_inventario"
+                                                    <label for="produto_nq">{{ __('lang.produto') }}</label>
+                                                    <select id="produto_nq" class="form-control select2bs4"
                                                         style="width: 100%;">
                                                         <option value="" selected disabled>{{ __('lang.selecione o') }}
-                                                            {{ __('lang.n de inventario') }}
+                                                            {{ __('lang.produto') }}
                                                         </option>
-                                                        <option>1234</option>
-                                                        <option>2137</option>
-                                                        <option>1223</option>
-                                                        <option>453</option>
+                                                        <option>Luvas</option>
+                                                        <option>Caixa de Petri</option>
+                                                        <option>Pipeta</option>
                                                     </select>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="referencia">{{ __('lang.referencia') }}</label>
-                                                    <input type="text" class="form-control" id="referencia"
+                                                    <label for="referencia_nq">{{ __('lang.referencia') }}</label>
+                                                    <input type="text" class="form-control" id="referencia_nq"
                                                         placeholder="{{ __('lang.insira a') }} {{ __('lang.referencia') }}">
                                                 </div>
                                             </div>
@@ -373,6 +361,12 @@
 
                                 <form>
                                     <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                               
+                                            </div>
+                                        </div>
+
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
