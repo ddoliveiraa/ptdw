@@ -91,6 +91,10 @@ return [
     'TAmbiente' => 'Em Temperatura Ambiente',
     'TAlta' => 'Em Temperaturas Altas',
     'TMAlta' => 'Em Temperaturas Extremamente Altas',
+    'metal' => 'Metal',
+    'vidro' => 'Vidro',
+    'plastico' => 'Plástico',
+    'outro' => 'Outro',
 
     /*Fornecedores*/
     'fornecedores' => 'Fornecedores',

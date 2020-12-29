@@ -199,9 +199,10 @@
                                                     <label for="produto_familia_nq"
                                                         class="control-label">{{ __('lang.familia') }}</label>
                                                     <select class="form-control" id="produto_familia_nq" tabindex="3">
-                                                        <option value="1">Familia 1</option>
-                                                        <option value="2">Familia 2</option>
-                                                        <option value="3">Familia 3</option>
+                                                        <option value="1">{{ __('lang.metal') }}</option>
+                                                        <option value="2">{{ __('lang.vidro') }}</option>
+                                                        <option value="3">{{ __('lang.plastico') }}</option>
+                                                        <option value="3">{{ __('lang.outro') }}</option>
                                                     </select>
                                                 </div>
                                             </div>

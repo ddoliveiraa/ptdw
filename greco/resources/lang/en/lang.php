@@ -89,6 +89,11 @@ return [
     'TAmbiente' => 'In Ambient Temperatures',
     'TAlta' => 'In High Temperatures',
     'TMAlta' => 'In Extremely High Temperatures',
+    'metal' => 'Metal',
+    'vidro' => 'Glass',
+    'plastico' => 'Plastic',
+    'outro' => 'Other',
+
 
     /*Fornecedores*/
     'fornecedores' => 'Suppliers',
