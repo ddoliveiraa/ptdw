@@ -375,6 +375,12 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-6">
+                                               
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="produto_nq">{{ __('lang.produto') }}</label>
                                                     <select id="produto_nq" class="form-control select2bs4"
@@ -385,24 +391,6 @@
                                                         <option>Luvas</option>
                                                         <option>Caixa de Petri</option>
                                                         <option>Pipeta</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="n_inventario_nq">{{ __('lang.n de inventario') }}</label>
-                                                    <select class="form-control select2bs4" id="n_inventario_nq"
-                                                        style="width: 100%;">
-                                                        <option value="" selected disabled>{{ __('lang.selecione o') }}
-                                                            {{ __('lang.n de inventario') }}
-                                                        </option>
-                                                        <option>12345</option>
-                                                        <option>21357</option>
-                                                        <option>12253</option>
-                                                        <option>4553</option>
                                                     </select>
                                                 </div>
                                             </div>
