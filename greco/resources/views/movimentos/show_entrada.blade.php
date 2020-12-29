@@ -142,7 +142,7 @@
                                         <div class="form-group">
                                             <label for="iva">{{ __('lang.taxa de iva') }}</label>
                                             <div class="input-group">
-                                                <input type="number" class="form-control" id="iva" value=0,23 step="0.05"
+                                                <input type="number" class="form-control" id="iva" value=0.23 step="0.05"
                                                     disabled>
                                                 <div class="input-group-append">
                                                     <span class="input-group-text"><i class="fa fa-percentage"></i></span>
@@ -155,7 +155,7 @@
                                         <div class="form-group">
                                             <label for="preco">{{ __('lang.preco') }}</label>
                                             <div class="input-group">
-                                                <input type="number" class="form-control" id="preco" value=25,35
+                                                <input type="number" class="form-control" id="preco" value=25.35
                                                     step="0.05" disabled>
                                                 <div class="input-group-append">
                                                     <span class="input-group-text"><i class="fa fa-euro-sign"></i></span>
