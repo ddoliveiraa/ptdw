@@ -62,12 +62,8 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="n_embalagem_nq">{{ __('lang.n-embalagem') }}</label>
-                                            <input type="text" class="form-control" id="n_embalagem_nq" value="230-12"
-                                                disabled>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="n_embalagem_nq">{{ __('lang.n-embalagem') }}</label>
-                                            <select class="form-control select2bs4" id="n_embalagem_nq" style="width: 100%;">
+                                            <select class="form-control select2bs4" id="n_embalagem_nq"
+                                                style="width: 100%;">
                                                 <option value="" selected disabled>{{ __('lang.selecione o') }}
                                                     {{ __('lang.n-embalagem') }}
                                                 </option>
@@ -96,13 +92,13 @@
                                     </div>
                                 </div>
 
-                                
+
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="solicitante">{{ __('lang.solicitante') }}</label>
                                             <select id="solicitante" class="form-control select2bs4" style="width: 100%;">
-                                                <option value="" selected >{{ __('lang.selecione o') }}
+                                                <option value="" selected disabled>{{ __('lang.selecione o') }}
                                                     {{ __('lang.solicitante') }}
                                                 </option>
                                                 <option>Diogo</option>
