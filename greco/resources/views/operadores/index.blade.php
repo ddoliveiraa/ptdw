@@ -183,7 +183,6 @@
                             columns: ':visible:not(:last-child)'
                         }
                     },
-                    'colvis'
                 ],
                 "initComplete": function() {
                     table.buttons().container().appendTo( 'div.toolbar' );
