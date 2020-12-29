@@ -102,7 +102,7 @@
                                         <div class="form-group">
                                             <label for="solicitante">{{ __('lang.solicitante') }}</label>
                                             <select id="solicitante" class="form-control select2bs4" style="width: 100%;">
-                                                <option value="" selected disabled>{{ __('lang.selecione o') }}
+                                                <option value="" selected >{{ __('lang.selecione o') }}
                                                     {{ __('lang.solicitante') }}
                                                 </option>
                                                 <option>Diogo</option>
