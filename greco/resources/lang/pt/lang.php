@@ -118,6 +118,7 @@ return [
     'preco' => 'Preço',
     'tipo de embalagem' => 'Tipo de Embalagem',
     'capacidade da embalagem' =>'Capacidade da Embalagem',
+    'n-embalagem' => 'Número de Embalagem',
     'estado fisico' => 'Estado Físico',
     'textura/viscosidade' => 'Textura/Viscosidade',
     'cor' => 'Cor',

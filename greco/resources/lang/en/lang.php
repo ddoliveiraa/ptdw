@@ -117,6 +117,7 @@ return [
     'preco' => 'Price',
     'tipo de embalagem' => 'Container Type',
     'capacidade da embalagem' => 'Container Capacity',
+    'n-embalagem' => 'Container Number',
     'estado fisico' => 'Physical State',
     'textura/viscosidade' => 'Texture/Viscosity',
     'cor' => 'Colour',
