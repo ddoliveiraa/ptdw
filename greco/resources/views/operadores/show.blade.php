@@ -86,7 +86,7 @@
                                     </div>
                                 </div>
 
-                                <div class="card-body">
+                                <div class="row">
 
                                     <h3>{{ __('lang.historico') }}{{ __('lang.operador') }}</h3>
                                     <table id="historico" class="table table-bordered table-striped">
