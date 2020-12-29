@@ -89,7 +89,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                    <h3>{{ __('lang.historico') }}{{ __('lang.operador') }}</h3>
+                                    <h3>{{ __('lang.historico') }} {{ __('lang.operador') }}</h3>
                                     <table id="historico" class="table table-bordered table-striped">
                                         <thead class="bg-dark">
                                             <tr>
