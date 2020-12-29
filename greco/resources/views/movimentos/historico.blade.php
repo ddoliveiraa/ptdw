@@ -78,7 +78,7 @@
                                     <td>Fiel</td>
                                     <td>Sim</td>
                                     <td>--</td>
-                                    <td><a href="{{ public_path() }}/movimentos/show"> Ver Mais &nbsp<i
+                                    <td><a href="{{ public_path() }}/movimentos/show_saida"> Ver Mais &nbsp<i
                                                 class="fa fa-arrow-right"></i></a></td>
                                 </tr>
                                 <tr>
@@ -95,7 +95,7 @@
                                     <td>Fiel</td>
                                     <td>Não</td>
                                     <td>Plástico</td>
-                                    <td><a href="{{ public_path() }}/movimentos/show"> Ver Mais &nbsp<i
+                                    <td><a href="{{ public_path() }}/movimentos/show_entrada"> Ver Mais &nbsp<i
                                                 class="fa fa-arrow-right"></i></a></td>
                                 </tr>
                             </tbody>

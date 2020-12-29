@@ -221,7 +221,7 @@
                                                             {{ __('lang.taxa de iva') }}
                                                         </option>
                                                         <option>0,13%</option>
-                                                        <option>0,06%</option>~
+                                                        <option>0,06%</option>
                                                         <option>0,23%</option>
                                                         <option>0,30%</option>
                                                     </select>

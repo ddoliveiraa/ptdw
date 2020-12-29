@@ -55,8 +55,12 @@ Route::get('/movimentos/historico', function () {
     return view('movimentos.historico');
 });
 
-Route::get('/movimentos/show', function () {
-    return view('movimentos.show');
+Route::get('/movimentos/show_entrada', function () {
+    return view('movimentos.show_entrada');
+});
+
+Route::get('/movimentos/show_saida', function () {
+    return view('movimentos.show_saida');
 });
 
 Route::get('/movimentos/editar', function () {
