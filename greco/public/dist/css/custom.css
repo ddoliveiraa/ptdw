@@ -153,9 +153,20 @@
 
 /*----------------Historico--------------*/
 
+.filtros>* {
+    margin-bottom: 0.4rem;
+    text-align: center;
+}
+
 .toolbar>* {
     margin-bottom: 0.4rem;
     text-align: center;
+    float: right;
+    margin-left: 0.3rem;
+}
+
+#historico_filter .dt-buttons{
+    float: right;
 }
 
 

@@ -37,7 +37,6 @@
 
     <section class="content">
         <div class="container-fluid">
-            <input type="text" class="col-md-12 form-control" id="intervalo">
         </div>
         <div class="row">
             <div class="col-md-2">
@@ -46,6 +45,27 @@
                         <h3 class="card-title text-light">Filtros</h3>
                     </div>
                     <div class="card-body sup">
+                        <div class="filtros">
+                            <select id="familia" class="col-md-12 form-control select">
+                                <option value="Familia">{{ __('lang.familia') }}</option>
+                                <option value="Sim">{{ __('lang.quimicos') }}</option>
+                                <option value="Não">{{ __('lang.nao quimicos') }}</option>
+                            </select><select id="sub-familia" class="col-md-12 form-control select" style="display: none;">
+                                <option value="Sub-Familia">{{ __('lang.sub-familia') }}</option>
+                                <option value="Vidro">{{ __('lang.vidro') }}</option>
+                                <option value="Plástico">{{ __('lang.plastico') }}</option>
+                                <option value="Metal">{{ __('lang.metal') }}</option>
+                                <option value="Outros">{{ __('lang.outros') }}</option>
+                            </select>
+                            <select id="movimento" class="col-md-12 form-control select">
+                                <option value="Entradas e Saídas">{{ __('lang.movimento') }}</option>
+                                <option value="Entrada">{{ __('lang.entrada') }}</option>
+                                <option value="Saída">{{ __('lang.saida') }}</option>
+                            </select>
+                            <input type="text" class="col-md-12 form-control" id="intervalo">
+                            <button id="pictogramas" class="col-md-12 btn btn-secondary">{{ __('lang.pictograma') }}s</button>
+                            <button id="filter" class="btn btn-danger btn-block">Reset</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -249,7 +269,7 @@
         $(function() {
 
             var table = $("#historico").DataTable({
-                "dom": '<"toolbar">frtip',
+                "dom": '<"search">frtip',
                 "info": true,
                 "language": {
                     "url": "{{ __('lang.url-lang-dt') }}",
@@ -298,7 +318,7 @@
                             var familias = searchData[11]; // using the data from the 12th column
 
                             if (familia == familias) {
-                                return movimentos;
+                                return familias;
                             } else if (familia == "Familia") {
                                 return true;
                             }
@@ -312,7 +332,7 @@
                             var subfamilias = searchData[12]; // using the data from the 13th column
 
                             if (subfamilia == subfamilias) {
-                                return movimentos;
+                                return subfamilias;
                             } else if (subfamilia == "Sub-Familia") {
                                 return true;
                             }
@@ -326,56 +346,6 @@
                             format: 'DD/MM/YYYY'
                         }
                     })
-
-                    //criação e inserção do botão pictogramas dentro da div da datatables
-                    var pictogramas = $("<button></button>").attr('id', 'pictogramas');
-                    pictogramas.addClass('col-md-12 btn btn-secondary');
-                    $("div.toolbar").prepend(pictogramas);
-                    $("#pictogramas").text("{{ __('lang.pictograma') }}");
-
-                    //Inserção do daterangepicker dentro da div da datatable
-                    $("div.toolbar").prepend($("#intervalo"));
-
-                    //criação e inserção da combobox movimentos dentro da div da datatable
-                    var movimentos = $("<select></select>").attr('id', 'movimento');
-                    movimentos.addClass('col-md-12 form-control select');
-                    $('div.toolbar').prepend(movimentos);
-                    $('#movimento').append(new Option("{{ __('lang.movimento') }}",
-                        "Entradas e Saídas"));
-                    $('#movimento').append(new Option("{{ __('lang.entrada') }}", "Entrada"));
-                    $('#movimento').append(new Option("{{ __('lang.saida') }}", "Saída"));
-
-                    //criação e inserção da combobox sub-familia dentro da div da datatable
-                    var subfamilia = $("<select></select>").attr('id', 'sub-familia');
-                    subfamilia.addClass('col-md-12 form-control select');
-                    $('div.toolbar').prepend(subfamilia);
-                    $('#sub-familia').append(new Option("{{ __('lang.sub-familia') }}",
-                        "Sub-Familia"));
-                    $('#sub-familia').append(new Option("{{ __('lang.vidro') }}", "Vidro"));
-                    $('#sub-familia').append(new Option("{{ __('lang.plastico') }}", "Plástico"));
-                    $('#sub-familia').append(new Option("{{ __('lang.metal') }}", "Metal"));
-                    $('#sub-familia').append(new Option("{{ __('lang.outros') }}", "Outros"));
-                    $('#sub-familia').css('display', 'none');
-
-
-                    //criação e inserção da combobox familia dentro da div da datatable
-                    var familia = $("<select></select>").attr('id', 'familia');
-                    familia.addClass('col-md-12 form-control select');
-                    $('div.toolbar').prepend(familia);
-                    $('#familia').append(new Option("{{ __('lang.familia') }}",
-                        "Familia"));
-                    $('#familia').append(new Option("{{ __('lang.quimicos') }}", "Sim"));
-                    $('#familia').append(new Option("{{ __('lang.nao quimicos') }}", "Não"));
-
-                    //criação e inserção do botão pictogramas dentro da div da datatables
-                    var filter = $("<button></button>").attr('id', 'filter');
-                    var filters = $("<i></i>");
-                    filter.addClass('btn btn-danger btn-block');
-                    filters.addClass('fa fa-times-circle')
-                    $("div.toolbar").append(filter);
-                    $("#filter").html('Reset');
-
-                    $(".sup").append($("div.toolbar"));
 
                     $('#sub-familia').hide(1);
                     $("#pictogramas").show(1);
