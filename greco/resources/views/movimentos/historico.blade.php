@@ -324,7 +324,7 @@
                     var pictogramas = $("<button></button>").attr('id', 'pictogramas');
                     pictogramas.addClass('btn btn-secondary');
                     $("div.toolbar").append(pictogramas);
-                    $("#pictogramas").text("{{ __('lang.pictograma') }}s");
+                    $("#pictogramas").text("{{ __('lang.pictograma') }}");
 
                     //Inserção do daterangepicker dentro da div da datatable
                     $("div.toolbar").append($("#intervalo"));
