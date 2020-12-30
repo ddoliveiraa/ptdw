@@ -340,7 +340,7 @@
 
                     //criação e inserção da combobox sub-familia dentro da div da datatable
                     var subfamilia = $("<select></select>").attr('id', 'sub-familia');
-                    subfamilia.addClass('col-md-2 form-control select');
+                    subfamilia.addClass('col-md-1 form-control select');
                     $('div.toolbar').append(subfamilia);
                     $('#sub-familia').append(new Option("{{ __('lang.sub-familia') }}",
                         "Sub-Familia"));
