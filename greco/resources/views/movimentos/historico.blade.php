@@ -322,7 +322,7 @@
 
                     //criação e inserção do botão pictogramas dentro da div da datatables
                     var pictogramas = $("<button></button>").attr('id', 'pictogramas');
-                    pictogramas.addClass('col-md-2 btn btn-secondary');
+                    pictogramas.addClass('btn btn-secondary');
                     $("div.toolbar").append(pictogramas);
                     $("#pictogramas").text("{{ __('lang.pictograma') }}s");
 
@@ -368,8 +368,8 @@
                     $("div.toolbar").append(filter);
                     $("#filter").html(filters);
 
-                    $('#sub-familia').hide(100);
-                    $("#pictogramas").show(100);
+                    $('#sub-familia').hide(1);
+                    $("#pictogramas").show(1);
                     $('#filter').click(function() {
                         $('#familia').val('Familia');
                         $('#sub-familia').val('Sub-Familia');
@@ -390,12 +390,12 @@
                         var familia = $('#familia option:selected').val();
                         console.log("familia selecionada: " + familia);
                         if (familia == "Não") {
-                            $('#sub-familia').show(100);
-                            $("#pictogramas").hide(100);
+                            $('#sub-familia').show(1);
+                            $("#pictogramas").hide(1);
                         } else {
-                            $('#sub-familia').hide(100);
+                            $('#sub-familia').hide(1);
                             $('#sub-familia').val('Sub-Familia');
-                            $("#pictogramas").show(100);
+                            $("#pictogramas").show(1);
                         }
                         table.draw();
                     });
