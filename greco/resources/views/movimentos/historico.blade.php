@@ -312,10 +312,6 @@
                             return false;
                         }
                     );
-
-
-                    $('#historico_filter').addClass('col-md-2')
-
                     //Date range picker
                     $('#intervalo').daterangepicker({
                         timePicker: false,
@@ -366,9 +362,11 @@
 
                     //criação e inserção do botão pictogramas dentro da div da datatables
                     var filter = $("<button></button>").attr('id', 'filter');
+                    var filters = $("<i></i>");
                     filter.addClass('btn btn-danger');
+                    filters.addClass('fa fa-times-circle')
                     $("div.toolbar").append(filter);
-                    $("#filter").text("Reset");
+                    $("#filter").html(filters);
 
                     $('#sub-familia').hide(100);
                     $("#pictogramas").show(100);

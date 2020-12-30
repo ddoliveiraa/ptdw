@@ -47,12 +47,9 @@
             </div>
             <div class="row">
                 <div class="col-12">
-
                     <div class="card">
-
                         <!-- /.card-header -->
                         <div class="card-body">
-
                             <table id="tabelaprodutos" class="table table-bordered table-striped">
                                 <thead class="bg-dark">
                                     <tr>

@@ -156,9 +156,10 @@
 .toolbar>* {
     margin-left: 1rem !important;
     margin-bottom: 0.4rem;
-    text-align: center;
     float: right;
+    text-align: center;
 }
+
 
 .page-item.active .page-link {
     color: #fff !important;
