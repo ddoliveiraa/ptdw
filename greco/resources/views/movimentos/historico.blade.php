@@ -37,10 +37,19 @@
 
     <section class="content">
         <div class="container-fluid">
-            <input type="text" class="col-md-2 form-control" id="intervalo">
+            <input type="text" class="col-md-12 form-control" id="intervalo">
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-md-2">
+                <div class="card card-dark">
+                    <div class="card-header">
+                        <h3 class="card-title text-light">Filtros</h3>
+                    </div>
+                    <div class="card-body sup">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10">
                 <div class="card">
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -248,12 +257,10 @@
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "columnDefs": [
-                    {
-                        "targets": [3, 11, 12],
-                        "visible": false
-                    }
-                ],
+                "columnDefs": [{
+                    "targets": [3, 6, 10, 11, 12],
+                    "visible": false
+                }],
                 "buttons": [{
                         extend: 'csvHtml5',
                         exportOptions: {
@@ -268,7 +275,7 @@
                     },
                 ],
                 "initComplete": function() {
-                    table.buttons().container().appendTo('div.toolbar');
+                    table.buttons().container().appendTo('#historico_filter');
                     //filtragem por movimentos
                     $.fn.dataTable.ext.search.push(
                         function(settings, searchData, index, rowData, counter) {
@@ -322,17 +329,17 @@
 
                     //criação e inserção do botão pictogramas dentro da div da datatables
                     var pictogramas = $("<button></button>").attr('id', 'pictogramas');
-                    pictogramas.addClass('btn btn-secondary');
-                    $("div.toolbar").append(pictogramas);
+                    pictogramas.addClass('col-md-12 btn btn-secondary');
+                    $("div.toolbar").prepend(pictogramas);
                     $("#pictogramas").text("{{ __('lang.pictograma') }}");
 
                     //Inserção do daterangepicker dentro da div da datatable
-                    $("div.toolbar").append($("#intervalo"));
+                    $("div.toolbar").prepend($("#intervalo"));
 
                     //criação e inserção da combobox movimentos dentro da div da datatable
                     var movimentos = $("<select></select>").attr('id', 'movimento');
-                    movimentos.addClass('col-md-1 form-control select');
-                    $('div.toolbar').append(movimentos);
+                    movimentos.addClass('col-md-12 form-control select');
+                    $('div.toolbar').prepend(movimentos);
                     $('#movimento').append(new Option("{{ __('lang.movimento') }}",
                         "Entradas e Saídas"));
                     $('#movimento').append(new Option("{{ __('lang.entrada') }}", "Entrada"));
@@ -340,8 +347,8 @@
 
                     //criação e inserção da combobox sub-familia dentro da div da datatable
                     var subfamilia = $("<select></select>").attr('id', 'sub-familia');
-                    subfamilia.addClass('col-md-1 form-control select');
-                    $('div.toolbar').append(subfamilia);
+                    subfamilia.addClass('col-md-12 form-control select');
+                    $('div.toolbar').prepend(subfamilia);
                     $('#sub-familia').append(new Option("{{ __('lang.sub-familia') }}",
                         "Sub-Familia"));
                     $('#sub-familia').append(new Option("{{ __('lang.vidro') }}", "Vidro"));
@@ -353,8 +360,8 @@
 
                     //criação e inserção da combobox familia dentro da div da datatable
                     var familia = $("<select></select>").attr('id', 'familia');
-                    familia.addClass('col-md-1 form-control select');
-                    $('div.toolbar').append(familia);
+                    familia.addClass('col-md-12 form-control select');
+                    $('div.toolbar').prepend(familia);
                     $('#familia').append(new Option("{{ __('lang.familia') }}",
                         "Familia"));
                     $('#familia').append(new Option("{{ __('lang.quimicos') }}", "Sim"));
@@ -363,10 +370,12 @@
                     //criação e inserção do botão pictogramas dentro da div da datatables
                     var filter = $("<button></button>").attr('id', 'filter');
                     var filters = $("<i></i>");
-                    filter.addClass('btn btn-danger');
+                    filter.addClass('btn btn-danger btn-block');
                     filters.addClass('fa fa-times-circle')
                     $("div.toolbar").append(filter);
-                    $("#filter").html(filters);
+                    $("#filter").html('Reset');
+
+                    $(".sup").append($("div.toolbar"));
 
                     $('#sub-familia').hide(1);
                     $("#pictogramas").show(1);

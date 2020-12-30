@@ -154,9 +154,7 @@
 /*----------------Historico--------------*/
 
 .toolbar>* {
-    margin-left: 1rem !important;
     margin-bottom: 0.4rem;
-    float: right;
     text-align: center;
 }
 
