@@ -9,33 +9,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GRECO</title>
-  <link rel="shortcut icon" href="dist/img/UALogo.png" type="image/x-icon">
+  <link rel="shortcut icon" href="{{ public_path() }}/dist/img/UALogo.png" type="image/x-icon">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="{{ public_path() }}/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{ public_path() }}/dist/css/adminlte.min.css">
   <!-- flag-icon-css -->
-  <link rel="stylesheet" href="plugins/flag-icon-css/css/flag-icon.min.css">
+  <link rel="stylesheet" href="{{ public_path() }}/plugins/flag-icon-css/css/flag-icon.min.css">
   <!-- CSS do Grupo -->
-  <link rel="stylesheet" href="dist/css/custom.css">
+  <link rel="stylesheet" href="{{ public_path() }}/dist/css/custom.css">
   <!-- DataTables -->
-  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- SweetAlert2 -->
-  <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <link rel="stylesheet" href="{{ public_path() }}/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
   <!-- Toastr -->
-  <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
+  <link rel="stylesheet" href="{{ public_path() }}/plugins/toastr/toastr.min.css">
   <!-- Select2 -->
-  <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
-  <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <link rel="stylesheet" href="{{ public_path() }}/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="{{ public_path() }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <!-- daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="{{ public_path() }}/plugins/daterangepicker/daterangepicker.css">
   <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <link rel="stylesheet" href="{{ public_path() }}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -49,7 +49,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="index3.html" class="nav-link">Home</a>
+          <a href="" class="nav-link">Home</a>
         </li>
       </ul>
 
@@ -97,13 +97,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </li>
         <li class="nav-item dropdown user-menu">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-            <img src="dist/img/UALogo.png" class="user-image img-circle elevation-2" alt="User Image">
+            <img src="{{ public_path() }}/dist/img/UALogo.png" class="user-image img-circle elevation-2" alt="User Image">
             <span class="d-none d-md-inline">Grupo 3</span>
           </a>
           <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <!-- User image -->
             <li class="user-header bg-primary">
-              <img src="dist/img/UALogo.png" class="img-circle elevation-2" alt="User Image">
+              <img src="{{ public_path() }}/dist/img/UALogo.png" class="img-circle elevation-2" alt="User Image">
 
               <p>
                 Nome
@@ -126,7 +126,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="index3.html" class="brand-link navbar-dark">
-        <img src="dist/img/UALogo.png" alt="AdminLTE Logo" class="brand-image elevation-3" style="opacity: .8">
+        <img src="{{ public_path() }}/dist/img/UALogo.png" alt="AdminLTE Logo" class="brand-image elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Style Guide</span>
       </a>
 
@@ -196,8 +196,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-8 offset-md-2">
-              <img id="light" class="logo" src="dist/img/UALogo.png">
-              <img id="dark" class="logo" src="dist/img/UALogoDark.png">
+              <img id="light" class="logo" src="{{ public_path() }}/dist/img/UALogo.png">
+              <img id="dark" class="logo" src="{{ public_path() }}/dist/img/UALogoDark.png">
               <div class="codigo">
                 <p>Headers Font: <span>Source Sans Pro Regular</span></p>
               </div>
@@ -1122,41 +1122,41 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- REQUIRED SCRIPTS -->
 
     <!-- jQuery -->
-    <script src="plugins/jquery/jquery.min.js"></script>
+    <script src="{{ public_path() }}/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ public_path() }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="dist/js/adminlte.min.js"></script>
+    <script src="{{ public_path() }}/dist/js/adminlte.min.js"></script>
     <!-- bs-custom-file-input -->
-    <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <script src="{{ public_path() }}/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
     <!-- Select2 -->
-    <script src="plugins/select2/js/select2.full.min.js"></script>
+    <script src="{{ public_path() }}/plugins/select2/js/select2.full.min.js"></script>
     <!-- InputMask -->
-    <script src="plugins/moment/moment.min.js"></script>
-    <script src="plugins/inputmask/jquery.inputmask.min.js"></script>
+    <script src="{{ public_path() }}/plugins/moment/moment.min.js"></script>
+    <script src="{{ public_path() }}/plugins/inputmask/jquery.inputmask.min.js"></script>
     <!-- Language DatePicker -->
-    <script src="plugins/moment/locale/pt.js"></script>
+    <script src="{{ public_path() }}/plugins/moment/locale/pt.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js"></script>
+    <script src="{{ public_path() }}/dist/js/demo.js"></script>
     <!-- Tempusdominus Bootstrap 4 -->
-    <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="{{ public_path() }}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
     <!-- DataTables  & Plugins -->
-    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="plugins/jszip/jszip.min.js"></script>
-    <script src="plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="{{ public_path() }}/plugins/jszip/jszip.min.js"></script>
+    <script src="{{ public_path() }}/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="{{ public_path() }}/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <!-- SweetAlert2 -->
-    <script src="plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script src="{{ public_path() }}/plugins/sweetalert2/sweetalert2.min.js"></script>
     <!-- Toastr -->
-    <script src="plugins/toastr/toastr.min.js"></script>
+    <script src="{{ public_path() }}/plugins/toastr/toastr.min.js"></script>
     <script>
       $(function () {
         $("#example1").DataTable({

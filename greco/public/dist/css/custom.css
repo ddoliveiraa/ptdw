@@ -201,3 +201,34 @@ div.dataTables_filter {
 /*----------------Operadores--------------*/
 
 /*-----------------Armazem----------------*/
+
+/* Style sheet */
+.codigo{
+    padding: 10px;
+    background-color: #ffffff;
+    color: rgb(70, 70, 70);
+    border: 1px solid rgb(82, 229, 255);
+    width: 500px;
+    margin: 10px;
+    border-radius: 10px;
+
+}
+.codigo p{
+    margin-bottom: 5px;
+    
+}
+.codigo span{
+    color: orange;
+}
+
+.logo{
+    padding: 20px;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+#light{
+    background-color: #343a40;
+}
+#dark{
+    background-color: #ffffff;
+}

@@ -166,3 +166,15 @@
 .codigo span{
     color: orange;
 }
+
+.logo{
+    padding: 20px;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+#light{
+    background-color: #343a40;
+}
+#dark{
+    background-color: #ffffff;
+}

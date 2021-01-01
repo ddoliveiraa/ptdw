@@ -117,3 +117,9 @@ Route::get('/fornecedores/add', function () {
 Route::get('/armazem', function () {
     return view('armazem.index');
 });
+
+//StyleGuide
+
+Route::get('/styleguide', function () {
+    return view('styleguide');
+});
