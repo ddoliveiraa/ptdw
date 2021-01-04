@@ -186,7 +186,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ public_path() }}/operadores" class="nav-link {{ Request::is('operadores/*') ? 'active' : '' }}">
+                                <a href="{{ public_path() }}/operadores" class="nav-link {{ Request::is('operadores') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-shield-alt"></i>
                                     <p>
                                         {{ __('lang.operadores') }}
