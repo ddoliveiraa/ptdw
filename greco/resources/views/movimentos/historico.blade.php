@@ -48,8 +48,8 @@
                         <div class="filtros">
                             <select id="familia" class="col-md-12 form-control select">
                                 <option value="Familia">{{ __('lang.familia') }}</option>
-                                <option value="Sim">{{ __('lang.quimicos') }}</option>
-                                <option value="Não">{{ __('lang.nao quimicos') }}</option>
+                                <option value="Quimico">{{ __('lang.quimicos') }}</option>
+                                <option value="Não Quimico">{{ __('lang.nao quimicos') }}</option>
                             </select><select id="sub-familia" class="col-md-12 form-control select" style="display: none;">
                                 <option value="Sub-Familia">{{ __('lang.sub-familia') }}</option>
                                 <option value="Vidro">{{ __('lang.vidro') }}</option>
@@ -58,12 +58,13 @@
                                 <option value="Outros">{{ __('lang.outros') }}</option>
                             </select>
                             <select id="movimento" class="col-md-12 form-control select">
-                                <option value="Entradas e Saídas">{{ __('lang.movimento') }}</option>
+                                <option value="Movimento">{{ __('lang.movimento') }}</option>
                                 <option value="Entrada">{{ __('lang.entrada') }}</option>
                                 <option value="Saída">{{ __('lang.saida') }}</option>
                             </select>
                             <input type="text" class="col-md-12 form-control" id="intervalo">
-                            <button id="pictogramas" class="col-md-12 btn btn-secondary">{{ __('lang.pictograma') }}s</button>
+                            <button id="pictogramas"
+                                class="col-md-12 btn btn-secondary">{{ __('lang.pictograma') }}s</button>
                             <button id="filter" class="btn btn-danger btn-block">Reset</button>
                         </div>
                     </div>
@@ -101,11 +102,11 @@
                                     <td>25ml</td>
                                     <td>Cliente 1</td>
                                     <td>Sisma</td>
-                                    <td>07-11-2011</td>
-                                    <td>07-12-2011</td>
-                                    <td>07-3-2012</td>
-                                    <td>Fiel</td>
-                                    <td>Sim</td>
+                                    <td>11/11/2020</td>
+                                    <td>20/01/2021</td>
+                                    <td>20/12/2021</td>
+                                    <td>Fiel 1</td>
+                                    <td>Quimico</td>
                                     <td>--</td>
                                     <td><a href="{{ public_path() }}/movimentos/show_saida"> Ver Mais &nbsp<i
                                                 class="fa fa-arrow-right"></i></a></td>
@@ -116,15 +117,32 @@
                                     <td>34</td>
                                     <td>A2-P1</td>
                                     <td>20 unidades</td>
-                                    <td>Cliente 1</td>
-                                    <td>Sisma</td>
-                                    <td>07-11-2011</td>
+                                    <td>Cliente 2</td>
+                                    <td>Misma</td>
+                                    <td>07/11/2021</td>
                                     <td>--</td>
                                     <td>--</td>
-                                    <td>Fiel</td>
-                                    <td>Não</td>
+                                    <td>Fiel 2</td>
+                                    <td>Não Quimico</td>
                                     <td>Plástico</td>
                                     <td><a href="{{ public_path() }}/movimentos/show_entrada"> Ver Mais &nbsp<i
+                                                class="fa fa-arrow-right"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>Cloreto de Sódio</td>
+                                    <td>Entrada</td>
+                                    <td>46</td>
+                                    <td>A5-P2</td>
+                                    <td>250ml</td>
+                                    <td>Cliente 3</td>
+                                    <td>Sisma</td>
+                                    <td>12/10/2020</td>
+                                    <td>12/2/2021</td>
+                                    <td>--</td>
+                                    <td>Fiel 3</td>
+                                    <td>Quimico</td>
+                                    <td>--</td>
+                                    <td><a href="{{ public_path() }}/movimentos/show_saida"> Ver Mais &nbsp<i
                                                 class="fa fa-arrow-right"></i></a></td>
                                 </tr>
                             </tbody>
@@ -267,7 +285,6 @@
 
     <script>
         $(function() {
-
             var table = $("#historico").DataTable({
                 "dom": '<"search">frtip',
                 "info": true,
@@ -278,9 +295,14 @@
                 "lengthChange": false,
                 "autoWidth": false,
                 "columnDefs": [{
-                    "targets": [3, 6, 10, 11, 12],
-                    "visible": false
-                }],
+                        "targets": [3, 6, 10, 11, 12],
+                        "visible": false
+                    },
+                    {
+                        "targets": [7, 8, 9],
+                        "type": 'date-uk'
+                    }
+                ],
                 "buttons": [{
                         extend: 'csvHtml5',
                         exportOptions: {
@@ -304,7 +326,7 @@
 
                             if (movimento == movimentos) {
                                 return movimentos;
-                            } else if (movimento == "Entradas e Saídas") {
+                            } else if (movimento == "Movimento") {
                                 return true;
                             }
                             return false;
@@ -339,6 +361,22 @@
                             return false;
                         }
                     );
+
+                    jQuery.extend(jQuery.fn.dataTableExt.oSort, {
+                        "date-uk-pre": function(a) {
+                            var ukDatea = a.split('/');
+                            return (ukDatea[2] + ukDatea[1] + ukDatea[0]) * 1;
+                        },
+
+                        "date-uk-asc": function(a, b) {
+                            return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+                        },
+
+                        "date-uk-desc": function(a, b) {
+                            return ((a < b) ? 1 : ((a > b) ? -1 : 0));
+                        }
+                    });
+
                     //Date range picker
                     $('#intervalo').daterangepicker({
                         timePicker: false,
@@ -352,7 +390,7 @@
                     $('#filter').click(function() {
                         $('#familia').val('Familia');
                         $('#sub-familia').val('Sub-Familia');
-                        $('#movimento').val('Entradas e Saídas');
+                        $('#movimento').val('Movimento');
                         $('input[type=checkbox]').prop('checked', false);
                         table.search('');
                         table.draw();
@@ -381,38 +419,30 @@
                     $('#sub-familia').change(function() {
                         table.draw();
                     });
+
+                    $('#intervalo').on('apply.daterangepicker', function() {
+                        $.fn.dataTable.ext.search.push(
+                            function(settings, searchData, index, rowData, counter) {
+                                var inicio = $('#intervalo').data('daterangepicker').startDate.format("DD/MM/YYYY");
+                                var fim = $('#intervalo').data('daterangepicker').endDate.format("DD/MM/YYYY");
+                                var datas = moment(new Date(searchData[7]), "DD/MM/YYYY") // using the data from the 8th column
+                                console.log('incio = ' + inicio, ', ' + 'fim = ' + fim);
+                                console.log(datas);
+
+                                if ((isNaN(inicio) && isNaN(fim)) ||
+                                    (isNaN(inicio) && datas <= fim) ||
+                                    (inicio <= datas && isNaN(fim)) ||
+                                    (inicio <= datas && datas <= fim)) {
+                                    return true;
+                                }
+                                return false;
+                            }
+                        );
+                        table.draw();
+                    });
                 }
             });
 
-
-
-
-
-
-            $(document).ready(function() {
-                var table = $('#historico').DataTable();
-                /*                 $('#intervalo').on('apply.daterangepicker', function() {
-                                    $.fn.dataTable.ext.search.push(
-                                        function(settings, searchData, index, rowData, counter) {
-                                            var inicio = $('#intervalo').data('daterangepicker').startDate
-                                                .format("DD-MM-YYYY");
-                                            var fim = $('#intervalo').data('daterangepicker').endDate.format(
-                                                "DD-MM-YYYY");
-                                            var datas = searchData[6]; // using the data from the 6th column
-                                            console.log('incio = ' + inicio, ', ' + 'fim = ' + fim);
-
-                                            if ((isNaN(inicio) && isNaN(fim)) ||
-                                                (isNaN(inicio) && datas <= fim) ||
-                                                (inicio <= datas && isNaN(fim)) ||
-                                                (inicio <= datas && datas <= fim)) {
-                                                return true;
-                                            }
-                                            return false;
-                                        }
-                                    );
-                                    table.draw();
-                                }); */
-            });
         });
 
     </script>

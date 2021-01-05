@@ -2,9 +2,9 @@
 
 @section('stylesheets')
     <!-- DataTables -->
-  <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 @endsection
 
 @section('content')
@@ -51,28 +51,28 @@
                                             <input type="text" class="form-control" id="produto_designacao" tabindex="1"
                                                 readonly value="Cloreto de Hidrogénio">
                                         </div>
-                                            <div class="form-group">
-                                                <label for="produto_sinonimo"
-                                                    class="control-label">{{ __('lang.sinonimo') }}</label>
-                                                <input type="text" class="form-control" id="produto_sinonimo" tabindex="2"
+                                        <div class="form-group">
+                                            <label for="produto_sinonimo"
+                                                class="control-label">{{ __('lang.sinonimo') }}</label>
+                                            <input type="text" class="form-control" id="produto_sinonimo" tabindex="2"
                                                 readonly value="Ácido Clorídrico">
                                         </div>
                                         <div class="form-group">
                                             <label for="produto_formula"
                                                 class="control-label">{{ __('lang.formula') }}</label>
                                             <input type="text" class="form-control" id="produto_formula" tabindex="3"
-                                            readonly value="HCL">
+                                                readonly value="HCL">
                                         </div>
                                         <div class="form-group">
                                             <label for="produto_cas" class="control-label">{{ __('lang.n cas') }}</label>
-                                            <input type="text" class="form-control" id="produto_cas" tabindex="4" 
-                                            readonly value="7647-01-1">
+                                            <input type="text" class="form-control" id="produto_cas" tabindex="4" readonly
+                                                value="7647-01-1">
                                         </div>
                                         <div class="form-group">
                                             <label for="produto_peso"
                                                 class="control-label">{{ __('lang.peso molecular') }}</label>
-                                            <input type="text" class="form-control" id="produto_peso" tabindex="5" 
-                                            readonly value="36.46 g/mol">
+                                            <input type="text" class="form-control" id="produto_peso" tabindex="5" readonly
+                                                value="36.46 g/mol">
                                         </div>
                                         <div class="form-group">
                                             <label for="produto_condicoes_armazenamento"
@@ -88,7 +88,8 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input" id="customSwitch1" disabled tabindex="7">
+                                                    <input type="checkbox" class="custom-control-input" id="customSwitch1"
+                                                        disabled tabindex="7">
                                                     <label class="custom-control-label"
                                                         for="customSwitch1">{{ __('lang.armario ventilado') }}</label>
                                                 </div>
@@ -98,7 +99,8 @@
                                     <div class="col-md-4">
                                         <div class="pictogramas">
                                             <img src="{{ public_path() }}/dist/img/Pictogramas/Harmful.png" alt="Harmful">
-                                            <img src="{{ public_path() }}/dist/img/Pictogramas/Corrosive.png" alt="Corrosive">
+                                            <img src="{{ public_path() }}/dist/img/Pictogramas/Corrosive.png"
+                                                alt="Corrosive">
                                         </div>
                                         <div class="stock-box">
                                             <h5 class="bg-dark">{{ __('lang.n de inventario') }}</h5>
@@ -113,16 +115,18 @@
                                             <h4>3</h4>
                                         </div>
                                         <div class="stock-button">
-                                            <a href="{{ public_path() }}/ficha/editar" class="btn btn-secondary btn-block" role="button" tabindex="8">{{ __('lang.editar') }}</a>
-                                            <button type="submit" class="btn btn-block btn-danger" tabindex="9">{{ __('lang.desativar') }}</button>
+                                            <a href="{{ public_path() }}/ficha/editar" class="btn btn-secondary btn-block"
+                                                role="button" tabindex="8">{{ __('lang.editar') }}</a>
+                                            <button type="submit" class="btn btn-block btn-danger"
+                                                tabindex="9">{{ __('lang.desativar') }}</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </form>
-                        
-                            
-                        
+
+
+
                         <div class="card-body">
                             <h3>Embalagens</h3>
                             <table id="existencias" class="table table-bordered table-striped">
@@ -360,8 +364,24 @@
     <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
     <!-- Page specific script -->
     <script>
+        jQuery.extend(jQuery.fn.dataTableExt.oSort, {
+            "date-uk-pre": function(a) {
+                var ukDatea = a.split('/');
+                return (ukDatea[2] + ukDatea[1] + ukDatea[0]) * 1;
+            },
+
+            "date-uk-asc": function(a, b) {
+                return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+            },
+
+            "date-uk-desc": function(a, b) {
+                return ((a < b) ? 1 : ((a > b) ? -1 : 0));
+            }
+        });
+
         $(function() {
             $('#existencias').DataTable({
                 "paging": true,
@@ -374,6 +394,11 @@
                 "language": {
                     "url": "{{ __('lang.url-lang-dt') }}",
                 },
+                "columnDefs": [{
+                    type: 'date-uk',
+                    targets: 5
+                }]
+
             });
         });
 

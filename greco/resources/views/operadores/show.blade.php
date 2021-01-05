@@ -1,7 +1,10 @@
 @extends('layout')
 
 @section('stylesheets')
-
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 @endsection
 
 @section('content')
@@ -165,7 +168,7 @@
     <!-- Page specific script -->
     <script>
         $(function() {
-            $('#existencias').DataTable({
+            $('#historico').DataTable({
                 "paging": true,
                 "lengthChange": false,
                 "searching": false,
@@ -176,8 +179,27 @@
                 "language": {
                     "url": "{{ __('lang.url-lang-dt') }}",
                 },
+                "columnDefs": [{
+                    type: 'date-uk',
+                    targets: 0
+                }]
             });
+            jQuery.extend(jQuery.fn.dataTableExt.oSort, {
+                        "date-uk-pre": function(a) {
+                            var ukDatea = a.split('/');
+                            return (ukDatea[2] + ukDatea[1] + ukDatea[0]) * 1;
+                        },
+
+                        "date-uk-asc": function(a, b) {
+                            return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+                        },
+
+                        "date-uk-desc": function(a, b) {
+                            return ((a < b) ? 1 : ((a > b) ? -1 : 0));
+                        }
+                    });
         });
+        
 
     </script>
 
