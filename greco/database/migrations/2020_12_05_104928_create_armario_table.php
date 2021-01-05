@@ -16,7 +16,10 @@ class CreateArmarioTable extends Migration
         Schema::create('armario', function (Blueprint $table) {
             $table->id();
             $table->string('armario');
+            $table->unsignedBigInteger('id_sala');
             $table->timestamps();
+
+            $table->foreign('id_sala')->references('id')->on('sala');
         });
     }
 

@@ -16,7 +16,10 @@ class CreatePrateleiraTable extends Migration
         Schema::create('prateleira', function (Blueprint $table) {
             $table->id();
             $table->string('prateleira');
+            $table->unsignedBigInteger('id_armario');
             $table->timestamps();
+
+            $table->foreign('id_armario')->references('id')->on('armario');
         });
     }
 

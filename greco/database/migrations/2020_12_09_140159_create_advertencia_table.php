@@ -16,24 +16,37 @@ class CreateAdvertenciaTable extends Migration
         Schema::create('advertencia', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('id_pictogramas');
+       //     $table->unsignedBigInteger('id_pictogramas');
             $table->string('texto');
 
             $table->timestamps();
         });
 
-        Schema::create('pictogramas_advertencia', function (Blueprint $table) {
+        Schema::create('produtos_advertencia', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('pictograma_id');
+            $table->unsignedBigInteger('produto_id');
             $table->unsignedBigInteger('advertencia_id');
 
             $table->timestamps();
 
-            $table->unique(['pictograma_id', 'advertencia_id']);
-            $table->foreign('pictograma_id')->references('id')->on('pictogramas');
+            $table->unique(['produto_id', 'advertencia_id']);
+            $table->foreign('produto_id')->references('id')->on('produtos');
             $table->foreign('advertencia_id')->references('id')->on('advertencia');
         });
+
+        // Schema::create('pictogramas_advertencia', function (Blueprint $table) {
+        //     $table->id();
+
+        //     $table->unsignedBigInteger('pictograma_id');
+        //     $table->unsignedBigInteger('advertencia_id');
+
+        //     $table->timestamps();
+
+        //     $table->unique(['pictograma_id', 'advertencia_id']);
+        //     $table->foreign('pictograma_id')->references('id')->on('pictogramas');
+        //     $table->foreign('advertencia_id')->references('id')->on('advertencia');
+        // });
     }
 
     /**

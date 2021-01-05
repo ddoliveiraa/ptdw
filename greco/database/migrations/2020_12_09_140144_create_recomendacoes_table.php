@@ -16,24 +16,39 @@ class CreateRecomendacoesTable extends Migration
         Schema::create('recomendacoes', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('id_pictogramas');
+        //    $table->unsignedBigInteger('id_pictogramas');
             $table->string('texto');
 
             $table->timestamps();
         });
 
-        Schema::create('pictogramas_recomendacoes', function (Blueprint $table) {
+        Schema::create('produtos_recomendacoes', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('pictograma_id');
-            $table->unsignedBigInteger('recomendacao_id');
+            $table->unsignedBigInteger('produto_id');
+            $table->unsignedBigInteger('recoemndacao_id');
 
             $table->timestamps();
 
-            $table->unique(['pictograma_id', 'recomendacao_id']);
-            $table->foreign('pictograma_id')->references('id')->on('pictogramas');
-            $table->foreign('recomendacao_id')->references('id')->on('recomendacoes');
+            $table->unique(['produto_id', 'recoemndacao_id']);
+            $table->foreign('produto_id')->references('id')->on('produtos');
+            $table->foreign('recoemndacao_id')->references('id')->on('recomendacoes');
         });
+
+        // Schema::create('pictogramas_recomendacoes', function (Blueprint $table) {
+        //     $table->id();
+
+        //     $table->unsignedBigInteger('pictograma_id');
+        //     $table->unsignedBigInteger('recomendacao_id');
+
+        //     $table->timestamps();
+
+            
+        //     $table->unique(['pictograma_id', 'recomendacao_id']);
+        //     $table->foreign('pictograma_id')->references('id')->on('pictogramas');
+        //     $table->foreign('recomendacao_id')->references('id')->on('recomendacoes');
+            
+        // });
     }
 
     /**
