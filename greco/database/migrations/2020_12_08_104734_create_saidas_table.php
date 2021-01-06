@@ -20,14 +20,14 @@ class CreateSaidasTable extends Migration
             $table->integer('id_ordem');
             $table->unsignedBigInteger('id_solicitante');
             $table->unsignedBigInteger('id_operador');
-            $table->string('obs');
+            $table->string('obs')->nullable();
 
             $table->timestamps();
 
             $table->foreign('id_cliente')->references('id')->on('clientes');
             $table->foreign('id_produto')->references('id')->on('produtos');
             $table->foreign('id_solicitante')->references('id')->on('solicitantes');
-            $table->foreign('id_operador')->references('id')->on('operadores');
+            $table->foreign('id_operador')->references('id')->on('operadors');
         });
     }
 

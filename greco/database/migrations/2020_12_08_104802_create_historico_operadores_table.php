@@ -19,11 +19,11 @@ class CreateHistoricoOperadoresTable extends Migration
             $table->unsignedBigInteger('operador');
             $table->date('data');
             $table->integer('operacao');
-            $table->string('obs');
+            $table->string('obs')->nullable();
 
             $table->timestamps();
 
-            $table->foreign('operador')->references('id')->on('operadores');
+            $table->foreign('operador')->references('id')->on('operadors');
 
         });
     }

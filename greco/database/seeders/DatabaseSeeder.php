@@ -100,6 +100,13 @@ class DatabaseSeeder extends Seeder
         DB::table('recomendacoes')->insert(['texto' => "P230 - Keep wetted with…",]);
         DB::table('recomendacoes')->insert(['texto' => "P235 - Keep cool",]);
 
-        
+        \App\Models\Cliente::factory()->count(10)->create();
+        \App\Models\Fornecedor::factory()->count(50)->create();
+        \App\Models\Responsavel::factory()->count(20)->create();
+        \App\Models\Solicitante::factory()->count(100)->create();
+        \App\Models\Operador::factory()->count(20)->create();
+        \App\Models\Produto::factory()->count(300)->create();
+        \App\Models\Entrada::factory()->count(300)->create();
+        \App\Models\Saida::factory()->count(300)->create();
     }
 }
