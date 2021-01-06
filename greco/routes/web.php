@@ -31,6 +31,9 @@ Route::get('/welcome/{locale}', 'App\Http\Controllers\LocalizationController@ind
 Route::get('/produtos', function () {
     return view('produtos.produtos');
 });
+
+/* Route::get('/produtos', 'App\Http\Controllers\ProdutoController@index'); */
+
 Route::get('/produtos/add', function () {
     return view('produtos.add');
 });
@@ -108,7 +111,7 @@ Route::get('/operadores/editar', function () {
     return view('operadores.editar');
 });
 
-//Forncedores
+//Fornecedores
 Route::get('/fornecedores', function () {
     return view('fornecedores.index');
 });
