@@ -63,7 +63,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($produtos as $produto)
+{{--                                     @foreach ($produtos as $produto)
                                         <tr>
                                             <td>{{$produto->designacao}}</td>
                                             <td>{{$produto->formula}}</td>
@@ -74,7 +74,7 @@
                                             <td><a href="{{ public_path() }}/ficha/{{$produto->id}}"> Ver Mais &nbsp<i
                                                         class="fa fa-arrow-right"></i></a></td>
                                         </tr>
-                                    @endforeach
+                                    @endforeach --}}
                                     <tr>
                                         <td>Cloreto de hidrogénio</td>
                                         <td>HCL</td>
