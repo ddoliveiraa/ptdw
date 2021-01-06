@@ -28,10 +28,6 @@ Route::get('/welcome', function () {
 Route::get('/welcome/{locale}', 'App\Http\Controllers\LocalizationController@index');
 
 //Produtos
-/* Route::get('/produtos', function () {
-    return view('produtos.produtos');
-}); */
-
 Route::get('/produtos', 'App\Http\Controllers\ProdutoController@index');
 
 Route::get('/produtos/add', function () {
@@ -57,9 +53,7 @@ Route::get('/movimentos/entrada', function () {
 Route::get('/movimentos/saida', function () {
     return view('movimentos.saida');
 });
-Route::get('/movimentos/historico', function () {
-    return view('movimentos.historico');
-});
+Route::get('/movimentos/historico', 'App\Http\Controllers\MovimentoController@index');
 
 Route::get('/movimentos/show_entrada', function () {
     return view('movimentos.show_entrada');

@@ -79,7 +79,7 @@
                                 <tr>
                                     <th>{{ __('lang.produto') }}</th>
                                     <th>{{ __('lang.movimento') }}</th>
-                                    <th>{{ __('lang.n de ordem') }}</th>
+                                    <th>{{ __('lang.n-embalagem') }}</th>
                                     <th>{{ __('lang.localização') }}</th>
                                     <th>{{ __('lang.embalagem') }}</th>
                                     <th>{{ __('lang.cliente') }}</th>
@@ -94,57 +94,46 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Cloreto de Hidrogénio</td>
-                                    <td>Saída</td>
-                                    <td>23</td>
-                                    <td>A2-P1</td>
-                                    <td>25ml</td>
-                                    <td>Cliente 1</td>
-                                    <td>Sisma</td>
-                                    <td>11/11/2020</td>
-                                    <td>20/01/2021</td>
-                                    <td>20/12/2021</td>
-                                    <td>Fiel 1</td>
-                                    <td>Quimico</td>
-                                    <td>--</td>
-                                    <td><a href="{{ public_path() }}/movimentos/show_saida"> Ver Mais &nbsp<i
-                                                class="fa fa-arrow-right"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>Luvas</td>
-                                    <td>Entrada</td>
-                                    <td>34</td>
-                                    <td>A2-P1</td>
-                                    <td>20 unidades</td>
-                                    <td>Cliente 2</td>
-                                    <td>Misma</td>
-                                    <td>07/11/2021</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>Fiel 2</td>
-                                    <td>Não Quimico</td>
-                                    <td>Plástico</td>
-                                    <td><a href="{{ public_path() }}/movimentos/show_entrada"> Ver Mais &nbsp<i
-                                                class="fa fa-arrow-right"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>Cloreto de Sódio</td>
-                                    <td>Entrada</td>
-                                    <td>46</td>
-                                    <td>A5-P2</td>
-                                    <td>250ml</td>
-                                    <td>Cliente 3</td>
-                                    <td>Sisma</td>
-                                    <td>12/10/2020</td>
-                                    <td>12/2/2021</td>
-                                    <td>--</td>
-                                    <td>Fiel 3</td>
-                                    <td>Quimico</td>
-                                    <td>--</td>
-                                    <td><a href="{{ public_path() }}/movimentos/show_saida"> Ver Mais &nbsp<i
-                                                class="fa fa-arrow-right"></i></a></td>
-                                </tr>
+                                @foreach ($movimentos as $produto)
+                                    <tr>
+                                        <td>{{ $produto->id }}</td>
+                                        <td>Entrada</td>
+                                        <td>{{ $produto->id_inventario }} - {{ $produto->id_ordem }}</td>
+                                        <td>S{{ $produto->sala }} - A{{ $produto->armario }} - P{{ $produto->prataleira }}</td>
+                                        <td>{{ $produto->capacidade }}</td>
+                                        <td></td>
+                                        <td>{{ $produto->fornecedor }}</td>
+                                        <td>{{ $produto->data_entrada }}</td>
+                                        <td>{{ $produto->validade }}</td>
+                                        <td>{{ $produto->termino }}</td>
+                                        <td>{{ $produto->operador }}</td>
+                                        <td>Quimico</td>
+                                        <td>--</td>
+                                        <td><a href="{{ public_path() }}/movimentos/show_saida"> Ver Mais &nbsp<i
+                                                    class="fa fa-arrow-right"></i></a></td>
+                                    </tr>
+                                @endforeach
+
+                                @foreach ($saidas as $saida)
+                                    <tr>
+                                        <td>{{ $saida->id_produto }}</td>
+                                        <td>Saida</td>
+                                        <td>{{ $saida->id_ordem }} - {{ $saida->id_ordem }}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>{{ $saida->id_cliente }}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>{{ $saida->id_operador }}</td>
+                                        <td>Quimico</td>
+                                        <td>--</td>
+                                        <td><a href="{{ public_path() }}/movimentos/show_saida"> Ver Mais &nbsp<i
+                                                    class="fa fa-arrow-right"></i></a></td>
+                                    </tr>
+                                @endforeach
+                                
                             </tbody>
                         </table>
                         <!-- /.card-body -->
@@ -300,7 +289,7 @@
                     },
                     {
                         "targets": [7, 8, 9],
-                        "type": 'date-uk'
+                        "type": 'date-us'
                     }
                 ],
                 "buttons": [{
@@ -381,7 +370,7 @@
                     $('#intervalo').daterangepicker({
                         timePicker: false,
                         locale: {
-                            format: 'DD/MM/YYYY'
+                            format: 'YYYY-MM-DD'
                         }
                     })
 
@@ -423,9 +412,12 @@
                     $('#intervalo').on('apply.daterangepicker', function() {
                         $.fn.dataTable.ext.search.push(
                             function(settings, searchData, index, rowData, counter) {
-                                var inicio = $('#intervalo').data('daterangepicker').startDate.format("DD/MM/YYYY");
-                                var fim = $('#intervalo').data('daterangepicker').endDate.format("DD/MM/YYYY");
-                                var datas = moment(new Date(searchData[7]), "DD/MM/YYYY") // using the data from the 8th column
+                                var inicio = $('#intervalo').data('daterangepicker')
+                                    .startDate.format("YYYY-MM-DD");
+                                var fim = $('#intervalo').data('daterangepicker').endDate
+                                    .format("YYYY-MM-DD");
+                                var datas = moment(new Date(searchData[7]),
+                                    "YYYY-MM-DD") // using the data from the 8th column
                                 console.log('incio = ' + inicio, ', ' + 'fim = ' + fim);
                                 console.log(datas);
 

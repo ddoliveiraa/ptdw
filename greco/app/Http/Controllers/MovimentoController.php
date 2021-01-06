@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\Movimento;
+use App\Models\Produto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MovimentoController extends Controller
 {
@@ -13,7 +15,9 @@ class MovimentoController extends Controller
      */
     public function index()
     {
-
+        $movimentos = Movimento::all();
+        $saidas = DB::table('saidas')->get();
+        return view('movimentos.historico', ['movimentos' => $movimentos, 'saidas' => $saidas]);
     }
 
     /**
