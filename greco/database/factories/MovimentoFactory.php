@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Post;
+use App\Models\Movimento;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CoresFactory extends Factory
+class MovimentoFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Post::class;
+    protected $model = Movimento::class;
 
     /**
      * Define the model's default state.
@@ -23,7 +23,6 @@ class CoresFactory extends Factory
     {
         return [
             //
-            'cor' => $this->faker->color,
         ];
     }
 }

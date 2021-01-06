@@ -1,12 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+<<<<<<< HEAD
+=======
+use App\Models\Produto;
+>>>>>>> 4b0889330177672c4ef78358841adca452d9d826
 use Illuminate\Http\Request;
 
 use App\Models\Produto;
 
 class ProdutoController extends Controller
 {
+<<<<<<< HEAD
     /*
     public function __construct()
     {
@@ -45,6 +50,8 @@ class ProdutoController extends Controller
         return redirect('produtos.produtos');
     }
 
+=======
+>>>>>>> 4b0889330177672c4ef78358841adca452d9d826
     /**
      * Display a listing of the resource.
      *

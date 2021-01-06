@@ -17,22 +17,20 @@ class CreateProdutosTable extends Migration
             $table->id();
             $table->unsignedBigInteger('familia');
             $table->string('designacao');
-            $table->unsignedBigInteger('sinonimo');
-            $table->string('formula');
-            $table->double('peso_molecular',8,8);
-            $table->string('CAS');
-            $table->unsignedBigInteger('condicoes_armazenamento');
-            $table->boolean('ventilado');
-            $table->string('anexo_sds');
-            $table->double('stock',8,2);
+            $table->string('formula')->nullable();
+            $table->double('peso_molecular',8,8)->nullable();
+            $table->string('CAS')->nullable();
+            $table->unsignedBigInteger('condicoes_armazenamento')->nullable();
+            $table->boolean('ventilado')->nullable();
+            $table->string('anexo_sds')->nullable();
+            $table->double('stock',8,2)->default(0);
             $table->double('stock_min',8,2);
-            $table->string('foto');
-            $table->unsignedBigInteger('sub_familia');
+            $table->string('foto')->nullable();
+            $table->unsignedBigInteger('sub_familia')->nullable();
 
             $table->timestamps();
 
             $table->foreign('familia')->references('id')->on('familia');
-            $table->foreign('sinonimo')->references('id')->on('produtos_sinonimo');
             $table->foreign('condicoes_armazenamento')->references('id')->on('condicoes_armazenamento');
             $table->foreign('sub_familia')->references('id')->on('sub_familia');
 

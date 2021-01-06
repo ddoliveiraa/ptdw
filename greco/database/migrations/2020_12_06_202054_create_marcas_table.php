@@ -20,6 +20,7 @@ class CreateMarcasTable extends Migration
         });
     }
 
+
     /**
      * Reverse the migrations.
      *

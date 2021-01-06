@@ -15,8 +15,11 @@ class CreateProdutosSinonimoTable extends Migration
     {
         Schema::create('produtos_sinonimo', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('produto_id');
             $table->string('sinonimo');
             $table->timestamps();
+
+            $table->foreign('produto_id')->references('id')->on('produtos');
         });
     }
 
