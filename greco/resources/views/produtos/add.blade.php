@@ -56,7 +56,8 @@
                             <div class="card card-primary">
 
                                 <!-- form start -->
-                                <form>
+                                <form method="POST" action="/produtos/q">
+                                    @csrf <!-- Cross Site Request Forgery -->
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-6">
@@ -173,7 +174,8 @@
                             <div class="card card-primary">
 
                                 <!-- form start -->
-                                <form>
+                                <form method="POST" action="/produtos/nq">
+                                    @csrf <!-- Cross Site Request Forgery -->
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-6">
