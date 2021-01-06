@@ -34,6 +34,8 @@ Route::get('/produtos', function () {
 Route::get('/produtos/add', function () {
     return view('produtos.add');
 });
+Route::post('/produtos/q', 'ProdutoController@addProdutoQ');
+Route::post('/produtos/nq', 'ProdutoController@addProdutoNQ');
 
 
 //Ficha
