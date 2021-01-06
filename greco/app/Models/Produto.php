@@ -17,4 +17,14 @@ class Produto extends Model
      {
         return $this->belongsToMany(Movimento::class);
      }
+
+     public function entradas() 
+     {
+        return $this->belongsToMany(Entrada::class);
+     }
+
+     public function saidas() 
+     {
+        return $this->belongsToMany(Saida::class);
+     }
 }

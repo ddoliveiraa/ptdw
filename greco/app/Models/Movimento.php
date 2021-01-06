@@ -25,7 +25,7 @@ class Movimento extends Model
         return $this->hasOne(Saida::class);
     }
 
-    public function fornecedors()
+    public function fornecedores()
     {
         return $this->hasOne(Fornecedor::class);
     }
@@ -35,7 +35,7 @@ class Movimento extends Model
         return $this->hasOne(Cliente::class);
     }
 
-    public function operadors()
+    public function operadores()
     {
         return $this->hasOne(Operador::class);
     }
