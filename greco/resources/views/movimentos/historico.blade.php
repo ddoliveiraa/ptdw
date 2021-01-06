@@ -94,19 +94,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($movimentos as $produto)
+                                @foreach ($entradas as $entrada)
                                     <tr>
-                                        <td>{{ $produto->id }}</td>
+                                        <td>{{ $entrada->id }}</td>
                                         <td>Entrada</td>
-                                        <td>{{ $produto->id_inventario }} - {{ $produto->id_ordem }}</td>
-                                        <td>S{{ $produto->sala }} - A{{ $produto->armario }} - P{{ $produto->prataleira }}</td>
-                                        <td>{{ $produto->capacidade }}</td>
+                                        <td>{{ $entrada->id_inventario }} - {{ $entrada->id_ordem }}</td>
+                                        <td>S{{ $entrada->sala }} - A{{ $entrada->armario }} - P{{ $entrada->prataleira }}</td>
+                                        <td>{{ $entrada->capacidade }}</td>
                                         <td></td>
-                                        <td>{{ $produto->fornecedor }}</td>
-                                        <td>{{ $produto->data_entrada }}</td>
-                                        <td>{{ $produto->validade }}</td>
-                                        <td>{{ $produto->termino }}</td>
-                                        <td>{{ $produto->operador }}</td>
+                                        <td>{{ $entrada->fornecedor }}</td>
+                                        <td>{{ $entrada->data_entrada }}</td>
+                                        <td>{{ $entrada->validade }}</td>
+                                        <td>{{ $entrada->termino }}</td>
+                                        <td>{{ $entrada->operador }}</td>
                                         <td>Quimico</td>
                                         <td>--</td>
                                         <td><a href="{{ public_path() }}/movimentos/show_saida"> Ver Mais &nbsp<i

@@ -8,13 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Movimento extends Model
 {
     use HasFactory;
-    protected $table = 'entradas';
-
 
     //Cada registo de movimento tem um e só um produto associado
     public function produtos()
     {
         return $this->hasOne(Produto::class);
+    }
+
+    public function entradas()
+    {
+        return $this->hasOne(Entrada::class);
+    }
+
+    public function saidas()
+    {
+        return $this->hasOne(Saida::class);
     }
 
     public function fornecedors()
