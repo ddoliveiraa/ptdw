@@ -28,11 +28,11 @@ Route::get('/welcome', function () {
 Route::get('/welcome/{locale}', 'App\Http\Controllers\LocalizationController@index');
 
 //Produtos
-Route::get('/produtos', function () {
+/* Route::get('/produtos', function () {
     return view('produtos.produtos');
-});
+}); */
 
-/* Route::get('/produtos', 'App\Http\Controllers\ProdutoController@index'); */
+Route::get('/produtos', 'App\Http\Controllers\ProdutoController@index');
 
 Route::get('/produtos/add', function () {
     return view('produtos.add');

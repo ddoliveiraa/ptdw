@@ -63,58 +63,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-{{--                                     @foreach ($produtos as $produto)
+                                    @foreach ($produtos as $produto)
                                         <tr>
-                                            <td>{{$produto->designacao}}</td>
-                                            <td>{{$produto->formula}}</td>
-                                            <td>{{$produto->CAS}}</td>
-                                            <td>{{$produto->familia}}</td>
-                                            <td>{{$produto->stock}}</td>
-                                            <td>{{$produto->stock_min}}</td>
-                                            <td><a href="{{ public_path() }}/ficha/{{$produto->id}}"> Ver Mais &nbsp<i
+                                            <td>{{ $produto->designacao }}</td>
+                                            <td>{{ $produto->formula }}</td>
+                                            <td>{{ $produto->CAS }}</td>
+                                            <td>
+                                                @if ($produto->familia == 1)
+                                                    Sim
+                                                @else
+                                                    Não
+                                                @endif
+
+                                            </td>
+                                            <td>{{ $produto->stock }}</td>
+                                            <td>{{ $produto->stock_min }}</td>
+                                            <td><a href="{{ public_path() }}/ficha/{{ $produto->id }}"> Ver Mais &nbsp<i
                                                         class="fa fa-arrow-right"></i></a></td>
                                         </tr>
-                                    @endforeach --}}
-                                    <tr>
-                                        <td>Cloreto de hidrogénio</td>
-                                        <td>HCL</td>
-                                        <td>7766-21-2</td>
-                                        <td>Sim</td>
-                                        <td>120</td>
-                                        <td>40</td>
-                                        <td><a href="{{ public_path() }}/ficha"> Ver Mais &nbsp<i
-                                                    class="fa fa-arrow-right"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cloreto de hidrogénio</td>
-                                        <td>HCL</td>
-                                        <td>7766-21-2</td>
-                                        <td>Sim</td>
-                                        <td>120</td>
-                                        <td>40</td>
-                                        <td><a href="{{ public_path() }}/ficha"> Ver Mais &nbsp<i
-                                                    class="fa fa-arrow-right"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cloreto de Potássio</td>
-                                        <td>xDD</td>
-                                        <td>4343-21-2</td>
-                                        <td>Não</td>
-                                        <td>220</td>
-                                        <td>40</td>
-                                        <td><a href="{{ public_path() }}/ficha"> Ver Mais &nbsp<i
-                                                    class="fa fa-arrow-right"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cloreto de Potássio</td>
-                                        <td>XDD</td>
-                                        <td>4343-21-2</td>
-                                        <td>Não</td>
-                                        <td>220</td>
-                                        <td>40</td>
-                                        <td><a href="{{ public_path() }}/ficha"> Ver Mais &nbsp<i
-                                                    class="fa fa-arrow-right"></i></a></td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
