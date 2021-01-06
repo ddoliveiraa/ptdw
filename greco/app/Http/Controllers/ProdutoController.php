@@ -13,7 +13,8 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-
+        $produtos = Produto::table('produtos')->get();
+        return view('produtos.produtos', ['produtos' => $produtos]);
     }
 
     /**

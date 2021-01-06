@@ -41,9 +41,9 @@
         <div class="container-fluid">
             <div class="row justify-content-end">
                 <div class="col-md-2 mb-2 mt-2">
-                        <a role="button" href="{{ public_path() }}/produtos/add"
+                    <a role="button" href="{{ public_path() }}/produtos/add"
                         class="btn btn-block btn-secondary">{{ __('lang.adicionar') }}</a>
-                 </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-12">
@@ -64,17 +64,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Cloreto de hidrogénio</td>
-                                        <td>HCL</td>
-                                        <td>7766-21-2</td>
-                                        <td>Sim</td>
-                                        <td>Gramas</td>
-                                        <td>120</td>
-                                        <td>40</td>
-                                        <td><a href="{{ public_path() }}/ficha"> Ver Mais &nbsp<i
-                                                    class="fa fa-arrow-right"></i></a></td>
-                                    </tr>
+                                    {{-- @foreach ($produtos as $produto)
+                                        <tr>
+                                            <td>{{$produto->designacao}}</td>
+                                            <td>{{$produto->formula}}</td>
+                                            <td>{{$produto->CAS}}</td>
+                                            <td>{{$produto->familia}}</td>
+                                            <td>{{$produto->unidades}}</td>
+                                            <td>{{$produto->stock}}</td>
+                                            <td>{{$produto->stock_min}}</td>
+                                            <td><a href="{{ public_path() }}/ficha/{{$produto->id}}"> Ver Mais &nbsp<i
+                                                        class="fa fa-arrow-right"></i></a></td>
+                                        </tr>
+                                    @endforeach --}}
                                     <tr>
                                         <td>Cloreto de hidrogénio</td>
                                         <td>HCL</td>
@@ -131,7 +133,7 @@
             <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
-    
+
     </section>
     <!-- /.content -->
 
@@ -155,7 +157,6 @@
     <script src="{{ public_path() }}/dist/js/image-picker.min.js"></script>
 
     <script>
-
         $(function() {
 
             var table = $("#tabelaprodutos").DataTable({
@@ -208,7 +209,7 @@
                 }
             });
 
-            
+
         });
 
     </script>
