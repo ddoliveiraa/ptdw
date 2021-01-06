@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Produto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProdutoController extends Controller
 {
@@ -51,7 +52,7 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        $produtos = Produto::table('produtos')->get();
+        $produtos = DB::table('produtos')->get();
         return view('produtos.produtos', ['produtos' => $produtos]);
     }
 

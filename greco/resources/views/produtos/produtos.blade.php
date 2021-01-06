@@ -57,32 +57,29 @@
                                         <th>{{ __('lang.formula') }}</th>
                                         <th>{{ __('lang.n cas') }}</th>
                                         <th>{{ __('lang.quimico') }}</th>
-                                        <th>{{ __('lang.unidades') }}</th>
                                         <th>{{ __('lang.stock existente') }}</th>
                                         <th>{{ __('lang.stock minimo') }}</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($produtos as $produto)
+                                    @foreach ($produtos as $produto)
                                         <tr>
                                             <td>{{$produto->designacao}}</td>
                                             <td>{{$produto->formula}}</td>
                                             <td>{{$produto->CAS}}</td>
                                             <td>{{$produto->familia}}</td>
-                                            <td>{{$produto->unidades}}</td>
                                             <td>{{$produto->stock}}</td>
                                             <td>{{$produto->stock_min}}</td>
                                             <td><a href="{{ public_path() }}/ficha/{{$produto->id}}"> Ver Mais &nbsp<i
                                                         class="fa fa-arrow-right"></i></a></td>
                                         </tr>
-                                    @endforeach --}}
+                                    @endforeach
                                     <tr>
                                         <td>Cloreto de hidrogénio</td>
                                         <td>HCL</td>
                                         <td>7766-21-2</td>
                                         <td>Sim</td>
-                                        <td>Gramas</td>
                                         <td>120</td>
                                         <td>40</td>
                                         <td><a href="{{ public_path() }}/ficha"> Ver Mais &nbsp<i
@@ -93,7 +90,6 @@
                                         <td>HCL</td>
                                         <td>7766-21-2</td>
                                         <td>Sim</td>
-                                        <td>Gramas</td>
                                         <td>120</td>
                                         <td>40</td>
                                         <td><a href="{{ public_path() }}/ficha"> Ver Mais &nbsp<i
@@ -104,7 +100,6 @@
                                         <td>xDD</td>
                                         <td>4343-21-2</td>
                                         <td>Não</td>
-                                        <td>Gramas</td>
                                         <td>220</td>
                                         <td>40</td>
                                         <td><a href="{{ public_path() }}/ficha"> Ver Mais &nbsp<i
@@ -115,7 +110,6 @@
                                         <td>XDD</td>
                                         <td>4343-21-2</td>
                                         <td>Não</td>
-                                        <td>Gramas</td>
                                         <td>220</td>
                                         <td>40</td>
                                         <td><a href="{{ public_path() }}/ficha"> Ver Mais &nbsp<i
