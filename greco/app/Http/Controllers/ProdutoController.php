@@ -79,10 +79,12 @@ class ProdutoController extends Controller
     {
         $condicoes = \DB::table('condicoes_armazenamento')->get();
         $subfamilias = \DB::table('sub_familia')->get();
+        $pictogramas = \DB::table('pictogramas')->get();
 
         return view('produtos.add', [
             'condicoes' => $condicoes,
-            'subfamilias' => $subfamilias
+            'subfamilias' => $subfamilias,
+            'pictogramas' => $pictogramas
             ]);
     }
 

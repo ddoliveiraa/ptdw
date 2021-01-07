@@ -14,8 +14,6 @@ use App\Http\Controllers\ProdutoController;
 |
 */
 
-
-
 //Pesquisa
 Route::get('/', function () {
     return redirect('welcome');
