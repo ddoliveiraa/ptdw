@@ -19,7 +19,7 @@ class MovimentoController extends Controller
     {
         $entradas = Entrada::all();
         $saidas = Saida::all();
-        return view('movimentos.historico', ['entradas' => $entradas, 'saidas' => $saidas]);
+        return view('movimentos.historico', compact('entradas', 'saidas'));
     }
 
     /**

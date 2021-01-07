@@ -96,7 +96,7 @@
                             <tbody>
                                 @foreach ($entradas as $entrada)
                                     <tr>
-                                        <td>{{ $entrada->id }}</td>
+                                        <td>{{ $entrada->id_inventario }}</td>
                                         <td>Entrada</td>
                                         <td>{{ $entrada->id_inventario }} - {{ $entrada->id_ordem }}</td>
                                         <td>S{{ $entrada->sala }} - A{{ $entrada->armario }} - P{{ $entrada->prataleira }}</td>
@@ -118,7 +118,7 @@
                                     <tr>
                                         <td>{{ $saida->id_produto }}</td>
                                         <td>Saida</td>
-                                        <td>{{ $saida->id_ordem }} - {{ $saida->id_ordem }}</td>
+                                        <td>{{ $saida->id_produto }} - {{ $saida->id_ordem }}</td>
                                         <td></td>
                                         <td></td>
                                         <td>{{ $saida->id_cliente }}</td>
