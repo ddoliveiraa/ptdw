@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProdutoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,13 +30,10 @@ Route::get('/welcome/{locale}', 'App\Http\Controllers\LocalizationController@ind
 
 //Produtos
 Route::get('/produtos', 'App\Http\Controllers\ProdutoController@index');
+Route::get('/produtos/add', 'App\Http\Controllers\ProdutoController@add');
 
-Route::get('/produtos/add', function () {
-    return view('produtos.add');
-});
-
-Route::post('/produtos/q', 'ProdutoController@addProdutoQ');
-Route::post('/produtos/nq', 'ProdutoController@addProdutoNQ');
+Route::post('/produtos/q', [ProdutoController::class, 'addProdutoQ']);
+Route::post('/produtos/nq', [ProdutoController::class, 'addProdutoNQ']);
 
 
 //Ficha

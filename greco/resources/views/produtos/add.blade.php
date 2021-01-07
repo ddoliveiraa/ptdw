@@ -117,11 +117,9 @@
                                                     <label for="produto_condicoes_armazenamento"
                                                         class="control-label">{{ __('lang.condicoes de armazenamento') }}</label>
                                                     <select class="form-control" id="produto_armario" tabindex="7">
-                                                        <option value="1">{{ __('lang.TMBaixo') }}</option>
-                                                        <option value="2">{{ __('lang.TBaixo') }}</option>
-                                                        <option value="3">{{ __('lang.TAmbiente') }}</option>
-                                                        <option value="4">{{ __('lang.TAlta') }}</option>
-                                                        <option value="5">{{ __('lang.TMAlta') }}</option>
+                                                        @foreach ($condicoes as $c)
+                                                        <option value="{{ $c->id }}">{{ $c->condicao }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
@@ -132,7 +130,7 @@
                                                         class="control-label">{{ __('lang.pictograma') }}</label>
                                                     <div class="input-group margin">
                                                         <input type="text" class="form-control" id="produto_pictogramas"
-                                                            tabindex="7" required readonly>
+                                                            tabindex="7" readonly>
                                                         <span class="input-group-btn">
                                                             <button type="button" class="btn btn-secondary btn-flat"
                                                                 data-toggle="modal"
