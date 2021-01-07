@@ -199,10 +199,9 @@
                                                     <label for="produto_subfamilia_nq"
                                                         class="control-label">{{ __('lang.familia') }}</label>
                                                     <select class="form-control" id="produto_subfamilia_nq" tabindex="3">
-                                                        <option value="1">{{ __('lang.metal') }}</option>
-                                                        <option value="2">{{ __('lang.vidro') }}</option>
-                                                        <option value="3">{{ __('lang.plastico') }}</option>
-                                                        <option value="3">{{ __('lang.outro') }}</option>
+                                                        @foreach ($subfamilias as $sf)
+                                                        <option value="{{ $sf->id }}">{{ $sf->nome }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>

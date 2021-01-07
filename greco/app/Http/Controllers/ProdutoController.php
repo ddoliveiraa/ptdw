@@ -78,8 +78,12 @@ class ProdutoController extends Controller
     public function add()
     {
         $condicoes = \DB::table('condicoes_armazenamento')->get();
+        $subfamilias = \DB::table('sub_familia')->get();
 
-        return view('produtos.add', compact('condicoes'));
+        return view('produtos.add', [
+            'condicoes' => $condicoes,
+            'subfamilias' => $subfamilias
+            ]);
     }
 
     /**
