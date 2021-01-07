@@ -280,6 +280,7 @@
                 "language": {
                     "url": "{{ __('lang.url-lang-dt') }}",
                 },
+                "order": [],
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
