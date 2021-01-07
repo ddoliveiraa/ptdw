@@ -63,7 +63,7 @@
                         <!-- /.card-header -->
                         <div class="card-body">
 
-                            <table id="tabela_operadores" class="table table-bordered table-striped">
+                            <table id="operadores_index" class="table table-bordered table-striped">
                                 <thead class="bg-dark">
                                     <tr>
                                         <th>{{ __('lang.nome') }}</th>
@@ -159,55 +159,10 @@
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="{{ public_path() }}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 
+    <script src="{{ public_path() }}/dist/js/grupo-scripts/customDatatables.js"></script>
+
 
     <script>
-        jQuery.extend(jQuery.fn.dataTableExt.oSort, {
-            "date-uk-pre": function(a) {
-                var ukDatea = a.split('/');
-                return (ukDatea[2] + ukDatea[1] + ukDatea[0]) * 1;
-            },
-
-            "date-uk-asc": function(a, b) {
-                return ((a < b) ? -1 : ((a > b) ? 1 : 0));
-            },
-
-            "date-uk-desc": function(a, b) {
-                return ((a < b) ? 1 : ((a > b) ? -1 : 0));
-            }
-        });
-        $(function() {
-            var table = $("#tabela_operadores").DataTable({
-                "dom": '<"toolbar">frtip',
-                "info": true,
-                "language": {
-                    "url": "{{ __('lang.url-lang-dt') }}",
-                },
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "columnDefs": [{
-                    type: 'date-uk',
-                    targets: 3
-                }],
-                "buttons": [{
-                        extend: 'csvHtml5',
-                        exportOptions: {
-                            columns: ':visible:not(:last-child)'
-                        }
-                    },
-                    {
-                        extend: 'print',
-                        exportOptions: {
-                            columns: ':visible:not(:last-child)'
-                        }
-                    },
-                ],
-                "initComplete": function() {
-                    table.buttons().container().appendTo( 'div.toolbar' );
-                }
-            })
-        });
-
         $(function() {
             $('.date').datetimepicker({
                 format: 'L',

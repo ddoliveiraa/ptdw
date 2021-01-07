@@ -59,7 +59,7 @@
                         <!-- /.card-header -->
                         <div class="card-body">
 
-                            <table id="tabela_clientes" class="table table-bordered table-striped">
+                            <table id="complex" class="table table-bordered table-striped">
                                 <thead class="bg-dark">
                                     <tr>
                                         <th>{{ __('lang.designacao') }}</th>
@@ -153,43 +153,15 @@
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="{{ public_path() }}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 
+    <script src="{{ public_path() }}/dist/js/grupo-scripts/customDatatables.js"></script>
+
 
     <script>
-        $(function() {
-            var table = $("#tabela_clientes").DataTable({
-                "dom": '<"toolbar">frtip',
-                "info": true,
-                "language": {
-                    "url": "{{ __('lang.url-lang-dt') }}",
-                },
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": [{
-                        extend: 'csvHtml5',
-                        exportOptions: {
-                            columns: ':visible:not(:last-child)'
-                        }
-                    },
-                    {
-                        extend: 'print',
-                        exportOptions: {
-                            columns: ':visible:not(:last-child)'
-                        }
-                    },
-                ],
-                "initComplete": function() {
-                    table.buttons().container().appendTo('div.toolbar');
-                }
-            });
-        });
-
         $(function() {
             $('.date').datetimepicker({
                 format: 'L',
                 locale: "{{ __('lang.locale-date') }}"
             });
         })
-
     </script>
 @endsection

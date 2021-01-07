@@ -53,7 +53,7 @@
                         <!-- /.card-header -->
                         <div class="card-body">
 
-                            <table id="tabelafornecedores" class="table table-bordered table-striped">
+                            <table id="complex" class="table table-bordered table-striped">
                                 <thead class="bg-dark">
                                     <tr>
                                         <th>{{ __('lang.designacao') }}</th>
@@ -181,35 +181,6 @@
     <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
-    <script>
-
-        $(function() {
-            var table = $("#tabelafornecedores").DataTable({
-                "dom": '<"toolbar">frtip',
-                "info": true,
-                "language": {
-                    "url": "{{ __('lang.url-lang-dt') }}",
-                },
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": [{
-                        extend: 'csvHtml5',
-                        exportOptions: {
-                            columns: ':visible:not(:last-child)'
-                        }
-                    },
-                    {
-                        extend: 'print',
-                        exportOptions: {
-                            columns: ':visible:not(:last-child)'
-                        }
-                    },
-                ],
-                "initComplete": function() {
-                    table.buttons().container().appendTo('div.toolbar');
-                }
-            });
-        });
-    </script>
+    <script src="{{ public_path() }}/dist/js/grupo-scripts/customDatatables.js"></script>
+    
 @endsection
