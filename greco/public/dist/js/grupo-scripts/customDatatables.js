@@ -1,10 +1,79 @@
 
+var locale = $('#navbarDropdown').text().trim();
+var datatables_lang;
+var Ttodos;
+var Tquimico;
+var TnaoQuimico;
+if (locale == "PT") {
+    datatables_lang = '//cdn.datatables.net/plug-ins/1.10.22/i18n/Portuguese.json';
+    Ttodos = "Todos";
+    Tquimico = "Químicos";
+    TnaoQuimico = "Não Químicos";
+}
+else {
+    datatables_lang = '//cdn.datatables.net/plug-ins/1.10.22/i18n/English.json';
+    Ttodos = "All";
+    Tquimico = "Chemicals";
+    TnaoQuimico = "Non-Chemicals";
+}
+
+
+var produtos = $("#tabelaprodutos").DataTable({
+    "dom": '<"toolbar">frtip',
+    "info": true,
+    "language": {
+        "url": datatables_lang,
+    },
+    "responsive": true,
+    "lengthChange": false,
+    "autoWidth": false,
+    "buttons": [{
+        extend: 'csvHtml5',
+        exportOptions: {
+            columns: ':visible:not(:last-child)'
+        }
+    },
+    {
+        extend: 'print',
+        exportOptions: {
+            columns: ':visible:not(:last-child)'
+        }
+    },
+    ],
+    "initComplete": function () {
+        produtos.buttons().container().appendTo('div.toolbar');
+        var selects = $("<select></select>").attr('id', 'tipo');
+        selects.addClass('form-control select col-md-1');
+        $('div.toolbar').append(selects);
+        $('#tipo').append(new Option(Ttodos, "Todos"));
+        $('#tipo').append(new Option(Tquimico, "Sim"));
+        $('#tipo').append(new Option(TnaoQuimico, "Não"));
+
+        $.fn.dataTable.ext.search.push(
+            function (settings, searchData, index, rowData, counter) {
+                var tipo = $('#tipo option:selected').val();
+                var tipos = searchData[3]; // using the data from the 4th column
+
+                if (tipo == tipos) {
+                    return tipos;
+                } else if (tipo == "Todos") {
+                    return true;
+                }
+                return false;
+            }
+        );
+        $('#tipo').change(function () {
+            produtos.draw();
+        });
+    }
+});
+
 // Tabelas com pesquisa e botoes de exportar (Clientes.index, Fornecedores.index)
 var table = $("#complex").DataTable({
     "dom": '<"toolbar">frtip',
     "info": true,
     "language": {
-        "url": "{{ __('lang.url-lang-dt') }}",
+        "url": datatables_lang,
     },
     "responsive": true,
     "lengthChange": false,
@@ -37,7 +106,7 @@ $('#existencias').DataTable({
     "autoWidth": false,
     "responsive": true,
     "language": {
-        "url": "{{ __('lang.url-lang-dt') }}",
+        "url": datatables_lang,
     },
     "columnDefs": [{
         type: 'date-uk',
@@ -51,7 +120,7 @@ var OpIndex = $("#operadores_index").DataTable({
     "dom": '<"toolbar">frtip',
     "info": true,
     "language": {
-        "url": "{{ __('lang.url-lang-dt') }}",
+        "url": datatables_lang,
     },
     "responsive": true,
     "lengthChange": false,
@@ -82,7 +151,7 @@ var OpHis = $("#operadores_historico").DataTable({
     "dom": '<"toolbar">frtip',
     "info": true,
     "language": {
-        "url": "{{ __('lang.url-lang-dt') }}",
+        "url": datatables_lang,
     },
     "responsive": true,
     "lengthChange": false,
@@ -92,21 +161,21 @@ var OpHis = $("#operadores_historico").DataTable({
         targets: 2
     }],
     "buttons": [{
-            extend: 'csvHtml5',
-            exportOptions: {
-                columns: ':visible:not(:last-child)'
-            }
-        },
-        {
-            extend: 'print',
-            exportOptions: {
-                columns: ':visible:not(:last-child)'
-            }
-        },
+        extend: 'csvHtml5',
+        exportOptions: {
+            columns: ':visible:not(:last-child)'
+        }
+    },
+    {
+        extend: 'print',
+        exportOptions: {
+            columns: ':visible:not(:last-child)'
+        }
+    },
     ],
-    "initComplete": function() {
+    "initComplete": function () {
         OpHis.buttons().container().appendTo('div.toolbar');
-        
+
     }
 });
 
@@ -121,7 +190,7 @@ $('#operadores_show').DataTable({
     "autoWidth": false,
     "responsive": true,
     "language": {
-        "url": "{{ __('lang.url-lang-dt') }}",
+        "url": datatables_lang,
     },
     "columnDefs": [{
         type: 'date-uk',
