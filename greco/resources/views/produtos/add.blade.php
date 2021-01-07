@@ -196,9 +196,9 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="produto_familia_nq"
+                                                    <label for="produto_subfamilia_nq"
                                                         class="control-label">{{ __('lang.familia') }}</label>
-                                                    <select class="form-control" id="produto_familia_nq" tabindex="3">
+                                                    <select class="form-control" id="produto_subfamilia_nq" tabindex="3">
                                                         <option value="1">{{ __('lang.metal') }}</option>
                                                         <option value="2">{{ __('lang.vidro') }}</option>
                                                         <option value="3">{{ __('lang.plastico') }}</option>

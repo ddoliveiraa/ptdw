@@ -52,7 +52,7 @@ class ProdutoController extends Controller
         $Produto->familia = 'nao_quimico';
         $Produto->designacao = request('produto_designacao_nq');
         $Produto->foto = request('produto_foto');
-        $Produto->familia = request('produto_familia_nq');
+        $Produto->sub_familia = request('produto_subfamilia_nq');
         $Produto->stock_min = request('produto_stock_minimo_nq');
         $Produto->save();
 
