@@ -13,15 +13,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('path.public', function() {
+        //$this->app->bind('path.public', function() {
             //return '/~ptdw-2020-gr3';
-            return '';
-<<<<<<< HEAD
+     //       return '';
+
          //   
-         });
-=======
-          });
->>>>>>> f8d25d710c7ac5cb16bf7bb00feb6db0ef29c314
+         //});
     }
 
     /**
