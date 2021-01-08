@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Operador extends Model
 {
     use HasFactory;
-    protected $table = 'operadores';
     protected $fillable = ['nome','email','perfil','obs','data_criacao'];
+
 
     public function entradas()
     {
