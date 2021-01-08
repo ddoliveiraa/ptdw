@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class cores extends Model
 {
     use HasFactory;
+    protected $table = 'cores';
 }

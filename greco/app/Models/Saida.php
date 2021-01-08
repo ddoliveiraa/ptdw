@@ -22,7 +22,7 @@ class Saida extends Model
 
     public function get_solicitante()
     {
-        return $this->hasOne(Solicitante::class, 'id_solicitante');
+        return $this->belongsTo(Solicitante::class, 'id_solicitante');
     }
      
     public function get_cliente()

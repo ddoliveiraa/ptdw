@@ -99,8 +99,8 @@
                                         <td>{{ $entrada->produto->designacao }}</td>
                                         <td>Entrada</td>
                                         <td>{{ $entrada->id_inventario }} - {{ $entrada->id_ordem }}</td>
-                                        <td>S{{ $entrada->sala }} - A{{ $entrada->armario }} - P{{ $entrada->prataleira }}</td>
-                                        <td>{{ $entrada->capacidade }}</td>
+                                        <td>S{{ $entrada->sala }} - A{{ $entrada->get_armario->armario }} - P{{ $entrada->get_prateleira->prateleira }}</td>
+                                        <td>{{ $entrada->capacidade }} {{ $entrada->get_unidade->unidade }}</td>
                                         <td></td>
                                         <td>{{ $entrada->get_fornecedor->designacao  }}</td>
                                         <td>{{ $entrada->data_entrada }}</td>

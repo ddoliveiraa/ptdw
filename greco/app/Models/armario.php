@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class armario extends Model
 {
     use HasFactory;
+    protected $table = 'armario';
 }

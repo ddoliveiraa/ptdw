@@ -65,7 +65,7 @@
                                 <tbody>
                                     @foreach ($produtos as $produto)
                                         <tr>
-                                            <td>{{ $produto->designacao }}</td>
+                                            <td>{{ $produto->designacao }} {{$produto->get_subfam->nome }}</td>
                                             <td>{{ $produto->formula }}</td>
                                             <td>{{ $produto->CAS }}</td>
                                             <td>
