@@ -57,70 +57,31 @@
                                         <th>{{ __('lang.formula') }}</th>
                                         <th>{{ __('lang.n cas') }}</th>
                                         <th>{{ __('lang.quimico') }}</th>
-                                        <th>{{ __('lang.unidades') }}</th>
                                         <th>{{ __('lang.stock existente') }}</th>
                                         <th>{{ __('lang.stock minimo') }}</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($produtos as $produto)
+                                    @foreach ($produtos as $produto)
                                         <tr>
-                                            <td>{{$produto->designacao}}</td>
-                                            <td>{{$produto->formula}}</td>
-                                            <td>{{$produto->CAS}}</td>
-                                            <td>{{$produto->familia}}</td>
-                                            <td>{{$produto->unidades}}</td>
-                                            <td>{{$produto->stock}}</td>
-                                            <td>{{$produto->stock_min}}</td>
-                                            <td><a href="{{ public_path() }}/ficha/{{$produto->id}}"> Ver Mais &nbsp<i
+                                            <td>{{ $produto->designacao }}</td>
+                                            <td>{{ $produto->formula }}</td>
+                                            <td>{{ $produto->CAS }}</td>
+                                            <td>
+                                                @if ($produto->familia == 1)
+                                                    Sim
+                                                @else
+                                                    Não
+                                                @endif
+
+                                            </td>
+                                            <td>{{ $produto->stock }}</td>
+                                            <td>{{ $produto->stock_min }}</td>
+                                            <td><a href="{{ public_path() }}/ficha/{{ $produto->id }}"> Ver Mais &nbsp<i
                                                         class="fa fa-arrow-right"></i></a></td>
                                         </tr>
-                                    @endforeach --}}
-                                    <tr>
-                                        <td>Cloreto de hidrogénio</td>
-                                        <td>HCL</td>
-                                        <td>7766-21-2</td>
-                                        <td>Sim</td>
-                                        <td>Gramas</td>
-                                        <td>120</td>
-                                        <td>40</td>
-                                        <td><a href="{{ public_path() }}/ficha"> Ver Mais &nbsp<i
-                                                    class="fa fa-arrow-right"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cloreto de hidrogénio</td>
-                                        <td>HCL</td>
-                                        <td>7766-21-2</td>
-                                        <td>Sim</td>
-                                        <td>Gramas</td>
-                                        <td>120</td>
-                                        <td>40</td>
-                                        <td><a href="{{ public_path() }}/ficha"> Ver Mais &nbsp<i
-                                                    class="fa fa-arrow-right"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cloreto de Potássio</td>
-                                        <td>xDD</td>
-                                        <td>4343-21-2</td>
-                                        <td>Não</td>
-                                        <td>Gramas</td>
-                                        <td>220</td>
-                                        <td>40</td>
-                                        <td><a href="{{ public_path() }}/ficha"> Ver Mais &nbsp<i
-                                                    class="fa fa-arrow-right"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cloreto de Potássio</td>
-                                        <td>XDD</td>
-                                        <td>4343-21-2</td>
-                                        <td>Não</td>
-                                        <td>Gramas</td>
-                                        <td>220</td>
-                                        <td>40</td>
-                                        <td><a href="{{ public_path() }}/ficha"> Ver Mais &nbsp<i
-                                                    class="fa fa-arrow-right"></i></a></td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -156,61 +117,5 @@
     <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <script src="{{ public_path() }}/dist/js/image-picker.min.js"></script>
 
-    <script>
-        $(function() {
-
-            var table = $("#tabelaprodutos").DataTable({
-                "dom": '<"toolbar">frtip',
-                "info": true,
-                "language": {
-                    "url": "{{ __('lang.url-lang-dt') }}",
-                },
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": [{
-                        extend: 'csvHtml5',
-                        exportOptions: {
-                            columns: ':visible:not(:last-child)'
-                        }
-                    },
-                    {
-                        extend: 'print',
-                        exportOptions: {
-                            columns: ':visible:not(:last-child)'
-                        }
-                    },
-                ],
-                "initComplete": function() {
-                    table.buttons().container().appendTo('div.toolbar');
-                    var selects = $("<select></select>").attr('id', 'tipo');
-                    selects.addClass('form-control select col-md-1');
-                    $('div.toolbar').append(selects);
-                    $('#tipo').append(new Option("{{ __('lang.todos') }}", "Todos"));
-                    $('#tipo').append(new Option("{{ __('lang.quimicos') }}", "Sim"));
-                    $('#tipo').append(new Option("{{ __('lang.nao quimicos') }}", "Não"));
-
-                    $.fn.dataTable.ext.search.push(
-                        function(settings, searchData, index, rowData, counter) {
-                            var tipo = $('#tipo option:selected').val();
-                            var tipos = searchData[3]; // using the data from the 4th column
-
-                            if (tipo == tipos) {
-                                return tipos;
-                            } else if (tipo == "Todos") {
-                                return true;
-                            }
-                            return false;
-                        }
-                    );
-                    $('#tipo').change(function() {
-                        table.draw();
-                    });
-                }
-            });
-
-
-        });
-
-    </script>
+    <script src="{{ public_path() }}/dist/js/grupo-scripts/customDatatables.js"></script>
 @endsection

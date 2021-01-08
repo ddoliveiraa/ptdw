@@ -11,10 +11,81 @@ class ProdutoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function addProdutoQ(){
+
+        //TESTES
+        //dump(request()->all());
+
+        //VALIDAÇÂO
+        request()->validate([
+            'produto_designacao' => 'required',
+            'produto_cas' => 'required',
+            'produto_peso' => 'required',
+            'produto_stock_minimo' => 'required'
+        ]);
+
+        //ADD NA BD
+        $Produto = new Produto();
+        $Produto->familia = 'quimico';
+        $Produto->designacao = request('produto_designacao');
+        $Produto->formula = request('produto_designacao');
+        $Produto->sinonimo = request('produto_sinonimo');
+        $Produto->CAS = request('produto_cas');
+        $Produto->peso_molecular = request('produto_peso');
+        $Produto->stock_min = request('produto_stock_minimo');
+        $Produto->condicoes_armazenamento = request('produto_armario');
+        $Produto->save();
+        
+        return redirect('produtos.produtos');
+    }
+
+    public function addProdutoNQ(){
+
+        //VALIDAÇÂO
+        request()->validate([
+            'produto_designacao' => 'required',
+            'produto_stock_minimo' => 'required'
+        ]);
+
+        //ADD NA BD
+        $Produto = new Produto();
+        $Produto->familia = 'nao_quimico';
+        $Produto->designacao = request('produto_designacao_nq');
+        $Produto->foto = request('produto_foto');
+        $Produto->sub_familia = request('produto_subfamilia_nq');
+        $Produto->stock_min = request('produto_stock_minimo_nq');
+        $Produto->save();
+
+        return redirect('produtos.produtos');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $produtos = Produto::table('produtos')->get();
-        return view('produtos.produtos', ['produtos' => $produtos]);
+        $produtos = Produto::all();
+        return view('produtos.produtos', compact('produtos'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function add()
+    {
+        $condicoes = \DB::table('condicoes_armazenamento')->get();
+        $subfamilias = \DB::table('sub_familia')->get();
+        $pictogramas = \DB::table('pictogramas')->get();
+
+        return view('produtos.add', [
+            'condicoes' => $condicoes,
+            'subfamilias' => $subfamilias,
+            'pictogramas' => $pictogramas
+            ]);
     }
 
     /**

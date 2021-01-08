@@ -93,7 +93,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                     <h3>{{ __('lang.historico') }} {{ __('lang.operador') }}</h3>
-                                    <table id="historico" class="table table-bordered table-striped">
+                                    <table id="operadores_show" class="table table-bordered table-striped">
                                         <thead class="bg-dark">
                                             <tr>
                                                 <th>{{ __('lang.data-operacao') }}</th>
@@ -165,42 +165,6 @@
     <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-    <!-- Page specific script -->
-    <script>
-        $(function() {
-            $('#historico').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-                "language": {
-                    "url": "{{ __('lang.url-lang-dt') }}",
-                },
-                "columnDefs": [{
-                    type: 'date-uk',
-                    targets: 0
-                }]
-            });
-            jQuery.extend(jQuery.fn.dataTableExt.oSort, {
-                        "date-uk-pre": function(a) {
-                            var ukDatea = a.split('/');
-                            return (ukDatea[2] + ukDatea[1] + ukDatea[0]) * 1;
-                        },
 
-                        "date-uk-asc": function(a, b) {
-                            return ((a < b) ? -1 : ((a > b) ? 1 : 0));
-                        },
-
-                        "date-uk-desc": function(a, b) {
-                            return ((a < b) ? 1 : ((a > b) ? -1 : 0));
-                        }
-                    });
-        });
-        
-
-    </script>
-
+    <script src="{{ public_path() }}/dist/js/grupo-scripts/customDatatables.js"></script>
 @endsection

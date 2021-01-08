@@ -365,42 +365,5 @@
     <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
-    <!-- Page specific script -->
-    <script>
-        jQuery.extend(jQuery.fn.dataTableExt.oSort, {
-            "date-uk-pre": function(a) {
-                var ukDatea = a.split('/');
-                return (ukDatea[2] + ukDatea[1] + ukDatea[0]) * 1;
-            },
-
-            "date-uk-asc": function(a, b) {
-                return ((a < b) ? -1 : ((a > b) ? 1 : 0));
-            },
-
-            "date-uk-desc": function(a, b) {
-                return ((a < b) ? 1 : ((a > b) ? -1 : 0));
-            }
-        });
-
-        $(function() {
-            $('#existencias').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-                "language": {
-                    "url": "{{ __('lang.url-lang-dt') }}",
-                },
-                "columnDefs": [{
-                    type: 'date-uk',
-                    targets: 5
-                }]
-
-            });
-        });
-
-    </script>
+    <script src="{{ public_path() }}/dist/js/grupo-scripts/customDatatables.js"></script>
 @endsection

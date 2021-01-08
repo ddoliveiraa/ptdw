@@ -79,7 +79,7 @@
                                 <tr>
                                     <th>{{ __('lang.produto') }}</th>
                                     <th>{{ __('lang.movimento') }}</th>
-                                    <th>{{ __('lang.n de ordem') }}</th>
+                                    <th>{{ __('lang.n-embalagem') }}</th>
                                     <th>{{ __('lang.localização') }}</th>
                                     <th>{{ __('lang.embalagem') }}</th>
                                     <th>{{ __('lang.cliente') }}</th>
@@ -94,57 +94,46 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Cloreto de Hidrogénio</td>
-                                    <td>Saída</td>
-                                    <td>23</td>
-                                    <td>A2-P1</td>
-                                    <td>25ml</td>
-                                    <td>Cliente 1</td>
-                                    <td>Sisma</td>
-                                    <td>11/11/2020</td>
-                                    <td>20/01/2021</td>
-                                    <td>20/12/2021</td>
-                                    <td>Fiel 1</td>
-                                    <td>Quimico</td>
-                                    <td>--</td>
-                                    <td><a href="{{ public_path() }}/movimentos/show_saida"> Ver Mais &nbsp<i
-                                                class="fa fa-arrow-right"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>Luvas</td>
-                                    <td>Entrada</td>
-                                    <td>34</td>
-                                    <td>A2-P1</td>
-                                    <td>20 unidades</td>
-                                    <td>Cliente 2</td>
-                                    <td>Misma</td>
-                                    <td>07/11/2021</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>Fiel 2</td>
-                                    <td>Não Quimico</td>
-                                    <td>Plástico</td>
-                                    <td><a href="{{ public_path() }}/movimentos/show_entrada"> Ver Mais &nbsp<i
-                                                class="fa fa-arrow-right"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>Cloreto de Sódio</td>
-                                    <td>Entrada</td>
-                                    <td>46</td>
-                                    <td>A5-P2</td>
-                                    <td>250ml</td>
-                                    <td>Cliente 3</td>
-                                    <td>Sisma</td>
-                                    <td>12/10/2020</td>
-                                    <td>12/2/2021</td>
-                                    <td>--</td>
-                                    <td>Fiel 3</td>
-                                    <td>Quimico</td>
-                                    <td>--</td>
-                                    <td><a href="{{ public_path() }}/movimentos/show_saida"> Ver Mais &nbsp<i
-                                                class="fa fa-arrow-right"></i></a></td>
-                                </tr>
+                                @foreach ($entradas as $entrada)
+                                    <tr>
+                                        <td>{{ $entrada->id_inventario }}</td>
+                                        <td>Entrada</td>
+                                        <td>{{ $entrada->id_inventario }} - {{ $entrada->id_ordem }}</td>
+                                        <td>S{{ $entrada->sala }} - A{{ $entrada->armario }} - P{{ $entrada->prataleira }}</td>
+                                        <td>{{ $entrada->capacidade }}</td>
+                                        <td></td>
+                                        <td>{{ $entrada->fornecedor }}</td>
+                                        <td>{{ $entrada->data_entrada }}</td>
+                                        <td>{{ $entrada->validade }}</td>
+                                        <td>{{ $entrada->termino }}</td>
+                                        <td>{{ $entrada->operador }}</td>
+                                        <td>Quimico</td>
+                                        <td>--</td>
+                                        <td><a href="{{ public_path() }}/movimentos/show_saida"> Ver Mais &nbsp<i
+                                                    class="fa fa-arrow-right"></i></a></td>
+                                    </tr>
+                                @endforeach
+
+                                @foreach ($saidas as $saida)
+                                    <tr>
+                                        <td>{{ $saida->id_produto }}</td>
+                                        <td>Saida</td>
+                                        <td>{{ $saida->id_produto }} - {{ $saida->id_ordem }}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>{{ $saida->id_cliente }}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>{{ $saida->id_operador }}</td>
+                                        <td>Quimico</td>
+                                        <td>--</td>
+                                        <td><a href="{{ public_path() }}/movimentos/show_saida"> Ver Mais &nbsp<i
+                                                    class="fa fa-arrow-right"></i></a></td>
+                                    </tr>
+                                @endforeach
+                                
                             </tbody>
                         </table>
                         <!-- /.card-body -->
@@ -278,172 +267,5 @@
 
     <!-- date-range-picker -->
     <script src="{{ public_path() }}/plugins/daterangepicker/daterangepicker.js"></script>
-
-    <!-- script do grupo  NOTA: TRADUÇÕES PAREM DE FUNCIONAR DENTRO DAS COMBOBOXS-->
-    {{-- <script src="{{ public_path() }}/dist/js/grupo-scripts/historico.js"></script>
-    --}}
-
-    <script>
-        $(function() {
-            var table = $("#historico").DataTable({
-                "dom": '<"search">frtip',
-                "info": true,
-                "language": {
-                    "url": "{{ __('lang.url-lang-dt') }}",
-                },
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "columnDefs": [{
-                        "targets": [3, 6, 10, 11, 12],
-                        "visible": false
-                    },
-                    {
-                        "targets": [7, 8, 9],
-                        "type": 'date-uk'
-                    }
-                ],
-                "buttons": [{
-                        extend: 'csvHtml5',
-                        exportOptions: {
-                            columns: ':visible:not(:last-child)'
-                        }
-                    },
-                    {
-                        extend: 'print',
-                        exportOptions: {
-                            columns: ':visible:not(:last-child)'
-                        }
-                    },
-                ],
-                "initComplete": function() {
-                    table.buttons().container().appendTo('#historico_filter');
-                    //filtragem por movimentos
-                    $.fn.dataTable.ext.search.push(
-                        function(settings, searchData, index, rowData, counter) {
-                            var movimento = $('#movimento option:selected').val();
-                            var movimentos = searchData[1]; // using the data from the 2nd column
-
-                            if (movimento == movimentos) {
-                                return movimentos;
-                            } else if (movimento == "Movimento") {
-                                return true;
-                            }
-                            return false;
-                        }
-                    );
-
-                    //filtragem por familia
-                    $.fn.dataTable.ext.search.push(
-                        function(settings, searchData, index, rowData, counter) {
-                            var familia = $('#familia option:selected').val();
-                            var familias = searchData[11]; // using the data from the 12th column
-
-                            if (familia == familias) {
-                                return familias;
-                            } else if (familia == "Familia") {
-                                return true;
-                            }
-                            return false;
-                        }
-                    );
-                    //filtragem por sub-familia
-                    $.fn.dataTable.ext.search.push(
-                        function(settings, searchData, index, rowData, counter) {
-                            var subfamilia = $('#sub-familia option:selected').val();
-                            var subfamilias = searchData[12]; // using the data from the 13th column
-
-                            if (subfamilia == subfamilias) {
-                                return subfamilias;
-                            } else if (subfamilia == "Sub-Familia") {
-                                return true;
-                            }
-                            return false;
-                        }
-                    );
-
-                    jQuery.extend(jQuery.fn.dataTableExt.oSort, {
-                        "date-uk-pre": function(a) {
-                            var ukDatea = a.split('/');
-                            return (ukDatea[2] + ukDatea[1] + ukDatea[0]) * 1;
-                        },
-
-                        "date-uk-asc": function(a, b) {
-                            return ((a < b) ? -1 : ((a > b) ? 1 : 0));
-                        },
-
-                        "date-uk-desc": function(a, b) {
-                            return ((a < b) ? 1 : ((a > b) ? -1 : 0));
-                        }
-                    });
-
-                    //Date range picker
-                    $('#intervalo').daterangepicker({
-                        timePicker: false,
-                        locale: {
-                            format: 'DD/MM/YYYY'
-                        }
-                    })
-
-                    $('#sub-familia').hide(1);
-                    $("#pictogramas").show(1);
-                    $('#filter').click(function() {
-                        $('#familia').val('Familia');
-                        $('#sub-familia').val('Sub-Familia');
-                        $('#movimento').val('Movimento');
-                        $('input[type=checkbox]').prop('checked', false);
-                        table.search('');
-                        table.draw();
-                    });
-                    $('#movimento').change(function() {
-                        table.draw();
-                    });
-
-                    $("#pictogramas").click(function() {
-                        $("#modalSelecionarPictograma").modal("show");
-                    })
-
-                    $('#familia').change(function() {
-                        var familia = $('#familia option:selected').val();
-                        console.log("familia selecionada: " + familia);
-                        if (familia == "Não") {
-                            $('#sub-familia').show(1);
-                            $("#pictogramas").hide(1);
-                        } else {
-                            $('#sub-familia').hide(1);
-                            $('#sub-familia').val('Sub-Familia');
-                            $("#pictogramas").show(1);
-                        }
-                        table.draw();
-                    });
-                    $('#sub-familia').change(function() {
-                        table.draw();
-                    });
-
-                    $('#intervalo').on('apply.daterangepicker', function() {
-                        $.fn.dataTable.ext.search.push(
-                            function(settings, searchData, index, rowData, counter) {
-                                var inicio = $('#intervalo').data('daterangepicker').startDate.format("DD/MM/YYYY");
-                                var fim = $('#intervalo').data('daterangepicker').endDate.format("DD/MM/YYYY");
-                                var datas = moment(new Date(searchData[7]), "DD/MM/YYYY") // using the data from the 8th column
-                                console.log('incio = ' + inicio, ', ' + 'fim = ' + fim);
-                                console.log(datas);
-
-                                if ((isNaN(inicio) && isNaN(fim)) ||
-                                    (isNaN(inicio) && datas <= fim) ||
-                                    (inicio <= datas && isNaN(fim)) ||
-                                    (inicio <= datas && datas <= fim)) {
-                                    return true;
-                                }
-                                return false;
-                            }
-                        );
-                        table.draw();
-                    });
-                }
-            });
-
-        });
-
-    </script>
+    <script src="{{ public_path() }}/dist/js/grupo-scripts/movimento_historico.js"></script>
 @endsection

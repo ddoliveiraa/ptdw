@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Models\Movimento;
+use App\Models\Entrada;
+use App\Models\Saida;
+use App\Models\Produto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MovimentoController extends Controller
 {
@@ -13,7 +17,9 @@ class MovimentoController extends Controller
      */
     public function index()
     {
-
+        $entradas = Entrada::orderBy('created_at','desc')->get();
+        $saidas = Saida::orderBy('created_at', 'desc')->get();
+        return view('movimentos.historico', compact('entradas', 'saidas'));
     }
 
     /**

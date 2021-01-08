@@ -56,7 +56,8 @@
                             <div class="card card-primary">
 
                                 <!-- form start -->
-                                <form>
+                                <form method="POST" action="/produtos/q">
+                                    @csrf <!-- Cross Site Request Forgery -->
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-6">
@@ -116,11 +117,9 @@
                                                     <label for="produto_condicoes_armazenamento"
                                                         class="control-label">{{ __('lang.condicoes de armazenamento') }}</label>
                                                     <select class="form-control" id="produto_armario" tabindex="7">
-                                                        <option value="1">{{ __('lang.TMBaixo') }}</option>
-                                                        <option value="2">{{ __('lang.TBaixo') }}</option>
-                                                        <option value="3">{{ __('lang.TAmbiente') }}</option>
-                                                        <option value="4">{{ __('lang.TAlta') }}</option>
-                                                        <option value="5">{{ __('lang.TMAlta') }}</option>
+                                                        @foreach ($condicoes as $c)
+                                                        <option value="{{ $c->id }}">{{ $c->condicao }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
@@ -131,7 +130,7 @@
                                                         class="control-label">{{ __('lang.pictograma') }}</label>
                                                     <div class="input-group margin">
                                                         <input type="text" class="form-control" id="produto_pictogramas"
-                                                            tabindex="7" required readonly>
+                                                            tabindex="7" readonly>
                                                         <span class="input-group-btn">
                                                             <button type="button" class="btn btn-secondary btn-flat"
                                                                 data-toggle="modal"
@@ -173,7 +172,8 @@
                             <div class="card card-primary">
 
                                 <!-- form start -->
-                                <form>
+                                <form method="POST" action="/produtos/nq">
+                                    @csrf <!-- Cross Site Request Forgery -->
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-6">
@@ -196,13 +196,12 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="produto_familia_nq"
+                                                    <label for="produto_subfamilia_nq"
                                                         class="control-label">{{ __('lang.familia') }}</label>
-                                                    <select class="form-control" id="produto_familia_nq" tabindex="3">
-                                                        <option value="1">{{ __('lang.metal') }}</option>
-                                                        <option value="2">{{ __('lang.vidro') }}</option>
-                                                        <option value="3">{{ __('lang.plastico') }}</option>
-                                                        <option value="3">{{ __('lang.outro') }}</option>
+                                                    <select class="form-control" id="produto_subfamilia_nq" tabindex="3">
+                                                        @foreach ($subfamilias as $sf)
+                                                        <option value="{{ $sf->id }}">{{ $sf->nome }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
@@ -258,51 +257,12 @@
                                     <div class="form-group">
                                         <div class="check-pictogram">
                                             <ul>
-                                                <li>
-                                                    <input type="checkbox" id="cb1" />
-                                                    <label for="cb1"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Explosive.gif" /><p class="text-center">GHS01</p></label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb2" />
-                                                    <label for="cb2"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Flammable.gif" /><p class="text-center">GHS02</p></label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb3" />
-                                                    <label for="cb3"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/RoundFlammable.gif" /><p class="text-center">GHS03</p></label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb4" />
-                                                    <label for="cb4"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/CompressedGas.gif" /><p class="text-center">GHS04</p></label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb5" />
-                                                    <label for="cb5"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Corrosive.gif" /><p class="text-center">GHS05</p></label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb6" />
-                                                    <label for="cb6"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Toxic.gif" /><p class="text-center">GHS06</p></label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb7" />
-                                                    <label for="cb7"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Danger.gif" /><p class="text-center">GHS07</p></label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb8" />
-                                                    <label for="cb8"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Systemic.gif" /><p class="text-center">GHS08</p></label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb9" />
-                                                    <label for="cb9"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Pollution.gif" /><p class="text-center">GHS09</p></label>
-                                                </li>
+                                                @foreach ($pictogramas as $p)
+                                                    <li>
+                                                        <input type="checkbox" id="cb{{ $p->id }}" />
+                                                        <label for="cb{{ $p->id }}"><img src="{{ $p->imagem }}" /><p class="text-center">{{ $p->nome }}</p></label>
+                                                    </li>
+                                                @endforeach
                                             </ul>
                                         </div>
                                     </div>

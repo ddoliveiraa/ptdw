@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProdutoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,8 +13,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 
 //Pesquisa
 Route::get('/', function () {
@@ -28,15 +27,11 @@ Route::get('/welcome', function () {
 Route::get('/welcome/{locale}', 'App\Http\Controllers\LocalizationController@index');
 
 //Produtos
-Route::get('/produtos', function () {
-    return view('produtos.produtos');
-});
+Route::get('/produtos', 'App\Http\Controllers\ProdutoController@index');
+Route::get('/produtos/add', 'App\Http\Controllers\ProdutoController@add');
 
-/* Route::get('/produtos', 'App\Http\Controllers\ProdutoController@index'); */
-
-Route::get('/produtos/add', function () {
-    return view('produtos.add');
-});
+Route::post('/produtos/q', [ProdutoController::class, 'addProdutoQ']);
+Route::post('/produtos/nq', [ProdutoController::class, 'addProdutoNQ']);
 
 
 //Ficha
@@ -54,9 +49,7 @@ Route::get('/movimentos/entrada', function () {
 Route::get('/movimentos/saida', function () {
     return view('movimentos.saida');
 });
-Route::get('/movimentos/historico', function () {
-    return view('movimentos.historico');
-});
+Route::get('/movimentos/historico', 'App\Http\Controllers\MovimentoController@index');
 
 Route::get('/movimentos/show_entrada', function () {
     return view('movimentos.show_entrada');
