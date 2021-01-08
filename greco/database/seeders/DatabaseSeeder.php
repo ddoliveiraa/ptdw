@@ -106,7 +106,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Solicitante::factory()->count(100)->create();
         \App\Models\Operador::factory()->count(20)->create();
         \App\Models\Produto::factory()->count(300)->create();
-        \App\Models\Entrada::factory()->count(300)->create();
-        \App\Models\Saida::factory()->count(300)->create();
+        \App\Models\Entrada::factory()->count(100)->create();
+        \App\Models\Saida::factory()->count(100)->create();
     }
 }
