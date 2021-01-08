@@ -30,8 +30,8 @@ Route::get('/welcome/{locale}', 'App\Http\Controllers\LocalizationController@ind
 Route::get('/produtos', 'App\Http\Controllers\ProdutoController@index');
 Route::get('/produtos/add', 'App\Http\Controllers\ProdutoController@add');
 
-Route::post('/produtos/q', [ProdutoController::class, 'addProdutoQ']);
-Route::post('/produtos/nq', [ProdutoController::class, 'addProdutoNQ']);
+Route::post('/produtos/q', 'App\Http\Controllers\ProdutoController@addProdutoQ');
+Route::post('/produtos/nq', 'App\Http\Controllers\ProdutoController@addProdutoNQ');
 
 
 //Ficha

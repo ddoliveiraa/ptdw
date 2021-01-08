@@ -8,26 +8,26 @@ use Illuminate\Database\Eloquent\Model;
 class Saida extends Model
 {
     use HasFactory;
-    protected $table = 'saidas';
     protected $fillable = ['id_cliente','id_produto','id_ordem','id_solicitante','id_operador','obs'];
 
-    public function produtos()
+    public function produto()
     {
-        return $this->hasOne(Produto::class);
+        return $this->belongsTo(Produto::class, 'id_produto');
     }
 
-    public function solicitantes()
+    public function get_operador()
     {
-        return $this->hasOne(Solicitante::class);
+        return $this->belongsTo(Operador::class, 'id_operador');
     }
 
-    public function clientes()
+    public function get_solicitante()
     {
-        return $this->hasOne(Cliente::class);
+        return $this->hasOne(Solicitante::class, 'id_solicitante');
+    }
+     
+    public function get_cliente()
+    {
+        return $this->belongsTo(Cliente::class, 'id_cliente');
     }
 
-    public function operadores()
-    {
-        return $this->hasOne(Operador::class);
-    }
 }

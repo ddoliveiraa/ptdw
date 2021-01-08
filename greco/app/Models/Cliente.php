@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Cliente extends Model
 {
     use HasFactory;
-    protected $table = 'clientes';
     protected $fillable = ['designacao','obs'];
 
     public function responsaveis()
@@ -24,5 +23,10 @@ class Cliente extends Model
     public function saidas()
     {
         return $this->hasMany(Saida::class);
+    }
+
+    public function entradas()
+    {
+        return $this->hasMany(Entrada::class);
     }
 }

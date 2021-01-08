@@ -96,17 +96,17 @@
                             <tbody>
                                 @foreach ($entradas as $entrada)
                                     <tr>
-                                        <td>{{ $entrada->id_inventario }}</td>
+                                        <td>{{ $entrada->produto->designacao }}</td>
                                         <td>Entrada</td>
                                         <td>{{ $entrada->id_inventario }} - {{ $entrada->id_ordem }}</td>
                                         <td>S{{ $entrada->sala }} - A{{ $entrada->armario }} - P{{ $entrada->prataleira }}</td>
                                         <td>{{ $entrada->capacidade }}</td>
                                         <td></td>
-                                        <td>{{ $entrada->fornecedor }}</td>
+                                        <td>{{ $entrada->get_fornecedor->designacao  }}</td>
                                         <td>{{ $entrada->data_entrada }}</td>
                                         <td>{{ $entrada->validade }}</td>
                                         <td>{{ $entrada->termino }}</td>
-                                        <td>{{ $entrada->operador }}</td>
+                                        <td>{{ $entrada->get_operador->nome }}</td>
                                         <td>Quimico</td>
                                         <td>--</td>
                                         <td><a href="{{ public_path() }}/movimentos/show_saida"> Ver Mais &nbsp<i
@@ -116,17 +116,17 @@
 
                                 @foreach ($saidas as $saida)
                                     <tr>
-                                        <td>{{ $saida->id_produto }}</td>
+                                        <td>{{ $saida->produto->designacao }}</td>
                                         <td>Saida</td>
                                         <td>{{ $saida->id_produto }} - {{ $saida->id_ordem }}</td>
                                         <td></td>
                                         <td></td>
-                                        <td>{{ $saida->id_cliente }}</td>
+                                        <td>{{ $saida->get_cliente->designacao }}</td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td>{{ $saida->id_operador }}</td>
+                                        <td>{{ $saida->get_operador->nome }}</td>
                                         <td>Quimico</td>
                                         <td>--</td>
                                         <td><a href="{{ public_path() }}/movimentos/show_saida"> Ver Mais &nbsp<i
