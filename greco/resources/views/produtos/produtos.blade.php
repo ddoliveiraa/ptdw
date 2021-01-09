@@ -62,27 +62,6 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                {{-- <tbody>
-                                    @foreach ($produtos as $produto)
-                                        <tr>
-                                            <td>{{ $produto->designacao }} {{$produto->get_subfam->nome }}</td>
-                                            <td>{{ $produto->formula }}</td>
-                                            <td>{{ $produto->CAS }}</td>
-                                            <td>
-                                                @if ($produto->familia == 1)
-                                                    Sim
-                                                @else
-                                                    Não
-                                                @endif
-
-                                            </td>
-                                            <td>{{ $produto->stock }}</td>
-                                            <td>{{ $produto->stock_min }}</td>
-                                            <td><a href="{{ public_path() }}/ficha/{{ $produto->id }}"> Ver Mais &nbsp<i
-                                                        class="fa fa-arrow-right"></i></a></td>
-                                        </tr>
-                                    @endforeach
-                                </tbody> --}}
                             </table>
                         </div>
                         <!-- /.card-body -->

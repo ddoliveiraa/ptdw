@@ -10,10 +10,29 @@ else {
 var table = $("#historico").DataTable({
     "dom": '<"search">frtip',
     "info": true,
+    "processing": true,
+    "serverSide": true,
+    "ajax": "/movimentos/historico/getMovimentos/",
+    "columns": [
+        { data: 'id' },
+        { data: 'movimento' },
+        { data: 'id_inventario' },
+        { data: 'localizacao' },
+        { data: 'capacidade' },
+        { data: 'cliente' },
+        { data: 'fornecedor' },
+        { data: 'data_entrada' },
+        { data: 'data_validade' },
+        { data: 'data_termino' },
+        { data: 'operador' },
+        { data: 'familia' },
+        { data: 'sub_familiass' },
+        { data: 'link' },
+    ],
     "language": {
         "url": datatables_lang,
     },
-    "order": [],
+    /* "order": [], */
     "responsive": true,
     "lengthChange": false,
     "autoWidth": false,
@@ -129,7 +148,7 @@ var table = $("#historico").DataTable({
         $('#familia').change(function () {
             var familia = $('#familia option:selected').val();
             console.log("familia selecionada: " + familia);
-            if (familia == "Não Quimico") {
+            if (familia == "Não Químico") {
                 $('#sub-familia').show(1);
                 $("#pictogramas").hide(1);
             } else {

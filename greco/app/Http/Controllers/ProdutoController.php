@@ -70,8 +70,7 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        /* $produtos = Produto::all(); */
-        return view('produtos.produtos'/* , compact('produtos') */);
+        return view('produtos.produtos');
     }
 
     /*
@@ -104,6 +103,7 @@ class ProdutoController extends Controller
       ->where('produtos.designacao', 'like', '%' .$searchValue . '%')
       ->orWhere('produtos.formula', 'like', '%' .$searchValue . '%')
       ->orWhere('produtos.CAS', 'like', '%' .$searchValue . '%')
+      ->orWhere('produtos.familia', 'like', '%' .$searchValue . '%')
       ->select('produtos.*')
       ->skip($start)
       ->take($rowperpage)
@@ -116,7 +116,7 @@ class ProdutoController extends Controller
        $designacao = $record->designacao;
        $formula = $record->formula;
        $CAS = $record->CAS;
-       $Quimico = $record->get_fam->nome;
+       $familia = $record->get_fam->nome;
        $stock = $record->stock;
        $stock_min = $record->stock_min;
 
@@ -125,7 +125,7 @@ class ProdutoController extends Controller
          "designacao" => $designacao,
          "formula" => $formula,
          "CAS" => $CAS,
-         'Quimico' => $Quimico,
+         'familia' => $familia,
          'stock' => $stock,
          'stock_min' => $stock_min
        );

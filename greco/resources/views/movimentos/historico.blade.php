@@ -44,17 +44,17 @@
                     <div class="card-header">
                         <h3 class="card-title text-light">Filtros</h3>
                     </div>
-                    <div class="card-body sup">
+                    {{-- <div class="card-body sup">
                         <div class="filtros">
                             <select id="familia" class="col-md-12 form-control select">
                                 <option value="Familia">{{ __('lang.familia') }}</option>
-                                <option value="Quimico">{{ __('lang.quimicos') }}</option>
-                                <option value="Não Quimico">{{ __('lang.nao quimicos') }}</option>
+                                <option value="Químico">{{ __('lang.quimicos') }}</option>
+                                <option value="Não Químico">{{ __('lang.nao quimicos') }}</option>
                             </select>
                             <select id="sub-familia" class="col-md-12 form-control select" style="display: none;">
                                 <option value="Sub-Familia">{{ __('lang.sub-familia') }}</option>
                                 @foreach ($subfamilias as $subfamilia)
-                                    <option value="{{ $subfamilia->id }}">{{ $subfamilia->nome }}</option>
+                                    <option value="{{ $subfamilia->nome }}">{{ $subfamilia->nome }}</option>
                                 @endforeach
                             </select>
                             <select id="movimento" class="col-md-12 form-control select">
@@ -67,7 +67,7 @@
                                 class="col-md-12 btn btn-secondary">{{ __('lang.pictograma') }}s</button>
                             <button id="filter" class="btn btn-danger btn-block">Reset</button>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="col-md-10">
@@ -93,13 +93,13 @@
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            {{-- <tbody>
                                 @foreach ($entradas as $entrada)
                                     <tr>
                                         <td>{{ $entrada->produto->designacao }}</td>
                                         <td>Entrada</td>
                                         <td>{{ $entrada->id_inventario }} - {{ $entrada->id_ordem }}</td>
-                                        <td>S{{ $entrada->sala }} - A{{ $entrada->get_armario->armario }} - P{{ $entrada->get_prateleira->prateleira }}</td>
+                                        <td>S{{ $entrada->sala }} - {{ $entrada->get_armario->armario }} - {{ $entrada->get_prateleira->prateleira }}</td>
                                         <td>{{ $entrada->capacidade }} {{ $entrada->get_unidade->unidade }}</td>
                                         <td></td>
                                         <td>{{ $entrada->get_fornecedor->designacao  }}</td>
@@ -107,8 +107,8 @@
                                         <td>{{ $entrada->validade }}</td>
                                         <td>{{ $entrada->termino }}</td>
                                         <td>{{ $entrada->get_operador->nome }}</td>
-                                        <td>Quimico</td>
-                                        <td>--</td>
+                                        <td>{{ $entrada->produto->get_fam->nome }}</td>
+                                        <td>{{ $entrada->produto->get_subfam->nome }}</td>
                                         <td><a href="{{ public_path() }}/movimentos/show_saida"> Ver Mais &nbsp<i
                                                     class="fa fa-arrow-right"></i></a></td>
                                     </tr>
@@ -127,14 +127,14 @@
                                         <td></td>
                                         <td></td>
                                         <td>{{ $saida->get_operador->nome }}</td>
-                                        <td>Quimico</td>
-                                        <td>--</td>
+                                        <td>{{ $saida->produto->get_fam->nome }}</td>
+                                        <td>{{ $entrada->produto->get_subfam->nome }}</td>
                                         <td><a href="{{ public_path() }}/movimentos/show_saida"> Ver Mais &nbsp<i
                                                     class="fa fa-arrow-right"></i></a></td>
                                     </tr>
                                 @endforeach
                                 
-                            </tbody>
+                            </tbody> --}}
                         </table>
                         <!-- /.card-body -->
                     </div>
