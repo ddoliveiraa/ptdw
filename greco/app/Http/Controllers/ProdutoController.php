@@ -105,7 +105,7 @@ class ProdutoController extends Controller
     $data_arr = array();
     
     foreach($records as $record){
-       $id = $record->id;
+       $id = "<a href='/ficha/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>" ;
        $designacao = $record->designacao;
        $formula = $record->formula;
        $CAS = $record->CAS;

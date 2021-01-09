@@ -58,8 +58,8 @@ var produtos = $("#tabelaprodutos").DataTable({
         selects.addClass('form-control select col-md-1');
         $('div.toolbar').append(selects);
         $('#tipo').append(new Option(Ttodos, "Todos"));
-        $('#tipo').append(new Option(Tquimico, "Sim"));
-        $('#tipo').append(new Option(TnaoQuimico, "Não"));
+        $('#tipo').append(new Option(Tquimico, "Químico"));
+        $('#tipo').append(new Option(TnaoQuimico, "Não Químico"));
 
         $.fn.dataTable.ext.search.push(
             function (settings, searchData, index, rowData, counter) {
