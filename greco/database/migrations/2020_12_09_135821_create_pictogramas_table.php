@@ -22,7 +22,7 @@ class CreatePictogramasTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('produtos_pictogramas', function (Blueprint $table) {
+        Schema::create('pictograma_produto', function (Blueprint $table) {
             $table->id();
 
             $table->unsignedBigInteger('produto_id');

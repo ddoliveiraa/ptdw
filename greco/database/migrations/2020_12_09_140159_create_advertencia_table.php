@@ -13,7 +13,7 @@ class CreateAdvertenciaTable extends Migration
      */
     public function up()
     {
-        Schema::create('advertencia', function (Blueprint $table) {
+        Schema::create('advertencias', function (Blueprint $table) {
             $table->id();
 
        //     $table->unsignedBigInteger('id_pictogramas');
@@ -22,7 +22,7 @@ class CreateAdvertenciaTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('produtos_advertencia', function (Blueprint $table) {
+        Schema::create('advertencia_produto', function (Blueprint $table) {
             $table->id();
 
             $table->unsignedBigInteger('produto_id');
@@ -32,7 +32,7 @@ class CreateAdvertenciaTable extends Migration
 
             $table->unique(['produto_id', 'advertencia_id']);
             $table->foreign('produto_id')->references('id')->on('produtos');
-            $table->foreign('advertencia_id')->references('id')->on('advertencia');
+            $table->foreign('advertencia_id')->references('id')->on('advertencias');
         });
 
         // Schema::create('pictogramas_advertencia', function (Blueprint $table) {

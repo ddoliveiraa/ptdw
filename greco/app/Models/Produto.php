@@ -35,4 +35,19 @@ class Produto extends Model
    {
        return $this->belongsTo(sub_familia::class, 'sub_familia');
    }
+
+   public function pictogramas() 
+   {
+      return $this->belongsToMany(pictograma::class);
+   }
+   
+   public function advertencias()
+   {
+       return $this->belongsToMany(advertencia::class);
+   }
+
+   public function recomendacoes()
+   {
+       return $this->belongsToMany(recomendacoe::class);
+   }
 }

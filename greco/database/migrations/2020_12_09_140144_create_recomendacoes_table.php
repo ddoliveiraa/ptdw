@@ -22,17 +22,17 @@ class CreateRecomendacoesTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('produtos_recomendacoes', function (Blueprint $table) {
+        Schema::create('produto_recomendacoe', function (Blueprint $table) {
             $table->id();
 
             $table->unsignedBigInteger('produto_id');
-            $table->unsignedBigInteger('recoemndacao_id');
+            $table->unsignedBigInteger('recomendacoe_id');
 
             $table->timestamps();
 
-            $table->unique(['produto_id', 'recoemndacao_id']);
+            $table->unique(['produto_id', 'recomendacoe_id']);
             $table->foreign('produto_id')->references('id')->on('produtos');
-            $table->foreign('recoemndacao_id')->references('id')->on('recomendacoes');
+            $table->foreign('recomendacoe_id')->references('id')->on('recomendacoes');
         });
 
         // Schema::create('pictogramas_recomendacoes', function (Blueprint $table) {

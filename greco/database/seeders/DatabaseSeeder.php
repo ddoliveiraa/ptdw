@@ -91,9 +91,9 @@ class DatabaseSeeder extends Seeder
         DB::table('pictogramas')->insert(['nome' => "GHS08: Health hazard", 'imagem'=> "null"]);
         DB::table('pictogramas')->insert(['nome' => "GHS09: Environment", 'imagem'=> "null"]);
 
-        DB::table('advertencia')->insert(['texto' => "H290 - Corrosivo a metais",]);
-        DB::table('advertencia')->insert(['texto' => "H314 - Corrosivo à pele e olhos",]);
-        DB::table('advertencia')->insert(['texto' => "H335 - Causa irritação respiratória",]);
+        DB::table('advertencias')->insert(['texto' => "H290 - Corrosivo a metais",]);
+        DB::table('advertencias')->insert(['texto' => "H314 - Corrosivo à pele e olhos",]);
+        DB::table('advertencias')->insert(['texto' => "H335 - Causa irritação respiratória",]);
 
         DB::table('recomendacoes')->insert(['texto' => "P280 - Usar luvas e oculos de proteção",]);
         DB::table('recomendacoes')->insert(['texto' => "P201 - Obtain special instructions before use",]);
@@ -108,5 +108,27 @@ class DatabaseSeeder extends Seeder
         \App\Models\Produto::factory()->count(300)->create();
         \App\Models\Entrada::factory()->count(100)->create();
         \App\Models\Saida::factory()->count(100)->create();
+
+        //tabelas de relacao pra testes
+        DB::table('produto_recomendacoe')->insert(['produto_id' => 1,'recomendacoe_id' => 1]);
+        DB::table('produto_recomendacoe')->insert(['produto_id' => 1,'recomendacoe_id' => 2]);
+        DB::table('produto_recomendacoe')->insert(['produto_id' => 1,'recomendacoe_id' => 3]);
+
+        DB::table('advertencia_produto')->insert(['produto_id' => 1,'advertencia_id' => 1]);
+        DB::table('advertencia_produto')->insert(['produto_id' => 1,'advertencia_id' => 2]);
+        DB::table('advertencia_produto')->insert(['produto_id' => 1,'advertencia_id' => 3]);
+
+        DB::table('pictograma_produto')->insert(['produto_id' => 1,'pictograma_id' => 1]);
+        DB::table('pictograma_produto')->insert(['produto_id' => 1,'pictograma_id' => 2]);
+        DB::table('pictograma_produto')->insert(['produto_id' => 1,'pictograma_id' => 3]);
+        DB::table('pictograma_produto')->insert(['produto_id' => 1,'pictograma_id' => 4]);
+        DB::table('pictograma_produto')->insert(['produto_id' => 1,'pictograma_id' => 5]);
+        DB::table('pictograma_produto')->insert(['produto_id' => 1,'pictograma_id' => 6]);
+        DB::table('pictograma_produto')->insert(['produto_id' => 1,'pictograma_id' => 7]);
+        DB::table('pictograma_produto')->insert(['produto_id' => 1,'pictograma_id' => 8]);
+        DB::table('pictograma_produto')->insert(['produto_id' => 1,'pictograma_id' => 9]);
+
+        
+
     }
 }
