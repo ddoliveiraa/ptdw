@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Movimento;
 use App\Models\Entrada;
 use App\Models\Saida;
@@ -18,10 +19,91 @@ class MovimentoController extends Controller
      */
     public function index()
     {
-        $entradas = Entrada::orderBy('created_at','desc')->take(5)->get();
-        $saidas = Saida::orderBy('created_at', 'desc')->take(5)->get();
+        /* $entradas = Entrada::orderBy('created_at','desc')->take(5)->get();
+        $saidas = Saida::orderBy('created_at', 'desc')->take(5)->get(); */
         $subfamilias = sub_familia::all();
-        return view('movimentos.historico', compact('entradas', 'saidas', 'subfamilias'));
+        return view('movimentos.historico', compact(/* 'entradas', 'saidas',  */'subfamilias'));
+    }
+
+    /*
+   AJAX request (Páginação com datatables)
+   */
+    public function getMovimentos(Request $request)
+    {
+
+        ## Read value
+        $draw = $request->get('draw');
+        $start = $request->get("start");
+        $rowperpage = $request->get("length"); // Rows display per page
+
+        $columnIndex_arr = $request->get('order');
+        $columnName_arr = $request->get('columns');
+        $order_arr = $request->get('order');
+        $search_arr = $request->get('search');
+
+        $columnIndex = $columnIndex_arr[0]['column']; // Column index
+        $columnName = $columnName_arr[$columnIndex]['data']; // Column name
+        $columnSortOrder = $order_arr[0]['dir']; // asc or desc
+        $searchValue = $search_arr['value']; // Search value
+
+        // Total records
+        $totalRecords = Entrada::select('count(*) as allcount')->count();
+        $totalRecordswithFilter = Entrada::select('count(*) as allcount')->where('id', 'like', '%' . $searchValue . '%')->count();
+
+        // Fetch records ISTO NÃO FUNCIONA por causa das relações complexas
+        $records = Entrada::orderBy($columnName, $columnSortOrder)
+            ->where('entradas.id', 'like', '%' . $searchValue . '%')
+            ->select('entradas.*')
+            ->skip($start)
+            ->take($rowperpage)
+            ->get();
+
+        $data_arr = array();
+
+        foreach ($records as $record) {
+            $id = $record->produto->designacao;
+            $id_inventario = "$record->id_inventario - $record->id_ordem";
+            $movimento = "Entrada";
+            $localizacao = $record->sala + $record->get_armario->id + $record->get_prateleira->id;
+            $capacidade = $record->capacidade;
+            $unidade = $record->get_unidade->unidade;
+            $cliente = "";
+            $fornecedor = $record->get_fornecedor->designacao;
+            $data_entrada = $record->data_entrada;
+            $data_validade = $record->validade;
+            $data_termino = $record->termino;
+            $operador = $record->get_operador->nome;
+            $familia = $record->produto->get_fam->nome;
+            $sub_familiass = $record->produto->get_subfam->nome;
+            $link = "<a href='/ficha/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+
+            $data_arr[] = array(
+                "id" => $id,
+                "movimento" => $movimento,
+                "id_inventario" => $id_inventario,
+                "localizacao" => $localizacao,
+                "capacidade" => "$capacidade $unidade",
+                "cliente" => $cliente,
+                "fornecedor" => $fornecedor,
+                "data_entrada" => $data_entrada,
+                "data_validade" => $data_validade,
+                "data_termino" => $data_termino,
+                "operador" => $operador,
+                "familia" => $familia,
+                "sub_familiass" => $sub_familiass,
+                "link" => $link,
+            );
+        }
+
+        $response = array(
+            "draw" => intval($draw),
+            "iTotalRecords" => $totalRecords,
+            "iTotalDisplayRecords" => $totalRecordswithFilter,
+            "aaData" => $data_arr
+        );
+
+        echo json_encode($response);
+        exit;
     }
 
     /**
@@ -31,7 +113,6 @@ class MovimentoController extends Controller
      */
     public function create()
     {
-  
     }
 
     /**
@@ -42,7 +123,6 @@ class MovimentoController extends Controller
      */
     public function store()
     {
-
     }
 
     /**
@@ -64,7 +144,6 @@ class MovimentoController extends Controller
      */
     public function edit(Movimento $movimentos)
     {
-
     }
 
     /**
@@ -76,7 +155,6 @@ class MovimentoController extends Controller
      */
     public function update(Movimento $movimentos)
     {
- 
     }
 
     /**

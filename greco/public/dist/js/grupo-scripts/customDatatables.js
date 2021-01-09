@@ -28,7 +28,7 @@ var produtos = $("#tabelaprodutos").DataTable({
         { data: 'designacao' },
         { data: 'formula' },
         { data: 'CAS' },
-        { data: 'Quimico' },
+        { data: 'familia' },
         { data: 'stock' },
         { data: 'stock_min' },
         { data: 'id' },
@@ -57,9 +57,10 @@ var produtos = $("#tabelaprodutos").DataTable({
         var selects = $("<select></select>").attr('id', 'tipo');
         selects.addClass('form-control select col-md-1');
         $('div.toolbar').append(selects);
-        $('#tipo').append(new Option(Ttodos, "Todos"));
+        /* $('#tipo').append(new Option(Ttodos, "Todos")); */
         $('#tipo').append(new Option(Tquimico, "Químico"));
         $('#tipo').append(new Option(TnaoQuimico, "Não Químico"));
+
 
         $.fn.dataTable.ext.search.push(
             function (settings, searchData, index, rowData, counter) {
@@ -68,9 +69,9 @@ var produtos = $("#tabelaprodutos").DataTable({
                 console.log("tipos" + tipos);
                 if (tipo == tipos) {
                     return tipos;
-                } else if (tipo == "Todos") {
+                } /* else if (tipo == "Todos") {
                     return true;
-                }
+                } */
                 return false;
             }
         );
