@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Movimento extends Model
 {
     use HasFactory;
+    protected $table = 'entradaview';
 
     //Cada registo de movimento tem um e só um produto associado
     public function produtos()

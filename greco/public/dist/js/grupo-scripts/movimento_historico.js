@@ -14,9 +14,9 @@ var table = $("#historico").DataTable({
     "serverSide": true,
     "ajax": "/movimentos/historico/getMovimentos/",
     "columns": [
-        { data: 'id' },
+        { data: 'designacao' },
         { data: 'movimento' },
-        { data: 'id_inventario' },
+        { data: 'produto_id' },
         { data: 'localizacao' },
         { data: 'capacidade' },
         { data: 'cliente' },
@@ -26,7 +26,7 @@ var table = $("#historico").DataTable({
         { data: 'data_termino' },
         { data: 'operador' },
         { data: 'familia' },
-        { data: 'sub_familiass' },
+        { data: 'sub_familias' },
         { data: 'link' },
     ],
     "language": {

@@ -47,13 +47,13 @@ class MovimentoController extends Controller
         $searchValue = $search_arr['value']; // Search value
 
         // Total records
-        $totalRecords = Entrada::select('count(*) as allcount')->count();
-        $totalRecordswithFilter = Entrada::select('count(*) as allcount')->where('id', 'like', '%' . $searchValue . '%')->count();
+        $totalRecords = Movimento::select('count(*) as allcount')->count();
+        $totalRecordswithFilter = Movimento::select('count(*) as allcount')->where('designacao', 'like', '%' . $searchValue . '%')->count();
 
         // Fetch records ISTO NÃO FUNCIONA por causa das relações complexas
-        $records = Entrada::orderBy($columnName, $columnSortOrder)
-            ->where('entradas.id', 'like', '%' . $searchValue . '%')
-            ->select('entradas.*')
+        $records = Movimento::orderBy($columnName, $columnSortOrder)
+            ->where('entradaview.designacao', 'like', '%' . $searchValue . '%')
+            ->select('entradaview.*')
             ->skip($start)
             ->take($rowperpage)
             ->get();
@@ -61,26 +61,26 @@ class MovimentoController extends Controller
         $data_arr = array();
 
         foreach ($records as $record) {
-            $id = $record->produto->designacao;
-            $id_inventario = "$record->id_inventario - $record->id_ordem";
+            $designacao = $record->designacao;
+            $produto_id = "$record->produto_id - $record->id_ordem";
             $movimento = "Entrada";
-            $localizacao = $record->sala + $record->get_armario->id + $record->get_prateleira->id;
+            $localizacao = $record->armario + $record->prateleira;
             $capacidade = $record->capacidade;
-            $unidade = $record->get_unidade->unidade;
-            $cliente = "";
-            $fornecedor = $record->get_fornecedor->designacao;
+            $unidade = $record->unidade;
+            $cliente = $record->cliente;
+            $fornecedor = $record->fornecedor;
             $data_entrada = $record->data_entrada;
-            $data_validade = $record->validade;
-            $data_termino = $record->termino;
-            $operador = $record->get_operador->nome;
-            $familia = $record->produto->get_fam->nome;
-            $sub_familiass = $record->produto->get_subfam->nome;
+            $data_validade = $record->data_validade;
+            $data_termino = $record->data_termino;
+            $operador = $record->operador;
+            $familia = $record->familia;
+            $sub_familias = $record->subfamilia;
             $link = "<a href='/ficha/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
 
             $data_arr[] = array(
-                "id" => $id,
+                "designacao" => $designacao,
                 "movimento" => $movimento,
-                "id_inventario" => $id_inventario,
+                "produto_id" => $produto_id,
                 "localizacao" => $localizacao,
                 "capacidade" => "$capacidade $unidade",
                 "cliente" => $cliente,
@@ -90,7 +90,7 @@ class MovimentoController extends Controller
                 "data_termino" => $data_termino,
                 "operador" => $operador,
                 "familia" => $familia,
-                "sub_familiass" => $sub_familiass,
+                "sub_familias" => $sub_familias,
                 "link" => $link,
             );
         }
