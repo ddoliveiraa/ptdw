@@ -14,7 +14,7 @@ class CreateEntradaView extends Migration
      * @return void
      */
     public function up(){
-        DB::statement("CREATE VIEW entradaView AS (select COALESCE (p.id, e.id_inventario, s.id_produto) as produto_id, (SELECT CASE e.data_termino WHEN NULL THEN 'Entrada' ELSE 'Saida' END AS movimento),
+        DB::statement("CREATE VIEW entradaView AS (select COALESCE (p.id, e.id_inventario, s.id_produto) as produto_id,
         p.designacao, (select familia.nome from familia where familia.id = p.familia) as familia, (select sub_familia.nome from sub_familia where sub_familia.id = p.id) as subfamilia,
         e.id as entrada_id, e.id_ordem, e.sala, e.armario, e.prateleira,(select fornecedors.designacao from fornecedors where fornecedors.id = e.fornecedor) as fornecedor, e.capacidade, (select unidade.unidade from unidade where unidade.id = e.unidade), e.data_entrada, e.data_validade, e.data_termino,
         s.id as saida_id, (select clientes.designacao from clientes where clientes.id = s.id_cliente) as cliente, s.id_ordem as saida_ordem, (select operadors.nome from operadors where operadors.id = s.id_operador) as operador
