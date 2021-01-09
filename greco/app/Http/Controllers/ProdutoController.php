@@ -14,7 +14,7 @@ class ProdutoController extends Controller
     public function addProdutoQ(Request $request){
 
         //TESTES
-        dump(request()->all());
+        //dump(request()->all());
 
         //VALIDAÇÂO
         request()->validate([
@@ -43,7 +43,7 @@ class ProdutoController extends Controller
     public function addProdutoNQ(Request $request){
 
         //TESTES
-        dump(request()->all());
+        //dump(request()->all());
         
         //VALIDAÇÂO
         request()->validate([
