@@ -92,11 +92,14 @@ class ProdutoController extends Controller
 
     // Total records
     $totalRecords = Produto::select('count(*) as allcount')->count();
-    $totalRecordswithFilter = Produto::select('count(*) as allcount')->where('designacao', 'like', '%' .$searchValue . '%')->count();
+    $totalRecordswithFilter = Produto::select('count(*) as allcount')->where('designacao', 'like', '%' .$searchValue . '%')->orWhere('produtos.formula', 'like', '%' .$searchValue . '%')
+    ->orWhere('produtos.CAS', 'like', '%' .$searchValue . '%')->count();
 
     // Fetch records
     $records = Produto::orderBy($columnName,$columnSortOrder)
       ->where('produtos.designacao', 'like', '%' .$searchValue . '%')
+      ->orWhere('produtos.formula', 'like', '%' .$searchValue . '%')
+      ->orWhere('produtos.CAS', 'like', '%' .$searchValue . '%')
       ->select('produtos.*')
       ->skip($start)
       ->take($rowperpage)

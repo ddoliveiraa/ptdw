@@ -65,7 +65,7 @@ var produtos = $("#tabelaprodutos").DataTable({
             function (settings, searchData, index, rowData, counter) {
                 var tipo = $('#tipo option:selected').val();
                 var tipos = searchData[3]; // using the data from the 4th column
-
+                console.log("tipos" + tipos);
                 if (tipo == tipos) {
                     return tipos;
                 } else if (tipo == "Todos") {
