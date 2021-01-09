@@ -129,7 +129,7 @@ var table = $("#historico").DataTable({
         $('#familia').change(function () {
             var familia = $('#familia option:selected').val();
             console.log("familia selecionada: " + familia);
-            if (familia == "Não") {
+            if (familia == "Não Quimico") {
                 $('#sub-familia').show(1);
                 $("#pictogramas").hide(1);
             } else {

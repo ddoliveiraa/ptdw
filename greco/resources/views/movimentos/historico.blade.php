@@ -50,12 +50,12 @@
                                 <option value="Familia">{{ __('lang.familia') }}</option>
                                 <option value="Quimico">{{ __('lang.quimicos') }}</option>
                                 <option value="Não Quimico">{{ __('lang.nao quimicos') }}</option>
-                            </select><select id="sub-familia" class="col-md-12 form-control select" style="display: none;">
+                            </select>
+                            <select id="sub-familia" class="col-md-12 form-control select" style="display: none;">
                                 <option value="Sub-Familia">{{ __('lang.sub-familia') }}</option>
-                                <option value="Vidro">{{ __('lang.vidro') }}</option>
-                                <option value="Plástico">{{ __('lang.plastico') }}</option>
-                                <option value="Metal">{{ __('lang.metal') }}</option>
-                                <option value="Outros">{{ __('lang.outros') }}</option>
+                                @foreach ($subfamilias as $subfamilia)
+                                    <option value="{{ $subfamilia->id }}">{{ $subfamilia->nome }}</option>
+                                @endforeach
                             </select>
                             <select id="movimento" class="col-md-12 form-control select">
                                 <option value="Movimento">{{ __('lang.movimento') }}</option>

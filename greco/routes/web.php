@@ -28,6 +28,7 @@ Route::get('/welcome/{locale}', 'App\Http\Controllers\LocalizationController@ind
 
 //Produtos
 Route::get('/produtos', 'App\Http\Controllers\ProdutoController@index');
+Route::get('/produtos/getProdutos/','App\Http\Controllers\ProdutoController@getProdutos')->name('produtos.getProdutos');
 Route::get('/produtos/add', 'App\Http\Controllers\ProdutoController@add');
 
 Route::post('/produtos/q', 'App\Http\Controllers\ProdutoController@addProdutoQ');

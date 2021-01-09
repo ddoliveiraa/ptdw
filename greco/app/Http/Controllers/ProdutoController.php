@@ -66,9 +66,74 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        $produtos = Produto::all();
-        return view('produtos.produtos', compact('produtos'));
+        /* $produtos = Produto::all(); */
+        return view('produtos.produtos'/* , compact('produtos') */);
     }
+
+    /*
+   AJAX request (Páginação com datatables)
+   */
+   public function getProdutos(Request $request){
+
+    ## Read value
+    $draw = $request->get('draw');
+    $start = $request->get("start");
+    $rowperpage = $request->get("length"); // Rows display per page
+
+    $columnIndex_arr = $request->get('order');
+    $columnName_arr = $request->get('columns');
+    $order_arr = $request->get('order');
+    $search_arr = $request->get('search');
+
+    $columnIndex = $columnIndex_arr[0]['column']; // Column index
+    $columnName = $columnName_arr[$columnIndex]['data']; // Column name
+    $columnSortOrder = $order_arr[0]['dir']; // asc or desc
+    $searchValue = $search_arr['value']; // Search value
+
+    // Total records
+    $totalRecords = Produto::select('count(*) as allcount')->count();
+    $totalRecordswithFilter = Produto::select('count(*) as allcount')->where('designacao', 'like', '%' .$searchValue . '%')->count();
+
+    // Fetch records
+    $records = Produto::orderBy($columnName,$columnSortOrder)
+      ->where('produtos.designacao', 'like', '%' .$searchValue . '%')
+      ->select('produtos.*')
+      ->skip($start)
+      ->take($rowperpage)
+      ->get();
+
+    $data_arr = array();
+    
+    foreach($records as $record){
+       $id = $record->id;
+       $designacao = $record->designacao;
+       $formula = $record->formula;
+       $CAS = $record->CAS;
+       $Quimico = $record->get_fam->nome;
+       $stock = $record->stock;
+       $stock_min = $record->stock_min;
+
+       $data_arr[] = array(
+         "id" => $id,
+         "designacao" => $designacao,
+         "formula" => $formula,
+         "CAS" => $CAS,
+         'Quimico' => $Quimico,
+         'stock' => $stock,
+         'stock_min' => $stock_min
+       );
+    }
+
+    $response = array(
+       "draw" => intval($draw),
+       "iTotalRecords" => $totalRecords,
+       "iTotalDisplayRecords" => $totalRecordswithFilter,
+       "aaData" => $data_arr
+    );
+
+    echo json_encode($response);
+    exit;
+  }
 
     /**
      * Show the form for creating a new resource.

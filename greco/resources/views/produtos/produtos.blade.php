@@ -62,7 +62,7 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                {{-- <tbody>
                                     @foreach ($produtos as $produto)
                                         <tr>
                                             <td>{{ $produto->designacao }} {{$produto->get_subfam->nome }}</td>
@@ -82,7 +82,7 @@
                                                         class="fa fa-arrow-right"></i></a></td>
                                         </tr>
                                     @endforeach
-                                </tbody>
+                                </tbody> --}}
                             </table>
                         </div>
                         <!-- /.card-body -->

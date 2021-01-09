@@ -21,6 +21,18 @@ else {
 var produtos = $("#tabelaprodutos").DataTable({
     "dom": '<"toolbar">frtip',
     "info": true,
+    "processing": true,
+    "serverSide": true,
+    "ajax": "/produtos/getProdutos/",
+    "columns": [
+        { data: 'designacao' },
+        { data: 'formula' },
+        { data: 'CAS' },
+        { data: 'Quimico' },
+        { data: 'stock' },
+        { data: 'stock_min' },
+        { data: 'id' },
+    ],
     "language": {
         "url": datatables_lang,
     },

@@ -5,6 +5,7 @@ use App\Models\Movimento;
 use App\Models\Entrada;
 use App\Models\Saida;
 use App\Models\Produto;
+use App\Models\sub_familia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,9 +18,10 @@ class MovimentoController extends Controller
      */
     public function index()
     {
-        $entradas = Entrada::orderBy('created_at','desc')->get();
-        $saidas = Saida::orderBy('created_at', 'desc')->get();
-        return view('movimentos.historico', compact('entradas', 'saidas'));
+        $entradas = Entrada::orderBy('created_at','desc')->take(5)->get();
+        $saidas = Saida::orderBy('created_at', 'desc')->take(5)->get();
+        $subfamilias = sub_familia::all();
+        return view('movimentos.historico', compact('entradas', 'saidas', 'subfamilias'));
     }
 
     /**
