@@ -11,10 +11,10 @@ class ProdutoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function addProdutoQ(){
+    public function addProdutoQ(Request $request){
 
         //TESTES
-        //dump(request()->all());
+        dump(request()->all());
 
         //VALIDAÇÂO
         request()->validate([
@@ -26,37 +26,41 @@ class ProdutoController extends Controller
 
         //ADD NA BD
         $Produto = new Produto();
-        $Produto->familia = 'quimico';
+        $Produto->familia = 1;
         $Produto->designacao = request('produto_designacao');
-        $Produto->formula = request('produto_designacao');
-        $Produto->sinonimo = request('produto_sinonimo');
+        $Produto->formula = request('produto_formula');
+        //$Produto->sinonimo = request('produto_sinonimo');
         $Produto->CAS = request('produto_cas');
         $Produto->peso_molecular = request('produto_peso');
         $Produto->stock_min = request('produto_stock_minimo');
         $Produto->condicoes_armazenamento = request('produto_armario');
+        $Produto->ventilado = request('customSwitch1');
         $Produto->save();
         
-        return redirect('produtos.produtos');
+        return redirect('produtos');
     }
 
-    public function addProdutoNQ(){
+    public function addProdutoNQ(Request $request){
 
+        //TESTES
+        dump(request()->all());
+        
         //VALIDAÇÂO
         request()->validate([
-            'produto_designacao' => 'required',
-            'produto_stock_minimo' => 'required'
+            'produto_designacao_nq' => 'required',
+            'produto_stock_minimo_nq' => 'required'
         ]);
 
         //ADD NA BD
         $Produto = new Produto();
-        $Produto->familia = 'nao_quimico';
+        $Produto->familia = 2;
         $Produto->designacao = request('produto_designacao_nq');
         $Produto->foto = request('produto_foto');
         $Produto->sub_familia = request('produto_subfamilia_nq');
         $Produto->stock_min = request('produto_stock_minimo_nq');
         $Produto->save();
 
-        return redirect('produtos.produtos');
+        return redirect('produtos');
     }
 
     /**

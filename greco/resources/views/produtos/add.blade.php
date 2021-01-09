@@ -56,7 +56,7 @@
                             <div class="card card-primary">
 
                                 <!-- form start -->
-                                <form method="POST" action="/produtos/q">
+                                <form method="POST" action="/produtos_q">
                                     @csrf <!-- Cross Site Request Forgery -->
                                     <div class="card-body">
                                         <div class="row">
@@ -64,7 +64,7 @@
                                                 <div class="form-group">
                                                     <label for="produto_designacao"
                                                         class="control-label">{{ __('lang.designacao') }}</label>
-                                                    <input type="text" class="form-control" id="produto_designacao" tabindex="1"
+                                                    <input type="text" class="form-control" name="produto_designacao" id="produto_designacao" tabindex="1"
                                                         required>
                                                 </div>
                                             </div>
@@ -72,7 +72,7 @@
                                                 <div class="form-group">
                                                     <label for="produto_sinonimo"
                                                         class="control-label">{{ __('lang.sinonimo') }}</label>
-                                                    <input type="text" class="form-control" id="produto_sinonimo" tabindex="2">
+                                                    <input type="text" class="form-control" name="produto_sinonimo" id="produto_sinonimo" tabindex="2">
                                                 </div>
                                             </div>
                                         </div>
@@ -82,13 +82,13 @@
                                                 <div class="form-group">
                                                     <label for="produto_formula"
                                                         class="control-label">{{ __('lang.formula') }}</label>
-                                                    <input type="text" class="form-control" id="produto_formula" tabindex="3">
+                                                    <input type="text" class="form-control" name="produto_formula" id="produto_formula" tabindex="3">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="produto_cas" class="control-label">{{ __('lang.n cas') }}</label>
-                                                    <input type="text" class="form-control" id="produto_cas" tabindex="4" required>
+                                                    <input type="text" class="form-control" name="produto_cas" id="produto_cas" tabindex="4" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -98,14 +98,14 @@
                                                 <div class="form-group">
                                                     <label for="produto_peso"
                                                         class="control-label">{{ __('lang.peso molecular') }}</label>
-                                                    <input type="text" class="form-control" id="produto_peso" tabindex="5" required>
+                                                    <input type="text" class="form-control" name="produto_peso" id="produto_peso" tabindex="5" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="produto_stock_minimo"
                                                         class="control-label">{{ __('lang.stock minimo') }}</label>
-                                                    <input type="text" class="form-control" id="produto_stock_minimo" tabindex="6"
+                                                    <input type="text" class="form-control" name="produto_stock_minimo" id="produto_stock_minimo" tabindex="6"
                                                         required>
                                                 </div>
                                             </div>
@@ -116,7 +116,7 @@
                                                 <div class="form-group">
                                                     <label for="produto_condicoes_armazenamento"
                                                         class="control-label">{{ __('lang.condicoes de armazenamento') }}</label>
-                                                    <select class="form-control" id="produto_armario" tabindex="7">
+                                                    <select class="form-control" name="produto_armario" id="produto_armario" tabindex="7">
                                                         @foreach ($condicoes as $c)
                                                         <option value="{{ $c->id }}">{{ $c->condicao }}</option>
                                                         @endforeach
@@ -129,7 +129,7 @@
                                                     <label for="produto_pictogramas"
                                                         class="control-label">{{ __('lang.pictograma') }}</label>
                                                     <div class="input-group margin">
-                                                        <input type="text" class="form-control" id="produto_pictogramas"
+                                                        <input type="text" class="form-control" name="produto_pictogramas" id="produto_pictogramas"
                                                             tabindex="7" readonly>
                                                         <span class="input-group-btn">
                                                             <button type="button" class="btn btn-secondary btn-flat"
@@ -145,7 +145,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <div class="custom-control custom-switch">
-                                                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                                        <input type="checkbox" class="custom-control-input" name="customSwitch1" id="customSwitch1">
                                                         <label class="custom-control-label"
                                                             for="customSwitch1">{{ __('lang.armario ventilado') }}</label>
                                                     </div>
@@ -172,7 +172,7 @@
                             <div class="card card-primary">
 
                                 <!-- form start -->
-                                <form method="POST" action="/produtos/nq">
+                                <form method="POST" action="/produtos_nq">
                                     @csrf <!-- Cross Site Request Forgery -->
                                     <div class="card-body">
                                         <div class="row">
@@ -180,7 +180,7 @@
                                                 <div class="form-group">
                                                     <label for="produto_designacao_nq"
                                                         class="control-label">{{ __('lang.designacao') }}</label>
-                                                    <input type="text" class="form-control" id="produto_designacao_nq"
+                                                    <input type="text" class="form-control" name="produto_designacao_nq" id="produto_designacao_nq"
                                                         tabindex="1" required>
                                                 </div>
                                             </div>
@@ -188,7 +188,7 @@
                                                 <div class="form-group">
                                                     <label for="produto_foto"
                                                         class="control-label">{{ __('lang.foto') }}</label>
-                                                    <input type="file" class="form-control" id="produto_foto" tabindex="2">
+                                                    <input type="file" class="form-control" name="produto_foto" id="produto_foto" tabindex="2">
                                                 </div>
                                             </div>
                                         </div>
@@ -198,7 +198,7 @@
                                                 <div class="form-group">
                                                     <label for="produto_subfamilia_nq"
                                                         class="control-label">{{ __('lang.familia') }}</label>
-                                                    <select class="form-control" id="produto_subfamilia_nq" tabindex="3">
+                                                    <select class="form-control" name="produto_subfamilia_nq" id="produto_subfamilia_nq" tabindex="3">
                                                         @foreach ($subfamilias as $sf)
                                                         <option value="{{ $sf->id }}">{{ $sf->nome }}</option>
                                                         @endforeach
@@ -209,7 +209,7 @@
                                                 <div class="form-group">
                                                     <label for="produto_stock_minimo_nq"
                                                         class="control-label">{{ __('lang.stock minimo') }}</label>
-                                                    <input type="text" class="form-control" id="produto_stock_minimo_nq"
+                                                    <input type="text" class="form-control" name="produto_stock_minimo_nq" id="produto_stock_minimo_nq"
                                                         tabindex="4" required>
                                                 </div>
                                             </div>

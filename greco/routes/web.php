@@ -31,8 +31,8 @@ Route::get('/produtos', 'App\Http\Controllers\ProdutoController@index');
 Route::get('/produtos/getProdutos/','App\Http\Controllers\ProdutoController@getProdutos')->name('produtos.getProdutos');
 Route::get('/produtos/add', 'App\Http\Controllers\ProdutoController@add');
 
-Route::post('/produtos/q', 'App\Http\Controllers\ProdutoController@addProdutoQ');
-Route::post('/produtos/nq', 'App\Http\Controllers\ProdutoController@addProdutoNQ');
+Route::post('/produtos_q', 'App\Http\Controllers\ProdutoController@addProdutoQ');
+Route::post('/produtos_nq', 'App\Http\Controllers\ProdutoController@addProdutoNQ');
 
 
 //Ficha
