@@ -15,18 +15,16 @@ var table = $("#historico").DataTable({
     "ajax": "/movimentos/historico/getMovimentos/",
     "columns": [
         { data: 'designacao' },
-        { data: 'movimento' },
-        { data: 'produto_id' },
-        { data: 'localizacao' },
+        { data: 'id_produto' },
+        { data: 'armario' },
         { data: 'capacidade' },
-        { data: 'cliente' },
         { data: 'fornecedor' },
         { data: 'data_entrada' },
         { data: 'data_validade' },
         { data: 'data_termino' },
         { data: 'operador' },
         { data: 'familia' },
-        { data: 'sub_familias' },
+        { data: 'subfamilia' },
         { data: 'link' },
     ],
     "language": {
@@ -36,7 +34,7 @@ var table = $("#historico").DataTable({
     "responsive": true,
     "lengthChange": false,
     "autoWidth": false,
-    "columnDefs": [{
+    /* "columnDefs": [{
         "targets": [3, 6, 10, 11, 12],
         "visible": false
     },
@@ -44,7 +42,7 @@ var table = $("#historico").DataTable({
         "targets": [7, 8, 9],
         "type": 'date-us'
     }
-    ],
+    ], */
     "buttons": [{
         extend: 'csvHtml5',
         exportOptions: {

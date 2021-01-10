@@ -62,35 +62,31 @@ class MovimentoController extends Controller
 
         foreach ($records as $record) {
             $designacao = $record->designacao;
-            $produto_id = "$record->produto_id - $record->id_ordem";
-            $movimento = "Entrada";
-            $localizacao = $record->armario + $record->prateleira;
+            $id_produto = "$record->id_produto - $record->id_ordem";
+            $armario = "$record->armario - $record->prateleira";
             $capacidade = $record->capacidade;
             $unidade = $record->unidade;
-            $cliente = $record->cliente;
             $fornecedor = $record->fornecedor;
             $data_entrada = $record->data_entrada;
             $data_validade = $record->data_validade;
             $data_termino = $record->data_termino;
             $operador = $record->operador;
             $familia = $record->familia;
-            $sub_familias = $record->subfamilia;
-            $link = "<a href='/ficha/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+            $subfamilia = $record->subfamilia;
+            $link = "<a href='/ficha/$record->id_entrada'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
 
             $data_arr[] = array(
                 "designacao" => $designacao,
-                "movimento" => $movimento,
-                "produto_id" => $produto_id,
-                "localizacao" => $localizacao,
+                "id_produto" => $id_produto,
+                "armario" => $armario,
                 "capacidade" => "$capacidade $unidade",
-                "cliente" => $cliente,
                 "fornecedor" => $fornecedor,
                 "data_entrada" => $data_entrada,
                 "data_validade" => $data_validade,
                 "data_termino" => $data_termino,
                 "operador" => $operador,
                 "familia" => $familia,
-                "sub_familias" => $sub_familias,
+                "subfamilia" => $subfamilia,
                 "link" => $link,
             );
         }

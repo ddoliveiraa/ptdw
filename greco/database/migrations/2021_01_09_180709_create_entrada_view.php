@@ -14,13 +14,11 @@ class CreateEntradaView extends Migration
      * @return void
      */
     public function up(){
-        DB::statement("CREATE VIEW entradaView AS (select COALESCE (p.id, e.id_inventario, s.id_produto) as produto_id,
-        p.designacao, (select familia.nome from familia where familia.id = p.familia) as familia, (select sub_familia.nome from sub_familia where sub_familia.id = p.id) as subfamilia,
-        e.id as entrada_id, e.id_ordem, e.sala, e.armario, e.prateleira,(select fornecedors.designacao from fornecedors where fornecedors.id = e.fornecedor) as fornecedor, e.capacidade, (select unidade.unidade from unidade where unidade.id = e.unidade), e.data_entrada, e.data_validade, e.data_termino,
-        s.id as saida_id, (select clientes.designacao from clientes where clientes.id = s.id_cliente) as cliente, s.id_ordem as saida_ordem, (select operadors.nome from operadors where operadors.id = s.id_operador) as operador
-        from produtos as p
-        full outer join entradas as e on p.id = e.id_inventario
-        full outer join saidas as s on s.id_produto = COALESCE(p.id, e.id_inventario))
+        DB::statement("CREATE VIEW entradaView AS (SELECT p.id AS id_produto,
+        p.designacao, (SELECT familia.nome FROM familia WHERE familia.id = p.familia) AS familia, (SELECT sub_familia.nome FROM sub_familia WHERE sub_familia.id = p.sub_familia) AS subfamilia,
+        e.id AS id_entrada, e.id_ordem, (SELECT sala.sala FROM sala WHERE sala.id = e.sala) AS sala, (SELECT armario.armario FROM armario WHERE armario.id = e.armario) AS armario, (SELECT prateleira.prateleira FROM prateleira WHERE prateleira.id = e.prateleira) AS prateleira,(SELECT fornecedors.designacao FROM fornecedors WHERE fornecedors.id = e.fornecedor) AS fornecedor, e.capacidade, (SELECT unidade.unidade FROM unidade WHERE unidade.id = e.unidade), e.data_entrada, e.data_validade, e.data_termino, (select operadors.nome from operadors where operadors.id = e.operador) as operador
+        FROM produtos AS p
+        JOIN entradas AS e on p.id = e.id_inventario)
         ");
     }
         

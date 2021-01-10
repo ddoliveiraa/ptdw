@@ -44,7 +44,7 @@
                     <div class="card-header">
                         <h3 class="card-title text-light">Filtros</h3>
                     </div>
-                    {{-- <div class="card-body sup">
+                    <div class="card-body sup">
                         <div class="filtros">
                             <select id="familia" class="col-md-12 form-control select">
                                 <option value="Familia">{{ __('lang.familia') }}</option>
@@ -67,7 +67,7 @@
                                 class="col-md-12 btn btn-secondary">{{ __('lang.pictograma') }}s</button>
                             <button id="filter" class="btn btn-danger btn-block">Reset</button>
                         </div>
-                    </div> --}}
+                    </div>
                 </div>
             </div>
             <div class="col-md-10">
@@ -78,11 +78,9 @@
                             <thead class="bg-dark">
                                 <tr>
                                     <th>{{ __('lang.produto') }}</th>
-                                    <th>{{ __('lang.movimento') }}</th>
                                     <th>{{ __('lang.n-embalagem') }}</th>
                                     <th>{{ __('lang.localização') }}</th>
                                     <th>{{ __('lang.embalagem') }}</th>
-                                    <th>{{ __('lang.cliente') }}</th>
                                     <th>{{ __('lang.fornecedor') }}</th>
                                     <th>{{ __('lang.data de entrada') }}</th>
                                     <th>{{ __('lang.data de validade') }}</th>
