@@ -12,10 +12,23 @@ class SearchController extends Controller
     {
 
         if ($request->ajax()) {
+            $s = $request->search;
+            if ($request->filtro == "todos") {
+                $data = Produto::where('designacao', 'LIKE', "%$s%")
+                    ->orWhere('formula', 'ILIKE', "%$s%")
+                    ->orWhere('id', 'ILIKE', "%$s%")
+                    ->orWhere('CAS', 'ILIKE', "%$s%")->take(5)->get();
+            } elseif ($request->filtro == "quimico") {
+                $data = Produto::where('familia', '=', 1)->where(function ($query) use ($s) {
+                    $query->where('designacao', 'ILIKE', "%$s%")
+                        ->orWhere('formula', 'ILIKE', "%$s%")
+                        ->orWhere('id', 'ILIKE', "%$s%")
+                        ->orWhere('CAS', 'ILIKE', "%$s%");
+                })->take(5)->get();
+            } elseif ($request->filtro == "naoquimico") {
+                $data = Produto::where('familia', '=', 2)->take(5)->get();
+            }
 
-            $data = Produto::where('designacao', 'LIKE', "%$request->search%")
-                    ->orWhere('formula', 'LIKE', "%$request->search%")->take(10)->get();
-                
             $output = '';
 
             if (count($data) > 0) {
@@ -23,8 +36,7 @@ class SearchController extends Controller
                 $output = '<ul class="list-group" style="display: block; position: relative; z-index: 1">';
 
                 foreach ($data as $row) {
-
-                    $output .= '<li class="list-group-item"><a href="/ficha/'.$row->id.'"> Designação: '. $row->designacao . '</a></li>';
+                    $output .= '<li class="list-group-item"><a href="/ficha/' . $row->id . '"> Produto: ' . $row->designacao . '</a></li>';
                 }
 
                 $output .= '</ul>';
