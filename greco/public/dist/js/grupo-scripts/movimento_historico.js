@@ -43,7 +43,7 @@ var entradas = $("#entradas").DataTable({
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, todo]],
     "autoWidth": false,
     "columnDefs": [{
-        "targets": [2, 7, 8, 9, 10],
+        "targets": [2, 7, 8, 10],
         "visible": false
     }],
     "buttons": [{
@@ -78,11 +78,11 @@ var entradas = $("#entradas").DataTable({
         );
 
         //filtragem por familia
-        $.fn.dataTable.ext.search.push(
+/*         $.fn.dataTable.ext.search.push(
             function (settings, searchData, index, rowData, counter) {
                 var familia = $('#familia option:selected').val();
                 
-                var familias = searchData[9]; // using the data from the 12th column
+                var familias = rowData[9]; // using the data from the 12th column
 
                 if (familia == familias) {
                     //entradas.column.search( familia ).draw();
@@ -92,7 +92,7 @@ var entradas = $("#entradas").DataTable({
                 }
                 return false;
             }
-        );
+        ); */
         //filtragem por sub-familia
         $.fn.dataTable.ext.search.push(
             function (settings, searchData, index, rowData, counter) {
@@ -107,21 +107,6 @@ var entradas = $("#entradas").DataTable({
                 return false;
             }
         );
-
-        jQuery.extend(jQuery.fn.dataTableExt.oSort, {
-            "date-uk-pre": function (a) {
-                var ukDatea = a.split('/');
-                return (ukDatea[2] + ukDatea[1] + ukDatea[0]) * 1;
-            },
-
-            "date-uk-asc": function (a, b) {
-                return ((a < b) ? -1 : ((a > b) ? 1 : 0));
-            },
-
-            "date-uk-desc": function (a, b) {
-                return ((a < b) ? 1 : ((a > b) ? -1 : 0));
-            }
-        });
 
         //Date range picker
         $('#intervalo').daterangepicker({
@@ -149,7 +134,7 @@ var entradas = $("#entradas").DataTable({
         $('#familia').change(function () {
             var familia = $('#familia option:selected').val();
             console.log("familia selecionada: " + familia);
-            
+            entradas.search( this.value ).draw();
             if (familia == "Não Químico") {
                 $('#sub-familia').show(1);
                 $("#pictogramas").hide(1);

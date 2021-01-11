@@ -57,7 +57,7 @@ var produtos = $("#tabelaprodutos").DataTable({
         var selects = $("<select></select>").attr('id', 'tipo');
         selects.addClass('form-control select col-md-1');
         $('div.toolbar').append(selects);
-        /* $('#tipo').append(new Option(Ttodos, "Todos")); */
+        $('#tipo').append(new Option(Ttodos, "Todos"));
         $('#tipo').append(new Option(Tquimico, "Químico"));
         $('#tipo').append(new Option(TnaoQuimico, "Não Químico"));
 
