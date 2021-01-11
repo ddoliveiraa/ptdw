@@ -1,10 +1,13 @@
 var locale = $('#navbarDropdown').text().trim();
 var datatables_lang;
+var todo = "";
 if (locale == "PT") {
     datatables_lang = '//cdn.datatables.net/plug-ins/1.10.22/i18n/Portuguese.json';
+    todo = "Todos"
 }
 else {
     datatables_lang = '//cdn.datatables.net/plug-ins/1.10.22/i18n/English.json';
+    todo = "All"
 }
 $('input[type=checkbox]').on('change', function(e) {
     if ($('input[type=checkbox]:checked').length > 4) {
@@ -13,7 +16,7 @@ $('input[type=checkbox]').on('change', function(e) {
 });
 
 var entradas = $("#entradas").DataTable({
-    "dom": '<"search">frtip',
+    "dom": '<"search">frtip l',
     "info": true,
     "processing": true,
     "serverSide": true,
@@ -37,17 +40,12 @@ var entradas = $("#entradas").DataTable({
     },
     "order": [[5, 'desc']],
     "responsive": true,
-    "lengthChange": false,
+    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, todo]],
     "autoWidth": false,
-    /* "columnDefs": [{
-        "targets": [3, 6, 10, 11, 12],
+    "columnDefs": [{
+        "targets": [2, 7, 8, 9, 10],
         "visible": false
-    },
-    {
-        "targets": [7, 8, 9],
-        "type": 'date-us'
-    }
-    ], */
+    }],
     "buttons": [{
         extend: 'csvHtml5',
         exportOptions: {
@@ -63,6 +61,7 @@ var entradas = $("#entradas").DataTable({
     ],
     "initComplete": function () {
         entradas.buttons().container().appendTo('#entradas_filter');
+        $('#entradas_length').appendTo('#entradas_filter');
         //filtragem por movimentos
         $.fn.dataTable.ext.search.push(
             function (settings, searchData, index, rowData, counter) {
@@ -192,7 +191,7 @@ var entradas = $("#entradas").DataTable({
 });
 
 var saidas = $("#saidas").DataTable({
-    "dom": '<"search">frtip',
+    "dom": '<"search">frtip l',
     "info": true,
     "processing": true,
     "serverSide": true,
@@ -213,8 +212,12 @@ var saidas = $("#saidas").DataTable({
     },
     "order": [[5, 'desc']],
     "responsive": true,
-    "lengthChange": false,
+    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, todo]],
     "autoWidth": false,
+    "columnDefs": [{
+        "targets": [6,7],
+        "visible": false
+    }],
     "buttons": [{
         extend: 'csvHtml5',
         exportOptions: {
@@ -230,6 +233,7 @@ var saidas = $("#saidas").DataTable({
     ],
     "initComplete": function () {
         saidas.buttons().container().appendTo('#saidas_filter');
+        $('#saidas_length').appendTo('#saidas_filter');
     }
 });
 
