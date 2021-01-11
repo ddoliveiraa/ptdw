@@ -165,7 +165,7 @@
     margin-left: 0.4rem;
 }
 
-#historico_filter .dt-buttons{
+#entradas_filter .dt-buttons, #saidas_filter .dt-buttons{
     float: right;
 }
 

@@ -57,11 +57,6 @@
                                     <option value="{{ $subfamilia->nome }}">{{ $subfamilia->nome }}</option>
                                 @endforeach
                             </select>
-                            <select id="movimento" class="col-md-12 form-control select">
-                                <option value="Movimento">{{ __('lang.movimento') }}</option>
-                                <option value="Entrada">{{ __('lang.entrada') }}</option>
-                                <option value="Saída">{{ __('lang.saida') }}</option>
-                            </select>
                             <input type="text" class="col-md-12 form-control" id="intervalo">
                             <button id="pictogramas"
                                 class="col-md-12 btn btn-secondary">{{ __('lang.pictograma') }}s</button>
@@ -71,72 +66,111 @@
                 </div>
             </div>
             <div class="col-md-10">
-                <div class="card">
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <table id="historico" class="table table-bordered table-striped">
-                            <thead class="bg-dark">
-                                <tr>
-                                    <th>{{ __('lang.produto') }}</th>
-                                    <th>{{ __('lang.n-embalagem') }}</th>
-                                    <th>{{ __('lang.localização') }}</th>
-                                    <th>{{ __('lang.embalagem') }}</th>
-                                    <th>{{ __('lang.fornecedor') }}</th>
-                                    <th>{{ __('lang.data de entrada') }}</th>
-                                    <th>{{ __('lang.data de validade') }}</th>
-                                    <th>{{ __('lang.data de termino') }}</th>
-                                    <th>{{ __('lang.operador') }}</th>
-                                    <th>{{ __('lang.familia') }}</th>
-                                    <th>{{ __('lang.sub-familia') }}</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            {{-- <tbody>
-                                @foreach ($entradas as $entrada)
-                                    <tr>
-                                        <td>{{ $entrada->produto->designacao }}</td>
-                                        <td>Entrada</td>
-                                        <td>{{ $entrada->id_inventario }} - {{ $entrada->id_ordem }}</td>
-                                        <td>S{{ $entrada->sala }} - {{ $entrada->get_armario->armario }} - {{ $entrada->get_prateleira->prateleira }}</td>
-                                        <td>{{ $entrada->capacidade }} {{ $entrada->get_unidade->unidade }}</td>
-                                        <td></td>
-                                        <td>{{ $entrada->get_fornecedor->designacao  }}</td>
-                                        <td>{{ $entrada->data_entrada }}</td>
-                                        <td>{{ $entrada->validade }}</td>
-                                        <td>{{ $entrada->termino }}</td>
-                                        <td>{{ $entrada->get_operador->nome }}</td>
-                                        <td>{{ $entrada->produto->get_fam->nome }}</td>
-                                        <td>{{ $entrada->produto->get_subfam->nome }}</td>
-                                        <td><a href="{{ public_path() }}/movimentos/show_saida"> Ver Mais &nbsp<i
-                                                    class="fa fa-arrow-right"></i></a></td>
-                                    </tr>
-                                @endforeach
+                <ul class="nav nav-tabs" id="addProdutosTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="entrada-tab" data-toggle="tab" href="#entrada" role="tab"
+                            aria-controls="entrada" aria-selected="true">{{ __('lang.entrada') }}s</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="saida-tab" data-toggle="tab" href="#saida" role="tab" aria-controls="saida"
+                            aria-selected="false"> {{ __('lang.saida') }}s</a>
+                    </li>
+                </ul>
+                <!-- tab-content -->
+                <div class="tab-content" id="MovimentosTabs">
+                    <div class="tab-pane fade show active" id="entrada" role="tabpanel" aria-labelledby="entrada-tab">
+                        <div class="card">
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="entradas" class="table table-bordered table-striped">
+                                    <thead class="bg-dark">
+                                        <tr>
+                                            <th>{{ __('lang.produto') }}</th>
+                                            <th>{{ __('lang.n-embalagem') }}</th>
+                                            <th>{{ __('lang.localização') }}</th>
+                                            <th>{{ __('lang.embalagem') }}</th>
+                                            <th>{{ __('lang.fornecedor') }}</th>
+                                            <th>{{ __('lang.data de entrada') }}</th>
+                                            <th>{{ __('lang.data de validade') }}</th>
+                                            <th>{{ __('lang.data de termino') }}</th>
+                                            <th>{{ __('lang.operador') }}</th>
+                                            <th>{{ __('lang.familia') }}</th>
+                                            <th>{{ __('lang.sub-familia') }}</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    {{-- <tbody>
+                                        @foreach ($entradas as $entrada)
+                                            <tr>
+                                                <td>{{ $entrada->produto->designacao }}</td>
+                                                <td>Entrada</td>
+                                                <td>{{ $entrada->id_inventario }} - {{ $entrada->id_ordem }}</td>
+                                                <td>S{{ $entrada->sala }} - {{ $entrada->get_armario->armario }} -
+                                                    {{ $entrada->get_prateleira->prateleira }}
+                                                </td>
+                                                <td>{{ $entrada->capacidade }} {{ $entrada->get_unidade->unidade }}</td>
+                                                <td></td>
+                                                <td>{{ $entrada->get_fornecedor->designacao }}</td>
+                                                <td>{{ $entrada->data_entrada }}</td>
+                                                <td>{{ $entrada->validade }}</td>
+                                                <td>{{ $entrada->termino }}</td>
+                                                <td>{{ $entrada->get_operador->nome }}</td>
+                                                <td>{{ $entrada->produto->get_fam->nome }}</td>
+                                                <td>{{ $entrada->produto->get_subfam->nome }}</td>
+                                                <td><a href="{{ public_path() }}/movimentos/show_saida"> Ver Mais &nbsp<i
+                                                            class="fa fa-arrow-right"></i></a></td>
+                                            </tr>
+                                        @endforeach
 
-                                @foreach ($saidas as $saida)
-                                    <tr>
-                                        <td>{{ $saida->produto->designacao }}</td>
-                                        <td>Saida</td>
-                                        <td>{{ $saida->id_produto }} - {{ $saida->id_ordem }}</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>{{ $saida->get_cliente->designacao }}</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>{{ $saida->get_operador->nome }}</td>
-                                        <td>{{ $saida->produto->get_fam->nome }}</td>
-                                        <td>{{ $entrada->produto->get_subfam->nome }}</td>
-                                        <td><a href="{{ public_path() }}/movimentos/show_saida"> Ver Mais &nbsp<i
-                                                    class="fa fa-arrow-right"></i></a></td>
-                                    </tr>
-                                @endforeach
-                                
-                            </tbody> --}}
-                        </table>
-                        <!-- /.card-body -->
+                                        @foreach ($saidas as $saida)
+                                            <tr>
+                                                <td>{{ $saida->produto->designacao }}</td>
+                                                <td>Saida</td>
+                                                <td>{{ $saida->id_produto }} - {{ $saida->id_ordem }}</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>{{ $saida->get_cliente->designacao }}</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>{{ $saida->get_operador->nome }}</td>
+                                                <td>{{ $saida->produto->get_fam->nome }}</td>
+                                                <td>{{ $entrada->produto->get_subfam->nome }}</td>
+                                                <td><a href="{{ public_path() }}/movimentos/show_saida"> Ver Mais &nbsp<i
+                                                            class="fa fa-arrow-right"></i></a></td>
+                                            </tr>
+                                        @endforeach
+
+                                    </tbody> --}}
+                                </table>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
                     </div>
-                    <!-- /.card -->
+                    <div class="tab-pane fade" id="saida" role="tabpanel" aria-labelledby="saida-tab">
+                        <div class="card">
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="saidas" class="table table-bordered table-striped">
+                                    <thead class="bg-dark">
+                                        <tr>
+                                            <th>{{ __('lang.produto') }}</th>
+                                            <th>{{ __('lang.n-embalagem') }}</th>
+                                            <th>{{ __('lang.cliente') }}</th>
+                                            <th>{{ __('lang.solicitante') }}</th>
+                                            <th>{{ __('lang.operador') }}</th>
+                                            <th>Data</th>
+                                            <th>{{ __('lang.familia') }}</th>
+                                            <th>{{ __('lang.sub-familia') }}</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.col -->
             </div>
@@ -162,69 +196,15 @@
                                     <div class="form-group">
                                         <div class="check-pictogram">
                                             <ul>
-                                                <li>
-                                                    <input type="checkbox" id="cb1" />
-                                                    <label for="cb1"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Explosive.gif" />
-                                                        <p class="text-center">GHS01</p>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb2" />
-                                                    <label for="cb2"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Flammable.gif" />
-                                                        <p class="text-center">GHS02</p>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb3" />
-                                                    <label for="cb3"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/RoundFlammable.gif" />
-                                                        <p class="text-center">GHS03</p>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb4" />
-                                                    <label for="cb4"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/CompressedGas.gif" />
-                                                        <p class="text-center">GHS04</p>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb5" />
-                                                    <label for="cb5"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Corrosive.gif" />
-                                                        <p class="text-center">GHS05</p>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb6" />
-                                                    <label for="cb6"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Toxic.gif" />
-                                                        <p class="text-center">GHS06</p>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb7" />
-                                                    <label for="cb7"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Danger.gif" />
-                                                        <p class="text-center">GHS07</p>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb8" />
-                                                    <label for="cb8"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Systemic.gif" />
-                                                        <p class="text-center">GHS08</p>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb9" />
-                                                    <label for="cb9"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Pollution.gif" />
-                                                        <p class="text-center">GHS09</p>
-                                                    </label>
-                                                </li>
+                                                @foreach ($pictogramas as $pictograma)
+                                                    <li>
+                                                        <input type="checkbox" id="cb{{ $pictograma->id }}" />
+                                                        <label for="cb{{ $pictograma->id }}">
+                                                            <img src="{{ public_path() }}{{ $pictograma->imagem }}" />
+                                                            <p class="text-center">{{ $pictograma->codigo }}</p>
+                                                        </label>
+                                                    </li>
+                                                @endforeach
                                             </ul>
                                         </div>
                                     </div>

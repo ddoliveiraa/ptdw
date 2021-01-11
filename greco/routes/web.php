@@ -53,7 +53,8 @@ Route::get('/movimentos/saida', function () {
     return view('movimentos.saida');
 });
 Route::get('/movimentos/historico', 'App\Http\Controllers\MovimentoController@index');
-Route::get('/movimentos/historico/getMovimentos/','App\Http\Controllers\MovimentoController@getMovimentos');
+Route::get('/movimentos/historico/getEntradas/','App\Http\Controllers\MovimentoController@getEntradas');
+Route::get('/movimentos/historico/getSaidas/','App\Http\Controllers\MovimentoController@getSaidas');
 
 Route::get('/movimentos/show_entrada', function () {
     return view('movimentos.show_entrada');

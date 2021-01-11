@@ -6,13 +6,18 @@ if (locale == "PT") {
 else {
     datatables_lang = '//cdn.datatables.net/plug-ins/1.10.22/i18n/English.json';
 }
+$('input[type=checkbox]').on('change', function(e) {
+    if ($('input[type=checkbox]:checked').length > 4) {
+        $(this).prop('checked', false);
+    }
+});
 
-var table = $("#historico").DataTable({
+var entradas = $("#entradas").DataTable({
     "dom": '<"search">frtip',
     "info": true,
     "processing": true,
     "serverSide": true,
-    "ajax": "/movimentos/historico/getMovimentos/",
+    "ajax": "/movimentos/historico/getEntradas/",
     "columns": [
         { data: 'designacao' },
         { data: 'id_produto' },
@@ -30,7 +35,7 @@ var table = $("#historico").DataTable({
     "language": {
         "url": datatables_lang,
     },
-    /* "order": [], */
+    "order": [[5, 'desc']],
     "responsive": true,
     "lengthChange": false,
     "autoWidth": false,
@@ -57,7 +62,7 @@ var table = $("#historico").DataTable({
     },
     ],
     "initComplete": function () {
-        table.buttons().container().appendTo('#historico_filter');
+        entradas.buttons().container().appendTo('#entradas_filter');
         //filtragem por movimentos
         $.fn.dataTable.ext.search.push(
             function (settings, searchData, index, rowData, counter) {
@@ -77,10 +82,12 @@ var table = $("#historico").DataTable({
         $.fn.dataTable.ext.search.push(
             function (settings, searchData, index, rowData, counter) {
                 var familia = $('#familia option:selected').val();
-                var familias = searchData[11]; // using the data from the 12th column
+                
+                var familias = searchData[9]; // using the data from the 12th column
 
                 if (familia == familias) {
-                    return familias;
+                    //entradas.column.search( familia ).draw();
+                    return familias; 
                 } else if (familia == "Familia") {
                     return true;
                 }
@@ -121,7 +128,7 @@ var table = $("#historico").DataTable({
         $('#intervalo').daterangepicker({
             timePicker: false,
             locale: {
-                format: 'YYYY-MM-DD'
+                format: 'DD/MM/YYYY'
             }
         })
 
@@ -132,11 +139,8 @@ var table = $("#historico").DataTable({
             $('#sub-familia').val('Sub-Familia');
             $('#movimento').val('Movimento');
             $('input[type=checkbox]').prop('checked', false);
-            table.search('');
-            table.draw();
-        });
-        $('#movimento').change(function () {
-            table.draw();
+            entradas.search('');
+            entradas.draw();
         });
 
         $("#pictogramas").click(function () {
@@ -146,6 +150,7 @@ var table = $("#historico").DataTable({
         $('#familia').change(function () {
             var familia = $('#familia option:selected').val();
             console.log("familia selecionada: " + familia);
+            
             if (familia == "Não Químico") {
                 $('#sub-familia').show(1);
                 $("#pictogramas").hide(1);
@@ -154,21 +159,21 @@ var table = $("#historico").DataTable({
                 $('#sub-familia').val('Sub-Familia');
                 $("#pictogramas").show(1);
             }
-            table.draw();
+            entradas.draw();
         });
         $('#sub-familia').change(function () {
-            table.draw();
+            entradas.draw();
         });
 
         $('#intervalo').on('apply.daterangepicker', function () {
             $.fn.dataTable.ext.search.push(
                 function (settings, searchData, index, rowData, counter) {
                     var inicio = $('#intervalo').data('daterangepicker')
-                        .startDate.format("YYYY-MM-DD");
+                        .startDate.format("DD/MM/YYYY");
                     var fim = $('#intervalo').data('daterangepicker').endDate
-                        .format("YYYY-MM-DD");
+                        .format("DD/MM/YYYY");
                     var datas = moment(new Date(searchData[7]),
-                        "YYYY-MM-DD") // using the data from the 8th column
+                        "DD/MM/YYYY") // using the data from the 8th column
                     console.log('incio = ' + inicio, ', ' + 'fim = ' + fim);
                     console.log(datas);
 
@@ -181,8 +186,50 @@ var table = $("#historico").DataTable({
                     return false;
                 }
             );
-            table.draw();
+            entradas.draw();
         });
+    }
+});
+
+var saidas = $("#saidas").DataTable({
+    "dom": '<"search">frtip',
+    "info": true,
+    "processing": true,
+    "serverSide": true,
+    "ajax": "/movimentos/historico/getSaidas/",
+    "columns": [
+        { data: 'designacao' },
+        { data: 'id_produto' },
+        { data: 'cliente' },
+        { data: 'solicitante' },
+        { data: 'operador' },
+        { data: 'data' },
+        { data: 'familia' },
+        { data: 'subfamilia' },
+        { data: 'link' },
+    ],
+    "language": {
+        "url": datatables_lang,
+    },
+    "order": [[5, 'desc']],
+    "responsive": true,
+    "lengthChange": false,
+    "autoWidth": false,
+    "buttons": [{
+        extend: 'csvHtml5',
+        exportOptions: {
+            columns: ':visible:not(:last-child)'
+        }
+    },
+    {
+        extend: 'print',
+        exportOptions: {
+            columns: ':visible:not(:last-child)'
+        }
+    },
+    ],
+    "initComplete": function () {
+        saidas.buttons().container().appendTo('#saidas_filter');
     }
 });
 
