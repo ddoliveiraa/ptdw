@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Produto;
+use App\Models\Entrada;
 use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
@@ -187,9 +188,11 @@ class ProdutoController extends Controller
      * @param  \App\Models\Produto  $produtos
      * @return \Illuminate\Http\Response
      */
-    public function show(Produto $produtos)
+    
+    public function show(Produto $produto)
     {
-        //
+        $entradas = Entrada::where('id_inventario', $produto->id)->get();
+        return view('ficha.show', compact('produto', 'entradas'));
     }
 
     /**

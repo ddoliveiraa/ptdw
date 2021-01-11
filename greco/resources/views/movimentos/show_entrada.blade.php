@@ -48,12 +48,13 @@
                     <div class="card card-primary">
                         <!-- form start -->
                         <form>
+                        
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="produto">{{ __('lang.produto') }}</label>
-                                            <input type="text" class="form-control" id="produto" value="Cloreto de Sódio"
+                                            <input type="text" class="form-control" id="produto" value="{{ $entrada->produto->designacao }}"
                                                 disabled>
                                             </select>
                                         </div>
@@ -62,7 +63,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="n_embalagem">{{ __('lang.n-embalagem') }}</label>
-                                            <input type="text" class="form-control" id="n_embalagem" value="230-12"
+                                            <input type="text" class="form-control" id="n_embalagem" value="{{ $entrada->id_inventario }} - {{ $entrada->id_ordem }}"
                                                 disabled>
                                         </div>
                                     </div>
@@ -72,7 +73,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="referencia">{{ __('lang.referencia') }}</label>
-                                            <input type="text" class="form-control" id="referencia" value="12355362"
+                                            <input type="text" class="form-control" id="referencia" value="{{ $entrada->referencia }}"
                                                 disabled>
                                         </div>
                                     </div>
@@ -80,7 +81,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="unidades">{{ __('lang.unidades') }}</label>
-                                            <input type="text" class="form-control" id="unidades" value="gramas" disabled>
+                                            <input type="text" class="form-control" id="unidades" value="{{ $entrada->get_unidade->unidade }}" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -89,7 +90,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="tipo_embalagem">{{ __('lang.tipo de embalagem') }}</label>
-                                            <input type="text" class="form-control" id="tipo_embalagem" value="Frasco"
+                                            <input type="text" class="form-control" id="tipo_embalagem" value="{{ $entrada->get_tipo_embalagem->nome }}"
                                                 disabled>
                                         </div>
                                     </div>
@@ -97,7 +98,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="cap_embalagem">{{ __('lang.capacidade da embalagem') }}</label>
-                                            <input type="number" class="form-control" id="cap_embalagem" value="250"
+                                            <input type="number" class="form-control" id="cap_embalagem" value="{{ $entrada->capacidade }}"
                                                 disabled>
                                         </div>
                                     </div>
@@ -107,7 +108,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fornecedor">{{ __('lang.fornecedor') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor" value="Alabama"
+                                            <input type="text" class="form-control" id="{{ $entrada->fornecedor }}" value="Alabama"
                                                 disabled>
                                         </div>
                                     </div>
@@ -115,7 +116,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="marca">{{ __('lang.nome da marca') }}</label>
-                                            <input type="text" class="form-control" id="marca" value="eXpolsions" disabled>
+                                            <input type="text" class="form-control" id="marca" value="{{ $entrada->get_marcas->marca }}" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -124,14 +125,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="armario">{{ __('lang.armario') }}</label>
-                                            <input type="text" class="form-control" id="armario" value="Armário 1" disabled>
+                                            <input type="text" class="form-control" id="armario" value="{{ $entrada->get_armario->armario }}" disabled>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="prateleira">{{ __('lang.prataleira') }}</label>
-                                            <input type="text" class="form-control" id="prateleira" value="Prateleira 1"
+                                            <input type="text" class="form-control" id="prateleira" value="{{ $entrada->get_prateleira->prateleira }}"
                                                 disabled>
                                         </div>
                                     </div>
@@ -142,7 +143,7 @@
                                         <div class="form-group">
                                             <label for="iva">{{ __('lang.taxa de iva') }}</label>
                                             <div class="input-group">
-                                                <input type="number" class="form-control" id="iva" value=0.23 step="0.05"
+                                                <input type="number" class="form-control" id="iva" value="{{ $entrada->get_iva->nome }}" step="0.05"
                                                     disabled>
                                                 <div class="input-group-append">
                                                     <span class="input-group-text"><i class="fa fa-percentage"></i></span>
@@ -155,7 +156,7 @@
                                         <div class="form-group">
                                             <label for="preco">{{ __('lang.preco') }}</label>
                                             <div class="input-group">
-                                                <input type="number" class="form-control" id="preco" value=25.35
+                                                <input type="number" class="form-control" id="preco" value="{{ $entrada->preco }}"
                                                     step="0.05" disabled>
                                                 <div class="input-group-append">
                                                     <span class="input-group-text"><i class="fa fa-euro-sign"></i></span>
@@ -164,35 +165,35 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                @if($entrada->produto->get_fam->nome == "Químico")
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="estado">{{ __('lang.estado fisico') }}</label>
-                                            <input type="text" class="form-control" id="estado" value="Sólido" disabled>
+                                            <input type="text" class="form-control" id="estado" value="{{ $entrada->get_estado->estado_fisico }}" disabled>
                                         </div>
                                     </div>
-
+                                
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="textura">{{ __('lang.textura/viscosidade') }}</label>
-                                            <input type="text" class="form-control" id="textura" value="Granulado" disabled>
+                                            <input type="text" class="form-control" id="textura" value="{{ $entrada->get_textura->textura_viscosidade }}" disabled>
                                         </div>
                                     </div>
                                 </div>
-
+                                @endif
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="cor">Cor</label>
-                                            <input type="text" class="form-control" id="cor" value="Branco" disabled>
+                                            <input type="text" class="form-control" id="cor" value="{{ $entrada->get_cor->cor }}" disabled>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="peso">{{ __('lang.peso bruto') }}</label>
-                                            <input type="number" class="form-control" id="peso" value="300" disabled>
+                                            <input type="number" class="form-control" id="peso" value="{{ $entrada->peso_bruto }}" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -217,7 +218,7 @@
                                             <label for="produto">{{ __('lang.data de abertura') }}</label>
                                             <div class="input-group date" id="data_abertura" data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input"
-                                                    data-target="#data_abertura" value="30/7/2020" disabled />
+                                                    data-target="#data_abertura" value="{{ $entrada->data_abertura }}" disabled />
                                                 <div class="input-group-append" data-target="#data_abertura"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -233,7 +234,7 @@
                                             <label for="produto">{{ __('lang.data de validade') }}</label>
                                             <div class="input-group date" id="data_validade" data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input"
-                                                    data-target="#data_validade" value="9/12/2020" disabled />
+                                                    data-target="#data_validade" value="{{ $entrada->data_validade }}" disabled />
                                                 <div class="input-group-append" data-target="#data_validade"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -247,7 +248,7 @@
                                             <label for="produto">{{ __('lang.data de termino') }}</label>
                                             <div class="input-group date" id="data_termino" data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input"
-                                                    data-target="#data_termino" value="---------" disabled />
+                                                    data-target="#data_termino" value="{{ $entrada->data_termino }}" disabled />
                                                 <div class="input-group-append" data-target="#data_termino"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -261,7 +262,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="operador">{{ __('lang.operador') }}</label>
-                                            <input type="text" class="form-control" id="operador" value="Carolina"
+                                            <input type="text" class="form-control" id="operador" value="{{ $entrada->get_operador->nome }}"
                                             disabled>
                                         </div>
                                     </div>
@@ -270,7 +271,7 @@
                                 <div class="form-group">
                                     <label for="obvs">{{ __('lang.observacoes') }}</label>
                                     <textarea id="obvs" class="form-control" rows="4"
-                                        disabled>👀 Está a observar uma observação muito observavel, escrito por um observador de um observatório muito observente. 👀</textarea>
+                                        disabled>{{ $entrada->obs }}</textarea>
                                 </div>
                             </div>
 

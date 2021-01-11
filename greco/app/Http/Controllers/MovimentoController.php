@@ -77,7 +77,7 @@ class MovimentoController extends Controller
             $operador = $record->operador;
             $familia = $record->familia;
             $subfamilia = $record->subfamilia;
-            $link = "<a href='/ficha/$record->id_entrada'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+            $link = "<a href='/movimentos/show_entrada/$record->id_entrada'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
 
             $data_arr[] = array(
                 "designacao" => $designacao,
@@ -150,7 +150,7 @@ class MovimentoController extends Controller
           $data = date("d/m/Y", strtotime($record->data));
           $familia = $record->familia;
           $subfamilia = $record->subfamilia;
-          $link = "<a href='/ficha/$record->id_saida'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+          $link = "<a href='/movimentos/show_saida/$record->id_saida'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
 
           $data_arr[] = array(
               "designacao" => $designacao,
@@ -201,11 +201,14 @@ class MovimentoController extends Controller
      * @param  \App\Models\Movimento  $movimentos
      * @return \Illuminate\Http\Response
      */
-    public function show(Movimento $movimentos)
-    {
-        //
-    }
-
+    public function show(Entrada $entrada){
+    
+        return view('movimentos.show_entrada', compact('entrada'));
+        }
+        public function sshow(Saida $saida){
+    
+            return view('movimentos.show_saida', compact('saida'));
+            }
     /**
      * Show the form for editing the specified resource.
      *

@@ -81,15 +81,15 @@ class DatabaseSeeder extends Seeder
         DB::table('condicoes_armazenamento')->insert(['condicao' => "Temperatura Artico",]);
         DB::table('condicoes_armazenamento')->insert(['condicao' => "Temperatura Copa Cabana",]);
 
-        DB::table('pictogramas')->insert(['nome' => "GHS01: Exploding bomb", 'imagem'=> "null"]);
-        DB::table('pictogramas')->insert(['nome' => "GHS02: Flame", 'imagem'=> "null"]);
-        DB::table('pictogramas')->insert(['nome' => "GHS03: Flame over circle", 'imagem'=> "null"]);
-        DB::table('pictogramas')->insert(['nome' => "GHS04: Gas cylinder", 'imagem'=> "null"]);
-        DB::table('pictogramas')->insert(['nome' => "GHS05: Corrosion", 'imagem'=> "null"]);
-        DB::table('pictogramas')->insert(['nome' => "GHS06: Skull and crossbones", 'imagem'=> "null"]);
-        DB::table('pictogramas')->insert(['nome' => "GHS07: Exclamation mark", 'imagem'=> "null"]);
-        DB::table('pictogramas')->insert(['nome' => "GHS08: Health hazard", 'imagem'=> "null"]);
-        DB::table('pictogramas')->insert(['nome' => "GHS09: Environment", 'imagem'=> "null"]);
+        DB::table('pictogramas')->insert(['codigo' => "GHS01", 'nome' => "GHS01: Exploding bomb", 'imagem'=> "/dist/img/Pictogramas/Explosive.gif"]);
+        DB::table('pictogramas')->insert(['codigo' => "GHS02", 'nome' => "GHS02: Flame", 'imagem'=> "/dist/img/Pictogramas/Flammable.gif"]);
+        DB::table('pictogramas')->insert(['codigo' => "GHS03", 'nome' => "GHS03: Flame over circle", 'imagem'=> "/dist/img/Pictogramas/RoundFlammable.gif"]);
+        DB::table('pictogramas')->insert(['codigo' => "GHS04", 'nome' => "GHS04: Gas cylinder", 'imagem'=> "/dist/img/Pictogramas/CompressedGas.gif"]);
+        DB::table('pictogramas')->insert(['codigo' => "GHS05", 'nome' => "GHS05: Corrosion", 'imagem'=> "/dist/img/Pictogramas/Corrosive.gif"]);
+        DB::table('pictogramas')->insert(['codigo' => "GHS06", 'nome' => "GHS06: Skull and crossbones", 'imagem'=> "/dist/img/Pictogramas/Toxic.gif"]);
+        DB::table('pictogramas')->insert(['codigo' => "GHS07", 'nome' => "GHS07: Exclamation mark", 'imagem'=> "/dist/img/Pictogramas/Danger.gif"]);
+        DB::table('pictogramas')->insert(['codigo' => "GHS08", 'nome' => "GHS08: Health hazard", 'imagem'=> "/dist/img/Pictogramas/Systemic.gif"]);
+        DB::table('pictogramas')->insert(['codigo' => "GHS09", 'nome' => "GHS09: Environment", 'imagem'=> "/dist/img/Pictogramas/Pollution.gif"]);
 
         DB::table('advertencias')->insert(['texto' => "H290 - Corrosivo a metais",]);
         DB::table('advertencias')->insert(['texto' => "H314 - Corrosivo à pele e olhos",]);

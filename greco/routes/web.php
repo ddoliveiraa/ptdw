@@ -23,6 +23,8 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
+Route::get('/search','App\Http\Controllers\SearchController@search');
+
 
 Route::get('/welcome/{locale}', 'App\Http\Controllers\LocalizationController@index');
 
@@ -30,15 +32,15 @@ Route::get('/welcome/{locale}', 'App\Http\Controllers\LocalizationController@ind
 Route::get('/produtos', 'App\Http\Controllers\ProdutoController@index');
 Route::get('/produtos/getProdutos/','App\Http\Controllers\ProdutoController@getProdutos')->name('produtos.getProdutos');
 Route::get('/produtos/add', 'App\Http\Controllers\ProdutoController@add');
+Route::get('/ficha/{produto}', 'App\Http\Controllers\ProdutoController@show');
+
 
 Route::post('/produtos_q', 'App\Http\Controllers\ProdutoController@addProdutoQ');
 Route::post('/produtos_nq', 'App\Http\Controllers\ProdutoController@addProdutoNQ');
 
 
 //Ficha
-Route::get(/* '/ficha/{id}' */'/ficha', function () {
-    return view('ficha.show');
-});
+
 Route::get(/* '/ficha/{id}/editar' */'/ficha/editar', function () {
     return view('ficha.editar');
 });
@@ -53,14 +55,9 @@ Route::get('/movimentos/saida', function () {
 Route::get('/movimentos/historico', 'App\Http\Controllers\MovimentoController@index');
 Route::get('/movimentos/historico/getEntradas/','App\Http\Controllers\MovimentoController@getEntradas');
 Route::get('/movimentos/historico/getSaidas/','App\Http\Controllers\MovimentoController@getSaidas');
+Route::get('/movimentos/show_entrada/{entrada}', 'App\Http\Controllers\MovimentoController@show');
+Route::get('/movimentos/show_saida/{saida}', 'App\Http\Controllers\MovimentoController@sshow');
 
-Route::get('/movimentos/show_entrada', function () {
-    return view('movimentos.show_entrada');
-});
-
-Route::get('/movimentos/show_saida', function () {
-    return view('movimentos.show_saida');
-});
 
 Route::get('/movimentos/editar', function () {
     return view('movimentos.editar');
