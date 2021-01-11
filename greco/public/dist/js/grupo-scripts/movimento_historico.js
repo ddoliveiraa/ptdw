@@ -82,10 +82,12 @@ var entradas = $("#entradas").DataTable({
         $.fn.dataTable.ext.search.push(
             function (settings, searchData, index, rowData, counter) {
                 var familia = $('#familia option:selected').val();
-                var familias = searchData[11]; // using the data from the 12th column
+                
+                var familias = searchData[9]; // using the data from the 12th column
 
                 if (familia == familias) {
-                    return familias;
+                    //entradas.column.search( familia ).draw();
+                    return familias; 
                 } else if (familia == "Familia") {
                     return true;
                 }
@@ -140,9 +142,6 @@ var entradas = $("#entradas").DataTable({
             entradas.search('');
             entradas.draw();
         });
-        $('#movimento').change(function () {
-            entradas.draw();
-        });
 
         $("#pictogramas").click(function () {
             $("#modalSelecionarPictograma").modal("show");
@@ -151,6 +150,7 @@ var entradas = $("#entradas").DataTable({
         $('#familia').change(function () {
             var familia = $('#familia option:selected').val();
             console.log("familia selecionada: " + familia);
+            
             if (familia == "Não Químico") {
                 $('#sub-familia').show(1);
                 $("#pictogramas").hide(1);

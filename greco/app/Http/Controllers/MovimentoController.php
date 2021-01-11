@@ -48,11 +48,26 @@ class MovimentoController extends Controller
 
         // Total records
         $totalRecords = Movimento::select('count(*) as allcount')->count();
-        $totalRecordswithFilter = Movimento::select('count(*) as allcount')->where('designacao', 'like', '%' . $searchValue . '%')->count();
+        $totalRecordswithFilter = Movimento::select('count(*) as allcount')
+            ->where('designacao', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.id_produto', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.armario', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.capacidade', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.fornecedor', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.operador', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.familia', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.subfamilia', 'like', '%' . $searchValue . '%')->count();
 
         // Fetch records ISTO NÃO FUNCIONA por causa das relações complexas
         $records = Movimento::orderBy($columnName, $columnSortOrder)
             ->where('entradaview.designacao', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.id_produto', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.armario', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.capacidade', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.fornecedor', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.operador', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.familia', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.subfamilia', 'like', '%' . $searchValue . '%')
             ->select('entradaview.*')
             ->skip($start)
             ->take($rowperpage)
@@ -69,9 +84,9 @@ class MovimentoController extends Controller
             $fornecedor = $record->fornecedor;
             $data_entrada = date("d/m/Y", strtotime($record->data_entrada));
             $data_validade = date("d/m/Y", strtotime($record->data_validade));
-            if($record->data_termino != null){
+            if ($record->data_termino != null) {
                 $data_termino = date("d/m/Y", strtotime($record->data_termino));
-            } else{
+            } else {
                 $data_termino = "";
             }
             $operador = $record->operador;
@@ -109,72 +124,85 @@ class MovimentoController extends Controller
     /*
    AJAX request (Páginação com datatables Saidas)
    */
-  public function getSaidas(Request $request)
-  {
+    public function getSaidas(Request $request)
+    {
 
-      ## Read value
-      $draw = $request->get('draw');
-      $start = $request->get("start");
-      $rowperpage = $request->get("length"); // Rows display per page
+        ## Read value
+        $draw = $request->get('draw');
+        $start = $request->get("start");
+        $rowperpage = $request->get("length"); // Rows display per page
 
-      $columnIndex_arr = $request->get('order');
-      $columnName_arr = $request->get('columns');
-      $order_arr = $request->get('order');
-      $search_arr = $request->get('search');
+        $columnIndex_arr = $request->get('order');
+        $columnName_arr = $request->get('columns');
+        $order_arr = $request->get('order');
+        $search_arr = $request->get('search');
 
-      $columnIndex = $columnIndex_arr[0]['column']; // Column index
-      $columnName = $columnName_arr[$columnIndex]['data']; // Column name
-      $columnSortOrder = $order_arr[0]['dir']; // asc or desc
-      $searchValue = $search_arr['value']; // Search value
+        $columnIndex = $columnIndex_arr[0]['column']; // Column index
+        $columnName = $columnName_arr[$columnIndex]['data']; // Column name
+        $columnSortOrder = $order_arr[0]['dir']; // asc or desc
+        $searchValue = $search_arr['value']; // Search value
 
-      // Total records
-      $totalRecords = DB::table('saidaview')->select('count(*) as allcount')->count();
-      $totalRecordswithFilter = DB::table('saidaview')->select('count(*) as allcount')->where('designacao', 'like', '%' . $searchValue . '%')->count();
+        // Total records
+        $totalRecords = DB::table('saidaview')->select('count(*) as allcount')->count();
+        $totalRecordswithFilter = DB::table('saidaview')->select('count(*) as allcount')
+            ->where('designacao', 'like', '%' . $searchValue . '%')
+            ->orWhere('saidaview.id_produto', 'like', '%' . $searchValue . '%')
+            ->orWhere('saidaview.cliente', 'like', '%' . $searchValue . '%')
+            ->orWhere('saidaview.solicitante', 'like', '%' . $searchValue . '%')
+            ->orWhere('saidaview.operador', 'like', '%' . $searchValue . '%')
+            ->orWhere('saidaview.familia', 'like', '%' . $searchValue . '%')
+            ->orWhere('saidaview.subfamilia', 'like', '%' . $searchValue . '%')->count();
 
-      // Fetch records
-      $records =  DB::table('saidaview')->orderBy($columnName, $columnSortOrder)
-          ->where('saidaview.designacao', 'like', '%' . $searchValue . '%')
-          ->select('saidaview.*')
-          ->skip($start)
-          ->take($rowperpage)
-          ->get();
+        // Fetch records
+        $records =  DB::table('saidaview')->orderBy($columnName, $columnSortOrder)
+            ->where('saidaview.designacao', 'like', '%' . $searchValue . '%')
+            ->orWhere('saidaview.id_produto', 'like', '%' . $searchValue . '%')
+            ->orWhere('saidaview.cliente', 'like', '%' . $searchValue . '%')
+            ->orWhere('saidaview.solicitante', 'like', '%' . $searchValue . '%')
+            ->orWhere('saidaview.familia', 'like', '%' . $searchValue . '%')
+            ->orWhere('saidaview.operador', 'like', '%' . $searchValue . '%')
+            ->orWhere('saidaview.subfamilia', 'like', '%' . $searchValue . '%')
+            ->select('saidaview.*')
+            ->skip($start)
+            ->take($rowperpage)
+            ->get();
 
-      $data_arr = array();
+        $data_arr = array();
 
-      foreach ($records as $record) {
-          $designacao = $record->designacao;
-          $id_produto = "$record->id_produto - $record->id_ordem";
-          $cliente = $record->cliente;
-          $solicitante = $record->solicitante;
-          $operador = $record->operador;
-          $data = date("d/m/Y", strtotime($record->data));
-          $familia = $record->familia;
-          $subfamilia = $record->subfamilia;
-          $link = "<a href='/ficha/$record->id_saida'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+        foreach ($records as $record) {
+            $designacao = $record->designacao;
+            $id_produto = "$record->id_produto - $record->id_ordem";
+            $cliente = $record->cliente;
+            $solicitante = $record->solicitante;
+            $operador = $record->operador;
+            $data = date("d/m/Y", strtotime($record->data));
+            $familia = $record->familia;
+            $subfamilia = $record->subfamilia;
+            $link = "<a href='/ficha/$record->id_saida'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
 
-          $data_arr[] = array(
-              "designacao" => $designacao,
-              "id_produto" => $id_produto,
-              "cliente" => $cliente,
-              "solicitante" => $solicitante,
-              "operador" => $operador,
-              "data" => $data,
-              "familia" => $familia,
-              "subfamilia" => $subfamilia,
-              "link" => $link,
-          );
-      }
+            $data_arr[] = array(
+                "designacao" => $designacao,
+                "id_produto" => $id_produto,
+                "cliente" => $cliente,
+                "solicitante" => $solicitante,
+                "operador" => $operador,
+                "data" => $data,
+                "familia" => $familia,
+                "subfamilia" => $subfamilia,
+                "link" => $link,
+            );
+        }
 
-      $response = array(
-          "draw" => intval($draw),
-          "iTotalRecords" => $totalRecords,
-          "iTotalDisplayRecords" => $totalRecordswithFilter,
-          "aaData" => $data_arr
-      );
+        $response = array(
+            "draw" => intval($draw),
+            "iTotalRecords" => $totalRecords,
+            "iTotalDisplayRecords" => $totalRecordswithFilter,
+            "aaData" => $data_arr
+        );
 
-      echo json_encode($response);
-      exit;
-  }
+        echo json_encode($response);
+        exit;
+    }
 
     /**
      * Show the form for creating a new resource.
