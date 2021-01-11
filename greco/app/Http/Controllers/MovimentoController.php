@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Movimento;
 use App\Models\Entrada;
+use App\Models\pictograma;
 use App\Models\Saida;
 use App\Models\Produto;
 use App\Models\sub_familia;
@@ -19,10 +20,9 @@ class MovimentoController extends Controller
      */
     public function index()
     {
-        /* $entradas = Entrada::orderBy('created_at','desc')->take(5)->get();
-        $saidas = Saida::orderBy('created_at', 'desc')->take(5)->get(); */
         $subfamilias = sub_familia::all();
-        return view('movimentos.historico', compact(/* 'entradas', 'saidas',  */'subfamilias'));
+        $pictogramas = pictograma::all();
+        return view('movimentos.historico', compact('subfamilias', 'pictogramas'));
     }
 
     /*
@@ -48,11 +48,26 @@ class MovimentoController extends Controller
 
         // Total records
         $totalRecords = Movimento::select('count(*) as allcount')->count();
-        $totalRecordswithFilter = Movimento::select('count(*) as allcount')->where('designacao', 'like', '%' . $searchValue . '%')->count();
+        $totalRecordswithFilter = Movimento::select('count(*) as allcount')
+            ->where('designacao', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.id_produto', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.armario', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.capacidade', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.fornecedor', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.operador', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.familia', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.subfamilia', 'like', '%' . $searchValue . '%')->count();
 
         // Fetch records ISTO NÃO FUNCIONA por causa das relações complexas
         $records = Movimento::orderBy($columnName, $columnSortOrder)
             ->where('entradaview.designacao', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.id_produto', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.armario', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.capacidade', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.fornecedor', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.operador', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.familia', 'like', '%' . $searchValue . '%')
+            ->orWhere('entradaview.subfamilia', 'like', '%' . $searchValue . '%')
             ->select('entradaview.*')
             ->skip($start)
             ->take($rowperpage)
@@ -69,9 +84,9 @@ class MovimentoController extends Controller
             $fornecedor = $record->fornecedor;
             $data_entrada = date("d/m/Y", strtotime($record->data_entrada));
             $data_validade = date("d/m/Y", strtotime($record->data_validade));
-            if($record->data_termino != null){
+            if ($record->data_termino != null) {
                 $data_termino = date("d/m/Y", strtotime($record->data_termino));
-            } else{
+            } else {
                 $data_termino = "";
             }
             $operador = $record->operador;
@@ -109,8 +124,7 @@ class MovimentoController extends Controller
     /*
    AJAX request (Páginação com datatables Saidas)
    */
-  public function getSaidas(Request $request)
-  {
+  public function getSaidas(Request $request){
 
       ## Read value
       $draw = $request->get('draw');
