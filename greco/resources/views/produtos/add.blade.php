@@ -260,7 +260,7 @@
                                                 @foreach ($pictogramas as $p)
                                                     <li>
                                                         <input type="checkbox" id="cb{{ $p->id }}" />
-                                                        <label for="cb{{ $p->id }}"><img src="{{ $p->imagem }}" /><p class="text-center">{{ $p->nome }}</p></label>
+                                                        <label for="cb{{ $p->id }}"><img src="{{ public_path() }}{{ $p->imagem }}" /><p class="text-center">{{ $p->codigo }}</p></label>
                                                     </li>
                                                 @endforeach
                                             </ul>

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 use App\Models\Produto;
 use App\Models\Entrada;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\condicoes_armazenamento;
+use App\Models\sub_familia;
+use App\Models\pictograma;
 
 class ProdutoController extends Controller
 {
@@ -150,15 +154,11 @@ class ProdutoController extends Controller
      */
     public function add()
     {
-        $condicoes = \DB::table('condicoes_armazenamento')->get();
-        $subfamilias = \DB::table('sub_familia')->get();
-        $pictogramas = \DB::table('pictogramas')->get();
+        $condicoes = condicoes_armazenamento::all();
+        $subfamilias = sub_familia::all();
+        $pictogramas = pictograma::all();
 
-        return view('produtos.add', [
-            'condicoes' => $condicoes,
-            'subfamilias' => $subfamilias,
-            'pictogramas' => $pictogramas
-            ]);
+        return view('produtos.add', compact('condicoes', 'subfamilias', 'pictogramas'));
     }
 
     /**
