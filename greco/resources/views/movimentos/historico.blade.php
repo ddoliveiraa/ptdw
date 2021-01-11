@@ -196,69 +196,15 @@
                                     <div class="form-group">
                                         <div class="check-pictogram">
                                             <ul>
-                                                <li>
-                                                    <input type="checkbox" id="cb1" />
-                                                    <label for="cb1"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Explosive.gif" />
-                                                        <p class="text-center">GHS01</p>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb2" />
-                                                    <label for="cb2"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Flammable.gif" />
-                                                        <p class="text-center">GHS02</p>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb3" />
-                                                    <label for="cb3"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/RoundFlammable.gif" />
-                                                        <p class="text-center">GHS03</p>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb4" />
-                                                    <label for="cb4"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/CompressedGas.gif" />
-                                                        <p class="text-center">GHS04</p>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb5" />
-                                                    <label for="cb5"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Corrosive.gif" />
-                                                        <p class="text-center">GHS05</p>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb6" />
-                                                    <label for="cb6"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Toxic.gif" />
-                                                        <p class="text-center">GHS06</p>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb7" />
-                                                    <label for="cb7"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Danger.gif" />
-                                                        <p class="text-center">GHS07</p>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb8" />
-                                                    <label for="cb8"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Systemic.gif" />
-                                                        <p class="text-center">GHS08</p>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox" id="cb9" />
-                                                    <label for="cb9"><img
-                                                            src="{{ public_path() }}/dist/img/Pictogramas/Pollution.gif" />
-                                                        <p class="text-center">GHS09</p>
-                                                    </label>
-                                                </li>
+                                                @foreach ($pictogramas as $pictograma)
+                                                    <li>
+                                                        <input type="checkbox" id="cb{{ $pictograma->id }}" />
+                                                        <label for="cb{{ $pictograma->id }}">
+                                                            <img src="{{ public_path() }}{{ $pictograma->imagem }}" />
+                                                            <p class="text-center">{{ $pictograma->codigo }}</p>
+                                                        </label>
+                                                    </li>
+                                                @endforeach
                                             </ul>
                                         </div>
                                     </div>

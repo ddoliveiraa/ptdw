@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Movimento;
 use App\Models\Entrada;
+use App\Models\pictograma;
 use App\Models\Saida;
 use App\Models\Produto;
 use App\Models\sub_familia;
@@ -19,10 +20,9 @@ class MovimentoController extends Controller
      */
     public function index()
     {
-        /* $entradas = Entrada::orderBy('created_at','desc')->take(5)->get();
-        $saidas = Saida::orderBy('created_at', 'desc')->take(5)->get(); */
         $subfamilias = sub_familia::all();
-        return view('movimentos.historico', compact(/* 'entradas', 'saidas',  */'subfamilias'));
+        $pictogramas = pictograma::all();
+        return view('movimentos.historico', compact('subfamilias', 'pictogramas'));
     }
 
     /*

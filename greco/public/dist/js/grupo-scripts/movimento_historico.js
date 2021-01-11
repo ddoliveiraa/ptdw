@@ -6,6 +6,11 @@ if (locale == "PT") {
 else {
     datatables_lang = '//cdn.datatables.net/plug-ins/1.10.22/i18n/English.json';
 }
+$('input[type=checkbox]').on('change', function(e) {
+    if ($('input[type=checkbox]:checked').length > 4) {
+        $(this).prop('checked', false);
+    }
+});
 
 var entradas = $("#entradas").DataTable({
     "dom": '<"search">frtip',
@@ -206,7 +211,7 @@ var saidas = $("#saidas").DataTable({
     "language": {
         "url": datatables_lang,
     },
-    /* "order": [[5, 'desc']], */
+    "order": [[5, 'desc']],
     "responsive": true,
     "lengthChange": false,
     "autoWidth": false,
