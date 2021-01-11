@@ -67,9 +67,13 @@ class MovimentoController extends Controller
             $capacidade = $record->capacidade;
             $unidade = $record->unidade;
             $fornecedor = $record->fornecedor;
-            $data_entrada = date("d/m/Y", strtotime($record->data_entrada));;
-            $data_validade = date("d/m/Y", strtotime($record->data_validade));;
-            $data_termino = date("d/m/Y", strtotime($record->data_termino));;
+            $data_entrada = date("d/m/Y", strtotime($record->data_entrada));
+            $data_validade = date("d/m/Y", strtotime($record->data_validade));
+            if($record->data_termino != null){
+                $data_termino = date("d/m/Y", strtotime($record->data_termino));
+            } else{
+                $data_termino = "";
+            }
             $operador = $record->operador;
             $familia = $record->familia;
             $subfamilia = $record->subfamilia;
