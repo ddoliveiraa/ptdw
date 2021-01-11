@@ -16,17 +16,20 @@ class SearchController extends Controller
             if ($request->filtro == "todos") {
                 $data = Produto::where('designacao', 'LIKE', "%$s%")
                     ->orWhere('formula', 'ILIKE', "%$s%")
-                    ->orWhere('id', 'ILIKE', "%$s%")
-                    ->orWhere('CAS', 'ILIKE', "%$s%")->take(5)->get();
+                    ->orWhere('CAS', 'ILIKE', "%$s%")
+                    ->orWhere('id', 'ILIKE', "%$s%")->take(5)->get();
             } elseif ($request->filtro == "quimico") {
                 $data = Produto::where('familia', '=', 1)->where(function ($query) use ($s) {
                     $query->where('designacao', 'ILIKE', "%$s%")
                         ->orWhere('formula', 'ILIKE', "%$s%")
-                        ->orWhere('id', 'ILIKE', "%$s%")
-                        ->orWhere('CAS', 'ILIKE', "%$s%");
+                        ->orWhere('CAS', 'ILIKE', "%$s%")
+                        ->orWhere('id', 'ILIKE', "%$s%");
                 })->take(5)->get();
             } elseif ($request->filtro == "naoquimico") {
-                $data = Produto::where('familia', '=', 2)->take(5)->get();
+                $data = Produto::where('familia', '=', 2)->where(function ($query) use ($s) {
+                    $query->where('designacao', 'ILIKE', "%$s%")
+                        ->orWhere('id', 'ILIKE', "%$s%");
+                })->take(5)->get();
             }
 
             $output = '';
