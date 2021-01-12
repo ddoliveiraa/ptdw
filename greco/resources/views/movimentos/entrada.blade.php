@@ -135,7 +135,7 @@
                                                 <div class="form-group">
                                                     <label
                                                         for="cap_embalagem">{{ __('lang.capacidade da embalagem') }}</label>
-                                                    <input type="number" class="form-control" id="cap_embalagem" name="cap_embalagem"
+                                                    <input type="number" class="form-control" id="cap_embalagem" name="cap_embalagem" min="1"
                                                         placeholder="{{ __('lang.insira a') }} {{ __('lang.capacidade da embalagem') }}">
                                                 </div>
                                             </div>
@@ -223,7 +223,7 @@
                                                     <div class="input-group">
                                                         <input type="number" class="form-control" id="preco" name="preco"
                                                             placeholder="{{ __('lang.insira o') }} {{ __('lang.preco') }}"
-                                                            step="0.05">
+                                                            step="0.05" min="0.05">
                                                         <div class="input-group-append">
                                                             <span class="input-group-text"><i
                                                                     class="fa fa-euro-sign"></i></span>
@@ -283,7 +283,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="peso">{{ __('lang.peso bruto') }}</label>
-                                                    <input type="number" class="form-control" id="peso" name="peso"
+                                                    <input type="number" class="form-control" id="peso" name="peso" min="1"
                                                         placeholder="{{ __('lang.insira o') }} {{ __('lang.peso bruto') }}">
                                                 </div>
                                             </div>

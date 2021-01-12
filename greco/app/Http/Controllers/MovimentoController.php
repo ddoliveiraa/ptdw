@@ -111,14 +111,13 @@ class MovimentoController extends Controller
         $fornecedores = Fornecedor::all();
         $marcas = marcas::all();
         $armarios = armario::all();
-        $prateleiras = prateleira::all();
         $ivas = taxa_iva::all();
         $estados = estados_fisicos::all();
         $texturas_viscosidades = textura_viscosidade::all();
         $cores = cores::all();
 
         return view('movimentos.entrada', compact('produtos', 'unidades', 'tipoembalagem',
-                    'fornecedores', 'marcas', 'armarios', 'prateleiras', 'ivas',
+                    'fornecedores', 'marcas', 'armarios', 'ivas',
                     'estados', 'texturas_viscosidades', 'cores'));
     }
 
