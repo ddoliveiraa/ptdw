@@ -98,14 +98,14 @@
                                                 <div class="form-group">
                                                     <label for="produto_peso"
                                                         class="control-label">{{ __('lang.peso molecular') }}</label>
-                                                    <input type="text" class="form-control" name="produto_peso" id="produto_peso" tabindex="5" required>
+                                                    <input type="number" min="1" class="form-control" name="produto_peso" id="produto_peso" tabindex="5" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="produto_stock_minimo"
                                                         class="control-label">{{ __('lang.stock minimo') }}</label>
-                                                    <input type="text" class="form-control" name="produto_stock_minimo" id="produto_stock_minimo" tabindex="6"
+                                                    <input type="number" min="1" class="form-control" name="produto_stock_minimo" id="produto_stock_minimo" tabindex="6"
                                                         required>
                                                 </div>
                                             </div>
@@ -209,7 +209,7 @@
                                                 <div class="form-group">
                                                     <label for="produto_stock_minimo_nq"
                                                         class="control-label">{{ __('lang.stock minimo') }}</label>
-                                                    <input type="text" class="form-control" name="produto_stock_minimo_nq" id="produto_stock_minimo_nq"
+                                                    <input type="number" min="1" class="form-control" name="produto_stock_minimo_nq" id="produto_stock_minimo_nq"
                                                         tabindex="4" required>
                                                 </div>
                                             </div>
@@ -302,7 +302,7 @@
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default col-md-3" data-dismiss="modal"
                             id="cancelar" tabindex="13">{{ __('lang.cancelar') }}</button>
-                            <button type="button" class="btn btn-secondary col-md-3"
+                            <button type="button" class="btn btn-secondary col-md-3" data-dismiss="modal"
                             id="selecionar" tabindex="14">{{ __('lang.selecionar') }}</button>
                         </div>
                     </form>
@@ -323,7 +323,6 @@
     <script>
         $(function() {
 
-    
             $('#guardar').on('click', function() {
 
                 $.ajax({
@@ -341,6 +340,14 @@
                 $('#modalSelecionarPictograma').find('form').trigger('reset');
                 $("#recomendacoes").val(null).trigger('change');
                 $("#advertencias").val(null).trigger('change');
+                $('#produto_pictogramas').val("");
+            });
+
+            $(".close").bind("click", function () {
+                $('#modalSelecionarPictograma').find('form').trigger('reset');
+                $("#recomendacoes").val(null).trigger('change');
+                $("#advertencias").val(null).trigger('change');
+                $('#produto_pictogramas').val("");
             });
 
             $(document).on('click', '#selecionar', function(){
@@ -361,6 +368,7 @@
                 theme: 'bootstrap4'
             })
         });
+
         $('input[type=checkbox]').on('change', function(e) {
             if ($('input[type=checkbox]:checked').length > 4) {
                 $(this).prop('checked', false);
