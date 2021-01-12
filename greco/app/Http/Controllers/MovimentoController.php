@@ -60,7 +60,7 @@ class MovimentoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function addMovimentoEntradaQ(Request $request){
-
+        //  *** QUIMICOS ***
         //VALIDAÇÂO
 
         //ADD NA BD
@@ -97,6 +97,46 @@ class MovimentoController extends Controller
         return redirect('movimentos/entrada');
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function addMovimentoEntradaNQ(Request $request){
+        //  *** NAO QUIMICOS ***
+        //VALIDAÇÂO
+
+        //ADD NA BD
+        $id = Entrada::latest('id')->first()->value('id');
+        $id_inventario = request('produto_nq'); //request('produto') está a receber o id
+        $id_ordem = Entrada::where('id_inventario',$id_inventario)->max('id_ordem')+1;
+        
+        $Entrada = new Entrada();
+        $Entrada->id_inventario = $id_inventario;
+        $Entrada->id_ordem = $id_ordem;
+        $Entrada->sala = 1;
+        $Entrada->armario = request('armario_nq');
+        $Entrada->prateleira = request('prateleira_nq');
+        $Entrada->fornecedor = request('fornecedor_nq');
+        $Entrada->marca = request('marca_nq');
+        $Entrada->referencia = request('referencia_nq');
+        $Entrada->preco = request('preco_nq');
+        $Entrada->iva = request('iva_nq');
+        $Entrada->capacidade = request('cap_embalagem_nq');
+        $Entrada->tipo_embalagem = request('tipo_embalagem_nq');
+        $Entrada->cor = request('cor_nq');
+        $Entrada->peso_bruto = request('peso_nq');
+        $Entrada->data_entrada = request('data_entrada_nq_input');
+        $Entrada->data_abertura = request('data_abertura_nq_input');
+        $Entrada->data_validade = request('data_validade_nq_input');
+        $Entrada->data_termino = request('data_termino_nq_input');
+        $Entrada->operador = $id; //Workaroud - Precisa de autenticação
+        $Entrada->unidade = request('unidades_nq');
+        $Entrada->obs = request('obvs_nq');
+        $Entrada->save();
+        
+        return redirect('movimentos/entrada');
+    }
 
     /**
      * Display the specified resource.
@@ -105,7 +145,8 @@ class MovimentoController extends Controller
      */
     public function showEndrada()
     {
-        $produtos = Produto::all();
+        $produtos = Produto::where('familia',1)->get();
+        $produtosnq = Produto::where('familia',2)->get();
         $unidades = unidade::all();
         $tipoembalagem = tipo_embalagem::all();
         $fornecedores = Fornecedor::all();
@@ -116,7 +157,7 @@ class MovimentoController extends Controller
         $texturas_viscosidades = textura_viscosidade::all();
         $cores = cores::all();
 
-        return view('movimentos.entrada', compact('produtos', 'unidades', 'tipoembalagem',
+        return view('movimentos.entrada', compact('produtos', 'produtosnq', 'unidades', 'tipoembalagem',
                     'fornecedores', 'marcas', 'armarios', 'ivas',
                     'estados', 'texturas_viscosidades', 'cores'));
     }

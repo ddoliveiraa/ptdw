@@ -383,7 +383,8 @@
                             <div class="card card-primary">
                                 <!-- form start -->
 
-                                <form>
+                                <form method="POST" action="/movimentos/add/entrada_naoquimico">
+                                    @csrf <!-- Cross Site Request Forgery -->
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-6">
@@ -394,9 +395,9 @@
                                                         <option value="" selected disabled>{{ __('lang.selecione o') }}
                                                             {{ __('lang.produto') }}
                                                         </option>
-                                                        <option>Luvas</option>
-                                                        <option>Caixa de Petri</option>
-                                                        <option>Pipeta</option>
+                                                        @foreach ($produtosnq as $p)
+                                                            <option value="{{  $p->id }}">{{ $p->designacao }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
@@ -428,9 +429,9 @@
                                                         <option value="" selected disabled>{{ __('lang.selecionar') }}
                                                             {{ __('lang.unidades') }}
                                                         </option>
-                                                        <option>mililitros</option>
-                                                        <option>gramas</option>
-                                                        <option>outro?</option>
+                                                        @foreach ($unidades as $u)
+                                                            <option value="{{  $u->id }}">{{ $u->unidade }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
@@ -446,9 +447,9 @@
                                                         <option value="" selected disabled>{{ __('lang.insira o') }}
                                                             {{ __('lang.tipo de embalagem') }}
                                                         </option>
-                                                        <option>Frasco</option>
-                                                        <option>Vidro</option>
-                                                        <option>Caixa</option>
+                                                        @foreach ($tipoembalagem as $te)
+                                                            <option value="{{  $te->id }}">{{ $te->nome }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
@@ -472,13 +473,9 @@
                                                         <option value="" selected disabled>{{ __('lang.selecione o') }}
                                                             {{ __('lang.fornecedor') }}
                                                         </option>
-                                                        <option>Alabama</option>
-                                                        <option>Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
+                                                        @foreach ($fornecedores as $f)
+                                                            <option value="{{  $f->id }}">{{ $f->designacao }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
@@ -490,13 +487,9 @@
                                                         <option value="" selected disabled>{{ __('lang.selecione o') }}
                                                             {{ __('lang.nome da marca') }}
                                                         </option>
-                                                        <option>Alabama</option>
-                                                        <option>Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
+                                                        @foreach ($marcas as $m)
+                                                            <option value="{{  $m->id }}">{{ $m->marca }}</option>
+                                                        @endforeach
                                                     </select>
                                                  </div>
                                             </div>
@@ -511,11 +504,9 @@
                                                         <option value="" selected disabled>{{ __('lang.selecione o') }}
                                                             {{ __('lang.armario') }}
                                                         </option>
-                                                        <option>Armário 1</option>
-                                                        <option>Armário 2</option>~
-                                                        <option>Armário 3</option>
-                                                        <option>Frigorífico 1</option>
-                                                        <option>Frigorífico 2</option>
+                                                        @foreach ($armarios as $a)
+                                                            <option value="{{  $a->id }}">{{ $a->armario }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
@@ -524,15 +515,10 @@
                                                 <div class="form-group">
                                                     <label for="prateleira_nq">{{ __('lang.prataleira') }}</label>
                                                     <select id="prateleira_nq" name="prateleira_nq" class="form-control select2bs4"
-                                                        style="width: 100%;">
+                                                        style="width: 100%;" disabled>
                                                         <option value="" selected disabled>{{ __('lang.selecione a') }}
                                                             {{ __('lang.prataleira') }}
                                                         </option>
-                                                        <option>Prateleira 1</option>
-                                                        <option>Prateleira 2</option>~
-                                                        <option>Prateleira 3</option>
-                                                        <option>Gaveta 1</option>
-                                                        <option>Gaveta 2</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -547,10 +533,9 @@
                                                     <option value="" selected disabled>{{ __('lang.selecione a') }}
                                                         {{ __('lang.taxa de iva') }}
                                                     </option>
-                                                    <option>0,13%</option>
-                                                    <option>0,06%</option>~
-                                                    <option>0,23%</option>
-                                                    <option>0,30%</option>
+                                                    @foreach ($ivas as $i)
+                                                            <option value="{{  $i->id }}">{{ $i->nome*100 }}%</option>
+                                                    @endforeach
                                                 </select>
                                                 </div>
                                             </div>
@@ -580,9 +565,9 @@
                                                         <option value="" selected disabled>{{ __('lang.selecione a') }}
                                                             {{ __('lang.cor') }}
                                                         </option>
-                                                        <option>Vermelho</option>
-                                                        <option>Azul</option>
-                                                        <option>Verde</option>
+                                                        @foreach ($cores as $c)
+                                                            <option value="{{  $c->id }}">{{ $c->cor }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
@@ -603,6 +588,7 @@
                                                     <div class="input-group date" id="data_entrada_nq" name="data_entrada_nq"
                                                         data-target-input="nearest">
                                                         <input type="text" class="form-control datetimepicker-input"
+                                                            id="data_entrada_nq_input" name="data_entrada_nq_input"
                                                             data-target="#data_entrada_nq" placeholder="DD/MM/YYYY" />
                                                         <div class="input-group-append" data-target="#data_entrada_nq"
                                                             data-toggle="datetimepicker">
@@ -619,6 +605,7 @@
                                                     <div class="input-group date" id="data_abertura_nq" name="data_abertura_nq"
                                                         data-target-input="nearest">
                                                         <input type="text" class="form-control datetimepicker-input"
+                                                            id="data_abertura_nq_input" name="data_abertura_nq_input"
                                                             data-target="#data_abertura_nq" placeholder="DD/MM/YYYY" />
                                                         <div class="input-group-append" data-target="#data_abertura_nq"
                                                             data-toggle="datetimepicker">
@@ -637,6 +624,7 @@
                                                     <div class="input-group date" id="data_validade_nq" name="data_validade_nq"
                                                         data-target-input="nearest">
                                                         <input type="text" class="form-control datetimepicker-input"
+                                                            id="data_validade_nq_input" name="data_validade_nq_input"
                                                             data-target="#data_validade_nq" placeholder="DD/MM/YYYY" />
                                                         <div class="input-group-append" data-target="#data_validade_nq"
                                                             data-toggle="datetimepicker">
@@ -653,6 +641,7 @@
                                                     <div class="input-group date" id="data_termino_nq" name="data_termino_nq"
                                                         data-target-input="nearest">
                                                         <input type="text" class="form-control datetimepicker-input"
+                                                            id="data_termino_nq_input" name="data_termino_nq_input"
                                                             data-target="#data_termino_nq" placeholder="DD/MM/YYYY" />
                                                         <div class="input-group-append" data-target="#data_termino_nq"
                                                             data-toggle="datetimepicker">
@@ -709,8 +698,6 @@
     <script src="{{ public_path() }}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <script>
-
-
         $("#produto").change(function() {
             $produto = $('#produto').val();
             $.ajax({
@@ -721,6 +708,20 @@
                 },
                 success: function (data) {
                     $('#n_embalagem').val(data);
+                }
+            });
+        });
+
+        $("#produto_nq").change(function() {
+            $produto = $('#produto_nq').val();
+            $.ajax({
+                type: 'get',
+                url: '/movimentos/entradaNEmbalagem',
+                data: {
+                    'produto': $produto,
+                },
+                success: function (data) {
+                    $('#n_embalagem_nq').val(data);
                 }
             });
         });
@@ -736,6 +737,21 @@
                 success: function (data) {
                     $('#prateleira').attr("disabled", false);
                     $('#prateleira').html(data);
+                }
+            });
+        });
+
+        $("#armario_nq").change(function() {
+            $armario = $('#armario_nq').val();
+            $.ajax({
+                type: 'get',
+                url: '/movimentos/entradaPrateleira',
+                data: {
+                    'armario': $armario,
+                },
+                success: function (data) {
+                    $('#prateleira_nq').attr("disabled", false);
+                    $('#prateleira_nq').html(data);
                 }
             });
         });

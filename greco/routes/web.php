@@ -66,6 +66,7 @@ Route::get('/movimentos/editar', function () {
 });
 
 Route::post('/movimentos/add/entrada_quimico', 'App\Http\Controllers\MovimentoController@addMovimentoEntradaQ');
+Route::post('/movimentos/add/entrada_naoquimico', 'App\Http\Controllers\MovimentoController@addMovimentoEntradaNQ');
 
 
 //Clientes
