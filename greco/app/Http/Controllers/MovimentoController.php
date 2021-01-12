@@ -35,7 +35,7 @@ class MovimentoController extends Controller
         //ADD NA BD
         $id = Entrada::latest('id')->first()->value('id');
         $id_inventario = request('produto'); //request('produto') está a receber o id
-        $id_ordem = Entrada::where('nomeProduto','LIKE',"%".$search."%")->max('id_ordem');
+        $id_ordem = Entrada::where('id_inventario',$id_inventario)->max('id_ordem')+1;
         
         $Entrada = new Entrada();
         $Entrada->id_inventario = $id_inventario;
@@ -63,7 +63,7 @@ class MovimentoController extends Controller
         $Entrada->obs = request('obvs');
         $Entrada->save();
         
-        return redirect('movimentos.entrada');
+        return redirect('movimentos/entrada');
     }
 
 
