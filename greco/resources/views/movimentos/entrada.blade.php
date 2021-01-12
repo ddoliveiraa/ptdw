@@ -712,21 +712,32 @@
     <script src="{{ public_path() }}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <script>
-        $(function() {
-            //Initialize Select2 Elements
-            // $('.select2').select2()
 
+        $("#produto").change(function() {
+            $p = $('#produto').val();
+            $.ajax({
+                type: 'get',
+                url: '/movimentos/entradaNEmbalagem',
+                data: {
+                    'produto': $p,
+                },
+                success: function (data) {
+                    $('#n_embalagem').val(data);
+                }
+            });
+        });
+
+
+        $(function() {
             //Initialize Select2 Elements
             $('.select2bs4').select2({
                 theme: 'bootstrap4'
             })
 
-            
             $('.date').datetimepicker({
                 format: 'L',
                 locale: "{{ __('lang.locale-date') }}"
             });
-
         })
 
     </script>

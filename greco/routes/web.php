@@ -47,6 +47,7 @@ Route::get(/* '/ficha/{id}/editar' */'/ficha/editar', function () {
 
 //Movimentos
 Route::get('/movimentos/entrada', 'App\Http\Controllers\MovimentoController@showEndrada');
+Route::get('/movimentos/entradaNEmbalagem','App\Http\Controllers\MovimentoController@getNEmbalagem');
 
 Route::get('/movimentos/saida', function () {
     return view('movimentos.saida');
