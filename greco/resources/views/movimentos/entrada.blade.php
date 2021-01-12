@@ -192,13 +192,10 @@
                                                 <div class="form-group">
                                                     <label for="prateleira">{{ __('lang.prataleira') }}</label>
                                                     <select id="prateleira" name="prateleira" class="form-control select2bs4"
-                                                        style="width: 100%;">
+                                                        style="width: 100%;" disabled>
                                                         <option value="" selected disabled>{{ __('lang.selecione a') }}
                                                             {{ __('lang.prataleira') }}
                                                         </option>
-                                                        @foreach ($prateleiras as $p)
-                                                            <option value="{{  $p->id }}">{{ $p->prateleira }}</option>
-                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
@@ -713,16 +710,32 @@
 
     <script>
 
+
         $("#produto").change(function() {
-            $p = $('#produto').val();
+            $produto = $('#produto').val();
             $.ajax({
                 type: 'get',
                 url: '/movimentos/entradaNEmbalagem',
                 data: {
-                    'produto': $p,
+                    'produto': $produto,
                 },
                 success: function (data) {
                     $('#n_embalagem').val(data);
+                }
+            });
+        });
+
+        $("#armario").change(function() {
+            $armario = $('#armario').val();
+            $.ajax({
+                type: 'get',
+                url: '/movimentos/entradaPrateleira',
+                data: {
+                    'armario': $armario,
+                },
+                success: function (data) {
+                    $('#prateleira').attr("disabled", false);
+                    $('#prateleira').html(data);
                 }
             });
         });

@@ -29,15 +29,29 @@ class MovimentoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function getNEmbalagem(Request $request){
-        
         if ($request->ajax()) {
-
             $id_inventario = $request->produto;
             $id_ordem = Entrada::where('id_inventario',$id_inventario)->max('id_ordem')+1;
             $output = $id_inventario . "-" . $id_ordem;
             return $output;
         }
+    }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getPrateleira(Request $request){
+        if ($request->ajax()) {
+            $id_armario = $request->armario;
+            $data = prateleira::where('id_armario',$id_armario)->get();
+            $output = '';
+            foreach ($data as $row) {
+                $output .= '<option value="' . $row->id . '">' . $row->prateleira . '</option>';
+            }
+            return $output;
+        }
     }
 
     /**
