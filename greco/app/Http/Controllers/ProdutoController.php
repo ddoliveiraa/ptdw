@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 use App\Models\Produto;
+use App\Models\Entrada;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\condicoes_armazenamento;
+use App\Models\sub_familia;
+use App\Models\pictograma;
 
 use App\Models\condicoes_armazenamento;
 use App\Models\sub_familia;
@@ -198,9 +203,11 @@ class ProdutoController extends Controller
      * @param  \App\Models\Produto  $produtos
      * @return \Illuminate\Http\Response
      */
-    public function show(Produto $produtos)
+    
+    public function show(Produto $produto)
     {
-        //
+        $entradas = Entrada::where('id_inventario', $produto->id)->get();
+        return view('ficha.show', compact('produto', 'entradas'));
     }
 
     /**

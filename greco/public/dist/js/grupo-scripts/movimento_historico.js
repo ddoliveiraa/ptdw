@@ -1,10 +1,13 @@
 var locale = $('#navbarDropdown').text().trim();
 var datatables_lang;
+var todo = "";
 if (locale == "PT") {
     datatables_lang = '//cdn.datatables.net/plug-ins/1.10.22/i18n/Portuguese.json';
+    todo = "Todos"
 }
 else {
     datatables_lang = '//cdn.datatables.net/plug-ins/1.10.22/i18n/English.json';
+    todo = "All"
 }
 $('input[type=checkbox]').on('change', function(e) {
     if ($('input[type=checkbox]:checked').length > 4) {
@@ -13,7 +16,7 @@ $('input[type=checkbox]').on('change', function(e) {
 });
 
 var entradas = $("#entradas").DataTable({
-    "dom": '<"search">frtip',
+    "dom": '<"search">frtip l',
     "info": true,
     "processing": true,
     "serverSide": true,
@@ -37,17 +40,12 @@ var entradas = $("#entradas").DataTable({
     },
     "order": [[5, 'desc']],
     "responsive": true,
-    "lengthChange": false,
+    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, todo]],
     "autoWidth": false,
-    /* "columnDefs": [{
-        "targets": [3, 6, 10, 11, 12],
+    "columnDefs": [{
+        "targets": [2, 7, 8, 10],
         "visible": false
-    },
-    {
-        "targets": [7, 8, 9],
-        "type": 'date-us'
-    }
-    ], */
+    }],
     "buttons": [{
         extend: 'csvHtml5',
         exportOptions: {
@@ -63,6 +61,7 @@ var entradas = $("#entradas").DataTable({
     ],
     "initComplete": function () {
         entradas.buttons().container().appendTo('#entradas_filter');
+        $('#entradas_length').appendTo('#entradas_filter');
         //filtragem por movimentos
         $.fn.dataTable.ext.search.push(
             function (settings, searchData, index, rowData, counter) {
@@ -79,19 +78,21 @@ var entradas = $("#entradas").DataTable({
         );
 
         //filtragem por familia
-        $.fn.dataTable.ext.search.push(
+/*         $.fn.dataTable.ext.search.push(
             function (settings, searchData, index, rowData, counter) {
                 var familia = $('#familia option:selected').val();
-                var familias = searchData[11]; // using the data from the 12th column
+                
+                var familias = rowData[9]; // using the data from the 12th column
 
                 if (familia == familias) {
-                    return familias;
+                    //entradas.column.search( familia ).draw();
+                    return familias; 
                 } else if (familia == "Familia") {
                     return true;
                 }
                 return false;
             }
-        );
+        ); */
         //filtragem por sub-familia
         $.fn.dataTable.ext.search.push(
             function (settings, searchData, index, rowData, counter) {
@@ -106,21 +107,6 @@ var entradas = $("#entradas").DataTable({
                 return false;
             }
         );
-
-        jQuery.extend(jQuery.fn.dataTableExt.oSort, {
-            "date-uk-pre": function (a) {
-                var ukDatea = a.split('/');
-                return (ukDatea[2] + ukDatea[1] + ukDatea[0]) * 1;
-            },
-
-            "date-uk-asc": function (a, b) {
-                return ((a < b) ? -1 : ((a > b) ? 1 : 0));
-            },
-
-            "date-uk-desc": function (a, b) {
-                return ((a < b) ? 1 : ((a > b) ? -1 : 0));
-            }
-        });
 
         //Date range picker
         $('#intervalo').daterangepicker({
@@ -140,9 +126,6 @@ var entradas = $("#entradas").DataTable({
             entradas.search('');
             entradas.draw();
         });
-        $('#movimento').change(function () {
-            entradas.draw();
-        });
 
         $("#pictogramas").click(function () {
             $("#modalSelecionarPictograma").modal("show");
@@ -151,6 +134,7 @@ var entradas = $("#entradas").DataTable({
         $('#familia').change(function () {
             var familia = $('#familia option:selected').val();
             console.log("familia selecionada: " + familia);
+            entradas.search( this.value ).draw();
             if (familia == "Não Químico") {
                 $('#sub-familia').show(1);
                 $("#pictogramas").hide(1);
@@ -192,7 +176,7 @@ var entradas = $("#entradas").DataTable({
 });
 
 var saidas = $("#saidas").DataTable({
-    "dom": '<"search">frtip',
+    "dom": '<"search">frtip l',
     "info": true,
     "processing": true,
     "serverSide": true,
@@ -213,8 +197,12 @@ var saidas = $("#saidas").DataTable({
     },
     "order": [[5, 'desc']],
     "responsive": true,
-    "lengthChange": false,
+    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, todo]],
     "autoWidth": false,
+    "columnDefs": [{
+        "targets": [6,7],
+        "visible": false
+    }],
     "buttons": [{
         extend: 'csvHtml5',
         exportOptions: {
@@ -230,6 +218,7 @@ var saidas = $("#saidas").DataTable({
     ],
     "initComplete": function () {
         saidas.buttons().container().appendTo('#saidas_filter');
+        $('#saidas_length').appendTo('#saidas_filter');
     }
 });
 

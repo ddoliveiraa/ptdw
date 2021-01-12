@@ -52,7 +52,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="produto">{{ __('lang.produto') }}</label>
-                                            <input type="text" class="form-control" id="produto" value="Cloreto de Sódio"
+                                            <input type="text" class="form-control" id="produto" value="{{ $saida->produto->designacao }}"
                                                         disabled>
                                             </select>
                                         </div>
@@ -64,7 +64,7 @@
                                         <div class="form-group">
                                             <div class="form-group">
                                                 <label for="n_embalagem">{{ __('lang.n-embalagem') }}</label>
-                                                <input type="text" class="form-control" id="n_embalagem" value="230-12"
+                                                <input type="text" class="form-control" id="n_embalagem" value="{{ $saida->id_produto }} - {{ $saida->id_ordem }}"
                                                     disabled>
                                             </div>
                                         </div>
@@ -75,7 +75,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="cliente">{{ __('lang.cliente') }}</label>
-                                            <input type="text" class="form-control" id="cliente" value="Departamento Biologia"
+                                            <input type="text" class="form-control" id="cliente" value="{{ $saida->get_cliente->designacao }}"
                                             disabled>
                                         </div>
                                     </div>
@@ -85,7 +85,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="solicitante">{{ __('lang.solicitante') }}</label>
-                                            <input type="text" class="form-control" id="solicitante" value="Ana"
+                                            <input type="text" class="form-control" id="solicitante" value="{{ $saida->get_solicitante->nome }}"
                                             disabled>
                                         </div>
                                     </div>
@@ -95,7 +95,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="operador">{{ __('lang.operador') }}</label>
-                                            <input type="text" class="form-control" id="operador" value="Carolina"
+                                            <input type="text" class="form-control" id="operador" value="{{ $saida->get_operador->nome }}"
                                             disabled>
                                         </div>
                                     </div>
@@ -120,7 +120,7 @@
 
                                 <div class="form-group">
                                     <label for="obvs">{{ __('lang.observacoes') }}</label>
-                                    <textarea id="obvs" class="form-control" rows="4" disabled>👀 Está a observar uma observação muito observavel, escrito por um observador de um observatório muito observente. 👀</textarea>
+                                    <textarea id="obvs" class="form-control" rows="4" disabled>{{ $saida->obs }}</textarea>
                                 </div>
                             </div>
 

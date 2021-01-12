@@ -117,7 +117,7 @@
                                                 <td>{{ $entrada->get_operador->nome }}</td>
                                                 <td>{{ $entrada->produto->get_fam->nome }}</td>
                                                 <td>{{ $entrada->produto->get_subfam->nome }}</td>
-                                                <td><a href="{{ public_path() }}/movimentos/show_saida"> Ver Mais &nbsp<i
+                                                <td><a href="{{ public_path() }}/movimentos/show_entrada/{entrada}"> Ver Mais &nbsp<i
                                                             class="fa fa-arrow-right"></i></a></td>
                                             </tr>
                                         @endforeach
@@ -137,7 +137,7 @@
                                                 <td>{{ $saida->get_operador->nome }}</td>
                                                 <td>{{ $saida->produto->get_fam->nome }}</td>
                                                 <td>{{ $entrada->produto->get_subfam->nome }}</td>
-                                                <td><a href="{{ public_path() }}/movimentos/show_saida"> Ver Mais &nbsp<i
+                                                <td><a href="{{ public_path() }}/movimentos/show_saida/{saida}"> Ver Mais &nbsp<i
                                                             class="fa fa-arrow-right"></i></a></td>
                                             </tr>
                                         @endforeach
