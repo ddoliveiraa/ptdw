@@ -223,7 +223,7 @@
                                                     <div class="input-group">
                                                         <input type="number" class="form-control" id="preco" name="preco"
                                                             placeholder="{{ __('lang.insira o') }} {{ __('lang.preco') }}"
-                                                            step="0.05" min="0.05">
+                                                            step="0.01" min="0.01">
                                                         <div class="input-group-append">
                                                             <span class="input-group-text"><i
                                                                     class="fa fa-euro-sign"></i></span>
@@ -458,7 +458,7 @@
                                                 <div class="form-group">
                                                     <label
                                                         for="cap_embalagem_nq">{{ __('lang.capacidade da embalagem') }}</label>
-                                                    <input type="number" class="form-control" id="cap_embalagem_nq" name="cap_embalagem_nq"
+                                                    <input type="number" min="1" class="form-control" id="cap_embalagem_nq" name="cap_embalagem_nq"
                                                         placeholder="{{ __('lang.insira a') }} {{ __('lang.capacidade da embalagem') }}">
                                                 </div>
                                             </div>
@@ -544,7 +544,7 @@
                                                 <div class="form-group">
                                                     <label for="preco_nq">{{ __('lang.preco') }}</label>
                                                     <div class="input-group">
-                                                        <input type="number" class="form-control" id="preco_nq" name="preco_nq"
+                                                        <input type="number" step="0.01" min="0.01" class="form-control" id="preco_nq" name="preco_nq"
                                                             placeholder="{{ __('lang.insira o') }} {{ __('lang.preco') }}"
                                                             step="0.05">
                                                         <div class="input-group-append">
@@ -575,7 +575,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="peso_nq">{{ __('lang.peso bruto') }}</label>
-                                                    <input type="number" class="form-control" id="peso_nq" name="peso_nq"
+                                                    <input type="number" min="1" class="form-control" id="peso_nq" name="peso_nq"
                                                         placeholder="{{ __('lang.insira o') }} {{ __('lang.peso bruto') }}">
                                                 </div>
                                             </div>
@@ -589,7 +589,7 @@
                                                         data-target-input="nearest">
                                                         <input type="text" class="form-control datetimepicker-input"
                                                             id="data_entrada_nq_input" name="data_entrada_nq_input"
-                                                            data-target="#data_entrada_nq" placeholder="DD/MM/YYYY" />
+                                                            data-target="#data_entrada_nq" placeholder="DD/MM/YYYY">
                                                         <div class="input-group-append" data-target="#data_entrada_nq"
                                                             data-toggle="datetimepicker">
                                                             <div class="input-group-text"><i class="fa fa-calendar"></i>
