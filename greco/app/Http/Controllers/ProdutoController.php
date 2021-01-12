@@ -8,10 +8,6 @@ use Illuminate\Support\Facades\DB;
 use App\Models\condicoes_armazenamento;
 use App\Models\sub_familia;
 use App\Models\pictograma;
-
-use App\Models\condicoes_armazenamento;
-use App\Models\sub_familia;
-use App\Models\pictograma;
 use App\Models\recomendacoe;
 use App\Models\advertencia;
 

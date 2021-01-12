@@ -34,10 +34,12 @@ class MovimentoController extends Controller
 
         //ADD NA BD
         $id = Entrada::latest('id')->first()->value('id');
-
+        $id_inventario = request('produto'); //request('produto') está a receber o id
+        $id_ordem = Entrada::where('nomeProduto','LIKE',"%".$search."%")->max('id_ordem');
+        
         $Entrada = new Entrada();
-        $Entrada->id_inventario = request('produto'); //request('produto') está a receber o id
-        $Entrada->id_ordem = $id; //Workaroud
+        $Entrada->id_inventario = $id_inventario;
+        $Entrada->id_ordem = $id_ordem;
         $Entrada->sala = 1;
         $Entrada->armario = request('armario');
         $Entrada->prateleira = request('prateleira');
@@ -56,7 +58,7 @@ class MovimentoController extends Controller
         $Entrada->data_abertura = request('data_abertura_input');
         $Entrada->data_validade = request('data_validade_input');
         $Entrada->data_termino = request('data_termino_input');
-        $Entrada->operador = $id; //Workaroud
+        $Entrada->operador = $id; //Workaroud - Precisa de autenticação
         $Entrada->unidade = request('unidades');
         $Entrada->obs = request('obvs');
         $Entrada->save();
