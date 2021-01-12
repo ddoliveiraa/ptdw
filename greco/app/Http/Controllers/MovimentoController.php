@@ -7,12 +7,88 @@ use App\Models\Entrada;
 use App\Models\pictograma;
 use App\Models\Saida;
 use App\Models\Produto;
+use App\Models\unidade;
 use App\Models\sub_familia;
+use App\Models\tipo_embalagem;
+use App\Models\Fornecedor;
+use App\Models\marcas;
+use App\Models\armario;
+use App\Models\prateleira;
+use App\Models\taxa_iva;
+use App\Models\estados_fisicos;
+use App\Models\textura_viscosidade;
+use App\Models\cores;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class MovimentoController extends Controller
 {
+        /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function addMovimentoEntradaQ(Request $request){
+
+        //VALIDAÇÂO
+
+        //ADD NA BD
+        $id = Entrada::latest('id')->first()->value('id');
+
+        $Entrada = new Entrada();
+        $Entrada->id_inventario = request('produto'); //request('produto') está a receber o id
+        $Entrada->id_ordem = $id; //Workaroud
+        $Entrada->sala = 1;
+        $Entrada->armario = request('armario');
+        $Entrada->prateleira = request('prateleira');
+        $Entrada->fornecedor = request('fornecedor');
+        $Entrada->marca = request('marca');
+        $Entrada->referencia = request('referencia');
+        $Entrada->preco = request('preco');
+        $Entrada->iva = request('iva');
+        $Entrada->capacidade = request('cap_embalagem');
+        $Entrada->tipo_embalagem = request('tipo_embalagem');
+        $Entrada->estado_fisico = request('estado');
+        $Entrada->cor = request('cor');
+        $Entrada->textura_viscosidade = request('textura');
+        $Entrada->peso_bruto = request('peso');
+        $Entrada->data_entrada = request('data_entrada_input');
+        $Entrada->data_abertura = request('data_abertura_input');
+        $Entrada->data_validade = request('data_validade_input');
+        $Entrada->data_termino = request('data_termino_input');
+        $Entrada->operador = $id; //Workaroud
+        $Entrada->unidade = request('unidades');
+        $Entrada->obs = request('obvs');
+        $Entrada->save();
+        
+        return redirect('movimentos.entrada');
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showEndrada()
+    {
+        $produtos = Produto::all();
+        $unidades = unidade::all();
+        $tipoembalagem = tipo_embalagem::all();
+        $fornecedores = Fornecedor::all();
+        $marcas = marcas::all();
+        $armarios = armario::all();
+        $prateleiras = prateleira::all();
+        $ivas = taxa_iva::all();
+        $estados = estados_fisicos::all();
+        $texturas_viscosidades = textura_viscosidade::all();
+        $cores = cores::all();
+
+        return view('movimentos.entrada', compact('produtos', 'unidades', 'tipoembalagem',
+                    'fornecedores', 'marcas', 'armarios', 'prateleiras', 'ivas',
+                    'estados', 'texturas_viscosidades', 'cores'));
+    }
+
     /**
      * Display a listing of the resource.
      *

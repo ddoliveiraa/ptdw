@@ -220,7 +220,7 @@
                                         <div class="row justify-content-end">
                                             <div class="col-md-3">
                                                 <button type="submit"
-                                                    class="btn btn-block btn-secondary">{{ __('lang.guardar') }}</button>
+                                                    id="guardar" class="btn btn-block btn-secondary">{{ __('lang.guardar') }}</button>
                                             </div>
                                         </div>
                                     </div>
@@ -250,7 +250,8 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form>
+                    <form method="POST" action="/produtos_q">
+                         @csrf <!-- Cross Site Request Forgery -->
                         <div class="modal-body">
                             <div class="form-row">
                                 <div class="col-md-12">
@@ -259,7 +260,7 @@
                                             <ul>
                                                 @foreach ($pictogramas as $p)
                                                     <li>
-                                                        <input type="checkbox" id="cb{{ $p->id }}" />
+                                                        <input type="checkbox" name="picto" id="cb{{ $p->id }}" value="{{ $p->nome }}" />
                                                         <label for="cb{{ $p->id }}"><img src="{{ $p->imagem }}" /><p class="text-center">{{ $p->nome }}</p></label>
                                                     </li>
                                                 @endforeach
@@ -272,22 +273,12 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>{{ __('lang.recomendacoes de prudencia') }}</label>
-                                        <select class="select2" multiple="multiple"
+                                        <select id="recomendacoes" class="select2" multiple="multiple"
                                             data-placeholder="{{ __('lang.recomendacoes de prudencia') }}"
                                             id="produto_cod_recomendacoes_prudencia" tabindex="9" style="width: 100%;">
-                                            <option>H200</option>
-                                            <option>H201</option>
-                                            <option>H203</option>
-                                            <option>H204</option>
-                                            <option>H205</option>
-                                            <option>H206</option>
-                                            <option>H207</option>
-                                            <option>H208</option>
-                                            <option>H220</option>
-                                            <option>H221</option>
-                                            <option>H290</option>
-                                            <option>H314</option>
-                                            <option>H335</option>
+                                            @foreach ($recomendacoes as $r)
+                                                    <option value="{{ $r->id }}">{{ $r->texto }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -296,28 +287,13 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>{{ __('lang.advertencias de perigo') }}</label>
-                                        <select class="select2" multiple="multiple"
+                                        <select id="advertencias" class="select2" multiple="multiple"
                                         data-placeholder="{{ __('lang.advertencias de perigo') }}" style="width: 100%;"
                                         id="produto_cod_advertencias_perigo"
                                         tabindex="10" required>
-                                            <option>P101</option>
-                                            <option>P102</option>
-                                            <option>P103</option>
-                                            <option>P201</option>
-                                            <option>P202</option>
-                                            <option>P210</option>
-                                            <option>P211</option>
-                                            <option>P220</option>
-                                            <option>H220</option>
-                                            <option>H221</option>
-                                            <option>P260</option>
-                                            <option>P280</option>
-                                            <option>P303</option>
-                                            <option>+361</option>
-                                            <option>+353</option>
-                                            <option>P305</option>
-                                            <option>+351</option>
-                                            <option>+338</option>
+                                            @foreach ($advertencias as $a)
+                                                    <option value="{{ $a->id }}">{{ $a->texto }}</option>
+                                            @endforeach
                                         </select>
                                       </div>
                                 </div>
@@ -325,9 +301,9 @@
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default col-md-3" data-dismiss="modal"
-                                tabindex="13">{{ __('lang.cancelar') }}</button>
-                            <button type="button" class="btn btn-secondary col-md-3" data-dismiss="modal"
-                                tabindex="14">{{ __('lang.selecionar') }}</button>
+                            id="cancelar" tabindex="13">{{ __('lang.cancelar') }}</button>
+                            <button type="button" class="btn btn-secondary col-md-3"
+                            id="selecionar" tabindex="14">{{ __('lang.selecionar') }}</button>
                         </div>
                     </form>
                 </div>
@@ -346,6 +322,37 @@
 
     <script>
         $(function() {
+
+    
+            $('#guardar').on('click', function() {
+
+                $.ajax({
+                    url: '/produtos_q',
+                    type: "Get",
+                    dataType: 'json',//this will expect a json response
+                    data:{pictograma:$('#produto_pictogramas').val()}, 
+                    success: function(response){ 
+                            $('#produto_pictogramas').val();
+                        }
+                });
+            });
+
+            $("#cancelar").bind("click", function () {
+                $('#modalSelecionarPictograma').find('form').trigger('reset');
+                $("#recomendacoes").val(null).trigger('change');
+                $("#advertencias").val(null).trigger('change');
+            });
+
+            $(document).on('click', '#selecionar', function(){
+                let pictogramas = [];
+                $.each($("input[name='picto']:checked"), function(){
+                    pictogramas.push($(this).val());
+                });
+
+                $('#produto_pictogramas').val(pictogramas);
+
+            });
+
             //Initialize Select2 Elements
             $('.select2').select2()
 

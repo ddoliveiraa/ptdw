@@ -44,12 +44,12 @@ Route::get(/* '/ficha/{id}/editar' */'/ficha/editar', function () {
 });
 
 //Movimentos
-Route::get('/movimentos/entrada', function () {
-    return view('movimentos.entrada');
-});
+Route::get('/movimentos/entrada', 'App\Http\Controllers\MovimentoController@showEndrada');
+
 Route::get('/movimentos/saida', function () {
     return view('movimentos.saida');
 });
+
 Route::get('/movimentos/historico', 'App\Http\Controllers\MovimentoController@index');
 Route::get('/movimentos/historico/getEntradas/','App\Http\Controllers\MovimentoController@getEntradas');
 Route::get('/movimentos/historico/getSaidas/','App\Http\Controllers\MovimentoController@getSaidas');
@@ -65,6 +65,8 @@ Route::get('/movimentos/show_saida', function () {
 Route::get('/movimentos/editar', function () {
     return view('movimentos.editar');
 });
+
+Route::post('/movimentos/add/entrada_quimico', 'App\Http\Controllers\MovimentoController@addMovimentoEntradaQ');
 
 
 //Clientes

@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 
+use App\Models\condicoes_armazenamento;
+use App\Models\sub_familia;
+use App\Models\pictograma;
+use App\Models\recomendacoe;
+use App\Models\advertencia;
+
 class ProdutoController extends Controller
 {
     /**
@@ -15,7 +21,7 @@ class ProdutoController extends Controller
 
         //TESTES
         //dump(request()->all());
-
+        
         //VALIDAÇÂO
         request()->validate([
             'produto_designacao' => 'required',
@@ -36,6 +42,7 @@ class ProdutoController extends Controller
         $Produto->condicoes_armazenamento = request('produto_armario');
         $Produto->ventilado = request('customSwitch1');
         $Produto->save();
+        //fazer o fill out da association table - many to many
         
         return redirect('produtos');
     }
@@ -149,14 +156,18 @@ class ProdutoController extends Controller
      */
     public function add()
     {
-        $condicoes = \DB::table('condicoes_armazenamento')->get();
-        $subfamilias = \DB::table('sub_familia')->get();
-        $pictogramas = \DB::table('pictogramas')->get();
+        $condicoes = condicoes_armazenamento::all();
+        $subfamilias = sub_familia::all();
+        $pictogramas = pictograma::all();
+        $recomendacoes = recomendacoe::all();
+        $advertencias = advertencia::all();
 
         return view('produtos.add', [
             'condicoes' => $condicoes,
             'subfamilias' => $subfamilias,
-            'pictogramas' => $pictogramas
+            'pictogramas' => $pictogramas,
+            'recomendacoes' => $recomendacoes,
+            'advertencias' => $advertencias
             ]);
     }
 
