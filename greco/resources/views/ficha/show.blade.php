@@ -51,6 +51,7 @@
                                             <input type="text" class="form-control" id="produto_designacao" tabindex="1"
                                                 readonly value="{{ $produto->designacao }}">
                                         </div>
+                                        @if($produto->get_fam->nome == "Químico")
                                         <div class="form-group">
                                             <label for="produto_sinonimo"
                                                 class="control-label">{{ __('lang.sinonimo') }}</label>
@@ -81,6 +82,7 @@
                                                 <option value="{{ $produto->condicoes_armazenamento }}">{{ $produto->get_condicao->condicao }}</option>
                                             </select>
                                         </div>
+                                        
                                         @if ($produto->ventilado == true)
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -106,14 +108,22 @@
                                             </div>
                                         </div>
                                                 @endif
+                                                @else
+                                        <div class="form-group">
+                                            <label for="familia"
+                                                class="control-label">{{ __('lang.familia') }}</label>
+                                            <input type="text" class="form-control" id="familia" tabindex="2"
+                                                readonly value="{{ $produto->get_subfam->nome }}">
+                                        </div>
+                                        @endif
                                     </div>
                                     <div class="col-md-4">
+                                    @if($produto->get_fam->nome == "Químico")
                                         <div class="pictogramas">
                                         @foreach ($produto->pictogramas as $pictograma)
                                             <img src="{{ public_path() }}{{ $pictograma->imagem }}" alt="{{ $pictograma->nome }}">
                                          @endforeach
                                         </div>
-                                        
                                         <div class="stock-box">
                                             <h5 class="bg-dark">{{ __('lang.n de inventario') }}</h5>
                                             <h4>{{ $produto->id }}</h4>
@@ -126,6 +136,15 @@
                                             <h5 class="bg-dark">{{ __('lang.stock minimo') }}</h5>
                                             <h4>{{ $produto->stock_min }}</h4>
                                         </div>
+                                        @else
+                                        <div class="pictogramas">
+                                         <img src="{{ public_path() }}{{ $produto->foto }}" alt="{{ $produto->designacao }}">
+                                         </div>
+                                         <div class="stock-box">
+                                            <h5 class="bg-dark">{{ __('lang.stock minimo') }}</h5>
+                                            <h4>{{ $produto->stock_min }}</h4>
+                                        </div>
+                                         @endif
                                         <div class="stock-button">
                                             <a href="{{ public_path() }}/ficha/editar" class="btn btn-secondary btn-block"
                                                 role="button" tabindex="8">{{ __('lang.editar') }}</a>
@@ -169,6 +188,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
+                            @if($produto->get_fam->nome == "Químico")
                                 <div class="col-md-6">
                                     <div class="avisos">
                                    
@@ -186,6 +206,7 @@
                                         @endforeach
                                     </div>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>
