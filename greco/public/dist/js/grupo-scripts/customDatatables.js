@@ -4,11 +4,14 @@ var datatables_lang;
 var Ttodos;
 var Tquimico;
 var TnaoQuimico;
+var todo = "";
 if (locale == "PT") {
     datatables_lang = '//cdn.datatables.net/plug-ins/1.10.22/i18n/Portuguese.json';
     Ttodos = "Todos";
     Tquimico = "Químicos";
     TnaoQuimico = "Não Químicos";
+    todo = "Todos"
+    todo = "All"
 }
 else {
     datatables_lang = '//cdn.datatables.net/plug-ins/1.10.22/i18n/English.json';
@@ -19,7 +22,7 @@ else {
 
 
 var produtos = $("#tabelaprodutos").DataTable({
-    "dom": '<"toolbar">frtip',
+    "dom": '<"toolbar">frtip l',
     "info": true,
     "processing": true,
     "serverSide": true,
@@ -37,7 +40,7 @@ var produtos = $("#tabelaprodutos").DataTable({
         "url": datatables_lang,
     },
     "responsive": true,
-    "lengthChange": false,
+    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, todo]],
     "autoWidth": false,
     "buttons": [{
         extend: 'csvHtml5',
@@ -60,6 +63,7 @@ var produtos = $("#tabelaprodutos").DataTable({
         $('#tipo').append(new Option(Ttodos, "Todos"));
         $('#tipo').append(new Option(Tquimico, "Químico"));
         $('#tipo').append(new Option(TnaoQuimico, "Não Químico"));
+        $('#tabelaprodutos_length').appendTo('#tabelaprodutos_filter');
 
 
         $.fn.dataTable.ext.search.push(
@@ -80,10 +84,9 @@ var produtos = $("#tabelaprodutos").DataTable({
         });
     }
 });
-fornecedores
 // Tabelas com pesquisa e botoes de exportar (Clientes.index, Fornecedores.index)
 var table = $("#complex").DataTable({
-    "dom": '<"toolbar">frtip',
+    "dom": '<"toolbar">frtip l',
     "info": true,
     "language": {
         "url": datatables_lang,
@@ -110,7 +113,7 @@ var table = $("#complex").DataTable({
 });
 
 var fornecedores = $("#fornecedores").DataTable({
-    "dom": '<"toolbar">frtip',
+    "dom": '<"toolbar">frtip l',
     "info": true,
     "processing": true,
     "serverSide": true,
@@ -129,7 +132,8 @@ var fornecedores = $("#fornecedores").DataTable({
         "url": datatables_lang,
     },
     "responsive": true,
-    "lengthChange": false,
+    "lengthChange": true,
+    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, todo]],
     "autoWidth": false,
     "buttons": [{
         extend: 'csvHtml5',
@@ -146,6 +150,7 @@ var fornecedores = $("#fornecedores").DataTable({
     ],
     "initComplete": function () {
         fornecedores.buttons().container().appendTo('div.toolbar');
+        $('#fornecedores_length').appendTo('#fornecedores_filter');
     }
 });
 

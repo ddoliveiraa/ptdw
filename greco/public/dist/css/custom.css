@@ -165,7 +165,8 @@
     margin-left: 0.4rem;
 }
 
-#entradas_filter .dt-buttons, #entradas_filter .dataTables_length, #saidas_filter .dt-buttons, #saidas_filter .dataTables_length{
+#entradas_filter .dt-buttons, 
+#saidas_filter .dt-buttons, .dataTables_length {
     float: right;
     margin-left: 0.6rem;
 }
