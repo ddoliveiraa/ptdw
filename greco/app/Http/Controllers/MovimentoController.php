@@ -196,8 +196,8 @@ class MovimentoController extends Controller
         $searchValue = $search_arr['value']; // Search value
 
         // Total records
-        $totalRecords = Movimento::select('count(*) as allcount')->count();
-        $totalRecordswithFilter = Movimento::select('count(*) as allcount')
+        $totalRecords = DB::table('entradaview')->select('count(*) as allcount')->count();
+        $totalRecordswithFilter = DB::table('entradaview')->select('count(*) as allcount')
             ->where('designacao', 'like', '%' . $searchValue . '%')
             ->orWhere('entradaview.id_produto', 'like', '%' . $searchValue . '%')
             ->orWhere('entradaview.armario', 'like', '%' . $searchValue . '%')
@@ -207,8 +207,8 @@ class MovimentoController extends Controller
             ->orWhere('entradaview.familia', 'like', '%' . $searchValue . '%')
             ->orWhere('entradaview.subfamilia', 'like', '%' . $searchValue . '%')->count();
 
-        // Fetch records ISTO NÃO FUNCIONA por causa das relações complexas
-        $records = Movimento::orderBy($columnName, $columnSortOrder)
+        // Fetch records
+        $records = DB::table('entradaview')->orderBy($columnName, $columnSortOrder)
             ->where('entradaview.designacao', 'like', '%' . $searchValue . '%')
             ->orWhere('entradaview.id_produto', 'like', '%' . $searchValue . '%')
             ->orWhere('entradaview.armario', 'like', '%' . $searchValue . '%')

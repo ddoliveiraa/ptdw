@@ -30,7 +30,7 @@ Route::get('/welcome/{locale}', 'App\Http\Controllers\LocalizationController@ind
 
 //Produtos
 Route::get('/produtos', 'App\Http\Controllers\ProdutoController@index');
-Route::get('/produtos/getProdutos/','App\Http\Controllers\ProdutoController@getProdutos')->name('produtos.getProdutos');
+Route::get('/produtos/getProdutos/','App\Http\Controllers\ProdutoController@getProdutos');
 Route::get('/produtos/add', 'App\Http\Controllers\ProdutoController@add');
 Route::get('/ficha/{produto}', 'App\Http\Controllers\ProdutoController@show');
 
@@ -107,9 +107,8 @@ Route::get('/operadores/editar', function () {
 });
 
 //Fornecedores
-Route::get('/fornecedores', function () {
-    return view('fornecedores.index');
-});
+Route::get('/fornecedores','App\Http\Controllers\FornecedorController@index');
+Route::get('/fornecedores/getFornecedores/','App\Http\Controllers\FornecedorController@getFornecedores');
 Route::get('/fornecedores/add', function () {
     return view('fornecedores.add');
 });

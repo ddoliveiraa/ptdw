@@ -80,7 +80,7 @@ var produtos = $("#tabelaprodutos").DataTable({
         });
     }
 });
-
+fornecedores
 // Tabelas com pesquisa e botoes de exportar (Clientes.index, Fornecedores.index)
 var table = $("#complex").DataTable({
     "dom": '<"toolbar">frtip',
@@ -106,6 +106,46 @@ var table = $("#complex").DataTable({
     ],
     "initComplete": function () {
         table.buttons().container().appendTo('div.toolbar');
+    }
+});
+
+var fornecedores = $("#fornecedores").DataTable({
+    "dom": '<"toolbar">frtip',
+    "info": true,
+    "processing": true,
+    "serverSide": true,
+    "ajax": "/fornecedores/getFornecedores/",
+    "columns": [
+        { data: 'designacao' },
+        { data: 'morada' },
+        { data: 'localidade' },
+        { data: 'codigopostal' },
+        { data: 'telefone' },
+        { data: 'email' },
+        { data: 'NIF' },
+        { data: 'id' },
+    ],
+    "language": {
+        "url": datatables_lang,
+    },
+    "responsive": true,
+    "lengthChange": false,
+    "autoWidth": false,
+    "buttons": [{
+        extend: 'csvHtml5',
+        exportOptions: {
+            columns: ':visible:not(:last-child)'
+        }
+    },
+    {
+        extend: 'print',
+        exportOptions: {
+            columns: ':visible:not(:last-child)'
+        }
+    },
+    ],
+    "initComplete": function () {
+        fornecedores.buttons().container().appendTo('div.toolbar');
     }
 });
 

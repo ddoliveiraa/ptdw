@@ -53,7 +53,7 @@
                         <!-- /.card-header -->
                         <div class="card-body">
 
-                            <table id="complex" class="table table-bordered table-striped">
+                            <table id="fornecedores" class="table table-bordered table-striped">
                                 <thead class="bg-dark">
                                     <tr>
                                         <th>{{ __('lang.designacao') }}</th>
@@ -61,11 +61,12 @@
                                         <th>{{ __('lang.localidade') }}</th>
                                         <th>{{ __('lang.codigo postal') }}</th>
                                         <th>{{ __('lang.telefone') }}</th>
+                                        <th>{{ __('lang.email') }}</th>
                                         <th>{{ __('lang.nif') }}</th>
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody>
+{{--                                 <tbody>
                                     <tr>
                                         <td>Bruno Ferreira</td>
                                         <td>Travessa Barreiro do Meio Nº7</td>
@@ -148,7 +149,7 @@
                                         <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
                                     </tr>
 
-                                </tbody>
+                                </tbody> --}}
                             </table>
                         </div>
                         <!-- /.card-body -->
