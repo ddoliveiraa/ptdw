@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Entrada;
+use App\Models\Saida;
+use App\Observers\EntradaObserver;
+use App\Observers\SaidaObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Entrada::observe(EntradaObserver::class);
+        Saida::observe(SaidaObserver::class);
     }
 }
