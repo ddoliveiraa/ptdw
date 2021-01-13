@@ -117,7 +117,7 @@ var fornecedores = $("#fornecedores").DataTable({
     "info": true,
     "processing": true,
     "serverSide": true,
-    "ajax": "/~ptdw-2020-gr3/fornecedores/getFornecedores/",
+    "ajax": "/fornecedores/getFornecedores/",
     "columns": [
         { data: 'designacao' },
         { data: 'morada' },
