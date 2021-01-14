@@ -20,9 +20,6 @@ class ProdutoController extends Controller
      */
     public function addProdutoQ(Request $request){
 
-        //TESTES
-        //dump(request()->all());
-        
         //VALIDAÇÂO
         request()->validate([
             'produto_designacao' => 'required',
@@ -42,9 +39,35 @@ class ProdutoController extends Controller
         $Produto->stock_min = request('produto_stock_minimo');
         $Produto->condicoes_armazenamento = request('produto_armario');
         $Produto->ventilado = request('customSwitch1');
-        $Produto->save();
-        //fazer o fill out da association table - many to many
         
+        $Produto->save();
+
+        $ids_pictogramas = request('ids_pictogramas'); // 3, 5, 7
+        $ids_pictogramas_array = explode(',',$ids_pictogramas); //array
+        $ids_recomendacoes = request('ids_recomendacoes');
+        $ids_recomendacoes_array = explode(',',$ids_recomendacoes); //array
+        $ids_advertencias = request('ids_recomendacoes');
+        $ids_advertencias_array = explode(',',$ids_advertencias); //array
+
+        //attachments pictogramas
+        if($ids_pictogramas_array!= null){
+            foreach ($ids_pictogramas_array as $pid){    
+                $Produto->pictogramas()->attach($pid);
+            }
+        }
+        //attachments recomendações
+        if($ids_recomendacoes_array!= null){
+            foreach ($ids_recomendacoes_array as $rid){    
+                $Produto->recomendacoes()->attach($rid);
+            }
+        }
+        //attachments advertencias
+        if($ids_advertencias_array!= null){
+            foreach ($ids_advertencias_array as $aid){    
+                $Produto->advertencias()->attach($aid);
+            }
+        }
+
         return redirect('produtos');
     }
 

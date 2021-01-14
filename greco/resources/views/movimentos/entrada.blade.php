@@ -313,7 +313,7 @@
                                                     <div class="input-group date" id="data_abertura" name="data_abertura"
                                                         data-target-input="nearest">
                                                         <input type="text" class="form-control datetimepicker-input"
-                                                            id="data_abertura_input" name="data_abertura_input"
+                                                            id="data_abertura_input" name="data_abertura_input" disabled
                                                             data-target="#data_abertura" placeholder="DD/MM/YYYY" />
                                                         <div class="input-group-append" data-target="#data_abertura"
                                                             data-toggle="datetimepicker">
@@ -331,7 +331,7 @@
                                                     <label for="produto">{{ __('lang.data de validade') }}</label>
                                                     <div class="input-group date" id="data_validade" name="data_validade"
                                                         data-target-input="nearest">
-                                                        <input type="text" class="form-control datetimepicker-input"
+                                                        <input type="text" class="form-control datetimepicker-input" disabled
                                                             id="data_validade_input" name="data_validade_input"
                                                             data-target="#data_validade" placeholder="DD/MM/YYYY" />
                                                         <div class="input-group-append" data-target="#data_validade"
@@ -348,7 +348,7 @@
                                                     <label for="produto">{{ __('lang.data de termino') }}</label>
                                                     <div class="input-group date" id="data_termino" name="data_termino"
                                                         data-target-input="nearest">
-                                                        <input type="text" class="form-control datetimepicker-input"
+                                                        <input type="text" class="form-control datetimepicker-input" disabled
                                                             id="data_termino_input" name="data_termino_input"
                                                             data-target="#data_termino" placeholder="DD/MM/YYYY" />
                                                         <div class="input-group-append" data-target="#data_termino"
@@ -604,7 +604,7 @@
                                                     <label for="data_abertura_nq">{{ __('lang.data de abertura') }}</label>
                                                     <div class="input-group date" id="data_abertura_nq" name="data_abertura_nq"
                                                         data-target-input="nearest">
-                                                        <input type="text" class="form-control datetimepicker-input"
+                                                        <input type="text" class="form-control datetimepicker-input" disabled
                                                             id="data_abertura_nq_input" name="data_abertura_nq_input"
                                                             data-target="#data_abertura_nq" placeholder="DD/MM/YYYY" />
                                                         <div class="input-group-append" data-target="#data_abertura_nq"
@@ -623,7 +623,7 @@
                                                     <label for="data_validade_nq">{{ __('lang.data de validade') }}</label>
                                                     <div class="input-group date" id="data_validade_nq" name="data_validade_nq"
                                                         data-target-input="nearest">
-                                                        <input type="text" class="form-control datetimepicker-input"
+                                                        <input type="text" class="form-control datetimepicker-input" disabled
                                                             id="data_validade_nq_input" name="data_validade_nq_input"
                                                             data-target="#data_validade_nq" placeholder="DD/MM/YYYY" />
                                                         <div class="input-group-append" data-target="#data_validade_nq"
@@ -640,7 +640,7 @@
                                                     <label for="data_termino_nq">{{ __('lang.data de termino') }}</label>
                                                     <div class="input-group date" id="data_termino_nq" name="data_termino_nq"
                                                         data-target-input="nearest">
-                                                        <input type="text" class="form-control datetimepicker-input"
+                                                        <input type="text" class="form-control datetimepicker-input" disabled
                                                             id="data_termino_nq_input" name="data_termino_nq_input"
                                                             data-target="#data_termino_nq" placeholder="DD/MM/YYYY" />
                                                         <div class="input-group-append" data-target="#data_termino_nq"
@@ -698,6 +698,57 @@
     <script src="{{ public_path() }}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <script>
+
+        //validação de datas
+        function checkDates(){
+            let d1 = $("#data_entrada_input").val().split("/");
+            let d1num = d1[2]+d1[1]+d1[0];
+            let d2 = $("#data_abertura_input").val().split("/");
+            let d2num = d2[2]+d2[1]+d2[0];
+            let d3 = $("#data_validade_input").val().split("/");
+            let d3num = d3[2]+d3[1]+d3[0];
+            let d4 = $("#data_termino_input").val().split("/");
+            let d4num = d4[2]+d4[1]+d4[0];
+
+            if(d1num > d2num){
+                $("#data_abertura_input").addClass("border border-danger");
+            }else{
+                $("#data_abertura_input").removeClass("border border-danger");
+            }
+
+            if(d1num > d3num){
+                $("#data_validade_input").addClass("border border-danger");
+            }else{
+                $("#data_validade_input").removeClass("border border-danger");
+            }
+
+            if(d1num > d4num || d4num < d2num){
+                $("#data_termino_input").addClass("border border-danger");
+            }else{
+                $("#data_termino_input").removeClass("border border-danger");
+            }
+
+        }
+
+        $("#data_entrada").on("input", function() {
+            $('#data_abertura_input').attr("disabled", false);
+            $('#data_validade_input').attr("disabled", false);
+            $('#data_termino_input').attr("disabled", false);
+            checkDates();
+        });
+
+        $("#data_abertura").on("input", function() {
+            checkDates();
+        });
+
+        $("#data_validade").on("input", function() {
+            checkDates();
+        });
+        $("#data_termino").on("input", function() {
+            checkDates();
+        });
+
+
         $("#produto").change(function() {
             $produto = $('#produto').val();
             $.ajax({

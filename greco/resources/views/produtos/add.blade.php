@@ -158,6 +158,9 @@
                                     <div class="card-footer">
                                         <div class="row justify-content-end">
                                             <div class="col-md-3">
+                                                <input id="ids_pictogramas" name="ids_pictogramas" type="hidden">
+                                                <input id="ids_recomendacoes" name="ids_recomendacoes" type="hidden">
+                                                <input id="ids_advertencias" name="ids_advertencias" type="hidden">
                                                 <button type="submit"
                                                     class="btn btn-block btn-secondary">{{ __('lang.guardar') }}</button>
                                             </div>
@@ -352,12 +355,19 @@
 
             $(document).on('click', '#selecionar', function(){
                 let pictogramas = [];
+                let ids_pictogramas = [];
                 $.each($("input[name='picto']:checked"), function(){
-                    pictogramas.push($(this).val());
+                    pictogramas.push(" "+$(this).val().split(":",1));
+                    ids_pictogramas.push(this.getAttribute('id').match(/\d+/g));
                 });
 
+                //pictogramas
                 $('#produto_pictogramas').val(pictogramas);
+                $('#ids_pictogramas').val(ids_pictogramas);
 
+                //recomendacoes e advertencias
+                $('#ids_recomendacoes').val($('#recomendacoes').val());
+                $('#ids_advertencias').val($('#advertencias').val());
             });
 
             //Initialize Select2 Elements
