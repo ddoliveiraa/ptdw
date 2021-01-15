@@ -744,10 +744,59 @@
         $("#data_validade").on("input", function() {
             checkDates();
         });
+        
         $("#data_termino").on("input", function() {
             checkDates();
         });
 
+        function checkDatesNQ(){
+            let d1 = $("#data_entrada_nq_input").val().split("/");
+            let d1num = d1[2]+d1[1]+d1[0];
+            let d2 = $("#data_abertura_nq_input").val().split("/");
+            let d2num = d2[2]+d2[1]+d2[0];
+            let d3 = $("#data_validade_nq_input").val().split("/");
+            let d3num = d3[2]+d3[1]+d3[0];
+            let d4 = $("#data_termino_nq_input").val().split("/");
+            let d4num = d4[2]+d4[1]+d4[0];
+
+            if(d1num > d2num){
+                $("#data_abertura_nq_input").addClass("border border-danger");
+            }else{
+                $("#data_abertura_nq_input").removeClass("border border-danger");
+            }
+
+            if(d1num > d3num){
+                $("#data_validade_nq_input").addClass("border border-danger");
+            }else{
+                $("#data_validade_nq_input").removeClass("border border-danger");
+            }
+
+            if(d1num > d4num || d4num < d2num){
+                $("#data_termino_nq_input").addClass("border border-danger");
+            }else{
+                $("#data_termino_nq_input").removeClass("border border-danger");
+            }
+
+        }
+
+        $("#data_entrada_nq").on("input", function() {
+            $('#data_abertura_nq_input').attr("disabled", false);
+            $('#data_validade_nq_input').attr("disabled", false);
+            $('#data_termino_nq_input').attr("disabled", false);
+            checkDatesNQ();
+        });
+
+        $("#data_abertura_nq").on("input", function() {
+            checkDatesNQ();
+        });
+
+        $("#data_validade_nq").on("input", function() {
+            checkDatesNQ();
+        });
+
+        $("#data_termino_nq").on("input", function() {
+            checkDatesNQ();
+        });
 
         $("#produto").change(function() {
             $produto = $('#produto').val();

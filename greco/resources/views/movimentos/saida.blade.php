@@ -46,13 +46,13 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="produto">{{ __('lang.produto') }}</label>
-                                            <select id="produto" class="form-control select2bs4" style="width: 100%;">
+                                            <select id="produto" name="produto" class="form-control select2bs4" style="width: 100%;">
                                                 <option value="" selected disabled>{{ __('lang.selecione o') }}
                                                     {{ __('lang.produto') }}
                                                 </option>
-                                                <option>Cloreto de Sódio</option>
-                                                <option>Hidróxido de Carbono</option>
-                                                <option>Cloreto de Ferro</option>
+                                                @foreach ($produtos_com_entrada as $p)
+                                                    <option value="{{  $p->id }}">{{ $p->designacao }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -61,16 +61,12 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="n_embalagem_nq">{{ __('lang.n-embalagem') }}</label>
-                                            <select class="form-control select2bs4" id="n_embalagem_nq"
+                                            <label for="n_embalagem">{{ __('lang.n-embalagem') }}</label>
+                                            <select class="form-control select2bs4" id="n_embalagem" id="n_embalagem" disabled
                                                 style="width: 100%;">
                                                 <option value="" selected disabled>{{ __('lang.selecione o') }}
                                                     {{ __('lang.n-embalagem') }}
                                                 </option>
-                                                <option>1234-12</option>
-                                                <option>2137-12</option>
-                                                <option>1223-22</option>
-                                                <option>453-1</option>
                                             </select>
                                         </div>
                                     </div>
@@ -84,9 +80,9 @@
                                                 <option value="" selected disabled>{{ __('lang.selecione o') }}
                                                     {{ __('lang.cliente') }}
                                                 </option>
-                                                <option>Departamento Biologia</option>
-                                                <option>Departamento Química</option>
-                                                <option>Departamento Física</option>
+                                                @foreach ($clientes as $c)
+                                                    <option value="{{  $c->id }}">{{ $c->designacao }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -97,13 +93,11 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="solicitante">{{ __('lang.solicitante') }}</label>
-                                            <select id="solicitante" class="form-control select2bs4" style="width: 100%;">
+                                            <select id="solicitante" name="solicitante" disabled
+                                                class="form-control select2bs4" style="width: 100%;">
                                                 <option value="" selected disabled>{{ __('lang.selecione o') }}
                                                     {{ __('lang.solicitante') }}
                                                 </option>
-                                                <option>Diogo</option>
-                                                <option>Maria</option>
-                                                <option>Ana</option>
                                             </select>
                                         </div>
                                     </div>
@@ -139,6 +133,42 @@
     <script src="{{ public_path() }}/plugins/select2/js/select2.full.min.js"></script>
 
     <script>
+
+        $("#produto").change(function() {
+            $produto = $('#produto').val();
+            $('#n_embalagem').attr("disabled", false);
+            $.ajax({
+                type: 'get',
+                url: '/movimentos/saidaEmbalagensProdutos',
+                data: {
+                    'produto': $produto,
+                },
+                success: function (data) {
+                    data.forEach(function(d) {
+                        $("#n_embalagem").append(new Option(d.id_inventario+"-"+d.id_ordem, d.id));
+                    })
+                }
+            });
+        });
+
+        $("#cliente").change(function() {
+            $("#solicitante").empty();
+            $cliente = $('#cliente').val();
+            $('#solicitante').attr("disabled", false);
+            $.ajax({
+                type: 'get',
+                url: '/movimentos/saidaSolicitantes',
+                data: {
+                    'cliente': $cliente,
+                },
+                success: function (data) {
+                    data.forEach(function(d) {
+                        $("#solicitante").append(new Option(d.nome, d.id));
+                    })
+                }
+            });
+        });
+
         $(function() {
             //Initialize Select2 Elements
             $('.select2').select2()

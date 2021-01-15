@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Movimento;
 use App\Models\Entrada;
@@ -18,8 +20,8 @@ use App\Models\taxa_iva;
 use App\Models\estados_fisicos;
 use App\Models\textura_viscosidade;
 use App\Models\cores;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\Cliente;
+use App\Models\Solicitante;
 
 class MovimentoController extends Controller
 {
@@ -62,9 +64,14 @@ class MovimentoController extends Controller
     public function addMovimentoEntradaQ(Request $request){
         //  *** QUIMICOS ***
         //VALIDAÇÂO
+        request()->validate([
+            'data_entrada_input' => 'required|date_format:d/m/Y',
+            'data_abertura_input' => 'date_format:d/m/Y',
+            'data_validade_input' => 'date_format:d/m/Y',
+            'data_termino_input' => 'date_format:d/m/Y',
+        ]);
 
         //ADD NA BD
-        $id = Entrada::latest('id')->first()->value('id');
         $id_inventario = request('produto'); //request('produto') está a receber o id
         $id_ordem = Entrada::where('id_inventario',$id_inventario)->max('id_ordem')+1;
         
@@ -89,7 +96,7 @@ class MovimentoController extends Controller
         $Entrada->data_abertura = request('data_abertura_input');
         $Entrada->data_validade = request('data_validade_input');
         $Entrada->data_termino = request('data_termino_input');
-        $Entrada->operador = $id; //Workaroud - Precisa de autenticação
+        $Entrada->operador = 1; //Workaroud - Precisa de autenticação
         $Entrada->unidade = request('unidades');
         $Entrada->obs = request('obvs');
         $Entrada->save();
@@ -105,9 +112,14 @@ class MovimentoController extends Controller
     public function addMovimentoEntradaNQ(Request $request){
         //  *** NAO QUIMICOS ***
         //VALIDAÇÂO
+        request()->validate([
+            'data_entrada_nq_input' => 'required|date_format:d/m/Y',
+            'data_abertura_nq_input' => 'date_format:d/m/Y',
+            'data_validade_nq_input' => 'date_format:d/m/Y',
+            'data_termino_nq_input' => 'date_format:d/m/Y',
+        ]);
 
         //ADD NA BD
-        $id = Entrada::latest('id')->first()->value('id');
         $id_inventario = request('produto_nq'); //request('produto') está a receber o id
         $id_ordem = Entrada::where('id_inventario',$id_inventario)->max('id_ordem')+1;
         
@@ -130,7 +142,7 @@ class MovimentoController extends Controller
         $Entrada->data_abertura = request('data_abertura_nq_input');
         $Entrada->data_validade = request('data_validade_nq_input');
         $Entrada->data_termino = request('data_termino_nq_input');
-        $Entrada->operador = $id; //Workaroud - Precisa de autenticação
+        $Entrada->operador = 1; //Workaroud - Precisa de autenticação
         $Entrada->unidade = request('unidades_nq');
         $Entrada->obs = request('obvs_nq');
         $Entrada->save();
@@ -160,6 +172,44 @@ class MovimentoController extends Controller
         return view('movimentos.entrada', compact('produtos', 'produtosnq', 'unidades', 'tipoembalagem',
                     'fornecedores', 'marcas', 'armarios', 'ivas',
                     'estados', 'texturas_viscosidades', 'cores'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getEmbalagensProdutos(Request $request){
+        if ($request->ajax()) {
+            $id_produto = $request->produto;
+            return Entrada::where('id',$id_produto)->get();
+        }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getSolicitantes(Request $request){
+        if ($request->ajax()) {
+            $id_cliente = $request->cliente;
+            return Solicitante::where('id_cliente',$id_cliente)->get();
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showSaida()
+    {
+        $produtos_com_entrada = Produto::join('entradas', 'produtos.id', '=', 'entradas.id')->get();
+        $clientes = Cliente::all();
+        $solicitantes = Solicitante::all();
+
+        return view('movimentos.saida', compact('produtos_com_entrada', 'clientes', 'solicitantes'));
     }
 
     /**

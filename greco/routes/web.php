@@ -34,10 +34,8 @@ Route::get('/produtos/getProdutos/','App\Http\Controllers\ProdutoController@getP
 Route::get('/produtos/add', 'App\Http\Controllers\ProdutoController@add');
 Route::get('/ficha/{produto}', 'App\Http\Controllers\ProdutoController@show');
 
-
 Route::post('/produtos_q', 'App\Http\Controllers\ProdutoController@addProdutoQ');
 Route::post('/produtos_nq', 'App\Http\Controllers\ProdutoController@addProdutoNQ');
-
 
 //Ficha
 
@@ -49,10 +47,9 @@ Route::get(/* '/ficha/{id}/editar' */'/ficha/editar', function () {
 Route::get('/movimentos/entrada', 'App\Http\Controllers\MovimentoController@showEndrada');
 Route::get('/movimentos/entradaNEmbalagem','App\Http\Controllers\MovimentoController@getNEmbalagem');
 Route::get('/movimentos/entradaPrateleira','App\Http\Controllers\MovimentoController@getPrateleira');
-
-Route::get('/movimentos/saida', function () {
-    return view('movimentos.saida');
-});
+Route::get('/movimentos/saida', 'App\Http\Controllers\MovimentoController@showSaida');
+Route::get('/movimentos/saidaEmbalagensProdutos', 'App\Http\Controllers\MovimentoController@getEmbalagensProdutos');
+Route::get('/movimentos/saidaSolicitantes', 'App\Http\Controllers\MovimentoController@getSolicitantes');
 
 Route::get('/movimentos/historico', 'App\Http\Controllers\MovimentoController@index');
 Route::get('/movimentos/historico/getEntradas/','App\Http\Controllers\MovimentoController@getEntradas');
