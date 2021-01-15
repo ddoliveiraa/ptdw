@@ -237,7 +237,11 @@ class ProdutoController extends Controller
      */
     public function edit(Produto $produtos)
     {
-
+        $pictogramas = pictograma::all();
+        $recomendacoes = recomendacoe::all();
+        $advertencias = advertencia::all();
+        $condicoes = condicoes_armazenamento::all();
+        return view('ficha.editar', compact('produtos','pictogramas','recomendacoes','advertencias','condicoes'));
     }
 
     /**

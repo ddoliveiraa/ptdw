@@ -39,9 +39,7 @@ Route::post('/produtos_nq', 'App\Http\Controllers\ProdutoController@addProdutoNQ
 
 //Ficha
 
-Route::get(/* '/ficha/{id}/editar' */'/ficha/editar', function () {
-    return view('ficha.editar');
-});
+Route::get('/ficha/editar/{produtos}', 'App\Http\Controllers\ProdutoController@edit');
 
 //Movimentos
 Route::get('/movimentos/entrada', 'App\Http\Controllers\MovimentoController@showEndrada');

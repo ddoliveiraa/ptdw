@@ -146,7 +146,7 @@
                                         </div>
                                          @endif
                                         <div class="stock-button">
-                                            <a href="{{ public_path() }}/ficha/editar" class="btn btn-secondary btn-block"
+                                            <a href="{{ public_path() }}/ficha/editar/{{$produto->id}}" class="btn btn-secondary btn-block"
                                                 role="button" tabindex="8">{{ __('lang.editar') }}</a>
                                             <button type="submit" class="btn btn-block btn-danger"
                                                 tabindex="9">{{ __('lang.desativar') }}</button>
