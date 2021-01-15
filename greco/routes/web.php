@@ -40,7 +40,8 @@ Route::post('/produtos_nq', 'App\Http\Controllers\ProdutoController@addProdutoNQ
 //Ficha
 
 Route::get('/ficha/editar/{produtos}', 'App\Http\Controllers\ProdutoController@edit');
-
+Route::post('/editar/produtos_q', 'App\Http\Controllers\ProdutoController@updateProdutoQ');
+Route::post('/editar/produtos_nq', 'App\Http\Controllers\ProdutoController@updateProdutoNQ');
 //Movimentos
 Route::get('/movimentos/entrada', 'App\Http\Controllers\MovimentoController@showEndrada');
 Route::get('/movimentos/entradaNEmbalagem','App\Http\Controllers\MovimentoController@getNEmbalagem');
