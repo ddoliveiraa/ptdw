@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Operador extends Model
 {
     use HasFactory;
+    protected $table = 'operadors';
     protected $fillable = ['nome','email','perfil','obs','data_criacao'];
 
 

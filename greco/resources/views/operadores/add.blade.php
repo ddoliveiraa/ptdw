@@ -42,14 +42,15 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <!-- form start -->
-                        <form>
+                        <form method="POST" action="/operadores/add/addOperador">
+                            @csrf
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="nome_operador" class="control-label">{{ __('lang.nome') }}</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="nome_operador"
+                                                <input type="text" class="form-control" id="nome_operador" name="nome_operador" required
                                                     placeholder="{{ __('lang.insira o') }} {{ __('lang.nome') }}">
                                             </div>
                                         </div>
@@ -59,7 +60,7 @@
                                         <div class="form-group">
                                             <label for="email_operador" class="control-label">{{ __('lang.email') }}</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="email_operador"
+                                                <input type="text" class="form-control" id="email_operador" name="email_operador" required
                                                     placeholder="{{ __('lang.insira o') }} {{ __('lang.email') }}">
                                             </div>
                                         </div>
@@ -69,19 +70,21 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="perfil_operador">{{ __('lang.perfil') }}</label>
-                                            <select class="form-control select" id="perfil_operador" style="width: 100%;">
+                                            <select class="form-control select" id="perfil_operador" name="perfil_operador" style="width: 100%;" required>
                                                 <option value="" selected disabled>{{ __('lang.selecione o') }}
                                                     {{ __('lang.perfil') }}
                                                 </option>
-                                                <option>Fiel de Armazém</option>
+                                                @foreach ($perfis as $p)
+                                                    <option value="{{  $p->id }}">{{ $p->nome }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="data_criacao">{{ __('lang.data-criacao') }}</label>
-                                            <div class="input-group date" id="data_criacao" data-target-input="nearest">
-                                                <input type="text" class="form-control datetimepicker-input"
+                                            <div class="input-group date" id="data_criacao" name="data_criacao" data-target-input="nearest" required>
+                                                <input type="text" id="data_criacao_input" name="data_criacao_input" class="form-control datetimepicker-input"
                                                     data-target="#data_criacao" placeholder="DD/MM/YYYY" />
                                                 <div class="input-group-append" data-target="#data_criacao"
                                                     data-toggle="datetimepicker">
@@ -93,7 +96,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="obvs">{{ __('lang.observacoes') }}</label>
-                                    <textarea id="obvs" class="form-control" rows="4"></textarea>
+                                    <textarea id="obvs" name="obvs" class="form-control" rows="4"></textarea>
                                 </div>
                             </div>
 
@@ -104,8 +107,8 @@
                                             class="btn btn-block btn-default">{{ __('lang.cancelar') }}</a>
                                     </div>
                                     <div class="ml-auto col-3">
-                                        <a href="{{ public_path() }}/operadores" role="button"
-                                            class="btn btn-block btn-secondary">{{ __('lang.guardar') }}</a>
+                                        <button type="submit"
+                                            class="btn btn-block btn-secondary">{{ __('lang.guardar') }}</button>
                                     </div>
                                 </div>
                             </div>

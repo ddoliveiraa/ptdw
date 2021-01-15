@@ -90,9 +90,8 @@ Route::get('/operadores/historico', function () {
     return view('operadores.historico');
 });
 
-Route::get('/operadores/add', function () {
-    return view('operadores.add');
-});
+Route::get('/operadores/add', 'App\Http\Controllers\OperadorController@show');
+Route::post('/operadores/add/addOperador', 'App\Http\Controllers\OperadorController@addOperador');
 
 Route::get('/operadores/show', function () {
     return view('operadores.show');
