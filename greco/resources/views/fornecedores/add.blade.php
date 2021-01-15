@@ -42,7 +42,8 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <!-- form start -->
-                        <form>
+                        <form method="POST" action="/fornecedores/add/store">
+                            @csrf
                             <div class="card-body">
                                 
                                 <div class="row">
@@ -50,7 +51,7 @@
                                         <div class="form-group">
                                             <label for="fornecedor_designacao"
                                                 class="control-label">{{ __('lang.nomefornecedor') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_designacao" tabindex="1"
+                                            <input type="text" class="form-control" id="fornecedor_designacao" name="fornecedor_designacao" tabindex="1"
                                                 required>
                                         </div>
                                     </div>
@@ -58,7 +59,7 @@
                                         <div class="form-group">
                                             <label for="fornecedor_telefone"
                                                 class="control-label">{{ __('lang.telefone') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_telefone" tabindex="2"
+                                            <input type="number" class="form-control" id="fornecedor_telefone" name="fornecedor_telefone" tabindex="2"
                                                 required>
                                         </div>
                                     </div>
@@ -68,20 +69,20 @@
                                     <div class="col-md-9">
                                         <div class="form-group">
                                             <label for="fornecedor_rua" class="control-label">{{ __('lang.rua') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_rua" tabindex="3" required>
+                                            <input type="text" class="form-control" id="fornecedor_rua" name="fornecedor_rua" tabindex="3" required>
                                         </div>
                                     </div>
                                     <div class="col-md-1">
                                         <div class="form-group">
                                             <label for="fornecedor_numero" class="control-label">{{ __('lang.numero') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_numero" tabindex="4"
+                                            <input type="number" class="form-control" id="fornecedor_numero" name="fornecedor_numero" tabindex="4"
                                                 required>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="fornecedor_lote" class="control-label">{{ __('lang.lote') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_lote" tabindex="5" required>
+                                            <input type="number" class="form-control" id="fornecedor_lote" name="fornecedor_lote" tabindex="5" required>
                                         </div>
                                     </div>
                                 </div>
@@ -91,7 +92,7 @@
                                         <div class="form-group">
                                             <label for="fornecedor_localidade"
                                                 class="control-label">{{ __('lang.localidade') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_localidade" tabindex="6"
+                                            <input type="text" class="form-control" id="fornecedor_localidade" name="fornecedor_localidade" tabindex="6"
                                                 required>
                                         </div>
                                     </div>
@@ -99,7 +100,7 @@
                                         <div class="form-group">
                                             <label for="fornecedor_codigopostal"
                                                 class="control-label">{{ __('lang.codigo postal') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_codigopostal" tabindex="7"
+                                            <input type="text" class="form-control" id="fornecedor_codigopostal" name="fornecedor_codigopostal" tabindex="7"
                                                 required>
                                         </div>
                                     </div>
@@ -109,15 +110,15 @@
                                 <div class="row">
                                     <div class="col-md-7">
                                         <div class="form-group">
-                                            <label for="fornecedor_localidade"
+                                            <label for="fornecedor_email"
                                                 class="control-label">{{ __('lang.email') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_localidade" tabindex="8">
+                                            <input type="text" class="form-control" id="fornecedor_email" name="fornecedor_email" tabindex="8" required>
                                         </div>
                                     </div>
                                     <div class="col-md-5">
                                         <div class="form-group">
                                             <label for="fornecedor_nif" class="control-label">{{ __('lang.nif') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_nif" tabindex="9" required>
+                                            <input type="number" class="form-control" id="fornecedor_nif" name="fornecedor_nif" tabindex="9" required>
                                         </div>
                                     </div>
                                     
@@ -128,14 +129,14 @@
                                         <div class="form-group">
                                             <label for="fornecedor_observacoes"
                                                 class="control-label">{{ __('lang.observacoes') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_observacoes" tabindex="10">
+                                            <input type="text" class="form-control" id="fornecedor_observacoes" name="fornecedor_observacoes" tabindex="10">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="fornecedor_condicoesespeciais">{{ __('lang.condicoes especiais') }}</label>
-                                    <textarea id="fornecedor_condicoesespeciais" class="form-control" rows="4" tabindex="11"></textarea>
+                                    <textarea id="fornecedor_condicoesespeciais" name="fornecedor_condicoesespeciais" class="form-control" rows="4" tabindex="11"></textarea>
                                 </div>
                                 
                                 <!--VENDEDOR 1-->
@@ -154,7 +155,7 @@
                                         <div class="form-group">
                                             <label for="fornecedor_nomevendedor1"
                                                 class="control-label">{{ __('lang.nomefornecedor') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_nomevendedor1" tabindex="12">
+                                            <input type="text" class="form-control" id="fornecedor_nomevendedor1" name="fornecedor_nomevendedor1" tabindex="12">
                                         </div>
                                     </div>
                                 </div>
@@ -164,7 +165,7 @@
                                         <div class="form-group">
                                             <label for="fornecedor_emailvendedor1"
                                                 class="control-label">{{ __('lang.email') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_emailvendedor1"
+                                            <input type="text" class="form-control" id="fornecedor_emailvendedor1" name="fornecedor_emailvendedor1"
                                                 tabindex="13">
                                         </div>
                                     </div>
@@ -172,7 +173,7 @@
                                         <div class="form-group">
                                             <label for="fornecedor_telemovelvendedor1"
                                                 class="control-label">{{ __('lang.telemovel') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_telemovelvendedor1"
+                                            <input type="number" class="form-control" id="fornecedor_telemovelvendedor1" name="fornecedor_telemovelvendedor1"
                                                 tabindex="14">
                                         </div>
                                     </div>
@@ -193,7 +194,7 @@
                                         <div class="form-group">
                                             <label for="fornecedor_nomevendedor2"
                                                 class="control-label">{{ __('lang.nomefornecedor') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_nomevendedor2" tabindex="15">
+                                            <input type="text" class="form-control" id="fornecedor_nomevendedor2" name="fornecedor_nomevendedor2" tabindex="15">
                                         </div>
                                     </div>
                                 </div>
@@ -204,7 +205,7 @@
                                         <div class="form-group">
                                             <label for="fornecedor_emailvendedor2"
                                                 class="control-label">{{ __('lang.email') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_emailvendedor2"
+                                            <input type="text" class="form-control" id="fornecedor_emailvendedor2" name="fornecedor_emailvendedor2"
                                                 tabindex="16">
                                         </div>
                                     </div>
@@ -212,7 +213,7 @@
                                         <div class="form-group">
                                             <label for="fornecedor_telemovelvendedor2"
                                                 class="control-label">{{ __('lang.telemovel') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_telemovelvendedor2"
+                                            <input type="number" class="form-control" id="fornecedor_telemovelvendedor2" name="fornecedor_telemovelvendedor2"
                                                 tabindex="17">
                                         </div>
                                     </div>
@@ -227,8 +228,7 @@
                                             class="btn btn-block btn-default">{{ __('lang.cancelar') }}</a>
                                     </div>
                                     <div class="ml-auto col-3">
-                                        <a href="{{ public_path() }}/fornecedores" role="button"
-                                            class="btn btn-block btn-secondary">{{ __('lang.guardar') }}</a>
+                                        <button type="submit" class="btn btn-block btn-secondary">{{ __('lang.guardar') }}</button>
                                     </div>
                                 </div>
                             </div>

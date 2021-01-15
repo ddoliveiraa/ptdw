@@ -107,8 +107,7 @@
                                             class="btn btn-block btn-default">{{ __('lang.cancelar') }}</a>
                                     </div>
                                     <div class="ml-auto col-3">
-                                        <button type="submit"
-                                            class="btn btn-block btn-secondary">{{ __('lang.guardar') }}</button>
+                                        <button type="submit" class="btn btn-block btn-secondary">{{ __('lang.guardar') }}</button>
                                     </div>
                                 </div>
                             </div>
