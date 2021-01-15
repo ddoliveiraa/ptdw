@@ -57,14 +57,13 @@ Route::get('/movimentos/historico/getSaidas/','App\Http\Controllers\MovimentoCon
 Route::get('/movimentos/show_entrada/{entrada}', 'App\Http\Controllers\MovimentoController@show');
 Route::get('/movimentos/show_saida/{saida}', 'App\Http\Controllers\MovimentoController@sshow');
 
-
 Route::get('/movimentos/editar', function () {
     return view('movimentos.editar');
 });
 
 Route::post('/movimentos/add/entrada_quimico', 'App\Http\Controllers\MovimentoController@addMovimentoEntradaQ');
 Route::post('/movimentos/add/entrada_naoquimico', 'App\Http\Controllers\MovimentoController@addMovimentoEntradaNQ');
-
+Route::post('/movimentos/add/saida', 'App\Http\Controllers\MovimentoController@addMovimentoSaida');
 
 //Clientes
 Route::get('/clientes', function () {

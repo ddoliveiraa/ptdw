@@ -40,13 +40,14 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <!-- form start -->
-                        <form>
+                        <form method="POST" action="/movimentos/add/saida">
+                            @csrf
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="produto">{{ __('lang.produto') }}</label>
-                                            <select id="produto" name="produto" class="form-control select2bs4" style="width: 100%;">
+                                            <select id="produto" name="produto" class="form-control select2bs4" style="width: 100%;" required>
                                                 <option value="" selected disabled>{{ __('lang.selecione o') }}
                                                     {{ __('lang.produto') }}
                                                 </option>
@@ -62,7 +63,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="n_embalagem">{{ __('lang.n-embalagem') }}</label>
-                                            <select class="form-control select2bs4" id="n_embalagem" id="n_embalagem" disabled
+                                            <select class="form-control select2bs4" id="n_embalagem" name="n_embalagem" disabled required
                                                 style="width: 100%;">
                                                 <option value="" selected disabled>{{ __('lang.selecione o') }}
                                                     {{ __('lang.n-embalagem') }}
@@ -76,7 +77,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="cliente">{{ __('lang.cliente') }}</label>
-                                            <select id="cliente" class="form-control select2bs4" style="width: 100%;">
+                                            <select id="cliente" name="cliente" class="form-control select2bs4" style="width: 100%;" required>
                                                 <option value="" selected disabled>{{ __('lang.selecione o') }}
                                                     {{ __('lang.cliente') }}
                                                 </option>
@@ -93,7 +94,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="solicitante">{{ __('lang.solicitante') }}</label>
-                                            <select id="solicitante" name="solicitante" disabled
+                                            <select id="solicitante" name="solicitante" disabled required
                                                 class="form-control select2bs4" style="width: 100%;">
                                                 <option value="" selected disabled>{{ __('lang.selecione o') }}
                                                     {{ __('lang.solicitante') }}
@@ -105,13 +106,14 @@
 
                                 <div class="form-group">
                                     <label for="obvs">{{ __('lang.observacoes') }}</label>
-                                    <textarea id="obvs" class="form-control" rows="4"></textarea>
+                                    <textarea id="obvs" name="obvs" class="form-control" rows="4"></textarea>
                                 </div>
                             </div>
 
                             <div class="card-footer">
                                 <div class="row justify-content-end">
                                     <div class="col-md-3">
+                                        <input id="n_ordem_tmp" name="n_ordem_tmp" type="hidden">
                                         <button type="submit"
                                             class="btn btn-block btn-secondary">{{ __('lang.guardar') }}</button>
                                     </div>
@@ -133,6 +135,11 @@
     <script src="{{ public_path() }}/plugins/select2/js/select2.full.min.js"></script>
 
     <script>
+
+        $("#n_embalagem").change(function() {
+            let val = $("#n_embalagem option:selected").text().split("-",2);
+            $('#n_ordem_tmp').val(val[1]);
+        });
 
         $("#produto").change(function() {
             $produto = $('#produto').val();
