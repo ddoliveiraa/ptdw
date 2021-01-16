@@ -130,6 +130,7 @@ return [
     'data de entrada' => 'Entry Date',
     'data de validade' => 'Expiration date',
     'data de termino' => 'End Date',
+    'data' => 'Date',
     'observacoes' => 'Observations',
     'familia' => 'Family',
     'sub-familia' => 'Sub-Family',

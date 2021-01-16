@@ -161,7 +161,7 @@
                                             <th>{{ __('lang.cliente') }}</th>
                                             <th>{{ __('lang.solicitante') }}</th>
                                             <th>{{ __('lang.operador') }}</th>
-                                            <th>Data</th>
+                                            <th>{{ __('lang.data') }}</th>
                                             <th>{{ __('lang.familia') }}</th>
                                             <th>{{ __('lang.sub-familia') }}</th>
                                             <th></th>

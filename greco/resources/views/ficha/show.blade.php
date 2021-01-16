@@ -16,7 +16,11 @@
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="{{ public_path() }}">Home</a></li>
                         <li class="breadcrumb-item"><a href="{{ public_path() }}/produtos">{{ __('lang.produtos') }}</a>
-                        <li class="breadcrumb-item active">{{ $produto->formula }}</li>
+                        @if($produto->get_fam->nome == "Químico")
+                            <li class="breadcrumb-item active">{{ $produto->formula }}</li>
+                        @else
+                            <li class="breadcrumb-item active">{{ $produto->designacao }}</li>
+                        @endif
                     </ol>
                 </div>
             </div>
@@ -37,7 +41,8 @@
                 
                     <div class="card card-light">
                         <div class="card-header">
-                            <h2 class="card-title-large">{{ $produto->designacao }}</h2>
+                            
+                            <h2 class="card-title-large">{{ $produto->designacao }}<span class="float-right text-primary">{{$produto->get_fam->nome}}</span></h2>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
