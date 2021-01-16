@@ -39,7 +39,8 @@
             <div class="row">
                 <div class="col-md-8 offset-md-2">
                     <div class="card card-primary">
-                        <form>
+                    <form method="POST" action="/editar/produtos_q">
+                                    @csrf
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -56,7 +57,7 @@
                                             <label for="produto_sinonimo"
                                                 class="control-label">{{ __('lang.sinonimo') }}</label>
                                             <input type="text" class="form-control" id="produto_sinonimo" tabindex="2"
-                                                required value="{{ $produtos->sinonimo }}">
+                                                 value="{{ $produtos->sinonimo }}">
                                         </div>
                                     </div>
                                 </div>
@@ -175,8 +176,8 @@
                                             class="btn btn-block btn-default" tabindex="11">{{ __('lang.cancelar') }}</a>
                                     </div>
                                     <div class="ml-auto col-3">
-                                        <a href="{{ public_path() }}/ficha" role="button"
-                                            class="btn btn-block btn-secondary" tabindex="12">{{ __('lang.guardar') }}</a>
+                                        <button id="guardar" type="submit"
+                                            class="btn btn-block btn-secondary" tabindex="12">{{ __('lang.guardar') }}</button>
                                     </div>
                                 </div>
                             </div>
@@ -199,7 +200,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form method="POST" action="/produtos_q">
+                    <form method="POST" action="/editar/produtos_q">
                          @csrf <!-- Cross Site Request Forgery -->
                         <div class="modal-body">
                             <div class="form-row">
@@ -277,7 +278,7 @@
          $('#guardar').on('click', function() {
 
         $.ajax({
-            url: '/produtos_q',
+            url: '/editar/produtos_q',
             type: "Get",
             dataType: 'json',//this will expect a json response
             data:{pictograma:$('#produto_pictogramas').val()}, 

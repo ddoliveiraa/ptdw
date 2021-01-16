@@ -71,6 +71,59 @@ class ProdutoController extends Controller
         return redirect('produtos');
     }
 
+    public function updateProdutoQ(Request $request, Produto $Produto){
+
+        //VALIDAÇÂO
+        request()->validate([
+            'produto_designacao' => 'required',
+            'produto_cas' => 'required',
+            'produto_peso' => 'required',
+            'produto_stock_minimo' => 'required'
+        ]);
+
+        //ADD NA BD
+        $Produto->familia = 1;
+        $Produto->designacao = request('produto_designacao');
+        $Produto->formula = request('produto_formula');
+        //$Produto->sinonimo = request('produto_sinonimo');
+        $Produto->CAS = request('produto_cas');
+        $Produto->peso_molecular = request('produto_peso');
+        $Produto->stock_min = request('produto_stock_minimo');
+        $Produto->condicoes_armazenamento = request('produto_armario');
+        $Produto->ventilado = request('customSwitch1');
+        
+        $Produto->save();
+
+        $ids_pictogramas = request('ids_pictogramas'); // 3, 5, 7
+        $ids_pictogramas_array = explode(',',$ids_pictogramas); //array
+        $ids_recomendacoes = request('ids_recomendacoes');
+        $ids_recomendacoes_array = explode(',',$ids_recomendacoes); //array
+        $ids_advertencias = request('ids_recomendacoes');
+        $ids_advertencias_array = explode(',',$ids_advertencias); //array
+
+        //attachments pictogramas
+        if($ids_pictogramas_array!= null){
+            foreach ($ids_pictogramas_array as $pid){    
+                $Produto->pictogramas()->attach($pid);
+            }
+        }
+        //attachments recomendações
+        if($ids_recomendacoes_array!= null){
+            foreach ($ids_recomendacoes_array as $rid){    
+                $Produto->recomendacoes()->attach($rid);
+            }
+        }
+        //attachments advertencias
+        if($ids_advertencias_array!= null){
+            foreach ($ids_advertencias_array as $aid){    
+                $Produto->advertencias()->attach($aid);
+            }
+        }
+
+        $Produto->produtos()->sync(request('produtos'));
+        return redirect('/produtos');
+    }
+
     public function addProdutoNQ(Request $request){
 
         //TESTES
