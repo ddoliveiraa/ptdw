@@ -33,8 +33,8 @@ Route::get('/produtos', 'App\Http\Controllers\ProdutoController@index');
 Route::get('/produtos/getProdutos/','App\Http\Controllers\ProdutoController@getProdutos');
 Route::get('/produtos/add', 'App\Http\Controllers\ProdutoController@add');
 Route::get('/ficha/{produto}', 'App\Http\Controllers\ProdutoController@show');
-Route::post('/produtos_q', 'App\Http\Controllers\ProdutoController@addProdutoQ');
-Route::post('/produtos_nq', 'App\Http\Controllers\ProdutoController@addProdutoNQ');
+Route::post('/produtos_q', 'App\Http\Controllers\ProdutoController@storeQuimico');
+Route::post('/produtos_nq', 'App\Http\Controllers\ProdutoController@storeNaoQuimico');
 
 //Ficha
 Route::get('/ficha/editar/{produtos}', 'App\Http\Controllers\ProdutoController@edit');
@@ -58,9 +58,9 @@ Route::get('/movimentos/editar', function () {
     return view('movimentos.editar');
 });
 
-Route::post('/movimentos/add/entrada_quimico', 'App\Http\Controllers\MovimentoController@addMovimentoEntradaQ');
-Route::post('/movimentos/add/entrada_naoquimico', 'App\Http\Controllers\MovimentoController@addMovimentoEntradaNQ');
-Route::post('/movimentos/add/saida', 'App\Http\Controllers\MovimentoController@addMovimentoSaida');
+Route::post('/movimentos/add/entrada_quimico', 'App\Http\Controllers\MovimentoController@storeEntradaQ');
+Route::post('/movimentos/add/entrada_naoquimico', 'App\Http\Controllers\MovimentoController@storeEntradaNQ');
+Route::post('/movimentos/add/saida', 'App\Http\Controllers\MovimentoController@storeSaida');
 
 //Clientes
 Route::get('/clientes', function () {

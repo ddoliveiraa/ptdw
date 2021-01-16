@@ -61,7 +61,7 @@ class MovimentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function addMovimentoEntradaQ(Request $request){
+    public function storeEntradaQ(Request $request){
         //  *** QUIMICOS ***
         //VALIDAÇÂO
         request()->validate([
@@ -109,7 +109,7 @@ class MovimentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function addMovimentoEntradaNQ(Request $request){
+    public function storeEntradaNQ(Request $request){
         //  *** NAO QUIMICOS ***
         //VALIDAÇÂO
         request()->validate([
@@ -196,33 +196,6 @@ class MovimentoController extends Controller
             $id_cliente = $request->cliente;
             return Solicitante::where('id_cliente',$id_cliente)->get();
         }
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function addMovimentoSaida(Request $request){
-        //VALIDAÇÂO
-        request()->validate([
-            'cliente' => 'required',
-            'produto' => 'required',
-            'n_ordem_tmp' => 'required',
-            'solicitante' => 'required',
-        ]);
-
-        //ADD NA BD
-        $Saida = new Saida();
-        $Saida->id_cliente = request('cliente');
-        $Saida->id_produto = request('produto');
-        $Saida->id_ordem = request('n_ordem_tmp');
-        $Saida->id_solicitante = request('solicitante');
-        $Saida->id_operador = 1;
-        $Saida->obs = request('obvs');
-        $Saida->save();
-        
-        return redirect('movimentos/saida');
     }
 
     /**
@@ -432,8 +405,27 @@ class MovimentoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function storeSaida()
     {
+        //VALIDAÇÂO
+        request()->validate([
+            'cliente' => 'required',
+            'produto' => 'required',
+            'n_ordem_tmp' => 'required',
+            'solicitante' => 'required',
+        ]);
+
+        //ADD NA BD
+        $Saida = new Saida();
+        $Saida->id_cliente = request('cliente');
+        $Saida->id_produto = request('produto');
+        $Saida->id_ordem = request('n_ordem_tmp');
+        $Saida->id_solicitante = request('solicitante');
+        $Saida->id_operador = 1;
+        $Saida->obs = request('obvs');
+        $Saida->save();
+        
+        return redirect('movimentos/saida');
     }
 
     /**

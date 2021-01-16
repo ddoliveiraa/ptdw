@@ -18,7 +18,7 @@ class ProdutoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function addProdutoQ(Request $request){
+    public function storeQuimico(Request $request){
 
         //VALIDAÇÂO
         request()->validate([
@@ -124,7 +124,7 @@ class ProdutoController extends Controller
         return redirect('/produtos');
     }
 
-    public function addProdutoNQ(Request $request){
+    public function storeNaoQuimico(Request $request){
 
         //TESTES
         //dump(request()->all());
