@@ -96,6 +96,7 @@ class OperadorController extends Controller
 
     public function show(Operador $operador)
     {
+        return view('operadores.show',compact('operador'));
     }
 
 

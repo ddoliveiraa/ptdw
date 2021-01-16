@@ -91,9 +91,8 @@ Route::get('/operadores/historico', function () {
 Route::get('/operadores/add', 'App\Http\Controllers\OperadorController@add');
 Route::post('/operadores/add/addOperador', 'App\Http\Controllers\OperadorController@addOperador');
 
-Route::get('/operadores/show', function () {
-    return view('operadores.show');
-});
+Route::get('/operadores/{operador}', 'App\Http\Controllers\OperadorController@show');
+
 
 Route::get('/operadores/editar', function () {
     return view('operadores.editar');
