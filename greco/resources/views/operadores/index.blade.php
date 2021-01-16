@@ -57,12 +57,9 @@
 
             <div class="row">
                 <div class="col-12">
-
                     <div class="card">
-
                         <!-- /.card-header -->
                         <div class="card-body">
-
                             <table id="operadores_index" class="table table-bordered table-striped">
                                 <thead class="bg-dark">
                                     <tr>
@@ -74,48 +71,6 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Carolina</td>
-                                        <td>carol@ua.pt</td>
-                                        <td>Supervisor Setorial</td>
-                                        <td>01/11/2018</td>
-                                        <td>-</td>
-                                        <td><a href="{{ public_path() }}/operadores/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Austin</td>
-                                        <td>austin@ua.pt</td>
-                                        <td>Fiel de Armazém</td>
-                                        <td>02/12/2018</td>
-                                        <td>-</td>
-                                        <td><a href="{{ public_path() }}/operadores/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Bruno</td>
-                                        <td>bruno@ua.pt</td>
-                                        <td>Fiel de Armazém</td>
-                                        <td>21/11/2018</td>
-                                        <td>-</td>
-                                        <td><a href="{{ public_path() }}/operadores/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>João Feijão</td>
-                                        <td>jf@ua.pt</td>
-                                        <td>Supervisor Setorial</td>
-                                        <td>01/11/2018</td>
-                                        <td>02/12/2019</td>
-                                        <td><a href="{{ public_path() }}/operadores/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ana Silva</td>
-                                        <td>ana@ua.pt</td>
-                                        <td>Fiel de Armazém</td>
-                                        <td>01/09/2018</td>
-                                        <td>-</td>
-                                        <td><a href="{{ public_path() }}/operadores/show"> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
-                                    </tr>
-                                </tbody>
                             </table>
                         </div>
                         <!-- /.card-body -->
@@ -127,7 +82,6 @@
             <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
-
     </section>
     <!-- /.content -->
 

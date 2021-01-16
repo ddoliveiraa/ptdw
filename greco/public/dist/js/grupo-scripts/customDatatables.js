@@ -175,18 +175,26 @@ $('#existencias').DataTable({
 
 //Operadores.index
 var OpIndex = $("#operadores_index").DataTable({
-    "dom": '<"toolbar">frtip',
+    "dom": '<"toolbar">frtip l',
     "info": true,
+    "processing": true,
+    "serverSide": true,
+    "ajax": "/operadores/getOperadores/",
+    "columns": [
+        { data: 'nome' },
+        { data: 'email' },
+        { data: 'perfil' },
+        { data: 'data_criacao' },
+        { data: 'data_desativacao' },
+        { data: 'id' },
+    ],
     "language": {
         "url": datatables_lang,
     },
     "responsive": true,
-    "lengthChange": false,
+    "lengthChange": true,
+    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, todo]],
     "autoWidth": false,
-    "columnDefs": [{
-        type: 'date-uk',
-        targets: 3
-    }],
     "buttons": [{
         extend: 'csvHtml5',
         exportOptions: {
@@ -201,7 +209,8 @@ var OpIndex = $("#operadores_index").DataTable({
     },
     ],
     "initComplete": function () {
-        OpIndex.buttons().container().appendTo('div.toolbar');
+        fornecedores.buttons().container().appendTo('div.toolbar');
+        $('#operadores_index_length').appendTo('#operadores_index_filter');
     }
 });
 

@@ -33,15 +33,14 @@ Route::get('/produtos', 'App\Http\Controllers\ProdutoController@index');
 Route::get('/produtos/getProdutos/','App\Http\Controllers\ProdutoController@getProdutos');
 Route::get('/produtos/add', 'App\Http\Controllers\ProdutoController@add');
 Route::get('/ficha/{produto}', 'App\Http\Controllers\ProdutoController@show');
-
 Route::post('/produtos_q', 'App\Http\Controllers\ProdutoController@addProdutoQ');
 Route::post('/produtos_nq', 'App\Http\Controllers\ProdutoController@addProdutoNQ');
 
 //Ficha
-
 Route::get('/ficha/editar/{produtos}', 'App\Http\Controllers\ProdutoController@edit');
 Route::post('/editar/produtos_q', 'App\Http\Controllers\ProdutoController@updateProdutoQ');
 Route::post('/editar/produtos_nq', 'App\Http\Controllers\ProdutoController@updateProdutoNQ');
+
 //Movimentos
 Route::get('/movimentos/entrada', 'App\Http\Controllers\MovimentoController@showEndrada');
 Route::get('/movimentos/entradaNEmbalagem','App\Http\Controllers\MovimentoController@getNEmbalagem');
@@ -49,7 +48,6 @@ Route::get('/movimentos/entradaPrateleira','App\Http\Controllers\MovimentoContro
 Route::get('/movimentos/saida', 'App\Http\Controllers\MovimentoController@showSaida');
 Route::get('/movimentos/saidaEmbalagensProdutos', 'App\Http\Controllers\MovimentoController@getEmbalagensProdutos');
 Route::get('/movimentos/saidaSolicitantes', 'App\Http\Controllers\MovimentoController@getSolicitantes');
-
 Route::get('/movimentos/historico', 'App\Http\Controllers\MovimentoController@index');
 Route::get('/movimentos/historico/getEntradas/','App\Http\Controllers\MovimentoController@getEntradas');
 Route::get('/movimentos/historico/getSaidas/','App\Http\Controllers\MovimentoController@getSaidas');
@@ -81,15 +79,14 @@ Route::get('/clientes/editar', function () {
 });
 
 //Operadores
-Route::get('/operadores', function () {
-    return view('operadores.index');
-});
+Route::get('/operadores', 'App\Http\Controllers\OperadorController@index');
+Route::get('/operadores/getOperadores/', 'App\Http\Controllers\OperadorController@getOperadores');
 
 Route::get('/operadores/historico', function () {
     return view('operadores.historico');
 });
 
-Route::get('/operadores/add', 'App\Http\Controllers\OperadorController@show');
+Route::get('/operadores/add', 'App\Http\Controllers\OperadorController@add');
 Route::post('/operadores/add/addOperador', 'App\Http\Controllers\OperadorController@addOperador');
 
 Route::get('/operadores/show', function () {

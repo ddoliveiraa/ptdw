@@ -9,14 +9,104 @@ use App\Models\Operador;
 
 class OperadorController extends Controller
 {
+    public function index()
+    {
+        return view('operadores.index');
+    }
+
+    /*
+   AJAX request (Páginação com datatables)
+   */
+    public function getOperadores(Request $request)
+    {
+
+        ## Read value
+        $draw = $request->get('draw');
+        $start = $request->get("start");
+        $rowperpage = $request->get("length"); // Rows display per page
+
+        $columnIndex_arr = $request->get('order');
+        $columnName_arr = $request->get('columns');
+        $order_arr = $request->get('order');
+        $search_arr = $request->get('search');
+
+        $columnIndex = $columnIndex_arr[0]['column']; // Column index
+        $columnName = $columnName_arr[$columnIndex]['data']; // Column name
+        $columnSortOrder = $order_arr[0]['dir']; // asc or desc
+        $searchValue = $search_arr['value']; // Search value
+
+        // Total records
+        $totalRecords = Operador::select('count(*) as allcount')->count();
+        $totalRecordswithFilter = Operador::select('count(*) as allcount')
+            ->where('nome', 'ilike', '%' . $searchValue . '%')
+            ->orWhere('email', 'ilike', '%' . $searchValue . '%')
+            ->orWhere('perfil', 'ilike', '%' . $searchValue . '%')
+            ->orWhere('operadors.data_criacao', 'ilike', '%' . $searchValue . '%')
+            ->orWhere('operadors.data_desativacao', 'ilike', '%' . $searchValue . '%')->count();
+
+        // Fetch records
+        $records = Operador::orderBy($columnName, $columnSortOrder)
+            ->where('operadors.nome', 'ilike', '%' . $searchValue . '%')
+            ->orWhere('operadors.email', 'ilike', '%' . $searchValue . '%')
+            ->orWhere('operadors.perfil', 'ilike', '%' . $searchValue . '%')
+            ->orWhere('operadors.data_criacao', 'ilike', '%' . $searchValue . '%')
+            ->orWhere('operadors.data_desativacao', 'ilike', '%' . $searchValue . '%')
+            ->select('operadors.*')
+            ->skip($start)
+            ->take($rowperpage)
+            ->get();
+
+        $data_arr = array();
+
+        foreach ($records as $record) {
+            $id = "<a href='/operadores/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+            $nome = $record->nome;
+            $email = $record->email;
+            $perfil = $record->get_perfil->nome;
+            $data_criacao = $record->data_criacao;
+            $data_desativacao = $record->data_desativacao;
+
+            $data_arr[] = array(
+                "id" => $id,
+                "nome" => $nome,
+                "email" => $email,
+                "perfil" => $perfil,
+                'data_criacao' => $data_criacao,
+                'data_desativacao' => $data_desativacao,
+            );
+        }
+
+        $response = array(
+            "draw" => intval($draw),
+            "iTotalRecords" => $totalRecords,
+            "iTotalDisplayRecords" => $totalRecordswithFilter,
+            "aaData" => $data_arr
+        );
+
+        echo json_encode($response);
+        exit;
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Operador  $operador
+     * @return \Illuminate\Http\Response
+     */
+
+    public function show(Operador $operador)
+    {
+    }
+
+
     /**
      * Display the specified resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function add()
     {
-        $perfis = Perfil::all();  
+        $perfis = Perfil::all();
         return view('operadores.add', compact('perfis'));
     }
 
@@ -25,7 +115,8 @@ class OperadorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function addOperador(Request $request){
+    public function addOperador(Request $request)
+    {
         //VALIDAÇÂO
         request()->validate([
             'nome_operador' => 'required',
@@ -41,7 +132,38 @@ class OperadorController extends Controller
         $Operador->data_criacao = request('data_criacao_input');
         $Operador->obs = request('obvs');
         $Operador->save();
-        
+
         return redirect('operadores');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Operador  $operador
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Operador $operador)
+    {
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Operador  $operador
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Operador $operador)
+    {
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Operador  $operador
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Operador $operador)
+    {
     }
 }

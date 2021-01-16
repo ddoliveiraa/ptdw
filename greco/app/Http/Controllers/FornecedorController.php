@@ -19,7 +19,7 @@ class FornecedorController extends Controller
         return view('fornecedores.index');
     }
     /*
-   AJAX request (Páginação com datatables ENTRADAS)
+   AJAX request (Páginação com datatables Fornecedores)
    */
     public function getFornecedores(Request $request)
     {
@@ -75,7 +75,7 @@ class FornecedorController extends Controller
             $telefone = $record->telefone;
             $NIF = $record->NIF;
             $email = $record->email;
-            $id = "<a href='/fornecedores/show_entrada/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+            $id = "<a href='/fornecedores/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
 
             $data_arr[] = array(
                 "designacao" => $designacao,

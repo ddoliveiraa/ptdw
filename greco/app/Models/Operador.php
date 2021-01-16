@@ -21,4 +21,9 @@ class Operador extends Model
     {
         return $this->hasMany(Saida::class);
     }
+
+    public function get_perfil()
+   {
+       return $this->belongsTo(Perfil::class, 'perfil');
+   }
 }
