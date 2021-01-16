@@ -454,8 +454,9 @@ class MovimentoController extends Controller
      * @param  \App\Models\Movimento  $movimentos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Movimento $movimentos)
+    public function edit(Entrada $entrada)
     {
+        return view('movimentos.editar',compact('entrada'));
     }
 
     /**
