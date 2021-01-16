@@ -69,6 +69,7 @@
                             <div class="dropdown-divider"></div>
                             <p class="dropdown-item">
                                 <i class="fas fa-exclamation mr-2"></i>
+                                <strong>{{ $notif->tipo }}</strong>
                                 {{ $notif->texto }}
                             </p>
                         @endforeach
