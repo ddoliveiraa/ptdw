@@ -11,6 +11,7 @@ use App\Models\pictograma;
 use App\Models\recomendacoe;
 use App\Models\advertencia;
 
+
 class ProdutoController extends Controller
 {
     /**
@@ -19,6 +20,7 @@ class ProdutoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function storeQuimico(Request $request){
+
 
         //VALIDAÇÂO
         request()->validate([
@@ -72,16 +74,20 @@ class ProdutoController extends Controller
     }
 
     public function updateProdutoQ(Request $request, Produto $Produto){
+       dd($request->all());
 
         //VALIDAÇÂO
-        request()->validate([
-            'produto_designacao' => 'required',
-            'produto_cas' => 'required',
-            'produto_peso' => 'required',
-            'produto_stock_minimo' => 'required'
-        ]);
+       // request()->validate([
+       //     'produto_designacao' => 'required',
+       //     'produto_cas' => 'required',
+       //     'produto_peso' => 'required',
+       //     'produto_stock_minimo' => 'required'
+       // ]);
 
         //ADD NA BD
+       // $Produto->id = request('id');
+
+        $Produto = Produto::find(request('id'));
         $Produto->familia = 1;
         $Produto->designacao = request('produto_designacao');
         $Produto->formula = request('produto_formula');
@@ -89,12 +95,12 @@ class ProdutoController extends Controller
         $Produto->CAS = request('produto_cas');
         $Produto->peso_molecular = request('produto_peso');
         $Produto->stock_min = request('produto_stock_minimo');
-        $Produto->condicoes_armazenamento = request('produto_armario');
+        $Produto->condicoes_armazenamento = request('produto_armazenamento');
         $Produto->ventilado = request('customSwitch1');
         
         $Produto->save();
 
-        $ids_pictogramas = request('ids_pictogramas'); // 3, 5, 7
+       /*  $ids_pictogramas = request('ids_pictogramas'); // 3, 5, 7
         $ids_pictogramas_array = explode(',',$ids_pictogramas); //array
         $ids_recomendacoes = request('ids_recomendacoes');
         $ids_recomendacoes_array = explode(',',$ids_recomendacoes); //array
@@ -118,10 +124,12 @@ class ProdutoController extends Controller
             foreach ($ids_advertencias_array as $aid){    
                 $Produto->advertencias()->attach($aid);
             }
-        }
+        } */
 
-        $Produto->produtos()->sync(request('produtos'));
-        return redirect('/produtos');
+        //$Produto->produto()->sync(request('produtos'));
+
+        //$Produto->update('update produtos set ');
+        return redirect('produtos');
     }
 
     public function storeNaoQuimico(Request $request){

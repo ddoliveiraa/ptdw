@@ -37,17 +37,19 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-8 offset-md-2">
+            <div class="col-md-8 offset-md-2">
                     <div class="card card-primary">
-                    <form method="POST" action="/editar/produtos_q">
-                                    @csrf
+                    <form method="POST" action="/editar/produtos_q/{{$produtos->id}}">
+                        @csrf
+                        @method('PUT')         
                             <div class="card-body">
+                            <input type="hidden" id="id" name = "id" value="{{$produtos->id}}">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="produto_designacao"
                                                 class="control-label">{{ __('lang.designacao') }}</label>
-                                            <input type="text" class="form-control" id="produto_designacao" tabindex="1"
+                                            <input type="text" class="form-control"  id="produto_designacao" name="produto_designacao" tabindex="1"
                                                 required value="{{$produtos->designacao}}">
                                         </div>
                                     </div>
@@ -67,14 +69,14 @@
                                         <div class="form-group">
                                             <label for="produto_formula"
                                                 class="control-label">{{ __('lang.formula') }}</label>
-                                            <input type="text" class="form-control" id="produto_formula" tabindex="3"
+                                            <input type="text" class="form-control" id="produto_formula" name="produto_formula" tabindex="3"
                                                 required value="{{ $produtos->formula }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="produto_cas" class="control-label">{{ __('lang.n cas') }}</label>
-                                            <input type="text" class="form-control" id="produto_cas" tabindex="4" required
+                                            <input type="text" class="form-control" id="produto_cas" name="produto_cas" tabindex="4" required
                                                 value="{{ $produtos->CAS }}">
                                         </div>
                                     </div>
@@ -85,7 +87,7 @@
                                         <div class="form-group">
                                             <label for="produto_peso"
                                                 class="control-label">{{ __('lang.peso molecular') }}</label>
-                                            <input type="text" class="form-control" id="produto_peso" tabindex="5" required
+                                            <input type="text" class="form-control" id="produto_peso" name="produto_peso" tabindex="5" required
                                                 value="{{ $produtos->peso_molecular }}">
                                         </div>
                                     </div>
@@ -93,7 +95,7 @@
                                         <div class="form-group">
                                             <label for="produto_stock_minimo"
                                                 class="control-label">{{ __('lang.stock minimo') }}</label>
-                                            <input type="text" class="form-control" id="produto_stock_minimo" tabindex="6"
+                                            <input type="text" class="form-control" id="produto_stock_minimo" name="produto_stock_minimo" tabindex="6"
                                                 required value="{{ $produtos->stock_min }}">
                                         </div>
                                     </div>
@@ -106,11 +108,11 @@
                                             <label for="produto_condicoes_armazenamento"
                                                 class="control-label">{{ __('lang.condicoes de armazenamento') }}</label>
                                                  
-                                            <select class="form-control" id="produto_armario" tabindex="7">
-                                            <option value="{{$produtos->get_condicao->condicao}}">{{$produtos->get_condicao->condicao}}</option>
+                                            <select class="form-control" id="produto_armazenamento" name="produto_armazenamento" tabindex="7">
+                                            <option value="{{$produtos->get_condicao->id}}">{{$produtos->get_condicao->condicao}}</option>
                                             @foreach ($condicoes as $c)
                                             @if($c->condicao != $produtos->get_condicao->condicao)
-                                                <option value="{{ $c->condicao }}">{{$c->condicao}}</option>
+                                                <option value="{{ $c->id }}">{{$c->condicao}}</option>
                                                 @endif
                                                 @endforeach
                                                 
@@ -138,15 +140,15 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                    @if($produtos->ventilado == true)
+                                    
                                         <div class="form-group">
                                             <div class="custom-control custom-switch">
-                                                <input type="checkbox" checked data-toggle="toggle" class="custom-control-input" id="customSwitch1" tabindex="10">
+                                                <input type="checkbox" @if($produtos->ventilado == true) checked data-toggle="toggle"  @endif class="custom-control-input" id="customSwitch1" name="customSwitch1" tabindex="10">
                                                 <label class="custom-control-label"
                                                     for="customSwitch1" value="{{ $produtos->ventilado }}">{{ __('lang.armario ventilado') }}</label>
                                             </div>
                                         </div>
-                                        @endif
+                                       
                                     </div>
                                 </div>
                                 @else
@@ -154,7 +156,7 @@
                                         <div class="form-group">
                                             <label for="produto_stock_minimo"
                                                 class="control-label">{{ __('lang.stock minimo') }}</label>
-                                            <input type="text" class="form-control" id="produto_stock_minimo" tabindex="6"
+                                            <input type="text" class="form-control" id="produto_stock_minimo" name="produto_stock_minimo" tabindex="6"
                                                 required value="{{ $produtos->stock_min }}">
                                         </div>
                                     </div>
