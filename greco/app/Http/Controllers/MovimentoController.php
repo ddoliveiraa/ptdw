@@ -205,7 +205,7 @@ class MovimentoController extends Controller
      */
     public function showSaida()
     {
-        $produtos_com_entrada = Produto::join('entradas', 'produtos.id', '=', 'entradas.id')->get();
+        $produtos_com_entrada = Produto::join('entradas', 'produtos.id', '=', 'entradas.id_inventario')->get();
         $clientes = Cliente::all();
         $solicitantes = Solicitante::all();
 

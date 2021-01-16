@@ -142,6 +142,7 @@
         });
 
         $("#produto").change(function() {
+            $("#n_embalagem").empty();
             $produto = $('#produto').val();
             $('#n_embalagem').attr("disabled", false);
             $.ajax({
