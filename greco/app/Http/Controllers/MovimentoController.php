@@ -182,7 +182,7 @@ class MovimentoController extends Controller
     public function getEmbalagensProdutos(Request $request){
         if ($request->ajax()) {
             $id_produto = $request->produto;
-            return Entrada::where('id',$id_produto)->get();
+            return Entrada::where('id_inventario',$id_produto)->get();
         }
     }
 
@@ -205,10 +205,14 @@ class MovimentoController extends Controller
      */
     public function showSaida()
     {
-        $produtos_com_entrada = Produto::join('entradas', 'produtos.id', '=', 'entradas.id_inventario')->get();
+        $entradas = Entrada::select('id_inventario')->distinct();
+        $produtos_com_entrada = Produto::joinSub($entradas, 'ent', function ($join) {
+                                    $join->on('produtos.id', '=', 'ent.id_inventario');
+                                    })->get();
+        
         $clientes = Cliente::all();
         $solicitantes = Solicitante::all();
-
+        
         return view('movimentos.saida', compact('produtos_com_entrada', 'clientes', 'solicitantes'));
     }
 
