@@ -184,5 +184,10 @@ return [
     'locale-date' => 'en-gb',
 
     /*Datatable lang */
-    'url-lang-dt' => '//cdn.datatables.net/plug-ins/1.10.22/i18n/English.json'
+    'url-lang-dt' => '//cdn.datatables.net/plug-ins/1.10.22/i18n/English.json',
+
+
+    /*Notificações */
+    'notif' => 'Notifications',
+
 ];

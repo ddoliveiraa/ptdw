@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\Entrada;
 use App\Models\Produto;
+use App\Models\Notification;
 
 class EntradaObserver
 {
@@ -16,6 +17,18 @@ class EntradaObserver
     public function created(Entrada $entrada)
     {
         Produto::find($entrada->id_inventario)->increment('stock');
+
+        $p = Produto::find($entrada->id_inventario);
+
+        Notification::where('tipo', 'Falta de Stock')->where('id_produto', $p->id)->delete();
+
+        if ($p->stock < $p->stock_min) {
+            Notification::create([
+                'tipo' => 'Falta de Stock',
+                'id_produto' => $p->id,
+                'texto' => 'O produto ' . $p->designacao . ' tem falta de stock!'
+            ]);
+        }
     }
 
     /**

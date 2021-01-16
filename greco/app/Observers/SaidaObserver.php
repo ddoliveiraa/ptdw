@@ -3,8 +3,11 @@
 namespace App\Observers;
 
 use App\Models\Entrada;
+use App\Models\Operador;
 use App\Models\Produto;
 use App\Models\Saida;
+use App\Models\Notification;
+use Illuminate\Support\Facades\DB;
 
 class SaidaObserver
 {
@@ -19,6 +22,18 @@ class SaidaObserver
         Produto::find($saida->id_produto)->decrement('stock');
         Entrada::where('id_inventario', '=', $saida->id_produto)
             ->Where('id_ordem', '=', $saida->id_ordem)->update(['data_termino' => $saida->created_at]);
+
+        $p = Produto::find($saida->id_produto);
+
+        Notification::where('tipo', 'Falta de Stock')->where('id_produto', $p->id)->delete();
+
+        if ($p->stock < $p->stock_min) {
+           Notification::create([
+                'tipo' => 'Falta de Stock',
+                'id_produto' => $p->id,
+                'texto' => 'O produto '.$p->designacao.' tem falta de stock!'
+            ]);
+        }
     }
 
     /**
