@@ -180,7 +180,7 @@ var saidas = $("#saidas").DataTable({
     "info": true,
     "processing": true,
     "serverSide": true,
-    "ajax": "/movimentos/historico/getSaidas/",
+    "ajax": "/~ptdw-2020-gr3/movimentos/historico/getSaidas/",
     "columns": [
         { data: 'designacao' },
         { data: 'id_produto' },
