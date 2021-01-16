@@ -68,7 +68,7 @@
                                                         required>
                                                 </div>
                                             </div>
-                                            @if($produtos->get_fam->nome == "Químico")
+                                           
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="produto_sinonimo"
@@ -153,25 +153,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        @else
-                                        <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="produto_stock_minimo"
-                                                        class="control-label">{{ __('lang.stock minimo') }}</label>
-                                                    <input type="number" min="1" class="form-control" name="produto_stock_minimo" id="produto_stock_minimo" tabindex="6"
-                                                        required>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="familia"
-                                                class="control-label">{{ __('lang.familia') }}</label>
-                                            <input type="text" class="form-control" id="familia" tabindex="2"
-                                                readonly value="{{ $produto->get_subfam->nome }}">
-                                        </div>
-                                        @endif
+                                        </div>                              
 
                                     </div>
 
