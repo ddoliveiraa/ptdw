@@ -121,10 +121,10 @@ class DatabaseSeeder extends Seeder
                 DB::table('pictograma_produto')->insert(['produto_id' => $i, 'pictograma_id' => $j]);
             }
 
-            for ($j = 1; $j <= 35; $j++) {
+            for ($j = 1; $j <= 15; $j++) {
                 \App\Models\Entrada::factory()->create(['id_inventario' => $i, 'id_ordem' => $j,]);
             }
-            for ($j = 1; $j <= 15; $j++) {
+            for ($j = 1; $j <= 5; $j++) {
                 \App\Models\Saida::factory()->create(['id_produto' => $i, 'id_ordem' => $j,]);
             }
         }
@@ -134,10 +134,10 @@ class DatabaseSeeder extends Seeder
         }
 
         for ($i = 300; $i >= 130; $i--) {
-            for ($j = 1; $j <= 35; $j++) {
+            for ($j = 1; $j <= 15; $j++) {
                 \App\Models\Entrada::factory()->create(['id_inventario' => $i, 'id_ordem' => $j,]);
             }
-            for ($j = 1; $j <= 15; $j++) {
+            for ($j = 1; $j <= 5; $j++) {
                 \App\Models\Saida::factory()->create(['id_produto' => $i, 'id_ordem' => $j,]);
             }
         }

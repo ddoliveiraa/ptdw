@@ -116,3 +116,12 @@ Route::get('/armazem', function () {
 Route::get('/styleguide', function () {
     return view('styleguide');
 });
+
+
+//para nao aparecer os erros de laravel, manda para página 404
+
+// Route::fallback(function () {
+
+//     return abort(404);
+
+// });
