@@ -106,46 +106,46 @@ class DatabaseSeeder extends Seeder
         \App\Models\Responsavel::factory()->count(20)->create();
         \App\Models\Solicitante::factory()->count(100)->create();
         \App\Models\Operador::factory()->count(20)->create();
-        \App\Models\Produto::factory()->count(300)->create();
-        \App\Models\Entrada::factory()->count(1000)->create();
-        \App\Models\Saida::factory()->count(100)->create();
+        //        \App\Models\Produto::factory()->count(300)->create();
+        //  \App\Models\Entrada::factory()->count(1000)->create();
+        // \App\Models\Saida::factory()->count(100)->create();
 
-        //tabelas de relacao pra testes
-        DB::table('produto_recomendacoe')->insert(['produto_id' => 1, 'recomendacoe_id' => 1]);
-        DB::table('produto_recomendacoe')->insert(['produto_id' => 1, 'recomendacoe_id' => 2]);
-        DB::table('produto_recomendacoe')->insert(['produto_id' => 1, 'recomendacoe_id' => 3]);
+        for ($i = 1; $i <= 150; $i++) {
+            \App\Models\Produto::factory()->create(['familia' => 1,]);
 
-        DB::table('advertencia_produto')->insert(['produto_id' => 1, 'advertencia_id' => 1]);
-        DB::table('advertencia_produto')->insert(['produto_id' => 1, 'advertencia_id' => 2]);
-        DB::table('advertencia_produto')->insert(['produto_id' => 1, 'advertencia_id' => 3]);
+            for ($j = 1; $j <= rand(1, 3); $j++) {
+                DB::table('produto_recomendacoe')->insert(['produto_id' => $i, 'recomendacoe_id' => $j]);
+                DB::table('advertencia_produto')->insert(['produto_id' => $i, 'advertencia_id' => $j]);
+            }
+            for ($j = 1; $j <= rand(1, 9); $j++) {
+                DB::table('pictograma_produto')->insert(['produto_id' => $i, 'pictograma_id' => $j]);
+            }
 
-        DB::table('pictograma_produto')->insert(['produto_id' => 1, 'pictograma_id' => 1]);
-        DB::table('pictograma_produto')->insert(['produto_id' => 1, 'pictograma_id' => 2]);
-        DB::table('pictograma_produto')->insert(['produto_id' => 1, 'pictograma_id' => 3]);
-        DB::table('pictograma_produto')->insert(['produto_id' => 1, 'pictograma_id' => 4]);
-        DB::table('pictograma_produto')->insert(['produto_id' => 1, 'pictograma_id' => 5]);
-        DB::table('pictograma_produto')->insert(['produto_id' => 1, 'pictograma_id' => 6]);
-        DB::table('pictograma_produto')->insert(['produto_id' => 1, 'pictograma_id' => 7]);
-        DB::table('pictograma_produto')->insert(['produto_id' => 1, 'pictograma_id' => 8]);
-        DB::table('pictograma_produto')->insert(['produto_id' => 1, 'pictograma_id' => 9]);
-
-
-
-        for ($i = 0; $i <= 10; $i++) {
-            \App\Models\Entrada::factory()->create(['id_inventario' => 1, 'id_ordem' => $i,]);
-        }
-        for ($i = 0; $i <= 10; $i++) {
-            \App\Models\Saida::factory()->create(['id_produto' => 1, 'id_ordem' => $i,]);
-        }
-        for ($i = 0; $i <= 50; $i++) {
-            \App\Models\Entrada::factory()->create(['id_inventario' => 1, 'id_ordem' => $i,]);
+            for ($j = 1; $j <= 35; $j++) {
+                \App\Models\Entrada::factory()->create(['id_inventario' => $i, 'id_ordem' => $j,]);
+            }
+            for ($j = 1; $j <= 15; $j++) {
+                \App\Models\Saida::factory()->create(['id_produto' => $i, 'id_ordem' => $j,]);
+            }
         }
 
+        for ($i = 1; $i <= 150; $i++) {
+            \App\Models\Produto::factory()->create(['familia' => 2, 'formula' => null, 'CAS' => null,]);
+        }
 
-        Notification::create([
-            'tipo' => 'Fora de Validade',
-            'id_produto' =>3,
-            'texto' => 'O produto está fora de alidade'
-        ]);
+        for ($i = 300; $i >= 130; $i--) {
+            for ($j = 1; $j <= 35; $j++) {
+                \App\Models\Entrada::factory()->create(['id_inventario' => $i, 'id_ordem' => $j,]);
+            }
+            for ($j = 1; $j <= 15; $j++) {
+                \App\Models\Saida::factory()->create(['id_produto' => $i, 'id_ordem' => $j,]);
+            }
+        }
+
+        // Notification::create([
+        //     'tipo' => 'Fora de Validade',
+        //     'id_produto' =>3,
+        //     'texto' => 'O produto está fora de validade'
+        // ]);
     }
 }

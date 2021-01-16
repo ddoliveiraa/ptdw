@@ -26,7 +26,7 @@ class EntradaObserver
             Notification::create([
                 'tipo' => 'Falta de Stock',
                 'id_produto' => $p->id,
-                'texto' => 'O produto ' . $p->designacao . ' tem falta de stock!'
+                'texto' => $p->designacao
             ]);
         }
     }

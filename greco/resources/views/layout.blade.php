@@ -21,7 +21,7 @@
 
 <style>
     div.ex1 {
-        height: 60vh;
+        max-height: 60vh;
         overflow: scroll;
         overflow-x: hidden; //horizontal
     }
@@ -59,23 +59,33 @@
                         @endphp
                         <span class="badge badge-warning navbar-badge">{{ $total }} </span>
                     </a>
-                    <div class="ex1 dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        @foreach ($tipos as $tipo)
-                            <span class="dropdown-item dropdown-header">
-                                {{ \App\Models\Notification::where('tipo', 'ilike', $tipo->tipo)->count() }} Alertas de
-                                {{ $tipo->tipo }}</span>
-                        @endforeach
-                        @foreach ($notifs as $notif)
-                            <div class="dropdown-divider"></div>
-                            <p class="dropdown-item">
-                                <i class="fas fa-exclamation mr-2"></i>
-                                <strong>{{ $notif->tipo }}</strong>
-                                {{ $notif->texto }}
-                            </p>
-                        @endforeach
+                    @if ($total > 0)
+                        <div class="ex1 dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                            @foreach ($tipos as $tipo)
+                                <span class="dropdown-item dropdown-header">
+                                    {{ \App\Models\Notification::where('tipo', 'ilike', $tipo->tipo)->count() }} Alertas
+                                    de
+                                    {{ $tipo->tipo }}</span>
+                            @endforeach
+                            @foreach ($notifs as $notif)
+                                <div class="dropdown-divider"></div>
+                                <p class="dropdown-item">
+                                    <i class="fas fa-exclamation mr-2"></i>
+                                    <strong>{{ $notif->tipo }}</strong>
+                                    {{ $notif->texto }}
+                                </p>
+                            @endforeach
 
-                        <div class="dropdown-divider"></div>
-                    </div>
+                            <div class="dropdown-divider"></div>
+                        </div>
+                    @else
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                            <span class="dropdown-item dropdown-header">Não existem Alertas</span>
+                            <div class="dropdown-divider"></div>
+                        </div>
+                    @endif
+
+
                 </li>
 
                 {{-- Language Changer --}}
