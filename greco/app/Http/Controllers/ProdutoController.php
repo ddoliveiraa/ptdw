@@ -20,6 +20,7 @@ class ProdutoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function storeQuimico(Request $request){
+        //dd($request->all());
 
 
         //VALIDAÇÂO
@@ -48,7 +49,7 @@ class ProdutoController extends Controller
         $ids_pictogramas_array = explode(',',$ids_pictogramas); //array
         $ids_recomendacoes = request('ids_recomendacoes');
         $ids_recomendacoes_array = explode(',',$ids_recomendacoes); //array
-        $ids_advertencias = request('ids_recomendacoes');
+        $ids_advertencias = request('ids_advertencias');
         $ids_advertencias_array = explode(',',$ids_advertencias); //array
 
         //attachments pictogramas
@@ -74,18 +75,16 @@ class ProdutoController extends Controller
     }
 
     public function updateProdutoQ(Request $request, Produto $Produto){
-       dd($request->all());
 
         //VALIDAÇÂO
-       // request()->validate([
-       //     'produto_designacao' => 'required',
-       //     'produto_cas' => 'required',
-       //     'produto_peso' => 'required',
-       //     'produto_stock_minimo' => 'required'
-       // ]);
+       request()->validate([
+            'produto_designacao' => 'required',
+            'produto_cas' => 'required',
+            'produto_peso' => 'required',
+            'produto_stock_minimo' => 'required'
+        ]);
 
         //ADD NA BD
-       // $Produto->id = request('id');
 
         $Produto = Produto::find(request('id'));
         $Produto->familia = 1;
@@ -100,36 +99,27 @@ class ProdutoController extends Controller
         
         $Produto->save();
 
-       /*  $ids_pictogramas = request('ids_pictogramas'); // 3, 5, 7
+        $ids_pictogramas = request('ids_pictogramas'); // 3, 5, 7
         $ids_pictogramas_array = explode(',',$ids_pictogramas); //array
         $ids_recomendacoes = request('ids_recomendacoes');
         $ids_recomendacoes_array = explode(',',$ids_recomendacoes); //array
-        $ids_advertencias = request('ids_recomendacoes');
+        $ids_advertencias = request('ids_advertencias');
         $ids_advertencias_array = explode(',',$ids_advertencias); //array
 
         //attachments pictogramas
         if($ids_pictogramas_array!= null){
-            foreach ($ids_pictogramas_array as $pid){    
-                $Produto->pictogramas()->attach($pid);
-            }
+            $Produto->pictogramas()->sync($ids_pictogramas_array);
         }
         //attachments recomendações
         if($ids_recomendacoes_array!= null){
-            foreach ($ids_recomendacoes_array as $rid){    
-                $Produto->recomendacoes()->attach($rid);
-            }
+            $Produto->recomendacoes()->sync($ids_recomendacoes_array);
         }
         //attachments advertencias
         if($ids_advertencias_array!= null){
-            foreach ($ids_advertencias_array as $aid){    
-                $Produto->advertencias()->attach($aid);
-            }
-        } */
+            $Produto->advertencias()->sync($ids_advertencias_array);
+        }
 
-        //$Produto->produto()->sync(request('produtos'));
-
-        //$Produto->update('update produtos set ');
-        return redirect('produtos');
+        return redirect('ficha/'.$Produto->id);
     }
 
     public function storeNaoQuimico(Request $request){
@@ -153,6 +143,26 @@ class ProdutoController extends Controller
         $Produto->save();
 
         return redirect('produtos');
+    }
+
+    public function updateProdutoNQ(Request $request, Produto $Produto){
+        //dump(request()->all());
+        //VALIDAÇÂO
+       request()->validate([
+            'produto_designacao' => 'required',
+            'produto_stock_minimo' => 'required'
+        ]);
+
+        //ADD NA BD
+
+        $Produto = Produto::find(request('id'));
+        $Produto->familia = 2;
+        $Produto->designacao = request('produto_designacao');
+        $Produto->stock_min = request('produto_stock_minimo');
+        
+        $Produto->save();
+
+        return redirect('ficha/'.$Produto->id);
     }
 
     /**
@@ -305,6 +315,11 @@ class ProdutoController extends Controller
         $advertencias = advertencia::all();
         $condicoes = condicoes_armazenamento::all();
         return view('ficha.editar', compact('produtos','pictogramas','recomendacoes','advertencias','condicoes'));
+    }
+
+    public function edit_nq(Produto $produtos)
+    {
+        return view('ficha.editar_nq', compact('produtos'));
     }
 
     /**

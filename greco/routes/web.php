@@ -38,6 +38,8 @@ Route::post('/produtos_nq', 'App\Http\Controllers\ProdutoController@storeNaoQuim
 
 //Ficha
 Route::get('/ficha/editar/{produtos}', 'App\Http\Controllers\ProdutoController@edit');
+Route::get('/ficha/editar_nq/{produtos}', 'App\Http\Controllers\ProdutoController@edit_nq');
+
 Route::put('/editar/produtos_q/{produtos}', 'App\Http\Controllers\ProdutoController@updateProdutoQ');
 Route::put('/editar/produtos_nq/{produtos}', 'App\Http\Controllers\ProdutoController@updateProdutoNQ');
 

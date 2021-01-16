@@ -146,8 +146,13 @@
                                         </div>
                                          @endif
                                         <div class="stock-button">
+                                        @if($produto->get_fam->nome == "Químico")
                                             <a href="{{ public_path() }}/ficha/editar/{{$produto->id}}" class="btn btn-secondary btn-block"
                                                 role="button" tabindex="8">{{ __('lang.editar') }}</a>
+                                        @else
+                                            <a href="{{ public_path() }}/ficha/editar_nq/{{$produto->id}}" class="btn btn-secondary btn-block"
+                                                role="button" tabindex="8">{{ __('lang.editar') }}</a>
+                                        @endif
                                             <button type="submit" class="btn btn-block btn-danger"
                                                 tabindex="9">{{ __('lang.desativar') }}</button>
                                         </div>

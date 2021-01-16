@@ -53,7 +53,7 @@
                                                 required value="{{$produtos->designacao}}">
                                         </div>
                                     </div>
-                                    @if($produtos->get_fam->nome == "Químico")
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="produto_sinonimo"
@@ -151,23 +151,6 @@
                                        
                                     </div>
                                 </div>
-                                @else
-                                <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="produto_stock_minimo"
-                                                class="control-label">{{ __('lang.stock minimo') }}</label>
-                                            <input type="text" class="form-control" id="produto_stock_minimo" name="produto_stock_minimo" tabindex="6"
-                                                required value="{{ $produtos->stock_min }}">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                            <label for="familia"
-                                                class="control-label">{{ __('lang.familia') }}</label>
-                                            <input type="text" class="form-control" id="familia" tabindex="2"
-                                                readonly value="{{ $produtos->get_subfam->nome }}">
-                                        </div>
-                                        @endif
 
                             </div>
 
@@ -178,6 +161,9 @@
                                             class="btn btn-block btn-default" tabindex="11">{{ __('lang.cancelar') }}</a>
                                     </div>
                                     <div class="ml-auto col-3">
+                                                <input id="ids_pictogramas" name="ids_pictogramas" type="hidden">
+                                                <input id="ids_recomendacoes" name="ids_recomendacoes" type="hidden">
+                                                <input id="ids_advertencias" name="ids_advertencias" type="hidden">
                                         <button id="guardar" type="submit"
                                             class="btn btn-block btn-secondary" tabindex="12">{{ __('lang.guardar') }}</button>
                                     </div>
@@ -202,8 +188,9 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form method="POST" action="/editar/produtos_q">
+                    <form method="POST" action="/editar/produtos_q/{{$produtos->id}}">
                          @csrf <!-- Cross Site Request Forgery -->
+                         @method('PUT')   
                         <div class="modal-body">
                             <div class="form-row">
                                 <div class="col-md-12">
@@ -230,7 +217,7 @@
                                             data-placeholder="{{ __('lang.recomendacoes de prudencia') }}"
                                             id="produto_cod_recomendacoes_prudencia" tabindex="9" style="width: 100%;">
                                             @foreach ($recomendacoes as $r)
-                                                    <option value="{{ $r->id }}" @foreach($produtos->recomendacoes as $rec) @if($rec->id == $r->id) selected @endif @endforeach>{{ $r->texto }}</option>
+                                            <option value="{{ $r->id }}" @foreach($produtos->recomendacoes as $rec) @if($rec->id == $r->id) selected @endif @endforeach>{{ $r->texto }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -245,14 +232,13 @@
                                         id="produto_cod_advertencias_perigo"
                                         tabindex="10" required>
                                             @foreach ($advertencias as $a)
-                                                    <option value="{{ $a->id }}" @foreach($produtos->advertencias as $adv) @if($adv->id == $a->id) selected @endif @endforeach>{{ $a->texto }}</option>
+                                            <option value="{{ $a->id }}" @foreach($produtos->advertencias as $adv) @if($adv->id == $a->id) selected @endif @endforeach>{{ $a->texto }}</option>
                                             @endforeach
                                         </select>
                                       </div>
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default col-md-3" data-dismiss="modal"
                             id="cancelar" tabindex="13">{{ __('lang.cancelar') }}</button>
@@ -275,14 +261,30 @@
     <script src="{{ public_path() }}/plugins/select2/js/select2.full.min.js"></script>
 
     <script>
+let pictogramas = [];
+                let ids_pictogramas = [];
+                $.each($("input[name='picto']:checked"), function(){
+                    pictogramas.push(" "+$(this).val().split(":",1));
+                    ids_pictogramas.push(this.getAttribute('id').match(/\d+/g));
+                });
+
+                //pictogramas
+                $('#produto_pictogramas').val(pictogramas);
+                $('#ids_pictogramas').val(ids_pictogramas);
+
+                //recomendacoes e advertencias
+                $('#ids_recomendacoes').val($('#recomendacoes').val());
+                $('#ids_advertencias').val($('#advertencias').val());
+
+
         $(function() {
 
          $('#guardar').on('click', function() {
 
         $.ajax({
-            url: '/editar/produtos_q',
+            url: '/editar/produtos_q/{{$produtos->id}}',
             type: "Get",
-            dataType: 'json',//this will expect a json response
+            dataType: 'json', //this will expect a json response
             data:{pictograma:$('#produto_pictogramas').val()}, 
             success: function(response){ 
                     $('#produto_pictogramas').val();
