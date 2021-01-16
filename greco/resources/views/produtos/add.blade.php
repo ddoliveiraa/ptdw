@@ -348,13 +348,6 @@
                 $('#produto_pictogramas').val("");
             });
 
-            $(".close").bind("click", function () {
-                $('#modalSelecionarPictograma').find('form').trigger('reset');
-                $("#recomendacoes").val(null).trigger('change');
-                $("#advertencias").val(null).trigger('change');
-                $('#produto_pictogramas').val("");
-            });
-
             $(document).on('click', '#selecionar', function(){
                 let pictogramas = [];
                 let ids_pictogramas = [];
