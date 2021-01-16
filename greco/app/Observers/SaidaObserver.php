@@ -21,7 +21,7 @@ class SaidaObserver
     {
         Produto::find($saida->id_produto)->decrement('stock');
         Entrada::where('id_inventario', '=', $saida->id_produto)
-            ->Where('id_ordem', '=', $saida->id_ordem)->update(['data_termino' => $saida->created_at]);
+            ->where('id_ordem', '=', $saida->id_ordem)->update(['data_termino' => $saida->created_at]);
 
         $p = Produto::find($saida->id_produto);
 
@@ -31,7 +31,7 @@ class SaidaObserver
            Notification::create([
                 'tipo' => 'Falta de Stock',
                 'id_produto' => $p->id,
-                'texto' => 'O produto '.$p->designacao.' tem falta de stock!'
+                'texto' => $p->designacao
             ]);
         }
     }

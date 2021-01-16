@@ -31,7 +31,7 @@ class ProdutoFactory extends Factory
             'ventilado'=> $this -> faker -> numberBetween($min = 0, $max = 1),
             //'anexo_sds'=> $this -> faker -> file($sourceDir = '/tmp', $targetDir = '/tmp'),
             // 'stock'=> $this -> faker -> name,
-            'stock_min'=> $this -> faker -> numberBetween($min = 1, $max = 100),
+            'stock_min'=> $this -> faker -> numberBetween($min = 1, $max = 20),
             'foto'=> $this -> faker -> imageUrl(200, 200, 'cats'),
             'sub_familia'=> $this -> faker -> numberBetween($min = 1, $max = 4), 
 
