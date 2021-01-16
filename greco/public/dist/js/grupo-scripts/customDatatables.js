@@ -26,7 +26,7 @@ var produtos = $("#tabelaprodutos").DataTable({
     "info": true,
     "processing": true,
     "serverSide": true,
-    "ajax": "~ptdw-2020-gr3/produtos/getProdutos/",
+    "ajax": "/~ptdw-2020-gr3/produtos/getProdutos/",
     "columns": [
         { data: 'designacao' },
         { data: 'formula' },
@@ -117,7 +117,7 @@ var fornecedores = $("#fornecedores").DataTable({
     "info": true,
     "processing": true,
     "serverSide": true,
-    "ajax": "~ptdw-2020-gr3/fornecedores/getFornecedores/",
+    "ajax": "/~ptdw-2020-gr3/fornecedores/getFornecedores/",
     "columns": [
         { data: 'designacao' },
         { data: 'morada' },
@@ -179,7 +179,7 @@ var OpIndex = $("#operadores_index").DataTable({
     "info": true,
     "processing": true,
     "serverSide": true,
-    "ajax": "~ptdw-2020-gr3/operadores/getOperadores/",
+    "ajax": "/~ptdw-2020-gr3/operadores/getOperadores/",
     "columns": [
         { data: 'nome' },
         { data: 'email' },
