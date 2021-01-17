@@ -18,7 +18,7 @@
                         <li class="breadcrumb-item"><a href="{{ public_path() }}/welcome">Home</a></li>
                         <li class="breadcrumb-item"><a href="{{ public_path() }}/operadores">{{ __('lang.operadores') }}</a>
                         </li>
-                        <li class="breadcrumb-item active">Ana Silva</li>
+                        <li class="breadcrumb-item active">{{$operador->nome}}</li>
                     </ol>
                 </div>
             </div>
@@ -27,7 +27,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h1 class="text-left display-4">Ana Silva</h1>
+                    <h1 class="text-left display-4">{{$operador->nome}}</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -48,7 +48,7 @@
                                             <label for="nome_operador" class="control-label">{{ __('lang.nome') }}</label>
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="nome_operador" disabled
-                                                    value="Ana Silva">
+                                                    value="{{$operador->nome}}">
                                             </div>
                                         </div>
                                     </div>
@@ -57,7 +57,7 @@
                                             <label for="email_operador" class="control-label">{{ __('lang.email') }}</label>
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="email_operador"
-                                                    value="ana@ua.pt" disabled>
+                                                    value="{{$operador->email}}" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -70,7 +70,7 @@
                                                 class="control-label">{{ __('lang.perfil') }}</label>
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="perfil_operador"
-                                                    value="Fiel de Armazém" disabled>
+                                                    value="{{$operador->get_perfil->nome}}" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -79,7 +79,7 @@
                                             <label for="data_criacao">{{ __('lang.data-criacao') }}</label>
                                             <div class="input-group date" id="data_criacao" data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input"
-                                                    data-target="#data_criacao" value="01/09/2018" disabled />
+                                                    data-target="#data_criacao" value="{{$operador->data_criacao}}" disabled />
                                                 <div class="input-group-append" data-target="#data_criacao"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -125,7 +125,7 @@
 
                                 <div class="form-group">
                                     <label for="obvs">{{ __('lang.observacoes') }}</label>
-                                    <textarea id="obvs" class="form-control" rows="4" disabled></textarea>
+                                    <textarea id="obvs" class="form-control" rows="4" disabled>{{$operador->obs}}</textarea>
                                 </div>
                             </div>
 

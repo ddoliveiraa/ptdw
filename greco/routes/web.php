@@ -56,9 +56,8 @@ Route::get('/movimentos/historico/getSaidas/','App\Http\Controllers\MovimentoCon
 Route::get('/movimentos/show_entrada/{entrada}', 'App\Http\Controllers\MovimentoController@show');
 Route::get('/movimentos/show_saida/{saida}', 'App\Http\Controllers\MovimentoController@sshow');
 
-Route::get('/movimentos/editar', function () {
-    return view('movimentos.editar');
-});
+Route::get('/movimentos/editar/{entrada}', 'App\Http\Controllers\MovimentoController@edit');
+
 
 Route::post('/movimentos/add/entrada_quimico', 'App\Http\Controllers\MovimentoController@storeEntradaQ');
 Route::post('/movimentos/add/entrada_naoquimico', 'App\Http\Controllers\MovimentoController@storeEntradaNQ');
@@ -88,9 +87,8 @@ Route::get('/operadores/historico', function () {
 Route::get('/operadores/add', 'App\Http\Controllers\OperadorController@add');
 Route::post('/operadores/add/addOperador', 'App\Http\Controllers\OperadorController@addOperador');
 
-Route::get('/operadores/show', function () {
-    return view('operadores.show');
-});
+Route::get('/operadores/{operador}', 'App\Http\Controllers\OperadorController@show');
+
 
 Route::get('/operadores/editar', function () {
     return view('operadores.editar');
@@ -114,3 +112,12 @@ Route::get('/armazem', function () {
 Route::get('/styleguide', function () {
     return view('styleguide');
 });
+
+
+//para nao aparecer os erros de laravel, manda para página 404
+
+// Route::fallback(function () {
+
+//     return abort(404);
+
+// });
