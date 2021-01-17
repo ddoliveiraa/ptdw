@@ -129,37 +129,48 @@
                                             <img src="{{ public_path() }}{{ $pictograma->imagem }}" alt="{{ $pictograma->nome }}">
                                          @endforeach
                                         </div>
-                                        <div class="stock-box">
-                                            <h5 class="bg-dark">{{ __('lang.n de inventario') }}</h5>
-                                            <h4>{{ $produto->id }}</h4>
-                                        </div>
-                                        <div class="stock-box">
-                                            <h5 class="bg-dark">{{ __('lang.stock existente') }}</h5>
-                                            <h4>{{ $produto->stock }}</h4>
-                                        </div>
-                                        <div class="stock-box">
-                                            <h5 class="bg-dark">{{ __('lang.stock minimo') }}</h5>
-                                            <h4>{{ $produto->stock_min }}</h4>
-                                        </div>
                                         @else
                                         <div class="pictogramas">
                                          <img src="{{ public_path() }}{{ $produto->foto }}" alt="{{ $produto->designacao }}">
                                          </div>
-                                         <div class="stock-box">
-                                            <h5 class="bg-dark">{{ __('lang.stock minimo') }}</h5>
-                                            <h4>{{ $produto->stock_min }}</h4>
-                                        </div>
                                          @endif
+                                        
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <div class="stock-box">
+                                                    <h5 class="bg-dark">{{ __('lang.n de inventario') }}</h5>
+                                                    <h4>{{ $produto->id }}</h4>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="stock-box">
+                                                    <h5 class="bg-dark">{{ __('lang.stock existente') }}</h5>
+                                                    <h4>{{ $produto->stock }}</h4>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="stock-box">
+                                                    <h5 class="bg-dark">{{ __('lang.stock minimo') }}</h5>
+                                                    <h4>{{ $produto->stock_min }}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
                                         <div class="stock-button">
-                                        @if($produto->get_fam->nome == "Químico")
-                                            <a href="{{ public_path() }}/ficha/editar/{{$produto->id}}" class="btn btn-secondary btn-block"
-                                                role="button" tabindex="8">{{ __('lang.editar') }}</a>
-                                        @else
-                                            <a href="{{ public_path() }}/ficha/editar_nq/{{$produto->id}}" class="btn btn-secondary btn-block"
-                                                role="button" tabindex="8">{{ __('lang.editar') }}</a>
-                                        @endif
-                                            <button type="submit" class="btn btn-block btn-danger"
-                                                tabindex="9">{{ __('lang.desativar') }}</button>
+                                            @if($produto->get_fam->nome == "Químico")
+                                                <a href="{{ public_path() }}/ficha/editar/{{$produto->id}}" class="btn btn-secondary btn-block"
+                                                    role="button" tabindex="8">{{ __('lang.editar') }}</a>
+                                            @else
+                                                <a href="{{ public_path() }}/ficha/editar_nq/{{$produto->id}}" class="btn btn-secondary btn-block"
+                                                    role="button" tabindex="8">{{ __('lang.editar') }}</a>
+                                            @endif
+                                                <button type="submit" class="btn btn-block btn-danger"
+                                                    tabindex="9">{{ __('lang.desativar') }}</button>
                                         </div>
                                     </div>
                                 </div>
