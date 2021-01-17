@@ -20,7 +20,7 @@ var entradas = $("#entradas").DataTable({
     "info": true,
     "processing": true,
     "serverSide": true,
-    "ajax": "/~ptdw-2020-gr3/movimentos/historico/getEntradas/",
+    "ajax": "/movimentos/historico/getEntradas/",
     "columns": [
         { data: 'designacao' },
         { data: 'id_produto' },
@@ -180,7 +180,7 @@ var saidas = $("#saidas").DataTable({
     "info": true,
     "processing": true,
     "serverSide": true,
-    "ajax": "/~ptdw-2020-gr3/movimentos/historico/getSaidas/",
+    "ajax": "/movimentos/historico/getSaidas/",
     "columns": [
         { data: 'designacao' },
         { data: 'id_produto' },
