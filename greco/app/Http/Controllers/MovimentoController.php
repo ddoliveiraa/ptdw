@@ -460,7 +460,14 @@ class MovimentoController extends Controller
      */
     public function edit(Entrada $entrada)
     {
-        return view('movimentos.editar',compact('entrada'));
+        $fornecedor = Fornecedor::all();
+        $armario = armario::all();
+        $prateleira = prateleira::all();
+        $tipoembalagem = tipo_embalagem::all();
+        $estados = estados_fisicos::all();
+        $cor = cores::all();
+        $texturas_viscosidades = textura_viscosidade::all();
+        return view('movimentos.editar',compact('entrada','fornecedor','armario','prateleira','tipoembalagem','estados','cor','texturas_viscosidades'));
     }
 
     /**

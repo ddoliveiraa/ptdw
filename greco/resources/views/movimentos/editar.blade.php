@@ -49,15 +49,35 @@
                         <form>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="produto">{{ __('lang.produto') }}</label>
-                                            <select id="produto" class="form-control select2bs4" style="width: 100%;">
-                                                <option selected>Cloreto de Hidrogénio</option>
-                                                <option>Cloreto de Sódio</option>
-                                                <option>Hidróxido de Carbono</option>
-                                                <option>Cloreto de Ferro</option>
-                                            </select>
+                                            <input type="text" class="form-control" id="produto" value="{{ $entrada->produto->designacao }}"
+                                                disabled readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="n_embalagem">{{ __('lang.n-embalagem') }}</label>
+                                            <input type="text" class="form-control" id="n_embalagem" value="{{ $entrada->id_inventario }} - {{ $entrada->id_ordem }}"
+                                                disabled readonly>
+                                        </div>
+                                    </div>
+                                 </div> 
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="referencia">{{ __('lang.referencia') }}</label>
+                                            <input type="text" class="form-control" id="referencia" value="{{ $entrada->referencia }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="unidades">{{ __('lang.unidades') }}</label>
+                                            <input type="text" class="form-control" id="unidades" value="{{ $entrada->get_unidade->unidade }}">
                                         </div>
                                     </div>
                                 </div>
@@ -65,20 +85,15 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="n_inventario">{{ __('lang.n de inventario') }}</label>
-                                            <select class="form-control select2bs4" id="n_inventario" style="width: 100%;">
-                                                <option selected>1234</option>
-                                                <option>2137</option>
-                                                <option>1223</option>
-                                                <option>453</option>
-                                            </select>
+                                            <label for="tipo_embalagem">{{ __('lang.tipo de embalagem') }}</label>
+                                            <input type="text" class="form-control" id="tipo_embalagem" value="{{ $entrada->get_tipo_embalagem->nome }}">
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="referencia">{{ __('lang.referencia') }}</label>
-                                            <input type="text" class="form-control" id="referencia" value="12355362">
+                                            <label for="cap_embalagem">{{ __('lang.capacidade da embalagem') }}</label>
+                                            <input type="number" class="form-control" id="cap_embalagem" value="{{ $entrada->capacidade }}">
                                         </div>
                                     </div>
                                 </div>
@@ -88,13 +103,12 @@
                                         <div class="form-group">
                                             <label for="fornecedor">{{ __('lang.fornecedor') }}</label>
                                             <select id="fornecedor" class="form-control select2bs4" style="width: 100%;">
-                                                <option selected>Alabama</option>
-                                                <option>Alaska</option>
-                                                <option>California</option>
-                                                <option>Delaware</option>
-                                                <option>Tennessee</option>
-                                                <option>Texas</option>
-                                                <option>Washington</option>
+                                            <option value="{{$entrada->get_fornecedor->id}}" selected>{{$entrada->get_fornecedor->designacao}}</option>
+                                            @foreach ($fornecedor as $f)
+                                            @if($f->designacao != $entrada->get_fornecedor->designacao)
+                                                <option value="{{ $f->id }}">{{$f->designacao}}</option>
+                                                @endif
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -102,7 +116,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="marca">{{ __('lang.nome da marca') }}</label>
-                                            <input type="text" class="form-control" id="marca" value="eXpolsions">
+                                            <input type="text" class="form-control" id="marca" value="{{ $entrada->get_marcas->marca }}">
                                         </div>
                                     </div>
                                 </div>
@@ -112,11 +126,12 @@
                                         <div class="form-group">
                                             <label for="armario">{{ __('lang.armario') }}</label>
                                             <select id="armario" class="form-control select2bs4" style="width: 100%;">
-                                                <option selected>Armário 1</option>
-                                                <option>Armário 2</option>~
-                                                <option>Armário 3</option>
-                                                <option>Frigorífico 1</option>
-                                                <option>Frigorífico 2</option>
+                                            <option value="{{$entrada->get_armario->id}}" selected>{{$entrada->get_armario->armario}}</option>
+                                            @foreach ($armario as $a)
+                                            @if($a->armario != $entrada->get_armario->armario)
+                                                <option value="{{ $a->id }}">{{$a->armario}}</option>
+                                                @endif
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -125,11 +140,12 @@
                                         <div class="form-group">
                                             <label for="prateleira">{{ __('lang.prataleira') }}</label>
                                             <select id="prateleira" class="form-control select2bs4" style="width: 100%;">
-                                                <option selected>Prateleira 1</option>
-                                                <option>Prateleira 2</option>~
-                                                <option>Prateleira 3</option>
-                                                <option>Gaveta 1</option>
-                                                <option>Gaveta 2</option>
+                                            <option value="{{$entrada->get_prateleira->id}}" selected>{{$entrada->get_prateleira->prateleira}}</option>
+                                            @foreach ($prateleira as $p)
+                                            @if($p->prateleira != $entrada->get_prateleira->prateleira)
+                                                <option value="{{ $p->id }}">{{$p->prateleira}}</option>
+                                                @endif
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -140,7 +156,7 @@
                                         <div class="form-group">
                                             <label for="iva">{{ __('lang.taxa de iva') }}</label>
                                             <div class="input-group">
-                                                <input type="number" class="form-control" id="iva" value="23">
+                                                <input type="number" class="form-control" id="iva" value="{{ $entrada->get_iva->nome }}">
                                                 <div class="input-group-append">
                                                     <span class="input-group-text"><i class="fa fa-percentage"></i></span>
                                                 </div>
@@ -152,7 +168,7 @@
                                         <div class="form-group">
                                             <label for="preco">{{ __('lang.preco') }}</label>
                                             <div class="input-group">
-                                                <input type="number" class="form-control" id="preco" value="25,35"
+                                                <input type="number" class="form-control" id="preco" value="{{ $entrada->preco }}"
                                                     step="0.05">
                                                 <div class="input-group-append">
                                                     <span class="input-group-text"><i class="fa fa-euro-sign"></i></span>
@@ -168,7 +184,12 @@
                                             <label for="tipo_embalagem">{{ __('lang.tipo de embalagem') }}</label>
                                             <select id="tipo_embalagem" class="form-control select2bs4"
                                                 style="width: 100%;">
-                                                <option selected>Frasco</option>
+                                                <option value="{{$entrada->get_tipo_embalagem->id}}" selected>{{$entrada->get_tipo_embalagem->nome}}</option>
+                                            @foreach ($tipoembalagem as $te)
+                                            @if($te->nome != $entrada->get_tipo_embalagem->nome)
+                                                <option value="{{ $te->id }}">{{$te->nome}}</option>
+                                                @endif
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -180,15 +201,18 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                @if($entrada->produto->get_fam->nome == "Químico")
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="estado">{{ __('lang.estado fisico') }}</label>
                                             <select id="estado" class="form-control select2bs4" style="width: 100%;">
-                                                <option>Sólido</option>
-                                                <option>Gasoso</option>
-                                                <option selected>Liquido</option>
+                                            <option value="{{$entrada->get_estado->id}}" selected>{{$entrada->get_estado->estado_fisico}}</option>
+                                            @foreach ($estados as $e)
+                                            @if($e->estado_fisico != $entrada->get_estado->estado_fisico)
+                                                <option value="{{ $e->id }}">{{$e->estado_fisico}}</option>
+                                                @endif
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -197,23 +221,28 @@
                                         <div class="form-group">
                                             <label for="textura">{{ __('lang.textura/viscosidade') }}</label>
                                             <select id="textura" class="form-control select2bs4" style="width: 100%;">
-                                                <option>Viscoso</option>
-                                                <option>Granulado</option>
-                                                <option selected>Pouco Viscoso</option>
+                                            <option value="{{$entrada->get_textura->id}}" selected>{{$entrada->get_textura->textura_viscosidade}}</option>
+                                            @foreach ($texturas_viscosidades as $tv)
+                                            @if($tv->textura_viscosidade != $entrada->get_textura->textura_viscosidade)
+                                                <option value="{{ $tv->id }}">{{$tv->textura_viscosidade}}</option>
+                                                @endif
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
                                 </div>
-
+                                @endif
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="cor">Cor</label>
                                             <select id="cor" class="form-control select2bs4" style="width: 100%;">
-                                                <option>Vermelho</option>
-                                                <option>Azul</option>
-                                                <option>Verde</option>
-                                                <option selected>Transparent</option>
+                                            <option value="{{$entrada->get_cor->id}}" selected>{{$entrada->get_cor->cor}}</option>
+                                            @foreach ($cor as $c)
+                                            @if($c->cor != $entrada->get_cor->cor)
+                                                <option value="{{ $c->id }}">{{$c->cor}}</option>
+                                                @endif
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -221,7 +250,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="peso">{{ __('lang.peso bruto') }}</label>
-                                            <input type="number" class="form-control" id="peso" value="300">
+                                            <input type="number" class="form-control" id="peso" value="{{ $entrada->peso_bruto }}">
                                         </div>
                                     </div>
                                 </div>
@@ -232,7 +261,7 @@
                                             <label>{{ __('lang.data de entrada') }}</label>
                                             <div class="input-group date" id="data_entrada" data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input"
-                                                    data-target="#data_entrada" value="22/7/2020" />
+                                                    data-target="#data_entrada" value="{{ $entrada->data_entrada }}" />
                                                 <div class="input-group-append" data-target="#data_entrada"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -246,7 +275,7 @@
                                             <label for="produto">{{ __('lang.data de abertura') }}</label>
                                             <div class="input-group date" id="data_abertura" data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input"
-                                                    data-target="#data_abertura" value="30/7/2020" />
+                                                    data-target="#data_abertura" value="{{ $entrada->data_abertura }}" />
                                                 <div class="input-group-append" data-target="#data_abertura"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -262,7 +291,7 @@
                                             <label for="produto">{{ __('lang.data de validade') }}</label>
                                             <div class="input-group date" id="data_validade" data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input"
-                                                    data-target="#data_validade" value="9/12/2020" />
+                                                    data-target="#data_validade" value="{{ $entrada->data_validade }}" />
                                                 <div class="input-group-append" data-target="#data_validade"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -276,7 +305,7 @@
                                             <label for="produto">{{ __('lang.data de termino') }}</label>
                                             <div class="input-group date" id="data_termino" data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input"
-                                                    data-target="#data_termino" value="---------" />
+                                                    data-target="#data_termino" value="{{ $entrada->data_termino }}" />
                                                 <div class="input-group-append" data-target="#data_termino"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>

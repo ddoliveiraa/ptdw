@@ -108,7 +108,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fornecedor">{{ __('lang.fornecedor') }}</label>
-                                            <input type="text" class="form-control" id="{{ $entrada->fornecedor }}" value="Alabama"
+                                            <input type="text" class="form-control" id="fornecedor" value="{{$entrada->get_fornecedor->designacao}}"
                                                 disabled>
                                         </div>
                                     </div>
@@ -204,7 +204,7 @@
                                             <label>{{ __('lang.data de entrada') }}</label>
                                             <div class="input-group date" id="data_entrada" data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input"
-                                                    data-target="#data_entrada" value="22/7/2020" disabled />
+                                                    data-target="#data_entrada" value="{{ $entrada->data_entrada }}" disabled />
                                                 <div class="input-group-append" data-target="#data_entrada"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>

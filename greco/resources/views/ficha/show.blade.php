@@ -183,6 +183,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach ($entradas as $entrada)
+                                @if($time < $entrada->data_validade)
                                     <tr>
                                         <td>{{ $entrada->capacidade }} ml</td>
                                         <td>{{ $entrada->id_ordem }}</td>
@@ -191,6 +192,7 @@
                                         <td>{{ $entrada->data_abertura }}</td>
                                         <td>{{ $entrada->data_validade }}</td>
                                     </tr>
+                                    @endif
                                     @endforeach
                                    
                                 </tbody>

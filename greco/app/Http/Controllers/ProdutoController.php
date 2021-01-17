@@ -10,6 +10,7 @@ use App\Models\sub_familia;
 use App\Models\pictograma;
 use App\Models\recomendacoe;
 use App\Models\advertencia;
+use Carbon;
 
 
 class ProdutoController extends Controller
@@ -298,8 +299,9 @@ class ProdutoController extends Controller
     
     public function show(Produto $produto)
     {
+        $time = Carbon\Carbon::now();
         $entradas = Entrada::where('id_inventario', $produto->id)->get();
-        return view('ficha.show', compact('produto', 'entradas'));
+        return view('ficha.show', compact('produto', 'entradas','time'));
     }
 
     /**
