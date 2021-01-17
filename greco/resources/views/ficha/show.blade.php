@@ -57,84 +57,83 @@
                                                 readonly value="{{ $produto->designacao }}">
                                         </div>
                                         @if($produto->get_fam->nome == "Químico")
-                                        <div class="form-group">
-                                            <label for="produto_sinonimo"
+                                            <div class="form-group">
+                                                <label for="produto_sinonimo"
                                                 class="control-label">{{ __('lang.sinonimo') }}</label>
-                                            <input type="text" class="form-control" id="produto_sinonimo" tabindex="2"
+                                                <input type="text" class="form-control" id="produto_sinonimo" tabindex="2"
                                                 readonly value="{{ $produto->sinonimo }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="produto_formula"
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="produto_formula"
                                                 class="control-label">{{ __('lang.formula') }}</label>
-                                            <input type="text" class="form-control" id="produto_formula" tabindex="3"
+                                                <input type="text" class="form-control" id="produto_formula" tabindex="3"
                                                 readonly value="{{ $produto->formula }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="produto_cas" class="control-label">{{ __('lang.n cas') }}</label>
-                                            <input type="text" class="form-control" id="produto_cas" tabindex="4" readonly
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="produto_cas" class="control-label">{{ __('lang.n cas') }}</label>
+                                                <input type="text" class="form-control" id="produto_cas" tabindex="4" readonly
                                                 value="{{ $produto->CAS }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="produto_peso"
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="produto_peso"
                                                 class="control-label">{{ __('lang.peso molecular') }}</label>
-                                            <input type="text" class="form-control" id="produto_peso" tabindex="5" readonly
+                                                <input type="text" class="form-control" id="produto_peso" tabindex="5" readonly
                                                 value="{{ $produto->peso_molecular }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="produto_condicoes_armazenamento"
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="produto_condicoes_armazenamento"
                                                 class="control-label">{{ __('lang.condicoes de armazenamento') }}</label>
-                                            <select class="form-control" id="produto_armario" tabindex="6" disabled>
+                                                <select class="form-control" id="produto_armario" tabindex="6" disabled>
                                                 <option value="{{ $produto->condicoes_armazenamento }}">{{ $produto->get_condicao->condicao }}</option>
-                                            </select>
-                                        </div>
+                                                </select>
+                                            </div>
                                         
-                                        @if ($produto->ventilado == true)
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <div class="custom-control custom-switch">
-                                                    <input type="checkbox" checked data-toggle="toggle" class="custom-control-input" id="customSwitch1"
-                                                        disabled tabindex="7">
-                                                    <label class="custom-control-label"
-                                                        for="customSwitch1" value="{{ $produto->ventilado }}">{{ __('lang.armario ventilado') }}
-                                                        </label>
+                                            @if ($produto->ventilado == true)
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <div class="custom-control custom-switch">
+                                                            <input type="checkbox" checked data-toggle="toggle" class="custom-control-input" id="customSwitch1"
+                                                            disabled tabindex="7">
+                                                            <label class="custom-control-label"
+                                                            for="customSwitch1" value="{{ $produto->ventilado }}">{{ __('lang.armario ventilado') }}
+                                                            </label>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
+                                            @else
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <div class="custom-control custom-switch">
+                                                            <input type="checkbox" class="custom-control-input" id="customSwitch1"
+                                                            disabled tabindex="7">
+                                                            <label class="custom-control-label"
+                                                            for="customSwitch1" value="{{ $produto->ventilado }}">{{ __('lang.armario ventilado') }}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
                                         @else
-                                        <div class="col-md-6">
                                             <div class="form-group">
-                                                <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input" id="customSwitch1"
-                                                        disabled tabindex="7">
-                                                    <label class="custom-control-label"
-                                                        for="customSwitch1" value="{{ $produto->ventilado }}">{{ __('lang.armario ventilado') }}
-                                                        </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                                @endif
-                                                @else
-                                        <div class="form-group">
-                                            <label for="familia"
+                                                <label for="familia"
                                                 class="control-label">{{ __('lang.familia') }}</label>
-                                            <input type="text" class="form-control" id="familia" tabindex="2"
+                                                <input type="text" class="form-control" id="familia" tabindex="2"
                                                 readonly value="{{ $produto->get_subfam->nome }}">
-                                        </div>
+                                            </div>
                                         @endif
                                     </div>
                                     <div class="col-md-4">
-                                    @if($produto->get_fam->nome == "Químico")
-                                        <div class="pictogramas">
-                                        @foreach ($produto->pictogramas as $pictograma)
-                                            <img src="{{ public_path() }}{{ $pictograma->imagem }}" alt="{{ $pictograma->nome }}">
-                                         @endforeach
-                                        </div>
+                                        @if($produto->get_fam->nome == "Químico")
+                                            <div class="pictogramas">
+                                            @foreach ($produto->pictogramas as $pictograma)
+                                                <img src="{{ public_path() }}{{ $pictograma->imagem }}" alt="{{ $pictograma->nome }}">
+                                            @endforeach
+                                            </div>
                                         @else
-                                        <div class="pictogramas">
-                                         <img src="{{ public_path() }}{{ $produto->foto }}" alt="{{ $produto->designacao }}">
-                                         </div>
-                                         @endif
-                                        
+                                            <div class="pictogramas">
+                                                <img src="{{ public_path() }}{{ $produto->foto }}" alt="{{ $produto->designacao }}">
+                                            </div>
+                                        @endif 
                                     </div>
                                 </div>
                                 <div class="row">
@@ -176,9 +175,6 @@
                                 </div>
                             </div>
                         </form>
-
-
-
                         <div class="card-body">
                             <h3>Embalagens</h3>
                             <table id="existencias" class="table table-bordered table-striped">
@@ -194,18 +190,23 @@
                                 </thead>
                                 <tbody>
                                 @foreach ($entradas as $entrada)
-                                @if($time < $entrada->data_validade)
-                                    <tr>
-                                        <td>{{ $entrada->capacidade }} ml</td>
-                                        <td>{{ $entrada->id_ordem }}</td>
-                                        <td>{{ $entrada->get_armario->armario }}</td>
-                                        <td>{{ $entrada->get_prateleira->prateleira }}</td>
-                                        <td>{{ $entrada->data_abertura }}</td>
-                                        <td>{{ $entrada->data_validade }}</td>
-                                    </tr>
+                                    @if(!empty($entrada->data_termino))  
+                                            <tr>
+                                                <td>{{ $entrada->capacidade }} ml</td>
+                                                <td>{{ $entrada->id_ordem }}</td>
+                                                <td>{{ $entrada->get_armario->armario }}</td>
+                                                <td>{{ $entrada->get_prateleira->prateleira }}</td>
+                                                <td>{{ $entrada->data_abertura }}</td>
+                                                @if($time > $entrada->data_validade)
+                                                    <td class="text-danger">
+                                                @else 
+                                                    <td>
+                                                @endif 
+                                                    {{ date('d/m/Y', strtotime($entrada->data_validade)) }}
+                                                </td>
+                                            </tr>
                                     @endif
-                                    @endforeach
-                                   
+                                @endforeach   
                                 </tbody>
                             </table>
                         </div>
@@ -217,7 +218,7 @@
                                    
                                         <h5 class="bg-dark">{{ __('lang.advertencias de perigo') }}</h5>
                                         @foreach ($produto->advertencias as $advertencia)
-                                        <p>{{ $advertencia->texto }}</p>
+                                            <p>{{ $advertencia->texto }}</p>
                                         @endforeach
                                     </div>
                                 </div>
