@@ -4,17 +4,37 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cliente;
+use App\Models\Responsavel;
 
 class ClienteController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getSolicitantes(Request $request){
+        if ($request->ajax()) {
+            $responsaveis = $request->responsaveis;
+            $data = prateleira::where('id_armario',$id_armario)->get();
+            $output = '';
+            foreach ($data as $row) {
+                $output .= '<option value="' . $row->id . '">' . $row->prateleira . '</option>';
+            }
+            return $output;
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('clientes.index');
+    { 
+        $responsaveis = Responsavel::all();
+        return view('clientes.add', compact('responsaveis'));
     }
 
     /**

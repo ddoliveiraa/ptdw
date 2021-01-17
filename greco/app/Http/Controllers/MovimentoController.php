@@ -64,12 +64,16 @@ class MovimentoController extends Controller
     public function storeEntradaQ(Request $request){
         //  *** QUIMICOS ***
         //VALIDAÇÂO
+
         request()->validate([
-            'data_entrada_input' => 'required|date_format:d/m/Y',
-            'data_abertura_input' => 'date_format:d/m/Y',
-            'data_validade_input' => 'date_format:d/m/Y',
-            'data_termino_input' => 'date_format:d/m/Y',
+            'data_entrada_input' => ['required', 'date_format:d/m/Y'],
+            'data_abertura_input' => ['date_format:d/m/Y', 'after_or_equal:data_entrada_input'],
+            'data_validade_input' => ['date_format:d/m/Y', 'after_or_equal:data_entrada_input'],
+            'data_termino_input' => ['date_format:d/m/Y', 'after_or_equal:data_entrada_input'],
+            'data_termino_input' => ['date_format:d/m/Y', 'after:data_abertura_input'],
         ]);
+
+        //falta fazer o IF
 
         //ADD NA BD
         $id_inventario = request('produto'); //request('produto') está a receber o id
