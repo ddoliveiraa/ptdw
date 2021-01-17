@@ -64,14 +64,16 @@ Route::post('/movimentos/add/entrada_naoquimico', 'App\Http\Controllers\Moviment
 Route::post('/movimentos/add/saida', 'App\Http\Controllers\MovimentoController@storeSaida');
 
 //Clientes
-Route::get('/clientes/add', 'App\Http\Controllers\ClienteController@index');
+Route::post('/clientes/add/store', 'App\Http\Controllers\ClienteController@store');
+Route::get('/clientes/add', function () {
+    return view('clientes.add');
+});
 Route::get('/clientes', function () {
     return view('clientes.index');
 });
 Route::get('/clientes/show', function () {
     return view('clientes.show');
 });
-
 Route::get('/clientes/editar', function () {
     return view('clientes.editar');
 });

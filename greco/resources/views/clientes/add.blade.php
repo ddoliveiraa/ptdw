@@ -5,7 +5,7 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ public_path() }}/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="{{ public_path() }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-    <link rel="stylesheet" href="{{ public_path() }}/dist/css/tagsinput.css">
+    <link rel="stylesheet" href="{{ public_path() }}/dist/css/jquery.tag-editor.css">
 
 @endsection
 
@@ -42,14 +42,15 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <!-- form start -->
-                        <form>
+                        <form method="POST" action="/clientes/add/store">
+                            @csrf
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="designacao">{{ __('lang.designacao') }}</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="designacao" name="designacao">
+                                                <input type="text" class="form-control" id="designacao" name="designacao" required>
                                             </div>
                                         </div>
                                     </div>
@@ -60,7 +61,7 @@
                                             <label for="responsavel"
                                                 class="control-label">{{ __('lang.responsavel') }}</label>
                                             <div class="input-group margin">
-                                                <input type="text" data-role="tagsinput" value=" ">
+                                                <input id="responsaveis" name="responsaveis" type="text" data-role="tagsinput">
                                                 <span class="input-group-btn">
                                                     <button type="button" class="btn btn-secondary btn-flat"
                                                         data-toggle="modal"
@@ -73,11 +74,15 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>{{ __('lang.solicitante') }}s</label>
-                                            <select class="select2" multiple="multiple" id="solicitante" name="solicitante"
-                                                data-placeholder="{{ __('lang.selecione o') }} {{ __('lang.solicitante') }}"
-                                                style="width: 100%;">
-                                            </select>
+                                            <label class="control-label">{{ __('lang.solicitante') }}s</label>
+                                            <div class="input-group margin">
+                                                <input id="solicitantes" name="solicitantes" type="text" data-role="tagsinput">
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-secondary btn-flat"
+                                                        data-toggle="modal"
+                                                        data-target="#modalSelecionarSolicitante">{{ __('lang.selecionar') }}</button>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -110,8 +115,8 @@
         <!-- /.card -->
         </div>
 
-         <!-- Modal Selecionar Responsaveis -->
-         <div class="modal fade" id="modalSelecionarResponsavel" data-backdrop="static">
+        <!-- Modal Selecionar Responsaveis -->
+        <div class="modal fade" id="modalSelecionarResponsavel" data-backdrop="static">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -145,9 +150,9 @@
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default col-md-3" data-dismiss="modal"
-                            id="cancelar" tabindex="13">{{ __('lang.cancelar') }}</button>
+                            id="cancelarResponsavel" tabindex="13">{{ __('lang.cancelar') }}</button>
                             <button type="button" class="btn btn-secondary col-md-3" data-dismiss="modal"
-                            id="selecionar" tabindex="14">{{ __('lang.selecionar') }}</button>
+                            id="selecionarResponsavel" tabindex="14">{{ __('lang.selecionar') }}</button>
                         </div>
                     </form>
                 </div>
@@ -155,6 +160,50 @@
             </div>
         </div>
 
+        <!-- Modal Selecionar Responsaveis -->
+        <div class="modal fade" id="modalSelecionarSolicitante" data-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{ __('lang.solicitante') }}</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="solicitante_nome">{{ __('lang.nome') }}</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="solicitante_nome" name="solicitante_nome">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="solicitante_email">{{ __('lang.email') }}</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="solicitante_email" name="solicitante_email">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default col-md-3" data-dismiss="modal"
+                            id="cancelarSolicitante" tabindex="13">{{ __('lang.cancelar') }}</button>
+                            <button type="button" class="btn btn-secondary col-md-3" data-dismiss="modal"
+                            id="selecionarSolicitante" tabindex="14">{{ __('lang.selecionar') }}</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+        </div>
 
     </section>
 @endsection
@@ -163,23 +212,22 @@
 
     <!-- Select2 -->
     <script src="{{ public_path() }}/plugins/select2/js/select2.full.min.js"></script>
-
+    <script type="text/javascript" src="{{ public_path() }}/dist/js/grupo-scripts/jquery.tag-editor.min.js"></script>
+    <script type="text/javascript" src="{{ public_path() }}/dist/js/grupo-scripts/jquery.caret.min.js"></script>
     <script>
     
-        $('#responsavel').on('change', function() {
-            $.ajax({
-                url: '/produtos_q',
-                type: "Get",
-                dataType: 'json',//this will expect a json response
-                data:{responsaveis:$('#responsavel').val()}, 
-                success: function(response){ 
-                        console.log(data);
-                    }
-            });
+        $('#responsaveis').tagEditor();
+        $('#solicitantes').tagEditor();
+
+        $('#selecionarResponsavel').on('click', function() {
+            $('#responsaveis').tagEditor('addTag', $('#responsavel_nome').val()+" | "+$('#responsavel_email').val());
+        });
+
+        $('#selecionarSolicitante').on('click', function() {
+            $('#solicitantes').tagEditor('addTag', $('#solicitante_nome').val()+" | "+$('#solicitante_email').val());
         });
 
         $(function() {
-
             //Initialize Select2 Elements
             $('.select2').select2()
 
@@ -187,9 +235,8 @@
             $('.select2bs4').select2({
                 theme: 'bootstrap4'
             })
-
         })
 
     </script>
-    <script type="text/javascript" src="{{ public_path() }}/dist/js/grupo-scripts/tagsinput.js"></script>
+    
 @endsection
