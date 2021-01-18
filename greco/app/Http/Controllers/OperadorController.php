@@ -150,7 +150,31 @@ class OperadorController extends Controller
      */
     public function edit(Operador $operador)
     {
+        $perfis = Perfil::all();
+        return view('operadores.editar',compact('operador','perfis'));
     }
+
+    public function updateperador(Request $request)
+    {
+        //VALIDAÇÂO
+        request()->validate([
+            'nome_operador' => 'required',
+            'email_operador' => 'required|email',
+            'perfil_operador' => 'required',
+            'data_criacao_input' => 'required',
+        ]);
+        //ADD NA BD
+        $Operador = Operador::find(request('id'));
+        $Operador->nome = request('nome_operador');
+        $Operador->email = request('email_operador');
+        $Operador->perfil = request('perfil_operador');
+        $Operador->data_criacao = request('data_criacao_input');
+        $Operador->obs = request('obvs');
+        $Operador->save();
+
+        return redirect('operadores');
+    }
+    
 
     /**
      * Update the specified resource in storage.

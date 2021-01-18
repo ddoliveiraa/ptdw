@@ -85,6 +85,11 @@ Route::post('/operadores/add/addOperador', 'App\Http\Controllers\OperadorControl
 
 Route::get('/operadores/{operador}', 'App\Http\Controllers\OperadorController@show');
 
+// Editar
+Route::get('/operadores/editar/{operador}', 'App\Http\Controllers\OperadorController@edit');
+Route::put('/operadores/editar/editado/{operador}', 'App\Http\Controllers\OperadorController@updateOperador');
+
+
 Route::get('/operadores/editar', function () {
     return view('operadores.editar');
 });

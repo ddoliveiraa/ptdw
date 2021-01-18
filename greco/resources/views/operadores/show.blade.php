@@ -136,7 +136,7 @@
                                             class="btn btn-block btn-default">{{ __('lang.voltar') }}</a>
                                     </div>
                                     <div class="ml-auto col-3">
-                                        <a href="{{ public_path() }}/operadores/editar" role="button"
+                                        <a href="{{ public_path() }}/operadores/editar/{{$operador->id}}" role="button"
                                             class="btn btn-block btn-secondary">{{ __('lang.editar') }}</a>
                                     </div>
                                 </div>
