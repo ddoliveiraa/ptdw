@@ -56,7 +56,7 @@
                                         <th>{{ __('lang.designacao') }}</th>
                                         <th>{{ __('lang.formula') }}</th>
                                         <th>{{ __('lang.n cas') }}</th>
-                                        <th>{{ __('lang.quimico') }}</th>
+                                        <th>{{ __('lang.familia') }}</th>
                                         <th>{{ __('lang.stock existente') }}</th>
                                         <th>{{ __('lang.stock minimo') }}</th>
                                         <th></th>
