@@ -106,6 +106,7 @@ class FornecedorController extends Controller
      */
     public function create()
     {
+        return view('fornecedores.add');
     }
 
     /**

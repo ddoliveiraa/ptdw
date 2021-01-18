@@ -63,8 +63,13 @@ class OperadorController extends Controller
             $nome = $record->nome;
             $email = $record->email;
             $perfil = $record->get_perfil->nome;
-            $data_criacao = $record->data_criacao;
-            $data_desativacao = $record->data_desativacao;
+            $data_criacao = date('d/m/Y', strtotime($record->data_criacao));
+            if(empty($record->data_desativacao)){
+                $data_desativacao = $record->data_desativacao;
+            } else {
+                $data_desativacao = date('d/m/Y', strtotime($record->data_desativacao));
+            }
+            
 
             $data_arr[] = array(
                 "id" => $id,

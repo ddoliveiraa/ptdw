@@ -131,6 +131,7 @@ return [
     'data de validade' => 'Data de Validade',
     'data de termino' => 'Data de Término',
     'data' => 'Data',
+    'data de registo' => 'Data de Registo',
     'observacoes' => 'Observações',
     'familia' => 'Familia',
     'sub-familia' => 'Sub-Familia',

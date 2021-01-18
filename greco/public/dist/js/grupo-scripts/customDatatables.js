@@ -85,14 +85,23 @@ var produtos = $("#tabelaprodutos").DataTable({
     }
 });
 // Tabelas com pesquisa e botoes de exportar (Clientes.index, Fornecedores.index)
-var table = $("#complex").DataTable({
+var clientes = $("#clientes").DataTable({
     "dom": '<"toolbar">frtip l',
     "info": true,
+    "processing": true,
+    "serverSide": true,
+    "ajax": "/clientes/getClientes/",
+    "columns": [
+        { data: 'designacao' },
+        { data: 'created_at' },
+        { data: 'id' },
+    ],
     "language": {
         "url": datatables_lang,
     },
     "responsive": true,
-    "lengthChange": false,
+    "lengthChange": true,
+    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, todo]],
     "autoWidth": false,
     "buttons": [{
         extend: 'csvHtml5',
@@ -108,7 +117,8 @@ var table = $("#complex").DataTable({
     },
     ],
     "initComplete": function () {
-        table.buttons().container().appendTo('div.toolbar');
+        clientes.buttons().container().appendTo('div.toolbar');
+        $('#clientes_length').appendTo('#clientes_filter');
     }
 });
 

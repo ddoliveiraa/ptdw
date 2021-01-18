@@ -56,58 +56,14 @@
                     <div class="card">
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="complex" class="table table-bordered table-striped">
+                            <table id="clientes" class="table table-bordered table-striped">
                                 <thead class="bg-dark">
                                     <tr>
                                         <th>{{ __('lang.designacao') }}</th>
-                                        <th>{{ __('lang.responsavel') }} - {{ __('lang.nome') }}</th>
-                                        <th>{{ __('lang.responsavel') }} - {{ __('lang.email') }}</th>
-                                        <th>Nº {{ __('lang.solicitante') }}</th>
+                                        <th>{{ __('lang.data de registo') }}</th>
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Departamento de Biologia</td>
-                                        <td>Carolina Tavares</td>
-                                        <td>carol@ua.pt</td>
-                                        <td>4</td>
-                                        <td><a href="{{ public_path() }}/clientes/show"> Ver Mais &nbsp<i
-                                                    class="fa fa-arrow-right"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Equipa de Pesquisa 1</td>
-                                        <td>Bruno Ferreira</td>
-                                        <td>bruno@ua.pt</td>
-                                        <td>7</td>
-                                        <td><a href="{{ public_path() }}/clientes/show"> Ver Mais &nbsp<i
-                                                    class="fa fa-arrow-right"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Equipa de Pesquisa 2</td>
-                                        <td>Diogo Oliveira</td>
-                                        <td>diogo@ua.pt</td>
-                                        <td>15</td>
-                                        <td><a href="{{ public_path() }}/clientes/show"> Ver Mais &nbsp<i
-                                                    class="fa fa-arrow-right"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Equipa de Pesquisa 3</td>
-                                        <td>Maria Nobre</td>
-                                        <td>maria@ua.pt</td>
-                                        <td>8</td>
-                                        <td><a href="{{ public_path() }}/clientes/show"> Ver Mais &nbsp<i
-                                                    class="fa fa-arrow-right"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Equipa de Pesquisa 4</td>
-                                        <td>Carolina Tavares</td>
-                                        <td>carol@ua.pt</td>
-                                        <td>3</td>
-                                        <td><a href="{{ public_path() }}/clientes/show"> Ver Mais &nbsp<i
-                                                    class="fa fa-arrow-right"></i></a></td>
-                                    </tr>
-                                </tbody>
                             </table>
                         </div>
                         <!-- /.card-body -->

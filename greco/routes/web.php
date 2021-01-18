@@ -25,21 +25,19 @@ Route::get('/welcome', function () {
 
 Route::get('/search','App\Http\Controllers\SearchController@search');
 
-
 Route::get('/welcome/{locale}', 'App\Http\Controllers\LocalizationController@index');
 
 //Produtos
 Route::get('/produtos', 'App\Http\Controllers\ProdutoController@index');
 Route::get('/produtos/getProdutos/','App\Http\Controllers\ProdutoController@getProdutos');
 Route::get('/produtos/add', 'App\Http\Controllers\ProdutoController@add');
-Route::get('/ficha/{produto}', 'App\Http\Controllers\ProdutoController@show');
 Route::post('/produtos_q', 'App\Http\Controllers\ProdutoController@storeQuimico');
 Route::post('/produtos_nq', 'App\Http\Controllers\ProdutoController@storeNaoQuimico');
 
 //Ficha
+Route::get('/ficha/{produto}', 'App\Http\Controllers\ProdutoController@show');
 Route::get('/ficha/editar/{produtos}', 'App\Http\Controllers\ProdutoController@edit');
 Route::get('/ficha/editar_nq/{produtos}', 'App\Http\Controllers\ProdutoController@edit_nq');
-
 Route::put('/editar/produtos_q/{produtos}', 'App\Http\Controllers\ProdutoController@updateProdutoQ');
 Route::put('/editar/produtos_nq/{produtos}', 'App\Http\Controllers\ProdutoController@updateProdutoNQ');
 
@@ -55,22 +53,18 @@ Route::get('/movimentos/historico/getEntradas/','App\Http\Controllers\MovimentoC
 Route::get('/movimentos/historico/getSaidas/','App\Http\Controllers\MovimentoController@getSaidas');
 Route::get('/movimentos/show_entrada/{entrada}', 'App\Http\Controllers\MovimentoController@show');
 Route::get('/movimentos/show_saida/{saida}', 'App\Http\Controllers\MovimentoController@sshow');
-
 Route::get('/movimentos/editar/{entrada}', 'App\Http\Controllers\MovimentoController@edit');
-
 
 Route::post('/movimentos/add/entrada_quimico', 'App\Http\Controllers\MovimentoController@storeEntradaQ');
 Route::post('/movimentos/add/entrada_naoquimico', 'App\Http\Controllers\MovimentoController@storeEntradaNQ');
 Route::post('/movimentos/add/saida', 'App\Http\Controllers\MovimentoController@storeSaida');
 
 //Clientes
+Route::get('/clientes', 'App\Http\Controllers\ClienteController@index');
+Route::get('/clientes/add', 'App\Http\Controllers\ClienteController@create');
 Route::post('/clientes/add/store', 'App\Http\Controllers\ClienteController@store');
-Route::get('/clientes/add', function () {
-    return view('clientes.add');
-});
-Route::get('/clientes', function () {
-    return view('clientes.index');
-});
+Route::get('/clientes/getClientes/', 'App\Http\Controllers\ClienteController@getClientes');
+
 Route::get('/clientes/show', function () {
     return view('clientes.show');
 });
@@ -91,7 +85,6 @@ Route::post('/operadores/add/addOperador', 'App\Http\Controllers\OperadorControl
 
 Route::get('/operadores/{operador}', 'App\Http\Controllers\OperadorController@show');
 
-
 Route::get('/operadores/editar', function () {
     return view('operadores.editar');
 });
@@ -99,9 +92,7 @@ Route::get('/operadores/editar', function () {
 //Fornecedores
 Route::get('/fornecedores','App\Http\Controllers\FornecedorController@index');
 Route::get('/fornecedores/getFornecedores/','App\Http\Controllers\FornecedorController@getFornecedores');
-Route::get('/fornecedores/add', function () {
-    return view('fornecedores.add');
-});
+Route::get('/fornecedores/add', 'App\Http\Controllers\FornecedorController@create');
 Route::post('/fornecedores/add/store', 'App\Http\Controllers\FornecedorController@store');
 
 //Armazem
