@@ -22,7 +22,7 @@
                         <li class="breadcrumb-item"><a href="{{ public_path() }}/welcome">Home</a></li>
                         <li class="breadcrumb-item"><a href="{{ public_path() }}/operadores">{{ __('lang.operadores') }}</a>
                         </li>
-                        <li class="breadcrumb-item active">Ana Silva</li>
+                        <li class="breadcrumb-item active">{{$operador->nome}}</li>
                     </ol>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                         class="btn btn-block btn-danger">{{ __('lang.desativar') }}</a>
                         {{-- fiel de Armazém nao tem permissoes pra desativar operadores --}}
                  </div>
-                    <h1 class="text-left display-4">{{ __('lang.editar') }} Ana Silva</h1>
+                    <h1 class="text-left display-4">{{ __('lang.editar') }}</h1>
                     
                 </div>
                 
@@ -51,7 +51,7 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <!-- form start -->
-                        <form method="POST" action="/operadores/editar/editado/{{operador}}">
+                        <form method="POST" action="/operadores/editar/editado/{{$operador->id}}">
                             @csrf
                             @method('PUT')  
                             <div class="card-body">
@@ -61,7 +61,7 @@
                                             <label for="nome_operador" class="control-label">{{ __('lang.nome') }}</label>
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="nome_operador" name="nome_operador" required
-                                                    placeholder="{{ __('lang.insira o') }} {{ __('lang.nome') }}">
+                                                    placeholder="{{ __('lang.insira o') }} {{ __('lang.nome') }}" value ="{{$operador->nome}}">
                                             </div>
                                         </div>
                                     </div>
@@ -71,7 +71,7 @@
                                             <label for="email_operador" class="control-label">{{ __('lang.email') }}</label>
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="email_operador" name="email_operador" required
-                                                    placeholder="{{ __('lang.insira o') }} {{ __('lang.email') }}">
+                                                    placeholder="{{ __('lang.insira o') }} {{ __('lang.email') }}" value ="{{$operador->email}}">
                                             </div>
                                         </div>
                                     </div>
@@ -95,7 +95,7 @@
                                             <label for="data_criacao">{{ __('lang.data-criacao') }}</label>
                                             <div class="input-group date" id="data_criacao" name="data_criacao" data-target-input="nearest" required>
                                                 <input type="text" id="data_criacao_input" name="data_criacao_input" class="form-control datetimepicker-input"
-                                                    data-target="#data_criacao" placeholder="DD/MM/YYYY" />
+                                                    data-target="#data_criacao" placeholder="DD/MM/YYYY" value="{{$operador->data_criacao}}"/>
                                                 <div class="input-group-append" data-target="#data_criacao"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -106,7 +106,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="obvs">{{ __('lang.observacoes') }}</label>
-                                    <textarea id="obvs" name="obvs" class="form-control" rows="4"></textarea>
+                                    <textarea id="obvs" name="obvs" class="form-control" rows="4">{{$operador->obs}}</textarea>
                                 </div>
                             </div>
 
