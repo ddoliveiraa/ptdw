@@ -70,9 +70,10 @@
                             @foreach ($notifs as $notif)
                                 <div class="dropdown-divider"></div>
                                 <p class="dropdown-item">
-                                    <i class="fas fa-exclamation mr-2"></i>
-                                    <strong>{{ $notif->tipo }}</strong>
-                                    {{ $notif->texto }}
+                                    <a href="{{ public_path() }}/ficha/{{ $notif->id_produto }}"><i class="fas fa-exclamation mr-2"></i>
+                                        <strong>{{ $notif->tipo }}</strong>
+                                        {{ $notif->texto }}
+                                    </a>
                                 </p>
                             @endforeach
 
@@ -125,7 +126,7 @@
 
                             <p>
                                 Fernando Silva
-                                <small>{{ __('lang.fiel de armazem') }}</small>
+                                <small>{{ __('lang.supervisor sectorial') }}</small>
                             </p>
                         </li>
                         <!-- Menu Body -->
