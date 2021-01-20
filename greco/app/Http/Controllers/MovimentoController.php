@@ -507,6 +507,11 @@ class MovimentoController extends Controller
    */
     public function getSaidas(Request $request)
     {
+        $familiaValue = $request->get("familiass");
+        $subfamiliaValue = $request->get("subfamiliass");
+        $DataValue = $request->get("data_val");
+        $DataInicio = $request->get("inicio");
+        $DataFim = $request->get("fim");
 
         ## Read value
         $draw = $request->get('draw');
@@ -523,18 +528,161 @@ class MovimentoController extends Controller
         $columnSortOrder = $order_arr[0]['dir']; // asc or desc
         $searchValue = $search_arr['value']; // Search value
 
-        // Total records
-        $totalRecords = DB::table('saidaview')->select('count(*) as allcount')->count();
-        $totalRecordswithFilter = DB::table('saidaview')->select('count(*) as allcount')->where('designacao', 'like', '%' . $searchValue . '%')->count();
+        if ($DataValue == "Periodo") {
+            if ($familiaValue == "Familia") {
+                // Total records
+                $totalRecords = DB::table('saidaview')->select('count(*) as allcount')->count();
+                $totalRecordswithFilter = DB::table('saidaview')->select('count(*) as allcount')
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                    })->count();
 
-        // Fetch records
-        $records =  DB::table('saidaview')->orderBy($columnName, $columnSortOrder)
-            ->where('saidaview.designacao', 'like', '%' . $searchValue . '%')
-            ->select('saidaview.*')
-            ->skip($start)
-            ->take($rowperpage)
-            ->get();
+                // Fetch records
+                $records =  DB::table('saidaview')->orderBy($columnName, $columnSortOrder)
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                    })
+                    ->select('saidaview.*')
+                    ->skip($start)
+                    ->take($rowperpage)
+                    ->get();
+            } else if ($familiaValue == "Não Químico" && !($subfamiliaValue == "Sub-Familia")) {
+                // Total records
+                $totalRecords = DB::table('saidaview')->select('count(*) as allcount')->count();
+                $totalRecordswithFilter = DB::table('saidaview')->where('familia', 'ilike', $familiaValue)->where('subfamilia', 'ilike', $subfamiliaValue)->select('count(*) as allcount')
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                    })->count();
 
+                // Fetch records
+                $records =  DB::table('saidaview')->where('familia', 'ilike', $familiaValue)->where('subfamilia', 'ilike', $subfamiliaValue)->orderBy($columnName, $columnSortOrder)
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                    })
+                    ->select('saidaview.*')
+                    ->skip($start)
+                    ->take($rowperpage)
+                    ->get();
+            } else {
+                // Total records
+                $totalRecords = DB::table('saidaview')->select('count(*) as allcount')->count();
+                $totalRecordswithFilter = DB::table('saidaview')->where('familia', 'ilike', $familiaValue)->select('count(*) as allcount')
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                    })->count();
+
+                // Fetch records
+                $records =  DB::table('saidaview')->where('familia', 'ilike', $familiaValue)->orderBy($columnName, $columnSortOrder)
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                    })
+                    ->select('saidaview.*')
+                    ->skip($start)
+                    ->take($rowperpage)
+                    ->get();
+            }
+        } else {
+            if ($familiaValue == "Familia") {
+                // Total records
+                $totalRecords = DB::table('saidaview')->select('count(*) as allcount')->count();
+                $totalRecordswithFilter = DB::table('saidaview')->select('count(*) as allcount')->WhereBetween('data', [$DataInicio, $DataFim])
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                    })->count();
+
+                // Fetch records
+                $records =  DB::table('saidaview')->WhereBetween('data', [$DataInicio, $DataFim])->orderBy($columnName, $columnSortOrder)
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                    })
+                    ->select('saidaview.*')
+                    ->skip($start)
+                    ->take($rowperpage)
+                    ->get();
+            } else if ($familiaValue == "Não Químico" && !($subfamiliaValue == "Sub-Familia")) {
+                // Total records
+                $totalRecords = DB::table('saidaview')->select('count(*) as allcount')->count();
+                $totalRecordswithFilter = DB::table('saidaview')->where('familia', 'ilike', $familiaValue)->where('subfamilia', 'ilike', $subfamiliaValue)->WhereBetween('data', [$DataInicio, $DataFim])->select('count(*) as allcount')
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                    })->count();
+
+                // Fetch records
+                $records =  DB::table('saidaview')->where('familia', 'ilike', $familiaValue)->where('subfamilia', 'ilike', $subfamiliaValue)->WhereBetween('data', [$DataInicio, $DataFim])->orderBy($columnName, $columnSortOrder)
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                    })
+                    ->select('saidaview.*')
+                    ->skip($start)
+                    ->take($rowperpage)
+                    ->get();
+            } else {
+                // Total records
+                $totalRecords = DB::table('saidaview')->select('count(*) as allcount')->count();
+                $totalRecordswithFilter = DB::table('saidaview')->where('familia', 'ilike', $familiaValue)->WhereBetween('data', [$DataInicio, $DataFim])->select('count(*) as allcount')
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                    })->count();
+
+                // Fetch records
+                $records =  DB::table('saidaview')->where('familia', 'ilike', $familiaValue)->WhereBetween('data', [$DataInicio, $DataFim])->orderBy($columnName, $columnSortOrder)
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                    })
+                    ->select('saidaview.*')
+                    ->skip($start)
+                    ->take($rowperpage)
+                    ->get();
+            }
+        }
         $data_arr = array();
 
         foreach ($records as $record) {
