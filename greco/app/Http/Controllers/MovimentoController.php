@@ -68,9 +68,7 @@ class MovimentoController extends Controller
         request()->validate([
             'data_entrada_input' => ['required', 'date_format:d/m/Y'],
             'data_abertura_input' => ['date_format:d/m/Y', 'after_or_equal:data_entrada_input'],
-            'data_validade_input' => ['date_format:d/m/Y', 'after_or_equal:data_entrada_input'],
-            'data_termino_input' => ['date_format:d/m/Y', 'after_or_equal:data_entrada_input'],
-            'data_termino_input' => ['date_format:d/m/Y', 'after:data_abertura_input'],
+            'data_validade_input' => ['date_format:d/m/Y', 'after_or_equal:data_entrada_input']
         ]);
 
         //falta fazer o IF
@@ -99,7 +97,6 @@ class MovimentoController extends Controller
         $Entrada->data_entrada = request('data_entrada_input');
         $Entrada->data_abertura = request('data_abertura_input');
         $Entrada->data_validade = request('data_validade_input');
-        $Entrada->data_termino = request('data_termino_input');
         $Entrada->operador = 1; //Workaroud - Precisa de autenticação
         $Entrada->unidade = request('unidades');
         $Entrada->obs = request('obvs');
@@ -117,10 +114,9 @@ class MovimentoController extends Controller
         //  *** NAO QUIMICOS ***
         //VALIDAÇÂO
         request()->validate([
-            'data_entrada_nq_input' => 'required|date_format:d/m/Y',
-            'data_abertura_nq_input' => 'date_format:d/m/Y',
-            'data_validade_nq_input' => 'date_format:d/m/Y',
-            'data_termino_nq_input' => 'date_format:d/m/Y',
+            'data_entrada_nq_input' => ['required', 'date_format:d/m/Y'],
+            'data_abertura_nq_input' => ['date_format:d/m/Y', 'after_or_equal:data_entrada_nq_input'],
+            'data_validade_nq_input' => ['date_format:d/m/Y', 'after_or_equal:data_entrada_nq_input']
         ]);
 
         //ADD NA BD
@@ -145,7 +141,6 @@ class MovimentoController extends Controller
         $Entrada->data_entrada = request('data_entrada_nq_input');
         $Entrada->data_abertura = request('data_abertura_nq_input');
         $Entrada->data_validade = request('data_validade_nq_input');
-        $Entrada->data_termino = request('data_termino_nq_input');
         $Entrada->operador = 1; //Workaroud - Precisa de autenticação
         $Entrada->unidade = request('unidades_nq');
         $Entrada->obs = request('obvs_nq');

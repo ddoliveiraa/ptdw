@@ -342,23 +342,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="produto">{{ __('lang.data de termino') }}</label>
-                                                    <div class="input-group date" id="data_termino" name="data_termino"
-                                                        data-target-input="nearest">
-                                                        <input type="text" class="form-control datetimepicker-input" disabled
-                                                            id="data_termino_input" name="data_termino_input"
-                                                            data-target="#data_termino" placeholder="DD/MM/YYYY" />
-                                                        <div class="input-group-append" data-target="#data_termino"
-                                                            data-toggle="datetimepicker">
-                                                            <div class="input-group-text"><i class="fa fa-calendar"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
 
                                         <div class="form-group">
@@ -635,22 +618,6 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="data_termino_nq">{{ __('lang.data de termino') }}</label>
-                                                    <div class="input-group date" id="data_termino_nq" name="data_termino_nq"
-                                                        data-target-input="nearest">
-                                                        <input type="text" class="form-control datetimepicker-input" disabled
-                                                            id="data_termino_nq_input" name="data_termino_nq_input"
-                                                            data-target="#data_termino_nq" placeholder="DD/MM/YYYY" />
-                                                        <div class="input-group-append" data-target="#data_termino_nq"
-                                                            data-toggle="datetimepicker">
-                                                            <div class="input-group-text"><i class="fa fa-calendar"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
 
                                         <div class="form-group">
@@ -707,8 +674,6 @@
             let d2num = d2[2]+d2[1]+d2[0];
             let d3 = $("#data_validade_input").val().split("/");
             let d3num = d3[2]+d3[1]+d3[0];
-            let d4 = $("#data_termino_input").val().split("/");
-            let d4num = d4[2]+d4[1]+d4[0];
 
             if(d1num > d2num){
                 $("#data_abertura_input").addClass("border border-danger");
@@ -721,19 +686,11 @@
             }else{
                 $("#data_validade_input").removeClass("border border-danger");
             }
-
-            if(d1num > d4num || d4num < d2num){
-                $("#data_termino_input").addClass("border border-danger");
-            }else{
-                $("#data_termino_input").removeClass("border border-danger");
-            }
-
         }
 
         $("#data_entrada").on("input", function() {
             $('#data_abertura_input').attr("disabled", false);
             $('#data_validade_input').attr("disabled", false);
-            $('#data_termino_input').attr("disabled", false);
             checkDates();
         });
 
@@ -745,9 +702,6 @@
             checkDates();
         });
         
-        $("#data_termino").on("input", function() {
-            checkDates();
-        });
 
         function checkDatesNQ(){
             let d1 = $("#data_entrada_nq_input").val().split("/");
@@ -782,7 +736,6 @@
         $("#data_entrada_nq").on("input", function() {
             $('#data_abertura_nq_input').attr("disabled", false);
             $('#data_validade_nq_input').attr("disabled", false);
-            $('#data_termino_nq_input').attr("disabled", false);
             checkDatesNQ();
         });
 
@@ -794,9 +747,6 @@
             checkDatesNQ();
         });
 
-        $("#data_termino_nq").on("input", function() {
-            checkDatesNQ();
-        });
 
         $("#produto").change(function() {
             $produto = $('#produto').val();
