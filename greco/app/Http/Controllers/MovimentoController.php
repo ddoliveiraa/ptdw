@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -30,10 +31,11 @@ class MovimentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getNEmbalagem(Request $request){
+    public function getNEmbalagem(Request $request)
+    {
         if ($request->ajax()) {
             $id_inventario = $request->produto;
-            $id_ordem = Entrada::where('id_inventario',$id_inventario)->max('id_ordem')+1;
+            $id_ordem = Entrada::where('id_inventario', $id_inventario)->max('id_ordem') + 1;
             $output = $id_inventario . "-" . $id_ordem;
             return $output;
         }
@@ -44,10 +46,11 @@ class MovimentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getPrateleira(Request $request){
+    public function getPrateleira(Request $request)
+    {
         if ($request->ajax()) {
             $id_armario = $request->armario;
-            $data = prateleira::where('id_armario',$id_armario)->get();
+            $data = prateleira::where('id_armario', $id_armario)->get();
             $output = '';
             foreach ($data as $row) {
                 $output .= '<option value="' . $row->id . '">' . $row->prateleira . '</option>';
@@ -61,7 +64,8 @@ class MovimentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function storeEntradaQ(Request $request){
+    public function storeEntradaQ(Request $request)
+    {
         //  *** QUIMICOS ***
         //VALIDAÇÂO
 
@@ -75,8 +79,8 @@ class MovimentoController extends Controller
 
         //ADD NA BD
         $id_inventario = request('produto'); //request('produto') está a receber o id
-        $id_ordem = Entrada::where('id_inventario',$id_inventario)->max('id_ordem')+1;
-        
+        $id_ordem = Entrada::where('id_inventario', $id_inventario)->max('id_ordem') + 1;
+
         $Entrada = new Entrada();
         $Entrada->id_inventario = $id_inventario;
         $Entrada->id_ordem = $id_ordem;
@@ -101,7 +105,7 @@ class MovimentoController extends Controller
         $Entrada->unidade = request('unidades');
         $Entrada->obs = request('obvs');
         $Entrada->save();
-        
+
         return redirect('movimentos/entrada');
     }
 
@@ -110,7 +114,8 @@ class MovimentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function storeEntradaNQ(Request $request){
+    public function storeEntradaNQ(Request $request)
+    {
         //  *** NAO QUIMICOS ***
         //VALIDAÇÂO
         request()->validate([
@@ -121,8 +126,8 @@ class MovimentoController extends Controller
 
         //ADD NA BD
         $id_inventario = request('produto_nq'); //request('produto') está a receber o id
-        $id_ordem = Entrada::where('id_inventario',$id_inventario)->max('id_ordem')+1;
-        
+        $id_ordem = Entrada::where('id_inventario', $id_inventario)->max('id_ordem') + 1;
+
         $Entrada = new Entrada();
         $Entrada->id_inventario = $id_inventario;
         $Entrada->id_ordem = $id_ordem;
@@ -145,7 +150,7 @@ class MovimentoController extends Controller
         $Entrada->unidade = request('unidades_nq');
         $Entrada->obs = request('obvs_nq');
         $Entrada->save();
-        
+
         return redirect('movimentos/entrada');
     }
 
@@ -156,8 +161,8 @@ class MovimentoController extends Controller
      */
     public function showEndrada()
     {
-        $produtos = Produto::where('familia',1)->get();
-        $produtosnq = Produto::where('familia',2)->get();
+        $produtos = Produto::where('familia', 1)->get();
+        $produtosnq = Produto::where('familia', 2)->get();
         $unidades = unidade::all();
         $tipoembalagem = tipo_embalagem::all();
         $fornecedores = Fornecedor::all();
@@ -168,9 +173,19 @@ class MovimentoController extends Controller
         $texturas_viscosidades = textura_viscosidade::all();
         $cores = cores::all();
 
-        return view('movimentos.entrada', compact('produtos', 'produtosnq', 'unidades', 'tipoembalagem',
-                    'fornecedores', 'marcas', 'armarios', 'ivas',
-                    'estados', 'texturas_viscosidades', 'cores'));
+        return view('movimentos.entrada', compact(
+            'produtos',
+            'produtosnq',
+            'unidades',
+            'tipoembalagem',
+            'fornecedores',
+            'marcas',
+            'armarios',
+            'ivas',
+            'estados',
+            'texturas_viscosidades',
+            'cores'
+        ));
     }
 
     /**
@@ -178,10 +193,11 @@ class MovimentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getEmbalagensProdutos(Request $request){
+    public function getEmbalagensProdutos(Request $request)
+    {
         if ($request->ajax()) {
             $id_produto = $request->produto;
-            return Entrada::where('id_inventario',$id_produto)->get();
+            return Entrada::where('id_inventario', $id_produto)->get();
         }
     }
 
@@ -190,10 +206,11 @@ class MovimentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getSolicitantes(Request $request){
+    public function getSolicitantes(Request $request)
+    {
         if ($request->ajax()) {
             $id_cliente = $request->cliente;
-            return Solicitante::where('id_cliente',$id_cliente)->get();
+            return Solicitante::where('id_cliente', $id_cliente)->get();
         }
     }
 
@@ -206,12 +223,12 @@ class MovimentoController extends Controller
     {
         $entradas = Entrada::select('id_inventario')->distinct();
         $produtos_com_entrada = Produto::joinSub($entradas, 'ent', function ($join) {
-                                    $join->on('produtos.id', '=', 'ent.id_inventario');
-                                    })->get();
-        
+            $join->on('produtos.id', '=', 'ent.id_inventario');
+        })->get();
+
         $clientes = Cliente::all();
         $solicitantes = Solicitante::all();
-        
+
         return view('movimentos.saida', compact('produtos_com_entrada', 'clientes', 'solicitantes'));
     }
 
@@ -233,6 +250,12 @@ class MovimentoController extends Controller
     public function getEntradas(Request $request)
     {
 
+        $familiaValue = $request->get("familiass");
+        $subfamiliaValue = $request->get("subfamiliass");
+        $DataValue = $request->get("data_val");
+        $DataInicio = $request->get("inicio");
+        $DataFim = $request->get("fim");
+
         ## Read value
         $draw = $request->get('draw');
         $start = $request->get("start");
@@ -248,32 +271,188 @@ class MovimentoController extends Controller
         $columnSortOrder = $order_arr[0]['dir']; // asc or desc
         $searchValue = $search_arr['value']; // Search value
 
-        // Total records
-        $totalRecords = DB::table('entradaview')->select('count(*) as allcount')->count();
-        $totalRecordswithFilter = DB::table('entradaview')->select('count(*) as allcount')
-            ->where('designacao', 'ilike', '%' . $searchValue . '%')
-            ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
-            ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
-            ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
-            ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
-            ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
-            ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
-            ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%')->count();
+        if ($DataValue == "Periodo") {
 
-        // Fetch records
-        $records = DB::table('entradaview')->orderBy($columnName, $columnSortOrder)
-            ->where('entradaview.designacao', 'ilike', '%' . $searchValue . '%')
-            ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
-            ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
-            ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
-            ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
-            ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
-            ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
-            ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%')
-            ->select('entradaview.*')
-            ->skip($start)
-            ->take($rowperpage)
-            ->get();
+            if ($familiaValue == "Familia") {
+                // Total records
+                $totalRecords = DB::table('entradaview')->select('count(*) as allcount')->count();
+                $totalRecordswithFilter = DB::table('entradaview')->select('count(*) as allcount')
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                    })->count();
+
+                // Fetch records
+                $records = DB::table('entradaview')->orderBy($columnName, $columnSortOrder)
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('entradaview.designacao', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                    })->select('entradaview.*')
+                    ->skip($start)
+                    ->take($rowperpage)
+                    ->get();
+            } else if ($familiaValue == "Não Químico" && !($subfamiliaValue == "Sub-Familia")) {
+                $totalRecords = DB::table('entradaview')->select('count(*) as allcount')->count();
+                $totalRecordswithFilter = DB::table('entradaview')->where('familia', 'ilike', $familiaValue)->where('subfamilia', 'ilike', $subfamiliaValue)->select('count(*) as allcount')
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                    })->count();
+
+                // Fetch records
+                $records = DB::table('entradaview')->where('familia', 'ilike', $familiaValue)->where('subfamilia', 'ilike', $subfamiliaValue)->orderBy($columnName, $columnSortOrder)
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('entradaview.designacao', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                    })->select('entradaview.*')
+                    ->skip($start)
+                    ->take($rowperpage)
+                    ->get();
+            } else {
+                $totalRecords = DB::table('entradaview')->select('count(*) as allcount')->count();
+                $totalRecordswithFilter = DB::table('entradaview')->where('familia', 'ilike', $familiaValue)->select('count(*) as allcount')
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                    })->count();
+
+                // Fetch records
+                $records = DB::table('entradaview')->where('familia', 'ilike', $familiaValue)->orderBy($columnName, $columnSortOrder)
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('entradaview.designacao', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                    })->select('entradaview.*')
+                    ->skip($start)
+                    ->take($rowperpage)
+                    ->get();
+            }
+        } else {
+            if ($familiaValue == "Familia") {
+                // Total records
+                $totalRecords = DB::table('entradaview')->select('count(*) as allcount')->count();
+                $totalRecordswithFilter = DB::table('entradaview')->select('count(*) as allcount')->WhereBetween('data_entrada', [$DataInicio, $DataFim])
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                    })->count();
+
+                // Fetch records
+                $records = DB::table('entradaview')->WhereBetween('data_entrada', [$DataInicio, $DataFim])->orderBy($columnName, $columnSortOrder)
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('entradaview.designacao', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                    })->select('entradaview.*')
+                    ->skip($start)
+                    ->take($rowperpage)
+                    ->get();
+            } else if ($familiaValue == "Não Químico" && !($subfamiliaValue == "Sub-Familia")) {
+                $totalRecords = DB::table('entradaview')->select('count(*) as allcount')->count();
+                $totalRecordswithFilter = DB::table('entradaview')->where('familia', 'ilike', $familiaValue)->where('subfamilia', 'ilike', $subfamiliaValue)->WhereBetween('data_entrada', [$DataInicio, $DataFim])->select('count(*) as allcount')
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                    })->count();
+
+                // Fetch records
+                $records = DB::table('entradaview')->where('familia', 'ilike', $familiaValue)->where('subfamilia', 'ilike', $subfamiliaValue)->WhereBetween('data_entrada', [$DataInicio, $DataFim])->orderBy($columnName, $columnSortOrder)
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('entradaview.designacao', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                    })->select('entradaview.*')
+                    ->skip($start)
+                    ->take($rowperpage)
+                    ->get();
+            } else {
+                $totalRecords = DB::table('entradaview')->select('count(*) as allcount')->count();
+                $totalRecordswithFilter = DB::table('entradaview')->where('familia', 'ilike', $familiaValue)->WhereBetween('data_entrada', [$DataInicio, $DataFim])->select('count(*) as allcount')
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                    })->count();
+
+                // Fetch records
+                $records = DB::table('entradaview')->where('familia', 'ilike', $familiaValue)->WhereBetween('data_entrada', [$DataInicio, $DataFim])->orderBy($columnName, $columnSortOrder)
+                    ->where(function ($query) use ($searchValue) {
+                        $query->where('entradaview.designacao', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                    })->select('entradaview.*')
+                    ->skip($start)
+                    ->take($rowperpage)
+                    ->get();
+            }
+        }
 
         $data_arr = array();
 
@@ -427,7 +606,7 @@ class MovimentoController extends Controller
         $Saida->id_operador = 1;
         $Saida->obs = request('obvs');
         $Saida->save();
-        
+
         return redirect('movimentos/saida');
     }
 
@@ -462,7 +641,7 @@ class MovimentoController extends Controller
         $estados = estados_fisicos::all();
         $cor = cores::all();
         $texturas_viscosidades = textura_viscosidade::all();
-        return view('movimentos.editar',compact('entrada','fornecedor','armario','prateleira','tipoembalagem','estados','cor','texturas_viscosidades'));
+        return view('movimentos.editar', compact('entrada', 'fornecedor', 'armario', 'prateleira', 'tipoembalagem', 'estados', 'cor', 'texturas_viscosidades'));
     }
 
     /**

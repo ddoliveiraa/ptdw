@@ -206,7 +206,7 @@ class ProdutoController extends Controller
 
         if ($tipo == "quimico") {
             // Total records
-            $totalRecords = Produto::select('count(*) as allcount')->where('familia', '=', 1)->count();
+            $totalRecords = Produto::select('count(*) as allcount')->count();
 
             $totalRecordswithFilter = Produto::where('familia', '=', 1)->select('count(*) as allcount')->where(function ($query) use ($searchValue) {
                 $query->where('designacao', 'ilike', '%' . $searchValue . '%')
@@ -225,7 +225,7 @@ class ProdutoController extends Controller
                 ->get();
         } else if ($tipo == "naoquimico") {
             // Total records
-            $totalRecords = Produto::select('count(*) as allcount')->where('familia', '=', 2)->count();
+            $totalRecords = Produto::select('count(*) as allcount')->count();
 
             $totalRecordswithFilter = Produto::where('familia', '=', 2)->select('count(*) as allcount')->where(function ($query) use ($searchValue) {
                 $query->where('designacao', 'ilike', '%' . $searchValue . '%');
