@@ -5,6 +5,7 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ public_path() }}/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="{{ public_path() }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/dist/css/toastr.css"/>
 
 @endsection
 
@@ -64,32 +65,31 @@
                                                 <div class="form-group">
                                                     <label for="produto_designacao"
                                                         class="control-label">{{ __('lang.designacao') }}</label>
-                                                    <input type="text" class="form-control" name="produto_designacao" id="produto_designacao" tabindex="1"
+                                                    <input type="text" class="form-control" name="produto_designacao" id="produto_designacao" value="{{ old('produto_designacao') }}" tabindex="1"
                                                         required>
                                                 </div>
                                             </div>
-                                           
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="produto_sinonimo"
-                                                        class="control-label">{{ __('lang.sinonimo') }}</label>
-                                                    <input type="text" class="form-control" name="produto_sinonimo" id="produto_sinonimo" tabindex="2">
-                                                </div>
-                                            </div>
-                                        </div>
-        
-                                        <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="produto_formula"
                                                         class="control-label">{{ __('lang.formula') }}</label>
-                                                    <input type="text" class="form-control" name="produto_formula" id="produto_formula" tabindex="3">
+                                                    <input type="text" class="form-control" name="produto_formula" id="produto_formula" value="{{ old('produto_formula') }}" tabindex="3">
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                        <div class="row"> 
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="produto_cas" class="control-label">{{ __('lang.n cas') }}</label>
+                                                    <input type="text" class="form-control" name="produto_cas" id="produto_cas" value="{{ old('produto_cas') }}" tabindex="4" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="produto_cas" class="control-label">{{ __('lang.n cas') }}</label>
-                                                    <input type="text" class="form-control" name="produto_cas" id="produto_cas" tabindex="4" required>
+                                                    <label for="produto_peso"
+                                                        class="control-label">{{ __('lang.peso molecular') }}</label>
+                                                    <input type="number" min="1" class="form-control" name="produto_peso" id="produto_peso" value="{{ old('produto_peso') }}" tabindex="5" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -97,18 +97,26 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="produto_peso"
-                                                        class="control-label">{{ __('lang.peso molecular') }}</label>
-                                                    <input type="number" min="1" class="form-control" name="produto_peso" id="produto_peso" tabindex="5" required>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="col-md-6">
-                                                <div class="form-group">
                                                     <label for="produto_stock_minimo"
                                                         class="control-label">{{ __('lang.stock minimo') }}</label>
-                                                    <input type="number" min="1" class="form-control" name="produto_stock_minimo" id="produto_stock_minimo" tabindex="6"
+                                                    <input type="number" min="1" class="form-control" name="produto_stock_minimo" id="produto_stock_minimo" value="{{ old('produto_stock_minimo') }}" tabindex="6"
                                                         required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="produto_pictogramas"
+                                                        class="control-label">{{ __('lang.pictograma') }}</label>
+                                                    <div class="input-group margin">
+                                                        <input type="text" class="form-control" name="produto_pictogramas" id="produto_pictogramas" value="{{ old('produto_pictogramas') }}"
+                                                            tabindex="7" readonly>
+                                                        <span class="input-group-btn">
+                                                            <button type="button" class="btn btn-secondary btn-flat"
+                                                                data-toggle="modal"
+                                                                data-target="#modalSelecionarPictograma">{{ __('lang.selecionar') }}</button>
+                                                        </span>
+                                                        
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -118,27 +126,11 @@
                                                 <div class="form-group">
                                                     <label for="produto_condicoes_armazenamento"
                                                         class="control-label">{{ __('lang.condicoes de armazenamento') }}</label>
-                                                    <select class="form-control" name="produto_armario" id="produto_armario" tabindex="7">
+                                                    <select class="form-control" name="produto_armario" id="produto_armario" value="{{ old('produto_armario') }}" tabindex="7">
                                                         @foreach ($condicoes as $c)
                                                         <option value="{{ $c->id }}">{{ $c->condicao }}</option>
                                                         @endforeach
                                                     </select>
-                                                </div>
-                                            </div>
-        
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="produto_pictogramas"
-                                                        class="control-label">{{ __('lang.pictograma') }}</label>
-                                                    <div class="input-group margin">
-                                                        <input type="text" class="form-control" name="produto_pictogramas" id="produto_pictogramas"
-                                                            tabindex="7" readonly>
-                                                        <span class="input-group-btn">
-                                                            <button type="button" class="btn btn-secondary btn-flat"
-                                                                data-toggle="modal"
-                                                                data-target="#modalSelecionarPictograma">{{ __('lang.selecionar') }}</button>
-                                                        </span>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -147,7 +139,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <div class="custom-control custom-switch">
-                                                        <input type="checkbox" class="custom-control-input" name="customSwitch1" id="customSwitch1">
+                                                        <input type="checkbox" class="custom-control-input" name="customSwitch1" id="customSwitch1" value="{{ old('customSwitch1') }}">
                                                         <label class="custom-control-label"
                                                             for="customSwitch1">{{ __('lang.armario ventilado') }}</label>
                                                     </div>
@@ -160,15 +152,18 @@
                                     <div class="card-footer">
                                         <div class="row justify-content-end">
                                             <div class="col-md-3">
-                                                <input id="ids_pictogramas" name="ids_pictogramas" type="hidden">
-                                                <input id="ids_recomendacoes" name="ids_recomendacoes" type="hidden">
-                                                <input id="ids_advertencias" name="ids_advertencias" type="hidden">
+                                                <input id="ids_pictogramas" name="ids_pictogramas" value="{{ old('ids_pictogramas') }}" type="hidden">
+                                                <input id="ids_recomendacoes" name="ids_recomendacoes" value="{{ old('ids_recomendacoes') }}" type="hidden">
+                                                <input id="ids_advertencias" name="ids_advertencias" value="{{ old('ids_advertencias') }}" type="hidden">
                                                 <button type="submit"
                                                     class="btn btn-block btn-secondary">{{ __('lang.guardar') }}</button>
                                             </div>
                                         </div>
                                     </div>
 
+                                    @if($errors)
+                                        <p class="help danger">{{ $errors->first('produto_pictogramas') }}</p>
+                                    @endif
                                 </form>
                             </div>
                         </div>
@@ -185,7 +180,7 @@
                                                 <div class="form-group">
                                                     <label for="produto_designacao_nq"
                                                         class="control-label">{{ __('lang.designacao') }}</label>
-                                                    <input type="text" class="form-control" name="produto_designacao_nq" id="produto_designacao_nq"
+                                                    <input type="text" class="form-control" name="produto_designacao_nq" id="produto_designacao_nq" value="{{ old('produto_designacao_nq') }}"
                                                         tabindex="1" required>
                                                 </div>
                                             </div>
@@ -193,7 +188,7 @@
                                                 <div class="form-group">
                                                     <label for="produto_foto"
                                                         class="control-label">{{ __('lang.foto') }}</label>
-                                                    <input type="file" class="form-control" name="produto_foto" id="produto_foto" tabindex="2">
+                                                    <input type="file" class="form-control" name="produto_foto" id="produto_foto" value="{{ old('produto_foto') }}" tabindex="2">
                                                 </div>
                                             </div>
                                         </div>
@@ -203,7 +198,7 @@
                                                 <div class="form-group">
                                                     <label for="produto_subfamilia_nq"
                                                         class="control-label">{{ __('lang.familia') }}</label>
-                                                    <select class="form-control" name="produto_subfamilia_nq" id="produto_subfamilia_nq" tabindex="3">
+                                                    <select class="form-control" name="produto_subfamilia_nq" id="produto_subfamilia_nq" value="{{ old('produto_subfamilia_nq') }}" tabindex="3">
                                                         @foreach ($subfamilias as $sf)
                                                         <option value="{{ $sf->id }}">{{ $sf->nome }}</option>
                                                         @endforeach
@@ -214,7 +209,7 @@
                                                 <div class="form-group">
                                                     <label for="produto_stock_minimo_nq"
                                                         class="control-label">{{ __('lang.stock minimo') }}</label>
-                                                    <input type="number" min="1" class="form-control" name="produto_stock_minimo_nq" id="produto_stock_minimo_nq"
+                                                    <input type="number" min="1" class="form-control" name="produto_stock_minimo_nq" id="produto_stock_minimo_nq" value="{{ old('produto_stock_minimo_nq') }}"
                                                         tabindex="4" required>
                                                 </div>
                                             </div>
@@ -324,9 +319,19 @@
 
     <!-- Select2 -->
     <script src="{{ public_path() }}/plugins/select2/js/select2.full.min.js"></script>
+    <!-- Toastr -->
+    <script src="{{ public_path() }}/dist/js/toastr.min.js"></script>
+
 
     <script>
         $(function() {
+            if('{{ $errors->count() > 0}}') {
+                toastr["error"]("Por favor preencha todos os campos necessários.", "Erro ao adicionar produto")
+            }else{
+                if('{{ Session::get('status')}}'==='ok'){
+                    toastr["success"]("Produto introduzido na base de dados com sucesso.", "Novo produto criado")
+                }
+            };
 
             $('#guardar').on('click', function() {
 

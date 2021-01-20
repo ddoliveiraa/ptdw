@@ -11,6 +11,7 @@ use App\Models\pictograma;
 use App\Models\recomendacoe;
 use App\Models\advertencia;
 use Carbon;
+use Illuminate\Support\Facades\Validator;
 
 
 class ProdutoController extends Controller
@@ -21,58 +22,63 @@ class ProdutoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function storeQuimico(Request $request){
-        //dd($request->all());
-
 
         //VALIDAÇÂO
-        request()->validate([
+        $validator = Validator::make($request->all(), [
             'produto_designacao' => 'required',
             'produto_cas' => 'required',
             'produto_peso' => 'required',
-            'produto_stock_minimo' => 'required'
+            'produto_stock_minimo' => 'required',
+            'produto_pictogramas' => 'required'
         ]);
 
-        //ADD NA BD
-        $Produto = new Produto();
-        $Produto->familia = 1;
-        $Produto->designacao = request('produto_designacao');
-        $Produto->formula = request('produto_formula');
-        //$Produto->sinonimo = request('produto_sinonimo');
-        $Produto->CAS = request('produto_cas');
-        $Produto->peso_molecular = request('produto_peso');
-        $Produto->stock_min = request('produto_stock_minimo');
-        $Produto->condicoes_armazenamento = request('produto_armario');
-        $Produto->ventilado = request('customSwitch1');
+        if ($validator->fails()) {
+            return redirect('produtos/add')->withErrors($validator)->withInput();
+        }else{
+            //ADD NA BD
+            $Produto = new Produto();
+            $Produto->familia = 1;
+            $Produto->designacao = request('produto_designacao');
+            $Produto->formula = request('produto_formula');
+            $Produto->CAS = request('produto_cas');
+            $Produto->peso_molecular = request('produto_peso');
+            $Produto->stock_min = request('produto_stock_minimo');
+            $Produto->condicoes_armazenamento = request('produto_armario');
+            $Produto->ventilado = request('customSwitch1');
+            
+            $Produto->save();
+
+            $ids_pictogramas = request('ids_pictogramas'); // 3, 5, 7
+            $ids_pictogramas_array = explode(',',$ids_pictogramas); //array
+            $ids_recomendacoes = request('ids_recomendacoes');
+            $ids_recomendacoes_array = explode(',',$ids_recomendacoes); //array
+            $ids_advertencias = request('ids_advertencias');
+            $ids_advertencias_array = explode(',',$ids_advertencias); //array
+
+            //attachments pictogramas
+            if($ids_pictogramas_array!= null){
+                foreach ($ids_pictogramas_array as $pid){    
+                    $Produto->pictogramas()->attach($pid);
+                }
+            }
+            //attachments recomendações
+            if($ids_recomendacoes_array!= null){
+                foreach ($ids_recomendacoes_array as $rid){    
+                    $Produto->recomendacoes()->attach($rid);
+                }
+            }
+            //attachments advertencias
+            if($ids_advertencias_array!= null){
+                foreach ($ids_advertencias_array as $aid){    
+                    $Produto->advertencias()->attach($aid);
+                }
+            }
+
+            return redirect('produtos/add')->with('status', 'ok');
+        }
+
         
-        $Produto->save();
-
-        $ids_pictogramas = request('ids_pictogramas'); // 3, 5, 7
-        $ids_pictogramas_array = explode(',',$ids_pictogramas); //array
-        $ids_recomendacoes = request('ids_recomendacoes');
-        $ids_recomendacoes_array = explode(',',$ids_recomendacoes); //array
-        $ids_advertencias = request('ids_advertencias');
-        $ids_advertencias_array = explode(',',$ids_advertencias); //array
-
-        //attachments pictogramas
-        if($ids_pictogramas_array!= null){
-            foreach ($ids_pictogramas_array as $pid){    
-                $Produto->pictogramas()->attach($pid);
-            }
-        }
-        //attachments recomendações
-        if($ids_recomendacoes_array!= null){
-            foreach ($ids_recomendacoes_array as $rid){    
-                $Produto->recomendacoes()->attach($rid);
-            }
-        }
-        //attachments advertencias
-        if($ids_advertencias_array!= null){
-            foreach ($ids_advertencias_array as $aid){    
-                $Produto->advertencias()->attach($aid);
-            }
-        }
-
-        return redirect('produtos');
+        
     }
 
     public function updateProdutoQ(Request $request, Produto $Produto){
@@ -124,26 +130,27 @@ class ProdutoController extends Controller
     }
 
     public function storeNaoQuimico(Request $request){
-
-        //TESTES
-        //dump(request()->all());
         
         //VALIDAÇÂO
-        request()->validate([
+        $validator = Validator::make($request->all(), [
             'produto_designacao_nq' => 'required',
             'produto_stock_minimo_nq' => 'required'
         ]);
 
-        //ADD NA BD
-        $Produto = new Produto();
-        $Produto->familia = 2;
-        $Produto->designacao = request('produto_designacao_nq');
-        $Produto->foto = request('produto_foto');
-        $Produto->sub_familia = request('produto_subfamilia_nq');
-        $Produto->stock_min = request('produto_stock_minimo_nq');
-        $Produto->save();
+        if ($validator->fails()) {
+            return redirect('produtos/add')->withErrors($validator)->withInput();
+        }else{
+            //ADD NA BD
+            $Produto = new Produto();
+            $Produto->familia = 2;
+            $Produto->designacao = request('produto_designacao_nq');
+            $Produto->foto = request('produto_foto');
+            $Produto->sub_familia = request('produto_subfamilia_nq');
+            $Produto->stock_min = request('produto_stock_minimo_nq');
+            $Produto->save();
 
-        return redirect('produtos');
+            return redirect('produtos/add')->with('status', 'ok');
+        }
     }
 
     public function updateProdutoNQ(Request $request, Produto $Produto){
@@ -267,27 +274,6 @@ class ProdutoController extends Controller
             'recomendacoes' => $recomendacoes,
             'advertencias' => $advertencias
             ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-  
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store()
-    {
-
     }
 
     /**

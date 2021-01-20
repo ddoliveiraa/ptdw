@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ public_path() }}/dist/css/adminlte.min.css">
-    <!-- Para Image Picker -->
-    <link rel="stylesheet" href="{{ public_path() }}/dist/css/image-picker.css">
 
 
 @endsection
@@ -94,7 +92,6 @@
     <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-    <script src="{{ public_path() }}/dist/js/image-picker.min.js"></script>
 
     <script src="{{ public_path() }}/dist/js/grupo-scripts/customDatatables.js"></script>
 @endsection
