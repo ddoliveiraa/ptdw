@@ -25,27 +25,14 @@ var produtos = $("#tabelaprodutos").DataTable({
     "processing": true,
     "serverSide": true,
     "ajax": "/produtos/getProdutos/",
-    "columns": [{
-            data: 'designacao'
-        },
-        {
-            data: 'formula'
-        },
-        {
-            data: 'CAS'
-        },
-        {
-            data: 'familia'
-        },
-        {
-            data: 'stock'
-        },
-        {
-            data: 'stock_min'
-        },
-        {
-            data: 'id'
-        },
+    "columns": [
+        { data: 'designacao' },
+        { data: 'formula' },
+        { data: 'CAS' },
+        { data: 'familia' },
+        { data: 'stock' },
+        { data: 'stock_min' },
+        { data: 'id' },
     ],
     "language": {
         "url": datatables_lang,
@@ -57,17 +44,17 @@ var produtos = $("#tabelaprodutos").DataTable({
     ],
     "autoWidth": false,
     "buttons": [{
-            extend: 'csvHtml5',
-            exportOptions: {
-                columns: ':visible:not(:last-child)'
-            }
-        },
-        {
-            extend: 'print',
-            exportOptions: {
-                columns: ':visible:not(:last-child)'
-            }
-        },
+        extend: 'csvHtml5',
+        exportOptions: {
+            columns: ':visible:not(:last-child)'
+        }
+    },
+    {
+        extend: 'print',
+        exportOptions: {
+            columns: ':visible:not(:last-child)'
+        }
+    },
     ],
     "initComplete": function () {
         produtos.buttons().container().appendTo('div.toolbar');
@@ -99,15 +86,10 @@ var clientes = $("#clientes").DataTable({
     "processing": true,
     "serverSide": true,
     "ajax": "/clientes/getClientes/",
-    "columns": [{
-            data: 'designacao'
-        },
-        {
-            data: 'created_at'
-        },
-        {
-            data: 'id'
-        },
+    "columns": [
+        {data: 'designacao'},
+        {data: 'created_at'},
+        {data: 'id'},
     ],
     "language": {
         "url": datatables_lang,
@@ -120,17 +102,17 @@ var clientes = $("#clientes").DataTable({
     ],
     "autoWidth": false,
     "buttons": [{
-            extend: 'csvHtml5',
-            exportOptions: {
-                columns: ':visible:not(:last-child)'
-            }
-        },
-        {
-            extend: 'print',
-            exportOptions: {
-                columns: ':visible:not(:last-child)'
-            }
-        },
+        extend: 'csvHtml5',
+        exportOptions: {
+            columns: ':visible:not(:last-child)'
+        }
+    },
+    {
+        extend: 'print',
+        exportOptions: {
+            columns: ':visible:not(:last-child)'
+        }
+    },
     ],
     "initComplete": function () {
         clientes.buttons().container().appendTo('div.toolbar');
@@ -144,30 +126,15 @@ var fornecedores = $("#fornecedores").DataTable({
     "processing": true,
     "serverSide": true,
     "ajax": "/fornecedores/getFornecedores/",
-    "columns": [{
-            data: 'designacao'
-        },
-        {
-            data: 'morada'
-        },
-        {
-            data: 'localidade'
-        },
-        {
-            data: 'codigopostal'
-        },
-        {
-            data: 'telefone'
-        },
-        {
-            data: 'email'
-        },
-        {
-            data: 'NIF'
-        },
-        {
-            data: 'id'
-        },
+    "columns": [
+        {data: 'designacao'},
+        {data: 'morada'},
+        {data: 'localidade'},
+        {data: 'codigopostal'},
+        {data: 'telefone'},
+        {data: 'email'},
+        {data: 'NIF'},
+        { data: 'id'},
     ],
     "language": {
         "url": datatables_lang,
@@ -180,17 +147,17 @@ var fornecedores = $("#fornecedores").DataTable({
     ],
     "autoWidth": false,
     "buttons": [{
-            extend: 'csvHtml5',
-            exportOptions: {
-                columns: ':visible:not(:last-child)'
-            }
-        },
-        {
-            extend: 'print',
-            exportOptions: {
-                columns: ':visible:not(:last-child)'
-            }
-        },
+        extend: 'csvHtml5',
+        exportOptions: {
+            columns: ':visible:not(:last-child)'
+        }
+    },
+    {
+        extend: 'print',
+        exportOptions: {
+            columns: ':visible:not(:last-child)'
+        }
+    },
     ],
     "initComplete": function () {
         fornecedores.buttons().container().appendTo('div.toolbar');
@@ -224,24 +191,13 @@ var OpIndex = $("#operadores_index").DataTable({
     "processing": true,
     "serverSide": true,
     "ajax": "/operadores/getOperadores/",
-    "columns": [{
-            data: 'nome'
-        },
-        {
-            data: 'email'
-        },
-        {
-            data: 'perfil'
-        },
-        {
-            data: 'data_criacao'
-        },
-        {
-            data: 'data_desativacao'
-        },
-        {
-            data: 'id'
-        },
+    "columns": [
+        {data: 'nome'},
+        {data: 'email'},
+        {data: 'perfil'},
+        {data: 'data_criacao'},
+        {data: 'data_desativacao'},
+        {data: 'id'},
     ],
     "language": {
         "url": datatables_lang,
@@ -254,17 +210,17 @@ var OpIndex = $("#operadores_index").DataTable({
     ],
     "autoWidth": false,
     "buttons": [{
-            extend: 'csvHtml5',
-            exportOptions: {
-                columns: ':visible:not(:last-child)'
-            }
-        },
-        {
-            extend: 'print',
-            exportOptions: {
-                columns: ':visible:not(:last-child)'
-            }
-        },
+        extend: 'csvHtml5',
+        exportOptions: {
+            columns: ':visible:not(:last-child)'
+        }
+    },
+    {
+        extend: 'print',
+        exportOptions: {
+            columns: ':visible:not(:last-child)'
+        }
+    },
     ],
     "initComplete": function () {
         fornecedores.buttons().container().appendTo('div.toolbar');
@@ -286,17 +242,17 @@ var OpHis = $("#operadores_historico").DataTable({
         targets: 2
     }],
     "buttons": [{
-            extend: 'csvHtml5',
-            exportOptions: {
-                columns: ':visible:not(:last-child)'
-            }
-        },
-        {
-            extend: 'print',
-            exportOptions: {
-                columns: ':visible:not(:last-child)'
-            }
-        },
+        extend: 'csvHtml5',
+        exportOptions: {
+            columns: ':visible:not(:last-child)'
+        }
+    },
+    {
+        extend: 'print',
+        exportOptions: {
+            columns: ':visible:not(:last-child)'
+        }
+    },
     ],
     "initComplete": function () {
         OpHis.buttons().container().appendTo('div.toolbar');
