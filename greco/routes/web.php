@@ -54,6 +54,7 @@ Route::get('/movimentos/historico/getSaidas/','App\Http\Controllers\MovimentoCon
 Route::get('/movimentos/show_entrada/{entrada}', 'App\Http\Controllers\MovimentoController@show');
 Route::get('/movimentos/show_saida/{saida}', 'App\Http\Controllers\MovimentoController@sshow');
 Route::get('/movimentos/editar/{entrada}', 'App\Http\Controllers\MovimentoController@edit');
+Route::put('/movimentos/editado/{entrada}', 'App\Http\Controllers\MovimentoController@update');
 
 Route::post('/movimentos/add/entrada_quimico', 'App\Http\Controllers\MovimentoController@storeEntradaQ');
 Route::post('/movimentos/add/entrada_naoquimico', 'App\Http\Controllers\MovimentoController@storeEntradaNQ');
@@ -65,9 +66,8 @@ Route::get('/clientes/add', 'App\Http\Controllers\ClienteController@create');
 Route::post('/clientes/add/store', 'App\Http\Controllers\ClienteController@store');
 Route::get('/clientes/getClientes/', 'App\Http\Controllers\ClienteController@getClientes');
 
-Route::get('/clientes/show', function () {
-    return view('clientes.show');
-});
+Route::get('/clientes/{cliente}', 'App\Http\Controllers\ClienteController@show');
+
 Route::get('/clientes/editar', function () {
     return view('clientes.editar');
 });

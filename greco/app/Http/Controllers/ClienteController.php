@@ -91,6 +91,9 @@ class ClienteController extends Controller
 
     public function show(Cliente $cliente)
     {
+        $responsaveis = Responsavel::where('id_cliente', $cliente->id)->get();
+        $solicitantes = Solicitante::where('id_cliente', $cliente->id)->get();
+        return view('clientes.show',compact('cliente','responsaveis','solicitantes'));
     }
 
     /**

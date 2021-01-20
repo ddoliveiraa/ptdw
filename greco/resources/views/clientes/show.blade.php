@@ -18,7 +18,7 @@
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="{{ public_path() }}/welcome">Home</a></li>
                         <li class="breadcrumb-item"><a href="{{ public_path() }}/clientes">{{ __('lang.clientes') }}</a></li>
-                        <li class="breadcrumb-item active">Departamento de Biologia</li>
+                        <li class="breadcrumb-item active">{{$cliente->designacao}}</li>
                     </ol>
                 </div>
             </div>
@@ -27,7 +27,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h1 class="text-left display-4">Departamento de Biologia</h1>
+                    <h1 class="text-left display-4">{{$cliente->designacao}}</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -48,74 +48,68 @@
                                             <label for="designacao">{{ __('lang.designacao') }}</label>
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="designacao"
-                                                    value="Departamento de Biologia" disabled>
+                                                    value="{{$cliente->designacao}}" disabled>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
+                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="responsavel_nome">{{ __('lang.responsavel') }} - {{ __('lang.nome') }}</label>
+                                            @foreach($responsaveis as $responsavel)
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="responsavel_nome"
-                                                    value="Carolina Tavares" disabled>
+                                                    value="{{$responsavel->nome}}" disabled>
                                             </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="responsavel_email">{{ __('lang.responsavel') }} - {{ __('lang.email') }}</label>
+                                            @foreach($responsaveis as $responsavel)
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="responsavel_email"
-                                                    value="carol@ua.pt" disabled>
+                                                    value="{{$responsavel->email}}" disabled>
                                             </div>
+                                            @endforeach
                                         </div>
                                     </div>
+                                    
                                 </div>
 
                                 <div class="row">
+                                    
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="responsavel_nome">{{ __('lang.solicitante') }} - {{ __('lang.nome') }}</label>
+                                            @foreach($solicitantes as $solicitante)
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="responsavel_nome"
-                                                    value="Diogo Oliveira" disabled>
+                                                    value="{{$solicitante->nome}}" disabled>
                                             </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="solicitante_email">{{ __('lang.solicitante') }} - {{ __('lang.email') }}</label>
+                                            @foreach($solicitantes as $solicitante)
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="responsavel_email"
-                                                    value="diogo@ua.pt" disabled>
+                                                    value="{{$solicitante->email}}" disabled>
                                             </div>
+                                            @endforeach
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" id="solicitante_nome"
-                                                    value="Maria Nobre" disabled>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" id="solicitante_email"
-                                                    value="maria@ua.pt" disabled>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
 
                                 <div class="form-group">
                                     <label for="obvs">{{ __('lang.observacoes') }}</label>
-                                    <textarea id="obvs" class="form-control" rows="4" disabled></textarea>
+                                    <textarea id="obvs" class="form-control" rows="4" disabled>{{$cliente->obs}}</textarea>
                                 </div>
                             </div>
 

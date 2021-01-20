@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 use App\Models\Movimento;
 use App\Models\Entrada;
@@ -23,7 +24,6 @@ use App\Models\textura_viscosidade;
 use App\Models\cores;
 use App\Models\Cliente;
 use App\Models\Solicitante;
-use Illuminate\Support\Facades\Validator;
 
 class MovimentoController extends Controller
 {
@@ -787,12 +787,15 @@ class MovimentoController extends Controller
     {
         $fornecedor = Fornecedor::all();
         $armario = armario::all();
-        $prateleira = prateleira::all();
+        $prateleira = prateleira::where('id_armario', $entrada->get_armario->id)->get();
         $tipoembalagem = tipo_embalagem::all();
         $estados = estados_fisicos::all();
         $cor = cores::all();
+        $marca = marcas::all();
+        $unidades = unidade::all();
+        $iva = taxa_iva::all();
         $texturas_viscosidades = textura_viscosidade::all();
-        return view('movimentos.editar', compact('entrada', 'fornecedor', 'armario', 'prateleira', 'tipoembalagem', 'estados', 'cor', 'texturas_viscosidades'));
+        return view('movimentos.editar', compact('entrada', 'fornecedor', 'armario', 'prateleira', 'tipoembalagem', 'estados', 'cor', 'texturas_viscosidades','marca','unidades','iva'));
     }
 
     /**
@@ -802,8 +805,57 @@ class MovimentoController extends Controller
      * @param  \App\Models\Movimento  $movimentos
      * @return \Illuminate\Http\Response
      */
-    public function update(Movimento $movimentos)
+    public function update(Request $request, Entrada $Entrada)
     {
+        // dd($request->all());
+        //VALIDAÇÂO
+        $validar = Validator::make($request->all(), [
+            // 'referencia' => 'required',
+            // 'unidades' => 'required',
+            // 'tipo_embalagem' => 'required',
+            // 'cap_embalagem' => 'required',
+            // 'fornecedor' => 'required',
+            // 'marca' => 'required',
+            // 'armario' => 'required',
+            // 'prateleira' => 'required',
+            // 'iva' => 'required',
+            // 'preco' => 'required',
+            // 'estado' => 'required',
+            // 'textura_viscosidade' => 'required',
+            // 'cor' => 'required',
+            // 'peso' => 'required',
+            'data_entrada_input' => ['required', 'date_format:d/m/Y'],
+            'data_abertura_input' => ['nullable','date_format:d/m/Y', 'after_or_equal:data_entrada_input'],
+            'data_validade_input' => ['date_format:d/m/Y', 'after_or_equal:data_entrada_input'],
+        ]);
+
+        if ($validar->fails()) {
+            return redirect('/movimentos/editar/'. $Entrada->id)->withErrors($validar)->withInput();
+        }else{
+
+        $Entrada = Entrada::find(request('id'));
+        $Entrada->referencia = request('referencia');
+        $Entrada->unidade = request('unidades');
+        $Entrada->tipo_embalagem = request('tipo_embalagem');
+        $Entrada->capacidade = request('cap_embalagem');
+        $Entrada->fornecedor = request('fornecedor');
+        $Entrada->marca = request('marca');
+        $Entrada->armario = request('armario');
+        $Entrada->prateleira = request('prateleira');
+        $Entrada->iva = request('iva');
+        $Entrada->preco = request('preco');
+        $Entrada->estado_fisico = request('estado');
+        $Entrada->textura_viscosidade = request('textura');
+        $Entrada->cor = request('cor');
+        $Entrada->peso_bruto = request('peso');
+        $Entrada->data_entrada = request('data_entrada_input');
+        $Entrada->data_abertura = request('data_abertura_input');
+        $Entrada->data_validade = request('data_validade_input');
+        $Entrada->obs = request('obvs');
+        $Entrada->save();
+
+        return redirect('movimentos/show_entrada/'. $Entrada->id);
+        }
     }
 
     /**

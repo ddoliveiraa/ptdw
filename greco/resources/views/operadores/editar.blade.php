@@ -81,11 +81,11 @@
                                         <div class="form-group">
                                             <label for="perfil_operador">{{ __('lang.perfil') }}</label>
                                             <select class="form-control select" id="perfil_operador" name="perfil_operador" style="width: 100%;" required>
-                                                <option value="" selected disabled>{{ __('lang.selecione o') }}
-                                                    {{ __('lang.perfil') }}
-                                                </option>
+                                                <option value="{{$operador->get_perfil->id}}" selected >{{$operador->get_perfil->nome}}</option>
                                                 @foreach ($perfis as $p)
+                                                    @if($p->nome != $operador->get_perfil->nome)
                                                     <option value="{{  $p->id }}">{{ $p->nome }}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>
@@ -95,7 +95,7 @@
                                             <label for="data_criacao">{{ __('lang.data-criacao') }}</label>
                                             <div class="input-group date" id="data_criacao" name="data_criacao" data-target-input="nearest" required>
                                                 <input type="text" id="data_criacao_input" name="data_criacao_input" class="form-control datetimepicker-input"
-                                                    data-target="#data_criacao" placeholder="DD/MM/YYYY" value="{{$operador->data_criacao}}"/>
+                                                    data-target="#data_criacao" placeholder="DD/MM/YYYY" value="{{date('d/m/Y', strtotime($operador->data_criacao))}}"/>
                                                 <div class="input-group-append" data-target="#data_criacao"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>

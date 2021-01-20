@@ -79,7 +79,7 @@
                                             <label for="data_criacao">{{ __('lang.data-criacao') }}</label>
                                             <div class="input-group date" id="data_criacao" data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input"
-                                                    data-target="#data_criacao" value="{{$operador->data_criacao}}" disabled />
+                                                    data-target="#data_criacao" value="{{date('d/m/Y', strtotime($operador->data_criacao))}}" disabled />
                                                 <div class="input-group-append" data-target="#data_criacao"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>

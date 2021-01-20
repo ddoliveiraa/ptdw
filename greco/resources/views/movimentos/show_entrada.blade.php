@@ -204,7 +204,7 @@
                                             <label>{{ __('lang.data de entrada') }}</label>
                                             <div class="input-group date" id="data_entrada" data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input"
-                                                    data-target="#data_entrada" value="{{ $entrada->data_entrada }}" disabled />
+                                                    data-target="#data_entrada" value="{{date('d/m/Y', strtotime($entrada->data_entrada))}}" disabled />
                                                 <div class="input-group-append" data-target="#data_entrada"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -218,7 +218,7 @@
                                             <label for="produto">{{ __('lang.data de abertura') }}</label>
                                             <div class="input-group date" id="data_abertura" data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input"
-                                                    data-target="#data_abertura" value="{{ $entrada->data_abertura }}" disabled />
+                                                    data-target="#data_abertura" value="{{date('d/m/Y', strtotime($entrada->data_abertura))}}" disabled />
                                                 <div class="input-group-append" data-target="#data_abertura"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -234,7 +234,7 @@
                                             <label for="produto">{{ __('lang.data de validade') }}</label>
                                             <div class="input-group date" id="data_validade" data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input"
-                                                    data-target="#data_validade" value="{{ $entrada->data_validade }}" disabled />
+                                                    data-target="#data_validade" value="{{date('d/m/Y', strtotime($entrada->data_validade))}}" disabled />
                                                 <div class="input-group-append" data-target="#data_validade"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -248,7 +248,7 @@
                                             <label for="produto">{{ __('lang.data de termino') }}</label>
                                             <div class="input-group date" id="data_termino" data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input"
-                                                    data-target="#data_termino" value="{{ $entrada->data_termino }}" disabled />
+                                                    data-target="#data_termino" value="{{date('d/m/Y', strtotime($entrada->data_termino))}}" disabled />
                                                 <div class="input-group-append" data-target="#data_termino"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
