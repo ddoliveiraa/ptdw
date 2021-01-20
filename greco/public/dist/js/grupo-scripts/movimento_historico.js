@@ -83,10 +83,12 @@ $('#intervalo').val('Periodo');
 $('#intervalo').on('apply.daterangepicker', function(ev, picker) {
     $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
     entradas.draw();
+    saidas.draw();
 });
 $('#intervalo').on('cancel.daterangepicker', function(ev, picker) {
     $(this).val('Periodo');
     entradas.draw();
+    saidas.draw();
 });
 
 $('#sub-familia').hide(1);
@@ -98,7 +100,9 @@ $('#filter').click(function () {
     $('input[type=checkbox]').prop('checked', false);
     $('#intervalo').val('Periodo');
     entradas.search('');
+    saidas.search('');
     entradas.draw();
+    saidas.draw();
 });
 
 $("#pictogramas").click(function () {
@@ -116,37 +120,13 @@ $('#familia').change(function () {
         $("#pictogramas").show(1);
     }
     entradas.draw();
+    saidas.draw();
 });
 $('#sub-familia').change(function () {
     entradas.draw();
+    saidas.draw();
 });
 
-
-    
-/* $('#intervalo').on('apply.daterangepicker', function (ev, picker) {
-    $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-    $.fn.dataTable.ext.search.push(
-        function (settings, searchData, index, rowData, counter) {
-            var inicio = $('#intervalo').data('daterangepicker')
-                .startDate.format("DD/MM/YYYY");
-            var fim = $('#intervalo').data('daterangepicker').endDate
-                .format("DD/MM/YYYY");
-            var datas = moment(new Date(searchData[7]),
-                "DD/MM/YYYY") // using the data from the 8th column
-            console.log('incio = ' + inicio, ', ' + 'fim = ' + fim);
-            console.log(datas);
-
-            if ((isNaN(inicio) && isNaN(fim)) ||
-                (isNaN(inicio) && datas <= fim) ||
-                (inicio <= datas && isNaN(fim)) ||
-                (inicio <= datas && datas <= fim)) {
-                return true;
-            }
-            return false;
-        }
-    );
-    entradas.draw();
-}); */
 
 var saidas = $("#saidas").DataTable({
     "dom": '<"search">frtip l',
@@ -193,5 +173,12 @@ var saidas = $("#saidas").DataTable({
         saidas.buttons().container().appendTo('#saidas_filter');
         $('#saidas_length').appendTo('#saidas_filter');
     }
+});
+saidas.on('preXhr.dt', function (e, settings, data) {
+    data.familiass = $('#familia').val();
+    data.subfamiliass = $('#sub-familia').val();
+    data.inicio = $('#intervalo').data('daterangepicker').startDate.format("DD/MM/YYYY");
+    data.fim = $('#intervalo').data('daterangepicker').endDate.format("DD/MM/YYYY");
+    data.data_val = $('#intervalo').val();
 });
 
