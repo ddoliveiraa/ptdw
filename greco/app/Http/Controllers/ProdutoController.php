@@ -50,26 +50,26 @@ class ProdutoController extends Controller
             $Produto->save();
 
             $ids_pictogramas = request('ids_pictogramas'); // 3, 5, 7
-            $ids_pictogramas_array = explode(',',$ids_pictogramas); //array
             $ids_recomendacoes = request('ids_recomendacoes');
-            $ids_recomendacoes_array = explode(',',$ids_recomendacoes); //array
             $ids_advertencias = request('ids_advertencias');
-            $ids_advertencias_array = explode(',',$ids_advertencias); //array
 
             //attachments pictogramas
-            if($ids_pictogramas_array!= null){
+            if($ids_pictogramas != null){
+                $ids_pictogramas_array = explode(',',$ids_pictogramas); //array
                 foreach ($ids_pictogramas_array as $pid){    
                     $Produto->pictogramas()->attach($pid);
                 }
             }
             //attachments recomendações
-            if($ids_recomendacoes_array!= null){
+            if($ids_recomendacoes != null){
+                $ids_recomendacoes_array = explode(',',$ids_recomendacoes); //array
                 foreach ($ids_recomendacoes_array as $rid){    
                     $Produto->recomendacoes()->attach($rid);
                 }
             }
             //attachments advertencias
-            if($ids_advertencias_array!= null){
+            if($ids_advertencias != null){
+                $ids_advertencias_array = explode(',',$ids_advertencias); //array
                 foreach ($ids_advertencias_array as $aid){    
                     $Produto->advertencias()->attach($aid);
                 }
