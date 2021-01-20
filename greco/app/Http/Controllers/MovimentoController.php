@@ -23,6 +23,7 @@ use App\Models\textura_viscosidade;
 use App\Models\cores;
 use App\Models\Cliente;
 use App\Models\Solicitante;
+use Illuminate\Support\Facades\Validator;
 
 class MovimentoController extends Controller
 {
@@ -31,8 +32,7 @@ class MovimentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getNEmbalagem(Request $request)
-    {
+    public function getNEmbalagem(Request $request){
         if ($request->ajax()) {
             $id_inventario = $request->produto;
             $id_ordem = Entrada::where('id_inventario', $id_inventario)->max('id_ordem') + 1;
@@ -46,8 +46,7 @@ class MovimentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getPrateleira(Request $request)
-    {
+    public function getPrateleira(Request $request){
         if ($request->ajax()) {
             $id_armario = $request->armario;
             $data = prateleira::where('id_armario', $id_armario)->get();
@@ -64,49 +63,50 @@ class MovimentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function storeEntradaQ(Request $request)
-    {
-        //  *** QUIMICOS ***
+    public function storeEntradaQ(Request $request){// QUIMICOS
+
         //VALIDAÇÂO
 
-        request()->validate([
+        $validator = Validator::make($request->all(), [
             'data_entrada_input' => ['required', 'date_format:d/m/Y'],
             'data_abertura_input' => ['date_format:d/m/Y', 'after_or_equal:data_entrada_input'],
             'data_validade_input' => ['date_format:d/m/Y', 'after_or_equal:data_entrada_input']
         ]);
 
-        //falta fazer o IF
+        if ($validator->fails()) {
+            return redirect('movimentos/entrada')->with('status', 'erro_quimico')->withErrors($validator)->withInput();
+        }else{
+            //ADD NA BD
+            $id_inventario = request('produto'); //request('produto') está a receber o id
+            $id_ordem = Entrada::where('id_inventario', $id_inventario)->max('id_ordem') + 1;
 
-        //ADD NA BD
-        $id_inventario = request('produto'); //request('produto') está a receber o id
-        $id_ordem = Entrada::where('id_inventario', $id_inventario)->max('id_ordem') + 1;
+            $Entrada = new Entrada();
+            $Entrada->id_inventario = $id_inventario;
+            $Entrada->id_ordem = $id_ordem;
+            $Entrada->sala = 1;
+            $Entrada->armario = request('armario');
+            $Entrada->prateleira = request('prateleira');
+            $Entrada->fornecedor = request('fornecedor');
+            $Entrada->marca = request('marca');
+            $Entrada->referencia = request('referencia');
+            $Entrada->preco = request('preco');
+            $Entrada->iva = request('iva');
+            $Entrada->capacidade = request('cap_embalagem');
+            $Entrada->tipo_embalagem = request('tipo_embalagem');
+            $Entrada->estado_fisico = request('estado');
+            $Entrada->cor = request('cor');
+            $Entrada->textura_viscosidade = request('textura');
+            $Entrada->peso_bruto = request('peso');
+            $Entrada->data_entrada = request('data_entrada_input');
+            $Entrada->data_abertura = request('data_abertura_input');
+            $Entrada->data_validade = request('data_validade_input');
+            $Entrada->operador = 1; //Workaroud - Precisa de autenticação
+            $Entrada->unidade = request('unidades');
+            $Entrada->obs = request('obvs');
+            $Entrada->save();
 
-        $Entrada = new Entrada();
-        $Entrada->id_inventario = $id_inventario;
-        $Entrada->id_ordem = $id_ordem;
-        $Entrada->sala = 1;
-        $Entrada->armario = request('armario');
-        $Entrada->prateleira = request('prateleira');
-        $Entrada->fornecedor = request('fornecedor');
-        $Entrada->marca = request('marca');
-        $Entrada->referencia = request('referencia');
-        $Entrada->preco = request('preco');
-        $Entrada->iva = request('iva');
-        $Entrada->capacidade = request('cap_embalagem');
-        $Entrada->tipo_embalagem = request('tipo_embalagem');
-        $Entrada->estado_fisico = request('estado');
-        $Entrada->cor = request('cor');
-        $Entrada->textura_viscosidade = request('textura');
-        $Entrada->peso_bruto = request('peso');
-        $Entrada->data_entrada = request('data_entrada_input');
-        $Entrada->data_abertura = request('data_abertura_input');
-        $Entrada->data_validade = request('data_validade_input');
-        $Entrada->operador = 1; //Workaroud - Precisa de autenticação
-        $Entrada->unidade = request('unidades');
-        $Entrada->obs = request('obvs');
-        $Entrada->save();
-
-        return redirect('movimentos/entrada');
+            return redirect('movimentos/entrada')->with('status', 'ok');
+        }
     }
 
     /**
@@ -114,44 +114,47 @@ class MovimentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function storeEntradaNQ(Request $request)
-    {
-        //  *** NAO QUIMICOS ***
+    public function storeEntradaNQ(Request $request){// NAO QUIMICOS
+       
         //VALIDAÇÂO
-        request()->validate([
+        $validator = Validator::make($request->all(), [
             'data_entrada_nq_input' => ['required', 'date_format:d/m/Y'],
             'data_abertura_nq_input' => ['date_format:d/m/Y', 'after_or_equal:data_entrada_nq_input'],
             'data_validade_nq_input' => ['date_format:d/m/Y', 'after_or_equal:data_entrada_nq_input']
         ]);
 
-        //ADD NA BD
-        $id_inventario = request('produto_nq'); //request('produto') está a receber o id
-        $id_ordem = Entrada::where('id_inventario', $id_inventario)->max('id_ordem') + 1;
+        if ($validator->fails()) {
+            return redirect('movimentos/entrada')->with('status', 'erro_naoquimico')->withErrors($validator)->withInput();
+        }else{
+            //ADD NA BD
+            $id_inventario = request('produto_nq'); //request('produto') está a receber o id
+            $id_ordem = Entrada::where('id_inventario', $id_inventario)->max('id_ordem') + 1;
 
-        $Entrada = new Entrada();
-        $Entrada->id_inventario = $id_inventario;
-        $Entrada->id_ordem = $id_ordem;
-        $Entrada->sala = 1;
-        $Entrada->armario = request('armario_nq');
-        $Entrada->prateleira = request('prateleira_nq');
-        $Entrada->fornecedor = request('fornecedor_nq');
-        $Entrada->marca = request('marca_nq');
-        $Entrada->referencia = request('referencia_nq');
-        $Entrada->preco = request('preco_nq');
-        $Entrada->iva = request('iva_nq');
-        $Entrada->capacidade = request('cap_embalagem_nq');
-        $Entrada->tipo_embalagem = request('tipo_embalagem_nq');
-        $Entrada->cor = request('cor_nq');
-        $Entrada->peso_bruto = request('peso_nq');
-        $Entrada->data_entrada = request('data_entrada_nq_input');
-        $Entrada->data_abertura = request('data_abertura_nq_input');
-        $Entrada->data_validade = request('data_validade_nq_input');
-        $Entrada->operador = 1; //Workaroud - Precisa de autenticação
-        $Entrada->unidade = request('unidades_nq');
-        $Entrada->obs = request('obvs_nq');
-        $Entrada->save();
+            $Entrada = new Entrada();
+            $Entrada->id_inventario = $id_inventario;
+            $Entrada->id_ordem = $id_ordem;
+            $Entrada->sala = 1;
+            $Entrada->armario = request('armario_nq');
+            $Entrada->prateleira = request('prateleira_nq');
+            $Entrada->fornecedor = request('fornecedor_nq');
+            $Entrada->marca = request('marca_nq');
+            $Entrada->referencia = request('referencia_nq');
+            $Entrada->preco = request('preco_nq');
+            $Entrada->iva = request('iva_nq');
+            $Entrada->capacidade = request('cap_embalagem_nq');
+            $Entrada->tipo_embalagem = request('tipo_embalagem_nq');
+            $Entrada->cor = request('cor_nq');
+            $Entrada->peso_bruto = request('peso_nq');
+            $Entrada->data_entrada = request('data_entrada_nq_input');
+            $Entrada->data_abertura = request('data_abertura_nq_input');
+            $Entrada->data_validade = request('data_validade_nq_input');
+            $Entrada->operador = 1; //Workaroud - Precisa de autenticação
+            $Entrada->unidade = request('unidades_nq');
+            $Entrada->obs = request('obvs_nq');
+            $Entrada->save();
 
-        return redirect('movimentos/entrada');
+            return redirect('movimentos/entrada')->with('status', 'ok');
+        }
     }
 
     /**
