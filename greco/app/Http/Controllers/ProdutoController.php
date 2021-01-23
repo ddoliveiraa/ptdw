@@ -86,15 +86,15 @@ class ProdutoController extends Controller
     {
 
         //VALIDAÇÂO
-        $validar = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'produto_designacao' => 'required',
             'produto_cas' => 'required',
-            'produto_peso' => 'required',
+            'produto_peso' => 'required|regex:/^[0-9]{1,3}(,[0-9]{3})*(\.[0-9]+)*$/',
             'produto_stock_minimo' => 'required'
         ]);
 
-        if ($validar->fails()) {
-            return redirect('ficha/editar/'.$Produto->id)->withErrors($validar)->withInput();
+        if ($validator->fails()) {
+            return redirect('ficha/editar/' . $Produto->id)->withErrors($validator)->withInput();
         }else{
         //ADD NA BD
 
@@ -132,8 +132,8 @@ class ProdutoController extends Controller
         }
 
         return redirect('ficha/' . $Produto->id);
+        }
     }
-}
 
     public function storeNaoQuimico(Request $request){
         

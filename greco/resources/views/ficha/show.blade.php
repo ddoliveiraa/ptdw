@@ -58,12 +58,6 @@
                                         </div>
                                         @if($produto->get_fam->nome == "Químico")
                                             <div class="form-group">
-                                                <label for="produto_sinonimo"
-                                                class="control-label">{{ __('lang.sinonimo') }}</label>
-                                                <input type="text" class="form-control" id="produto_sinonimo" tabindex="2"
-                                                readonly value="{{ $produto->sinonimo }}">
-                                            </div>
-                                            <div class="form-group">
                                                 <label for="produto_formula"
                                                 class="control-label">{{ __('lang.formula') }}</label>
                                                 <input type="text" class="form-control" id="produto_formula" tabindex="3"
