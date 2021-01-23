@@ -69,7 +69,7 @@ class MovimentoController extends Controller
 
         $validator = Validator::make($request->all(), [
             'data_entrada_input' => ['required', 'date_format:d/m/Y'],
-            'data_abertura_input' => ['date_format:d/m/Y', 'after_or_equal:data_entrada_input'],
+            'data_abertura_input' => ['nullable:date','date_format:d/m/Y', 'after_or_equal:data_entrada_input'],
             'data_validade_input' => ['date_format:d/m/Y', 'after_or_equal:data_entrada_input']
         ]);
 
@@ -119,7 +119,7 @@ class MovimentoController extends Controller
         //VALIDAÇÂO
         $validator = Validator::make($request->all(), [
             'data_entrada_nq_input' => ['required', 'date_format:d/m/Y'],
-            'data_abertura_nq_input' => ['date_format:d/m/Y', 'after_or_equal:data_entrada_nq_input'],
+            'data_abertura_nq_input' => ['nullable:date', 'date_format:d/m/Y', 'after_or_equal:data_entrada_nq_input'],
             'data_validade_nq_input' => ['date_format:d/m/Y', 'after_or_equal:data_entrada_nq_input']
         ]);
 
