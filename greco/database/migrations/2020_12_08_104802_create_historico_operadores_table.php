@@ -13,18 +13,23 @@ class CreateHistoricoOperadoresTable extends Migration
      */
     public function up()
     {
+        Schema::create('operacaos', function (Blueprint $table) {
+            $table->id();
+            $table->string('operacao');
+        });
+
         Schema::create('historico_operadores', function (Blueprint $table) {
             $table->id();
             $table->string('nome_adm');
             $table->unsignedBigInteger('operador');
             $table->date('data');
-            $table->integer('operacao');
+            $table->unsignedBigInteger('operacao'); //acao, se foi registo, etc
             $table->string('obs')->nullable();
 
             $table->timestamps();
 
             $table->foreign('operador')->references('id')->on('operadors');
-
+            $table->foreign('operacao')->references('id')->on('operacaos');
         });
     }
 

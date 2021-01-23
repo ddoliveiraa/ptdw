@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Entrada;
+use App\Models\Historico_Operador;
 use App\Models\Operador;
 use App\Models\Produto;
 use App\Models\Saida;
@@ -34,6 +35,13 @@ class SaidaObserver
                 'texto' => $p->designacao
             ]);
         }
+
+        Historico_Operador::create([
+            'nome_adm' => 'Administrador',
+            'operador' => $saida->id_operador,
+            'data' => $saida->created_at,
+            'operacao' => 1,
+        ]);
     }
 
     /**
