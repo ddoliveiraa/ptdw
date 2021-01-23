@@ -106,6 +106,7 @@ return [
     'rua' => 'Street',
     'lote' => 'Lot',
     'numero' => 'Nº',
+    'morada' => 'Address',
 
     /*Fornecedores (campos opcionais)*/
     'email' => 'Email',

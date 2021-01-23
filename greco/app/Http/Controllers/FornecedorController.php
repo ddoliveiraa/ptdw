@@ -162,6 +162,7 @@ class FornecedorController extends Controller
 
     public function show(Fornecedor $fornecedor)
     {
+        return view('fornecedores.show',compact('fornecedor'));
     }
 
     /**
