@@ -88,7 +88,8 @@ class ProdutoController extends Controller
         //VALIDAÇÂO
         $validator = Validator::make($request->all(), [
             'produto_designacao_nq' => 'required',
-            'produto_stock_minimo_nq' => 'required'
+            'produto_stock_minimo_nq' => 'required',
+            'produto_foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         if ($validator->fails()) {
@@ -106,8 +107,10 @@ class ProdutoController extends Controller
             $Produto->stock_min = request('produto_stock_minimo_nq');
             $Produto->ativo = True;
 
-            $imageName = time().'.'.$request->produto_foto->extension();  
-            $request->produto_foto->storeAs('images', $imageName);
+            if($fileName){
+                $imageName = time().'.'.$request->produto_foto->extension();  
+                $request->produto_foto->storeAs('images', $imageName);
+            }
 
             $Produto->save();
 
