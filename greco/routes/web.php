@@ -101,6 +101,7 @@ Route::get('/fornecedores','App\Http\Controllers\FornecedorController@index');
 Route::get('/fornecedores/getFornecedores/','App\Http\Controllers\FornecedorController@getFornecedores');
 Route::get('/fornecedores/add', 'App\Http\Controllers\FornecedorController@create');
 Route::post('/fornecedores/add/store', 'App\Http\Controllers\FornecedorController@store');
+Route::get('/fornecedores/{fornecedor}', 'App\Http\Controllers\FornecedorController@show');
 
 //Armazem
 Route::get('/armazem', function () {
