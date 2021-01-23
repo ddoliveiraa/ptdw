@@ -199,7 +199,14 @@ class MovimentoController extends Controller
     public function getEmbalagensProdutos(Request $request){
         if ($request->ajax()) {
             $id_produto = $request->produto;
-            return Entrada::where('id_inventario', $id_produto)->get();
+            
+            $entradas = Entrada::whereNotExists( function ($query) use ($id_produto) {
+                $query->select(DB::raw(1))
+                ->from('saidas')
+                ->whereRaw('entradas.id_ordem = saidas.id_ordem');
+            })->where('entradas.id_inventario', '=', $id_produto)->orderBy('entradas.id_ordem')->get();       
+
+            return $entradas;
         }
     }
 
@@ -737,11 +744,26 @@ class MovimentoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeSaida(Request $request)
-    {
-        dd($request->all());
-
+    public function storeSaida(Request $request){
+        //VALIDAÇÂO
+        request()->validate([
+            'cliente' => 'required',
+            'produto' => 'required',
+            'n_ordem_tmp' => 'required',
+            'solicitante' => 'required',
+        ]);
         
+        //ADD NA BD
+        $Saida = new Saida();
+        $Saida->id_cliente = request('cliente');
+        $Saida->id_produto = request('produto');
+        $Saida->id_ordem = request('n_ordem_tmp');
+        $Saida->id_solicitante = request('solicitante');
+        $Saida->id_operador = 1;
+        $Saida->obs = request('obvs');
+        $Saida->save();
+
+        return redirect('movimentos/saida');
     }
 
     /**

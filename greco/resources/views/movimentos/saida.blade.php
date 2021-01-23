@@ -137,7 +137,6 @@
 
         $("#n_embalagem").change(function() {
             let val = $("#n_embalagem option:selected").text().split("-",2);
-            console.log(val);
             $('#n_ordem_tmp').val(val[1]);
         });
 
@@ -145,16 +144,20 @@
             $("#n_embalagem").empty();
             $produto = $('#produto').val();
             $('#n_embalagem').attr("disabled", false);
+            console.log($produto);
             $.ajax({
                 type: 'get',
-                url: '/movimentos/saidaEmbalagensProdutos',
+                url: '/movimentos/saida/getEmbalagensProdutos',
                 data: {
                     'produto': $produto,
                 },
                 success: function (data) {
                     data.forEach(function(d) {
                         $("#n_embalagem").append(new Option(d.id_inventario+"-"+d.id_ordem, d.id));
-                    })
+                    });
+                    //caso nao se mude a embalagem
+                    let val = $("#n_embalagem option:selected").text().split("-",2);
+                    $('#n_ordem_tmp').val(val[1]);
                 }
             });
         });

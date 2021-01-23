@@ -46,7 +46,7 @@ Route::get('/movimentos/entrada', 'App\Http\Controllers\MovimentoController@show
 Route::get('/movimentos/entradaNEmbalagem','App\Http\Controllers\MovimentoController@getNEmbalagem');
 Route::get('/movimentos/entradaPrateleira','App\Http\Controllers\MovimentoController@getPrateleira');
 Route::get('/movimentos/saida', 'App\Http\Controllers\MovimentoController@showSaida');
-Route::get('/movimentos/saidaEmbalagensProdutos', 'App\Http\Controllers\MovimentoController@getEmbalagensProdutos');
+Route::get('/movimentos/saida/getEmbalagensProdutos', 'App\Http\Controllers\MovimentoController@getEmbalagensProdutos');
 Route::get('/movimentos/saidaSolicitantes', 'App\Http\Controllers\MovimentoController@getSolicitantes');
 Route::get('/movimentos/historico', 'App\Http\Controllers\MovimentoController@index');
 Route::get('/movimentos/historico/getEntradas/','App\Http\Controllers\MovimentoController@getEntradas');
