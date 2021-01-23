@@ -103,13 +103,13 @@
                                                 class="control-label">{{ __('lang.condicoes de armazenamento') }}</label>
                                                  
                                             <select class="form-control" id="produto_armazenamento" name="produto_armazenamento" tabindex="7">
-                                            <option value="{{$produtos->get_condicao->id}}">{{old('produto_armazenamento', $produtos->get_condicao->condicao)}}</option>
                                             @foreach ($condicoes as $c)
-                                            @if($c->condicao != $produtos->get_condicao->condicao)
-                                                <option value="{{ $c->id }}">{{$c->condicao}}</option>
+                                                @if(old('produto_armazenamento') == $c->id)
+                                                    <option value="{{ $c->id }}" selected>{{ $c->condicao }}</option>
+                                                @else
+                                                    <option value="{{ $c->id }}">{{ $c->condicao }}</option>
                                                 @endif
                                                 @endforeach
-                                                
                                             </select>
                                         </div>
                                     </div>
@@ -121,7 +121,7 @@
                                                 class="control-label load">{{ __('lang.pictograma') }}</label>
                                             <div class="input-group margin">
                                                 <input type="text" class="form-control" name="produto_pictogramas" id="produto_pictogramas"
-                                                    tabindex="7" @foreach($produtos->pictogramas as $pic) required value="{{old('produto_pictogramas', $pic->codigo)}}" @endforeach readonly >
+                                                   required tabindex="7" @foreach($produtos->pictogramas as $pic) required value="{{old('produto_pictogramas', $pic->codigo)}}" @endforeach readonly >
                                                 <span class="input-group-btn">
                                                     <button type="button" class="btn btn-secondary btn-flat"
                                                         data-toggle="modal"
@@ -151,7 +151,7 @@
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <a href="{{ public_path() }}/ficha" role="button"
+                                        <a href="{{ public_path() }}/ficha/{{$produtos->id}}" role="button"
                                             class="btn btn-block btn-default" tabindex="11">{{ __('lang.cancelar') }}</a>
                                     </div>
                                     <div class="ml-auto col-3">
@@ -194,7 +194,7 @@
                                                 @foreach ($pictogramas as $p)
                                                     <li>
                                                         <input type="checkbox" name="picto" id="cb{{ $p->id }}" value="{{ $p->nome }}" @foreach($produtos->pictogramas as $pic) @if($pic->id == $p->id)
-                                                        checked @endif @endforeach />
+                                                        checked @endif @endforeach required/>
                                                         <label for="cb{{ $p->id }}"><img src="{{ $p->imagem }}" /><p class="text-center">{{ $p->nome }}</p></label>
                                                     </li>
                                                 @endforeach
@@ -211,7 +211,7 @@
                                             data-placeholder="{{ __('lang.recomendacoes de prudencia') }}"
                                             id="produto_cod_recomendacoes_prudencia" tabindex="9" style="width: 100%;">
                                             @foreach ($recomendacoes as $r)
-                                            <option value="{{ $r->id }}" @foreach($produtos->recomendacoes as $rec) @if($rec->id == $r->id) selected @endif @endforeach>{{ $r->texto }}</option>
+                                            <option value="{{ $r->id }}" @foreach($produtos->recomendacoes as $rec) @if($rec->id == $r->id) selected @endif @endforeach>{{ $r->texto }} required</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -226,7 +226,7 @@
                                         id="produto_cod_advertencias_perigo"
                                         tabindex="10" required>
                                             @foreach ($advertencias as $a)
-                                            <option value="{{ $a->id }}" @foreach($produtos->advertencias as $adv) @if($adv->id == $a->id) selected @endif @endforeach>{{ $a->texto }}</option>
+                                            <option value="{{ $a->id }}" @foreach($produtos->advertencias as $adv) @if($adv->id == $a->id) selected @endif @endforeach>{{ $a->texto }} required</option>
                                             @endforeach
                                         </select>
                                       </div>
@@ -277,11 +277,8 @@ let pictogramas = [];
         $(function() {
             if('{{ $errors->count() > 0}}') {
                 toastr["error"]("Por favor reveja os campos.", "Erro ao editar produto")
-            }else{
-                if('{{ Session::get('status')}}'==='ok'){
-                    toastr["success"]("Produto editada com sucesso.", "Produto editado com sucesso")
-                }
-            };
+            }
+            
 
          $('#guardar').on('click', function() {
 

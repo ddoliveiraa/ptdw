@@ -82,58 +82,7 @@ class ProdutoController extends Controller
         
     }
 
-    public function updateProdutoQ(Request $request, Produto $Produto)
-    {
-
-        //VALIDAÇÂO
-        $validator = Validator::make($request->all(), [
-            'produto_designacao' => 'required',
-            'produto_cas' => 'required',
-            'produto_peso' => 'required|regex:/^[0-9]{1,3}(,[0-9]{3})*(\.[0-9]+)*$/',
-            'produto_stock_minimo' => 'required'
-        ]);
-
-        if ($validator->fails()) {
-            return redirect('ficha/editar/' . $Produto->id)->withErrors($validator)->withInput();
-        }else{
-        //ADD NA BD
-
-        $Produto = Produto::find(request('id'));
-        $Produto->familia = 1;
-        $Produto->designacao = request('produto_designacao');
-        $Produto->formula = request('produto_formula');
-        //$Produto->sinonimo = request('produto_sinonimo');
-        $Produto->CAS = request('produto_cas');
-        $Produto->peso_molecular = request('produto_peso');
-        $Produto->stock_min = request('produto_stock_minimo');
-        $Produto->condicoes_armazenamento = request('produto_armazenamento');
-        $Produto->ventilado = request('customSwitch1');
-
-        $Produto->save();
-
-        $ids_pictogramas = request('ids_pictogramas'); // 3, 5, 7
-        $ids_pictogramas_array = explode(',', $ids_pictogramas); //array
-        $ids_recomendacoes = request('ids_recomendacoes');
-        $ids_recomendacoes_array = explode(',', $ids_recomendacoes); //array
-        $ids_advertencias = request('ids_advertencias');
-        $ids_advertencias_array = explode(',', $ids_advertencias); //array
-
-        //attachments pictogramas
-        if ($ids_pictogramas_array != null) {
-            $Produto->pictogramas()->sync($ids_pictogramas_array);
-        }
-        //attachments recomendações
-        if ($ids_recomendacoes_array != null) {
-            $Produto->recomendacoes()->sync($ids_recomendacoes_array);
-        }
-        //attachments advertencias
-        if ($ids_advertencias_array != null) {
-            $Produto->advertencias()->sync($ids_advertencias_array);
-        }
-
-        return redirect('ficha/' . $Produto->id);
-        }
-    }
+    
 
     public function storeNaoQuimico(Request $request){
         
@@ -159,30 +108,7 @@ class ProdutoController extends Controller
         }
     }
 
-    public function updateProdutoNQ(Request $request, Produto $Produto)
-    {
-        //dump(request()->all());
-        //VALIDAÇÂO
-        $validator = Validator::make($request->all(), [
-            'produto_designacao' => 'required',
-            'produto_stock_minimo' => 'required'
-        ]);
-
-        if ($validator->fails()) {
-            return redirect('/ficha/editar_nq/'. $Produto->id)->withErrors($validar)->withInput();
-        }else{
-        //ADD NA BD
-
-        $Produto = Produto::find(request('id'));
-        $Produto->familia = 2;
-        $Produto->designacao = request('produto_designacao');
-        $Produto->stock_min = request('produto_stock_minimo');
-
-        $Produto->save();
-
-        return redirect('ficha/' . $Produto->id);
-    }
-}
+    
 
     /**
      * Display a listing of the resource.
@@ -370,9 +296,85 @@ class ProdutoController extends Controller
      * @param  \App\Models\Produto  $produtos
      * @return \Illuminate\Http\Response
      */
-    public function update(Produto $produtos)
+
+    public function updateProdutoQ(Request $request, Produto $Produto)
     {
+        // dd($request->all());
+        //VALIDAÇÂO
+        $validator = Validator::make($request->all(), [
+            'produto_designacao' => 'required',
+            'produto_cas' => 'required|regex:/[^A-Za-z]+$/',
+            'produto_peso' => 'required|regex:/^[0-9]{1,3}(,[0-9]{3})*(\.[0-9]+)*$/',
+            'produto_stock_minimo' => 'required|regex:/^[0-9]+$/'
+        ]);
+
+        if ($validator->fails()) {
+            // dd($Produto->id);
+            return redirect()->back()->withErrors($validator)->withInput();
+        }else{
+        //ADD NA BD
+
+        $Produto = Produto::find(request('id'));
+        $Produto->familia = 1;
+        $Produto->designacao = request('produto_designacao');
+        $Produto->formula = request('produto_formula');
+        //$Produto->sinonimo = request('produto_sinonimo');
+        $Produto->CAS = request('produto_cas');
+        $Produto->peso_molecular = request('produto_peso');
+        $Produto->stock_min = request('produto_stock_minimo');
+        $Produto->condicoes_armazenamento = request('produto_armazenamento');
+        $Produto->ventilado = request('customSwitch1');
+
+        $Produto->save();
+
+        $ids_pictogramas = request('ids_pictogramas'); // 3, 5, 7
+        $ids_pictogramas_array = explode(',', $ids_pictogramas); //array
+        $ids_recomendacoes = request('ids_recomendacoes');
+        $ids_recomendacoes_array = explode(',', $ids_recomendacoes); //array
+        $ids_advertencias = request('ids_advertencias');
+        $ids_advertencias_array = explode(',', $ids_advertencias); //array
+
+        //attachments pictogramas
+        if ($ids_pictogramas_array != null) {
+            $Produto->pictogramas()->sync($ids_pictogramas_array);
+        }
+        //attachments recomendações
+        if ($ids_recomendacoes_array != null) {
+            $Produto->recomendacoes()->sync($ids_recomendacoes_array);
+        }
+        //attachments advertencias
+        if ($ids_advertencias_array != null) {
+            $Produto->advertencias()->sync($ids_advertencias_array);
+        }
+
+        return redirect('ficha/' . $Produto->id)->with('status', 'ok');
+        }
     }
+
+    public function updateProdutoNQ(Request $request, Produto $Produto)
+    {
+        //dump(request()->all());
+        //VALIDAÇÂO
+        $validator = Validator::make($request->all(), [
+            'produto_designacao' => 'required',
+            'produto_stock_minimo' => 'required|regex:/^[0-9]+$/'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }else{
+        //ADD NA BD
+
+        $Produto = Produto::find(request('id'));
+        $Produto->familia = 2;
+        $Produto->designacao = request('produto_designacao');
+        $Produto->stock_min = request('produto_stock_minimo');
+
+        $Produto->save();
+
+        return redirect('ficha/' . $Produto->id)->with('status', 'ok');
+    }
+}
 
     /**
      * Remove the specified resource from storage.

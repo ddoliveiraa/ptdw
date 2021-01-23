@@ -5,6 +5,9 @@
     <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="{{ public_path() }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{{ public_path() }}/dist/css/toastr.css"/>
 @endsection
 
 @section('content')
@@ -249,4 +252,15 @@
     <script src="{{ public_path() }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
     <script src="{{ public_path() }}/dist/js/grupo-scripts/customDatatables.js"></script>
+
+     <!-- Toastr -->
+     <script src="{{ public_path() }}/dist/js/toastr.min.js"></script>
+
+    <script>
+        $(function() {
+            if('{{ Session::get('status')}}'==='ok'){
+                 toastr["success"]("Produto editado com sucesso.", "Produto editado")
+            }
+        });
+    </script>
 @endsection
