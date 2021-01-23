@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Perfil;
 use App\Models\Operador;
 use App\Models\Historico_Operador;
+use Illuminate\Support\Facades\Validator;
 
 class OperadorController extends Controller
 {
@@ -287,27 +288,7 @@ class OperadorController extends Controller
         return view('operadores.editar', compact('operador', 'perfis'));
     }
 
-    public function updateOperador(Request $request, Operador $Operador)
-    {
-        // dd($request->all());
-        //VALIDAÇÂO
-        request()->validate([
-            'nome_operador' => 'required',
-            'email_operador' => 'required|email',
-            'perfil_operador' => 'required',
-            'data_criacao_input' => 'required',
-        ]);
-        //ADD NA BD
-        $Operador = Operador::find(request('id'));
-        $Operador->nome = request('nome_operador');
-        $Operador->email = request('email_operador');
-        $Operador->perfil = request('perfil_operador');
-        $Operador->data_criacao = request('data_criacao_input');
-        $Operador->obs = request('obvs');
-        $Operador->save();
-
-        return redirect('operadores/' . $Operador->id);
-    }
+    
 
 
     /**
@@ -317,8 +298,30 @@ class OperadorController extends Controller
      * @param  \App\Models\Operador  $operador
      * @return \Illuminate\Http\Response
      */
-    public function update(Operador $operador)
+    public function updateOperador(Request $request, Operador $Operador)
     {
+        // dd($request->all());
+        //VALIDAÇÂO
+        $validator = Validator::make($request->all(), [
+            'nome_operador' => 'required',
+            'email_operador' => 'required|email',
+            'perfil_operador' => 'required',
+            'data_criacao_input' => ['date_format:d/m/Y', 'before_or_equal:today'],
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }else{
+        //ADD NA BD
+        $Operador = Operador::find(request('id'));
+        $Operador->nome = request('nome_operador');
+        $Operador->email = request('email_operador');
+        $Operador->perfil = request('perfil_operador');
+        $Operador->data_criacao = request('data_criacao_input');
+        $Operador->obs = request('obvs');
+        $Operador->save();
+
+        return redirect('operadores/' . $Operador->id)->with('status', 'ok');
+        }
     }
 
     /**
