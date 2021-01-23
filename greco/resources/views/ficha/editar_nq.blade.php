@@ -5,6 +5,7 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ public_path() }}/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="{{ public_path() }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/dist/css/toastr.css"/>
 
 @endsection
 
@@ -59,7 +60,7 @@
                                             <label for="produto_stock_minimo"
                                                 class="control-label">{{ __('lang.stock minimo') }}</label>
                                             <input type="text" class="form-control" id="produto_stock_minimo" name="produto_stock_minimo" tabindex="6"
-                                                required value="{{ $produtos->stock_min }}">
+                                                required value="{{ old('produto_stock_minimo', $produtos->stock_min) }}">
                                         </div>
                                     </div>
                                 </div>
@@ -100,9 +101,15 @@
     <!-- Select2 -->
     <script src="{{ public_path() }}/plugins/select2/js/select2.full.min.js"></script>
 
+    <!-- Toastr -->
+    <script src="{{ public_path() }}/dist/js/toastr.min.js"></script>
+
     <script>
 
         $(function() {
+            if('{{ $errors->count() > 0}}') {
+                toastr["error"]("Por favor reveja os campos.", "Erro ao editar produto")
+            }
 
             //Initialize Select2 Elements
             $('.select2').select2()
