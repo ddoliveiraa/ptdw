@@ -55,13 +55,14 @@
                             @csrf
                             @method('PUT')  
                             <div class="card-body">
+                            <input type="hidden" id="id" name = "id" value="{{$operador->id}}">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="nome_operador" class="control-label">{{ __('lang.nome') }}</label>
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="nome_operador" name="nome_operador" required
-                                                    placeholder="{{ __('lang.insira o') }} {{ __('lang.nome') }}" value ="{{$operador->nome}}">
+                                                     value ="{{$operador->nome}}">
                                             </div>
                                         </div>
                                     </div>
@@ -71,7 +72,7 @@
                                             <label for="email_operador" class="control-label">{{ __('lang.email') }}</label>
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="email_operador" name="email_operador" required
-                                                    placeholder="{{ __('lang.insira o') }} {{ __('lang.email') }}" value ="{{$operador->email}}">
+                                                    value ="{{$operador->email}}">
                                             </div>
                                         </div>
                                     </div>
@@ -113,7 +114,7 @@
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <a href="{{ public_path() }}/operadores" role="button"
+                                        <a href="{{ public_path() }}/operadores/{{$operador->id}}" role="button"
                                             class="btn btn-block btn-default">{{ __('lang.cancelar') }}</a>
                                     </div>
                                     <div class="ml-auto col-3">

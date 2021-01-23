@@ -34,7 +34,7 @@ class ProdutoFactory extends Factory
             'stock_min'=> $this -> faker -> numberBetween($min = 1, $max = 10),
             'foto'=> $this -> faker -> imageUrl(200, 200, 'cats'),
             'sub_familia'=> $this -> faker -> numberBetween($min = 1, $max = 4), 
-
+            'ativo' => 1
         ];
     }
 }

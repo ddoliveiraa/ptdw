@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Entrada;
+use App\Models\Historico_Operador;
 use App\Models\Produto;
 use App\Models\Notification;
 
@@ -29,6 +30,14 @@ class EntradaObserver
                 'texto' => $p->designacao
             ]);
         }
+
+        Historico_Operador::create([
+            'nome_adm' => 'Administrador',
+            'operador' => $entrada->operador,
+            'data' => $entrada->created_at,
+            'id_registo' =>$entrada->id,
+            'operacao' => 1,
+        ]);
     }
 
     /**

@@ -10,12 +10,12 @@ if (locale == "PT") {
     Tquimico = "Químicos";
     TnaoQuimico = "Não Químicos";
     todo = "Todos"
-    todo = "All"
 } else {
     datatables_lang = '//cdn.datatables.net/plug-ins/1.10.22/i18n/English.json';
     Ttodos = "All";
     Tquimico = "Chemicals";
     TnaoQuimico = "Non-Chemicals";
+    todo = "All"
 }
 
 
@@ -223,24 +223,35 @@ var OpIndex = $("#operadores_index").DataTable({
     },
     ],
     "initComplete": function () {
-        fornecedores.buttons().container().appendTo('div.toolbar');
+        OpIndex.buttons().container().appendTo('div.toolbar');
         $('#operadores_index_length').appendTo('#operadores_index_filter');
     }
 });
 
 var OpHis = $("#operadores_historico").DataTable({
-    "dom": '<"toolbar">frtip',
+    "dom": '<"toolbar">frtip l',
     "info": true,
+    "processing": true,
+    "serverSide": true,
+    "ajax": "/operadores/getOperadoresHistorico/",
+    "columns": [
+        {data: 'operador'},
+        {data: 'perfil'},
+        {data: 'operacao'},
+        {data: 'data'},
+        {data: 'id'},
+    ],
     "language": {
         "url": datatables_lang,
     },
+    "order": [[3, 'desc']],
     "responsive": true,
-    "lengthChange": false,
+    "lengthChange": true,
+    "lengthMenu": [
+        [10, 25, 50, -1],
+        [10, 25, 50, todo]
+    ],
     "autoWidth": false,
-    "columnDefs": [{
-        type: 'date-uk',
-        targets: 2
-    }],
     "buttons": [{
         extend: 'csvHtml5',
         exportOptions: {
@@ -256,27 +267,33 @@ var OpHis = $("#operadores_historico").DataTable({
     ],
     "initComplete": function () {
         OpHis.buttons().container().appendTo('div.toolbar');
-
+        $('#operadores_historico_length').appendTo('#operadores_historico_filter');
     }
 });
 
-
 // Operadores.show
-$('#operadores_show').DataTable({
-    "paging": true,
-    "lengthChange": false,
-    "searching": false,
-    "ordering": true,
+var operador_show = $('#operadores_show').DataTable({
+    "dom": '<"toolbar">frtip',
     "info": true,
-    "autoWidth": false,
-    "responsive": true,
+    "processing": true,
+    "serverSide": true,
+    "searching": false,
+    "ajax": "/operadores/getOperadoresShow/",
+    "columns": [
+        {data: 'data'},
+        {data: 'operacao'},
+        {data: 'id'},
+    ],
     "language": {
         "url": datatables_lang,
     },
-    "columnDefs": [{
-        type: 'date-uk',
-        targets: 0
-    }]
+    "order": [[0, 'desc']],
+    "responsive": true,
+    "lengthChange": true,
+    "autoWidth": false,
+});
+operador_show.on('preXhr.dt', function (e, settings, data) {
+    data.operador_id = $('#operador_id').val();
 });
 
 //date sorter

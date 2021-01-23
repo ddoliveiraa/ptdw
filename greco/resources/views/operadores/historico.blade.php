@@ -57,43 +57,13 @@
                         <table id="operadores_historico" class="table table-bordered table-striped">
                             <thead class="bg-dark">
                                 <tr>
-                                    <th>{{ __('lang.nome') }}</th>
+                                    <th>{{ __('lang.operador') }}</th>
                                     <th>{{ __('lang.perfil') }}</th>
-                                    <th>{{ __('lang.data-operacao') }}</th>
                                     <th>{{ __('lang.operacao') }}</th>
+                                    <th>{{ __('lang.data') }}</th>
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Carolina</td>
-                                    <td>Supervisor Setorial</td>
-                                    <td>01/11/2018</td>
-                                    <td>Registo Operador</td>
-                                    <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>Bruno</td>
-                                    <td>Fiel de Armazém</td>
-                                    <td>21/11/2018</td>
-                                    <td>Registo Entrada</td>
-                                    <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>Bruno</td>
-                                    <td>Fiel de Armazém</td>
-                                    <td>11/11/2018</td>
-                                    <td>Registo Saida</td>
-                                    <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>Bruno</td>
-                                    <td>Fiel de Armazém</td>
-                                    <td>21/12/2018</td>
-                                    <td>Registo Saída</td>
-                                    <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
-                                </tr>
-                            </tbody>
                         </table>
                     </div>
                     <!-- /.card-body -->

@@ -279,7 +279,7 @@
                                             <label for="produto">{{ __('lang.data de abertura') }}</label>
                                             <div class="input-group date" id="data_abertura" name="data_abertura" data-target-input="nearest">
                                                 <input type="text" id="data_abertura_input" name="data_abertura_input" class="form-control datetimepicker-input"
-                                                    data-target="#data_abertura" value="{{old('data_abertura_input', date('d/m/Y', strtotime($entrada->data_abertura)))}}" />
+                                                    data-target="#data_abertura" @if($entrada->data_abertura!=null) value="{{old('data_abertura_input', date('d/m/Y', strtotime($entrada->data_abertura)))}}" @else value="{{old('data_abertura_input')}}" @endif />
                                                 <div class="input-group-append" data-target="#data_abertura"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -295,7 +295,7 @@
                                             <label for="produto">{{ __('lang.data de validade') }}</label>
                                             <div class="input-group date" id="data_validade" name="data_validade"  data-target-input="nearest">
                                                 <input type="text" class="form-control datetimepicker-input" id="data_validade_input" name="data_validade_input"
-                                                    data-target="#data_validade" value="{{old('data_validade_input', date('d/m/Y', strtotime($entrada->data_validade)))}}" />
+                                                    data-target="#data_validade"  @if($entrada->data_validade!=null)  value="{{old('data_validade_input', date('d/m/Y', strtotime($entrada->data_validade)))}}" @else value="{{old('data_validade_input')}}" @endif />
                                                 <div class="input-group-append" data-target="#data_validade"
                                                     data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>

@@ -5,6 +5,7 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ public_path() }}/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="{{ public_path() }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/dist/css/toastr.css"/>
 
 @endsection
 
@@ -50,18 +51,11 @@
                                             <label for="produto_designacao"
                                                 class="control-label">{{ __('lang.designacao') }}</label>
                                             <input type="text" class="form-control"  id="produto_designacao" name="produto_designacao" tabindex="1"
-                                                required value="{{$produtos->designacao}}">
+                                             value="{{ old('produto_designacao', $produtos->designacao)}}">
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="produto_sinonimo"
-                                                class="control-label">{{ __('lang.sinonimo') }}</label>
-                                            <input type="text" class="form-control" id="produto_sinonimo" tabindex="2"
-                                                 value="{{ $produtos->sinonimo }}">
-                                        </div>
-                                    </div>
+                                    
                                 </div>
 
                                 <div class="row">
@@ -70,14 +64,14 @@
                                             <label for="produto_formula"
                                                 class="control-label">{{ __('lang.formula') }}</label>
                                             <input type="text" class="form-control" id="produto_formula" name="produto_formula" tabindex="3"
-                                                required value="{{ $produtos->formula }}">
+                                            value="{{ old('produto_formula', $produtos->formula) }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="produto_cas" class="control-label">{{ __('lang.n cas') }}</label>
-                                            <input type="text" class="form-control" id="produto_cas" name="produto_cas" tabindex="4" required
-                                                value="{{ $produtos->CAS }}">
+                                            <input type="text" class="form-control" id="produto_cas" name="produto_cas" tabindex="4" 
+                                             value="{{ old('produto_cas', $produtos->CAS) }}">
                                         </div>
                                     </div>
                                 </div>
@@ -87,8 +81,8 @@
                                         <div class="form-group">
                                             <label for="produto_peso"
                                                 class="control-label">{{ __('lang.peso molecular') }}</label>
-                                            <input type="text" class="form-control" id="produto_peso" name="produto_peso" tabindex="5" required
-                                                value="{{ $produtos->peso_molecular }}">
+                                            <input type="text" class="form-control" id="produto_peso" name="produto_peso" tabindex="5"
+                                              value="{{ old('produto_peso', $produtos->peso_molecular) }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -96,7 +90,7 @@
                                             <label for="produto_stock_minimo"
                                                 class="control-label">{{ __('lang.stock minimo') }}</label>
                                             <input type="text" class="form-control" id="produto_stock_minimo" name="produto_stock_minimo" tabindex="6"
-                                                required value="{{ $produtos->stock_min }}">
+                                              value="{{ old('produto_stock_minimo', $produtos->stock_min) }}">
                                         </div>
                                     </div>
                                 </div>
@@ -109,7 +103,7 @@
                                                 class="control-label">{{ __('lang.condicoes de armazenamento') }}</label>
                                                  
                                             <select class="form-control" id="produto_armazenamento" name="produto_armazenamento" tabindex="7">
-                                            <option value="{{$produtos->get_condicao->id}}">{{$produtos->get_condicao->condicao}}</option>
+                                            <option value="{{$produtos->get_condicao->id}}">{{old('produto_armazenamento', $produtos->get_condicao->condicao)}}</option>
                                             @foreach ($condicoes as $c)
                                             @if($c->condicao != $produtos->get_condicao->condicao)
                                                 <option value="{{ $c->id }}">{{$c->condicao}}</option>
@@ -127,7 +121,7 @@
                                                 class="control-label load">{{ __('lang.pictograma') }}</label>
                                             <div class="input-group margin">
                                                 <input type="text" class="form-control" name="produto_pictogramas" id="produto_pictogramas"
-                                                    tabindex="7" @foreach($produtos->pictogramas as $pic) required value="{{$pic->codigo}}" @endforeach readonly >
+                                                    tabindex="7" @foreach($produtos->pictogramas as $pic) required value="{{old('produto_pictogramas', $pic->codigo)}}" @endforeach readonly >
                                                 <span class="input-group-btn">
                                                     <button type="button" class="btn btn-secondary btn-flat"
                                                         data-toggle="modal"
@@ -145,7 +139,7 @@
                                             <div class="custom-control custom-switch">
                                                 <input type="checkbox" @if($produtos->ventilado == true) checked data-toggle="toggle"  @endif class="custom-control-input" id="customSwitch1" name="customSwitch1" tabindex="10">
                                                 <label class="custom-control-label"
-                                                    for="customSwitch1" value="{{ $produtos->ventilado }}">{{ __('lang.armario ventilado') }}</label>
+                                                    for="customSwitch1" value="{{old('customSwitch1', $produtos->ventilado) }}">{{ __('lang.armario ventilado') }}</label>
                                             </div>
                                         </div>
                                        
@@ -260,6 +254,9 @@
     <!-- Select2 -->
     <script src="{{ public_path() }}/plugins/select2/js/select2.full.min.js"></script>
 
+    <!-- Toastr -->
+    <script src="{{ public_path() }}/dist/js/toastr.min.js"></script>
+
     <script>
 let pictogramas = [];
                 let ids_pictogramas = [];
@@ -278,6 +275,13 @@ let pictogramas = [];
 
 
         $(function() {
+            if('{{ $errors->count() > 0}}') {
+                toastr["error"]("Por favor reveja os campos.", "Erro ao editar produto")
+            }else{
+                if('{{ Session::get('status')}}'==='ok'){
+                    toastr["success"]("Produto editada com sucesso.", "Produto editado com sucesso")
+                }
+            };
 
          $('#guardar').on('click', function() {
 
@@ -322,6 +326,8 @@ let pictogramas = [];
                 $('#ids_recomendacoes').val($('#recomendacoes').val());
                 $('#ids_advertencias').val($('#advertencias').val());
             });
+
+            
 
             //Initialize Select2 Elements
             $('.select2').select2()

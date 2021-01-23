@@ -27,6 +27,8 @@ class CreateProdutosTable extends Migration
             $table->double('stock_min',8,2);
             $table->string('foto')->nullable();
             $table->unsignedBigInteger('sub_familia')->nullable();
+            $table->boolean('ativo');
+
 
             $table->timestamps();
 

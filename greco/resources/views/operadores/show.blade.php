@@ -18,7 +18,7 @@
                         <li class="breadcrumb-item"><a href="{{ public_path() }}/welcome">Home</a></li>
                         <li class="breadcrumb-item"><a href="{{ public_path() }}/operadores">{{ __('lang.operadores') }}</a>
                         </li>
-                        <li class="breadcrumb-item active">{{$operador->nome}}</li>
+                        <li id="operador_id" class="breadcrumb-item active" value="{{$operador->id}}">{{$operador->nome}}</li>
                     </ol>
                 </div>
             </div>
@@ -101,23 +101,6 @@
                                                 <th></th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>01/11/2018</td>
-                                                <td>Registo Operador</td>
-                                                <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>21/11/2018</td>
-                                                <td>Registo Entrada</td>
-                                                <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>11/11/2018</td>
-                                                <td>Registo Saida</td>
-                                                <td><a href=""> Ver Mais &nbsp<i class="fa fa-arrow-right"></i></a></td>
-                                            </tr>
-                                        </tbody>
                                     </table>
                                 </div>
                             </div>

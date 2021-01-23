@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use \App\Models\Notification;
+use App\Models\operacao;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,6 +16,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        //operacoes disponiveis
+        DB::table('operacaos')->insert(['operacao' => 'Registo Entrada',]);
+        DB::table('operacaos')->insert(['operacao' => 'Registo Saída',]);
+        DB::table('operacaos')->insert(['operacao' => 'Registo Cliente',]);
+        DB::table('operacaos')->insert(['operacao' => 'Registo Operador',]);
+
+
 
         // \App\Models\User::factory(10)->create();
         DB::table('cores')->insert(['cor' => "Azul",]);
@@ -141,11 +149,5 @@ class DatabaseSeeder extends Seeder
                 \App\Models\Saida::factory()->create(['id_produto' => $i, 'id_ordem' => $j,]);
             }
         }
-
-        // Notification::create([
-        //     'tipo' => 'Fora de Validade',
-        //     'id_produto' =>3,
-        //     'texto' => 'O produto está fora de validade'
-        // ]);
     }
 }
