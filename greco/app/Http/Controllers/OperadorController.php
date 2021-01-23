@@ -65,12 +65,12 @@ class OperadorController extends Controller
             $email = $record->email;
             $perfil = $record->get_perfil->nome;
             $data_criacao = date('d/m/Y', strtotime($record->data_criacao));
-            if(empty($record->data_desativacao)){
+            if (empty($record->data_desativacao)) {
                 $data_desativacao = $record->data_desativacao;
             } else {
                 $data_desativacao = date('d/m/Y', strtotime($record->data_desativacao));
             }
-            
+
 
             $data_arr[] = array(
                 "id" => $id,
@@ -93,7 +93,8 @@ class OperadorController extends Controller
         exit;
     }
 
-    public function getOperadoresHistorico(Request $request){
+    public function getOperadoresHistorico(Request $request)
+    {
         ## Read value
         $draw = $request->get('draw');
         $start = $request->get("start");
@@ -136,7 +137,7 @@ class OperadorController extends Controller
             $perfil = $record->get_operador->get_perfil->nome;
             $operacao = $record->get_operacao->operacao;
             $data = date('d/m/Y', strtotime($record->data));
-            
+
 
             $data_arr[] = array(
                 "operador" => $operador,
@@ -157,7 +158,7 @@ class OperadorController extends Controller
         echo json_encode($response);
         exit;
     }
-    
+
 
     /**
      * Display the specified resource.
@@ -168,7 +169,66 @@ class OperadorController extends Controller
 
     public function show(Operador $operador)
     {
-        return view('operadores.show',compact('operador'));
+        return view('operadores.show', compact('operador'));
+    }
+
+    public function getOperadoresShow(Request $request)
+    {
+        $operador_id = $request->get('operador_id');
+
+        ## Read value
+        $draw = $request->get('draw');
+        $start = $request->get("start");
+        $rowperpage = $request->get("length"); // Rows display per page
+
+        $columnIndex_arr = $request->get('order');
+        $columnName_arr = $request->get('columns');
+        $order_arr = $request->get('order');
+        $search_arr = $request->get('search');
+
+        $columnIndex = $columnIndex_arr[0]['column']; // Column index
+        $columnName = $columnName_arr[$columnIndex]['data']; // Column name
+        $columnSortOrder = $order_arr[0]['dir']; // asc or desc
+        $searchValue = $search_arr['value']; // Search value
+
+        // Total records
+        $totalRecords = Historico_Operador::select('count(*) as allcount')->count();
+        $totalRecordswithFilter = Historico_Operador::select('count(*) as allcount')
+            ->where('operador', '=', $operador_id)
+            ->count();
+
+        // Fetch records
+        $records = Historico_Operador::orderBy($columnName, $columnSortOrder)
+            ->where('operador', '=', $operador_id)
+            ->select('*')
+            ->skip($start)
+            ->take($rowperpage)
+            ->get();
+
+        $data_arr = array();
+
+        foreach ($records as $record) {
+            $id = "<a href='/operadores/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+            $operacao = $record->get_operacao->operacao;
+            $data = date('d/m/Y', strtotime($record->data));
+
+
+            $data_arr[] = array(
+                "operacao" => $operacao,
+                'data' => $data,
+                "id" => $id,
+            );
+        }
+
+        $response = array(
+            "draw" => intval($draw),
+            "iTotalRecords" => $totalRecords,
+            "iTotalDisplayRecords" => $totalRecordswithFilter,
+            "aaData" => $data_arr
+        );
+
+        echo json_encode($response);
+        exit;
     }
 
 
@@ -218,7 +278,7 @@ class OperadorController extends Controller
     public function edit(Operador $operador)
     {
         $perfis = Perfil::all();
-        return view('operadores.editar',compact('operador','perfis'));
+        return view('operadores.editar', compact('operador', 'perfis'));
     }
 
     public function updateOperador(Request $request, Operador $Operador)
@@ -240,9 +300,9 @@ class OperadorController extends Controller
         $Operador->obs = request('obvs');
         $Operador->save();
 
-        return redirect('operadores/'. $Operador->id);
+        return redirect('operadores/' . $Operador->id);
     }
-    
+
 
     /**
      * Update the specified resource in storage.

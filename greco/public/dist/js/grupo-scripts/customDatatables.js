@@ -271,23 +271,29 @@ var OpHis = $("#operadores_historico").DataTable({
     }
 });
 
-
 // Operadores.show
-$('#operadores_show').DataTable({
-    "paging": true,
-    "lengthChange": false,
-    "searching": false,
-    "ordering": true,
+var operador_show = $('#operadores_show').DataTable({
+    "dom": '<"toolbar">frtip',
     "info": true,
-    "autoWidth": false,
-    "responsive": true,
+    "processing": true,
+    "serverSide": true,
+    "searching": false,
+    "ajax": "/operadores/getOperadoresShow/",
+    "columns": [
+        {data: 'data'},
+        {data: 'operacao'},
+        {data: 'id'},
+    ],
     "language": {
         "url": datatables_lang,
     },
-    "columnDefs": [{
-        type: 'date-uk',
-        targets: 0
-    }]
+    "order": [[0, 'desc']],
+    "responsive": true,
+    "lengthChange": true,
+    "autoWidth": false,
+});
+operador_show.on('preXhr.dt', function (e, settings, data) {
+    data.operador_id = $('#operador_id').val();
 });
 
 //date sorter
