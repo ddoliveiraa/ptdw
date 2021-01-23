@@ -79,6 +79,7 @@ Route::get('/operadores/getOperadores/', 'App\Http\Controllers\OperadorControlle
 Route::get('/operadores/historico', function () {
     return view('operadores.historico');
 });
+Route::get('/operadores/getOperadoresHistorico/', 'App\Http\Controllers\OperadorController@getOperadoresHistorico');
 
 Route::get('/operadores/add', 'App\Http\Controllers\OperadorController@add');
 Route::post('/operadores/add/addOperador', 'App\Http\Controllers\OperadorController@addOperador');

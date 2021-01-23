@@ -10,12 +10,12 @@ if (locale == "PT") {
     Tquimico = "Químicos";
     TnaoQuimico = "Não Químicos";
     todo = "Todos"
-    todo = "All"
 } else {
     datatables_lang = '//cdn.datatables.net/plug-ins/1.10.22/i18n/English.json';
     Ttodos = "All";
     Tquimico = "Chemicals";
     TnaoQuimico = "Non-Chemicals";
+    todo = "All"
 }
 
 
@@ -223,24 +223,35 @@ var OpIndex = $("#operadores_index").DataTable({
     },
     ],
     "initComplete": function () {
-        fornecedores.buttons().container().appendTo('div.toolbar');
+        OpIndex.buttons().container().appendTo('div.toolbar');
         $('#operadores_index_length').appendTo('#operadores_index_filter');
     }
 });
 
 var OpHis = $("#operadores_historico").DataTable({
-    "dom": '<"toolbar">frtip',
+    "dom": '<"toolbar">frtip l',
     "info": true,
+    "processing": true,
+    "serverSide": true,
+    "ajax": "/operadores/getOperadoresHistorico/",
+    "columns": [
+        {data: 'operador'},
+        {data: 'perfil'},
+        {data: 'operacao'},
+        {data: 'data'},
+        {data: 'id'},
+    ],
     "language": {
         "url": datatables_lang,
     },
+    "order": [[3, 'desc']],
     "responsive": true,
-    "lengthChange": false,
+    "lengthChange": true,
+    "lengthMenu": [
+        [10, 25, 50, -1],
+        [10, 25, 50, todo]
+    ],
     "autoWidth": false,
-    "columnDefs": [{
-        type: 'date-uk',
-        targets: 2
-    }],
     "buttons": [{
         extend: 'csvHtml5',
         exportOptions: {
@@ -256,7 +267,7 @@ var OpHis = $("#operadores_historico").DataTable({
     ],
     "initComplete": function () {
         OpHis.buttons().container().appendTo('div.toolbar');
-
+        $('#operadores_historico_length').appendTo('#operadores_historico_filter');
     }
 });
 

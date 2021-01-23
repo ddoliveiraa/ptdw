@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Perfil;
 use App\Models\Operador;
+use App\Models\Historico_Operador;
 
 class OperadorController extends Controller
 {
@@ -91,6 +92,72 @@ class OperadorController extends Controller
         echo json_encode($response);
         exit;
     }
+
+    public function getOperadoresHistorico(Request $request){
+        ## Read value
+        $draw = $request->get('draw');
+        $start = $request->get("start");
+        $rowperpage = $request->get("length"); // Rows display per page
+
+        $columnIndex_arr = $request->get('order');
+        $columnName_arr = $request->get('columns');
+        $order_arr = $request->get('order');
+        $search_arr = $request->get('search');
+
+        $columnIndex = $columnIndex_arr[0]['column']; // Column index
+        $columnName = $columnName_arr[$columnIndex]['data']; // Column name
+        $columnSortOrder = $order_arr[0]['dir']; // asc or desc
+        $searchValue = $search_arr['value']; // Search value
+
+        // Total records
+        $totalRecords = Historico_Operador::select('count(*) as allcount')->count();
+        $totalRecordswithFilter = Historico_Operador::select('count(*) as allcount')
+            ->where('historico_operadores.operador', 'ilike', '%' . $searchValue . '%')
+            ->orWhere('historico_operadores.operacao', 'ilike', '%' . $searchValue . '%')
+            ->orWhere('historico_operadores.data', 'ilike', '%' . $searchValue . '%')
+            ->count();
+
+        // Fetch records
+        $records = Historico_Operador::orderBy($columnName, $columnSortOrder)
+            ->where('historico_operadores.operador', 'ilike', '%' . $searchValue . '%')
+            ->orWhere('historico_operadores.operacao', 'ilike', '%' . $searchValue . '%')
+            ->orWhere('historico_operadores.data', 'ilike', '%' . $searchValue . '%')
+            ->select('historico_operadores.*')
+            ->skip($start)
+            ->take($rowperpage)
+            ->get();
+
+        $data_arr = array();
+
+        foreach ($records as $record) {
+            $id_op = $record->get_operador->id;
+            $id = "<a href='/operadores/$id_op'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+            $operador = $record->get_operador->nome;
+            $perfil = $record->get_operador->get_perfil->nome;
+            $operacao = $record->get_operacao->operacao;
+            $data = date('d/m/Y', strtotime($record->data));
+            
+
+            $data_arr[] = array(
+                "operador" => $operador,
+                "perfil" => $perfil,
+                "operacao" => $operacao,
+                'data' => $data,
+                "id" => $id,
+            );
+        }
+
+        $response = array(
+            "draw" => intval($draw),
+            "iTotalRecords" => $totalRecords,
+            "iTotalDisplayRecords" => $totalRecordswithFilter,
+            "aaData" => $data_arr
+        );
+
+        echo json_encode($response);
+        exit;
+    }
+    
 
     /**
      * Display the specified resource.
