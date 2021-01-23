@@ -49,7 +49,7 @@ class ProdutoController extends Controller
             
             $Produto->save();
 
-            $ids_pictogramas = request('ids_pictogramas'); // 3, 5, 7
+            $ids_pictogramas = request('ids_pictogramas');
             $ids_recomendacoes = request('ids_recomendacoes');
             $ids_advertencias = request('ids_advertencias');
 

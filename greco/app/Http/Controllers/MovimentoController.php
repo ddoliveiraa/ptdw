@@ -196,8 +196,7 @@ class MovimentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getEmbalagensProdutos(Request $request)
-    {
+    public function getEmbalagensProdutos(Request $request){
         if ($request->ajax()) {
             $id_produto = $request->produto;
             return Entrada::where('id_inventario', $id_produto)->get();
@@ -738,27 +737,11 @@ class MovimentoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeSaida()
+    public function storeSaida(Request $request)
     {
-        //VALIDAÇÂO
-        request()->validate([
-            'cliente' => 'required',
-            'produto' => 'required',
-            'n_ordem_tmp' => 'required',
-            'solicitante' => 'required',
-        ]);
+        dd($request->all());
 
-        //ADD NA BD
-        $Saida = new Saida();
-        $Saida->id_cliente = request('cliente');
-        $Saida->id_produto = request('produto');
-        $Saida->id_ordem = request('n_ordem_tmp');
-        $Saida->id_solicitante = request('solicitante');
-        $Saida->id_operador = 1;
-        $Saida->obs = request('obvs');
-        $Saida->save();
-
-        return redirect('movimentos/saida');
+        
     }
 
     /**

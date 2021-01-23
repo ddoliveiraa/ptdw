@@ -89,7 +89,6 @@
                                     </div>
                                 </div>
 
-
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
@@ -138,6 +137,7 @@
 
         $("#n_embalagem").change(function() {
             let val = $("#n_embalagem option:selected").text().split("-",2);
+            console.log(val);
             $('#n_ordem_tmp').val(val[1]);
         });
 
