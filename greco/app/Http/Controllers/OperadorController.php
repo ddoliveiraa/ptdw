@@ -159,6 +159,7 @@ class OperadorController extends Controller
         // dd($request->all());
         //VALIDAÇÂO
         request()->validate([
+            'nome_operador' => 'required',
             'email_operador' => 'required|email',
             'perfil_operador' => 'required',
             'data_criacao_input' => 'required',
