@@ -172,7 +172,7 @@
                             <div class="card card-primary">
 
                                 <!-- form start -->
-                                <form method="POST" action="/produtos_nq">
+                                <form method="POST" action="/produtos_nq" enctype="multipart/form-data">
                                     @csrf <!-- Cross Site Request Forgery -->
                                     <div class="card-body">
                                         <div class="row">
