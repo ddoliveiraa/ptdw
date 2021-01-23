@@ -9,6 +9,15 @@ else {
     datatables_lang = '//cdn.datatables.net/plug-ins/1.10.22/i18n/English.json';
     todo = "All"
 }
+
+var split = window.location.href.split("/");
+var isServer = "";
+for (x of split){
+    if(x == "~ptdw-2020-gr3"){
+        isServer = "/~ptdw-2020-gr3";
+    }
+}
+
 $('input[type=checkbox]').on('change', function(e) {
     if ($('input[type=checkbox]:checked').length > 4) {
         $(this).prop('checked', false);
@@ -20,7 +29,7 @@ var entradas = $("#entradas").DataTable({
     "info": true,
     "processing": true,
     "serverSide": true,
-    "ajax": "/movimentos/historico/getEntradas/",
+    "ajax": isServer + "/movimentos/historico/getEntradas/",
     "columns": [
         { data: 'designacao' },
         { data: 'id_produto' },
@@ -133,7 +142,7 @@ var saidas = $("#saidas").DataTable({
     "info": true,
     "processing": true,
     "serverSide": true,
-    "ajax": "/movimentos/historico/getSaidas/",
+    "ajax": isServer + "/movimentos/historico/getSaidas/",
     "columns": [
         { data: 'designacao' },
         { data: 'id_produto' },

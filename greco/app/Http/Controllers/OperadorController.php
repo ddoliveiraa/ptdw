@@ -208,11 +208,15 @@ class OperadorController extends Controller
         $data_arr = array();
 
         foreach ($records as $record) {
-            $id = "<a href='/operadores/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
             $operacao = $record->get_operacao->operacao;
             $data = date('d/m/Y', strtotime($record->data));
-
-
+            if($operacao == "Registo Entrada"){
+                $id = "<a href='/movimentos/show_entrada/$record->id_registo'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+            } else {
+                $id = "<a href='/movimentos/show_saida/$record->id_registo'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+            }
+            
+            
             $data_arr[] = array(
                 "operacao" => $operacao,
                 'data' => $data,

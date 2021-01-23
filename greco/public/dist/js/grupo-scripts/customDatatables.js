@@ -19,12 +19,21 @@ if (locale == "PT") {
 }
 
 
+var split = window.location.href.split("/");
+var isServer = "";
+for (x of split){
+    if(x == "~ptdw-2020-gr3"){
+        isServer = "/~ptdw-2020-gr3";
+    }
+}
+
+
 var produtos = $("#tabelaprodutos").DataTable({
     "dom": '<"toolbar">frtip l',
     "info": true,
     "processing": true,
     "serverSide": true,
-    "ajax": "/produtos/getProdutos/",
+    "ajax": isServer + "/produtos/getProdutos/",
     "columns": [
         { data: 'designacao' },
         { data: 'formula' },
@@ -85,7 +94,7 @@ var clientes = $("#clientes").DataTable({
     "info": true,
     "processing": true,
     "serverSide": true,
-    "ajax": "/clientes/getClientes/",
+    "ajax": isServer + "/clientes/getClientes/",
     "columns": [
         {data: 'designacao'},
         {data: 'created_at'},
@@ -125,7 +134,7 @@ var fornecedores = $("#fornecedores").DataTable({
     "info": true,
     "processing": true,
     "serverSide": true,
-    "ajax": "/fornecedores/getFornecedores/",
+    "ajax": isServer + "/fornecedores/getFornecedores/",
     "columns": [
         {data: 'designacao'},
         {data: 'morada'},
@@ -190,7 +199,7 @@ var OpIndex = $("#operadores_index").DataTable({
     "info": true,
     "processing": true,
     "serverSide": true,
-    "ajax": "/operadores/getOperadores/",
+    "ajax": isServer + "/operadores/getOperadores/",
     "columns": [
         {data: 'nome'},
         {data: 'email'},
@@ -233,7 +242,7 @@ var OpHis = $("#operadores_historico").DataTable({
     "info": true,
     "processing": true,
     "serverSide": true,
-    "ajax": "/operadores/getOperadoresHistorico/",
+    "ajax": isServer + "/operadores/getOperadoresHistorico/",
     "columns": [
         {data: 'operador'},
         {data: 'perfil'},
@@ -278,7 +287,7 @@ var operador_show = $('#operadores_show').DataTable({
     "processing": true,
     "serverSide": true,
     "searching": false,
-    "ajax": "/operadores/getOperadoresShow/",
+    "ajax": isServer + "/operadores/getOperadoresShow/",
     "columns": [
         {data: 'data'},
         {data: 'operacao'},
