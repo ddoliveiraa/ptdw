@@ -190,7 +190,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach ($entradas as $entrada)
-                                    @if(!empty($entrada->data_termino))  
+                                    @if(empty($entrada->data_termino))  
                                             <tr>
                                                 <td>{{ $entrada->capacidade }} ml</td>
                                                 <td>{{ $entrada->id_ordem }}</td>
