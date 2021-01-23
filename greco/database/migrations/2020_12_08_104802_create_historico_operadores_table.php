@@ -24,6 +24,7 @@ class CreateHistoricoOperadoresTable extends Migration
             $table->unsignedBigInteger('operador');
             $table->date('data');
             $table->unsignedBigInteger('operacao'); //acao, se foi registo, etc
+            $table->integer('id_registo'); //se foi uma entrada, saida, um produto, cliente, wtv 
             $table->string('obs')->nullable();
 
             $table->timestamps();

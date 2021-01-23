@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Historico_Operador extends Model
 {
     use HasFactory;
-    protected $fillable = ['nome_adm','operador','data','operacao','obs'];
+    protected $fillable = ['nome_adm','operador','data','id_registo','operacao','obs'];
     protected $table = 'historico_operadores';
 
 

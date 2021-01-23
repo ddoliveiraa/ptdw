@@ -40,6 +40,7 @@ class SaidaObserver
             'nome_adm' => 'Administrador',
             'operador' => $saida->id_operador,
             'data' => $saida->created_at,
+            'id_registo' =>$saida->id,
             'operacao' => 1,
         ]);
     }

@@ -35,6 +35,7 @@ class EntradaObserver
             'nome_adm' => 'Administrador',
             'operador' => $entrada->operador,
             'data' => $entrada->created_at,
+            'id_registo' =>$entrada->id,
             'operacao' => 1,
         ]);
     }
