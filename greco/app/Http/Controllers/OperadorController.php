@@ -154,11 +154,11 @@ class OperadorController extends Controller
         return view('operadores.editar',compact('operador','perfis'));
     }
 
-    public function updateperador(Request $request)
+    public function updateOperador(Request $request, Operador $Operador)
     {
+        // dd($request->all());
         //VALIDAÇÂO
         request()->validate([
-            'nome_operador' => 'required',
             'email_operador' => 'required|email',
             'perfil_operador' => 'required',
             'data_criacao_input' => 'required',
@@ -172,7 +172,7 @@ class OperadorController extends Controller
         $Operador->obs = request('obvs');
         $Operador->save();
 
-        return redirect('operadores');
+        return redirect('operadores/'. $Operador->id);
     }
     
 

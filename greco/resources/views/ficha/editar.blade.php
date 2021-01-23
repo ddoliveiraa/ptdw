@@ -5,6 +5,7 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ public_path() }}/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="{{ public_path() }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ public_path() }}/dist/css/toastr.css"/>
 
 @endsection
 
@@ -50,7 +51,7 @@
                                             <label for="produto_designacao"
                                                 class="control-label">{{ __('lang.designacao') }}</label>
                                             <input type="text" class="form-control"  id="produto_designacao" name="produto_designacao" tabindex="1"
-                                                required value="{{$produtos->designacao}}">
+                                            required  value="{{$produtos->designacao}}">
                                         </div>
                                     </div>
 
@@ -59,7 +60,7 @@
                                             <label for="produto_sinonimo"
                                                 class="control-label">{{ __('lang.sinonimo') }}</label>
                                             <input type="text" class="form-control" id="produto_sinonimo" tabindex="2"
-                                                 value="{{ $produtos->sinonimo }}">
+                                             value="{{ $produtos->sinonimo }}">
                                         </div>
                                     </div>
                                 </div>
@@ -70,14 +71,14 @@
                                             <label for="produto_formula"
                                                 class="control-label">{{ __('lang.formula') }}</label>
                                             <input type="text" class="form-control" id="produto_formula" name="produto_formula" tabindex="3"
-                                                required value="{{ $produtos->formula }}">
+                                            required value="{{ $produtos->formula }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="produto_cas" class="control-label">{{ __('lang.n cas') }}</label>
                                             <input type="text" class="form-control" id="produto_cas" name="produto_cas" tabindex="4" required
-                                                value="{{ $produtos->CAS }}">
+                                            required value="{{ $produtos->CAS }}">
                                         </div>
                                     </div>
                                 </div>
@@ -88,7 +89,7 @@
                                             <label for="produto_peso"
                                                 class="control-label">{{ __('lang.peso molecular') }}</label>
                                             <input type="text" class="form-control" id="produto_peso" name="produto_peso" tabindex="5" required
-                                                value="{{ $produtos->peso_molecular }}">
+                                            required  value="{{ $produtos->peso_molecular }}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -96,7 +97,7 @@
                                             <label for="produto_stock_minimo"
                                                 class="control-label">{{ __('lang.stock minimo') }}</label>
                                             <input type="text" class="form-control" id="produto_stock_minimo" name="produto_stock_minimo" tabindex="6"
-                                                required value="{{ $produtos->stock_min }}">
+                                            required  value="{{ $produtos->stock_min }}">
                                         </div>
                                     </div>
                                 </div>
@@ -260,6 +261,9 @@
     <!-- Select2 -->
     <script src="{{ public_path() }}/plugins/select2/js/select2.full.min.js"></script>
 
+    <!-- Toastr -->
+    <script src="{{ public_path() }}/dist/js/toastr.min.js"></script>
+
     <script>
 let pictogramas = [];
                 let ids_pictogramas = [];
@@ -278,6 +282,13 @@ let pictogramas = [];
 
 
         $(function() {
+            if('{{ $errors->count() > 0}}') {
+                toastr["error"]("Por favor reveja os campos.", "Erro ao editar produto")
+            }else{
+                if('{{ Session::get('status')}}'==='ok'){
+                    toastr["success"]("Produto editada com sucesso.", "Produto editado com sucesso")
+                }
+            };
 
          $('#guardar').on('click', function() {
 
@@ -322,6 +333,8 @@ let pictogramas = [];
                 $('#ids_recomendacoes').val($('#recomendacoes').val());
                 $('#ids_advertencias').val($('#advertencias').val());
             });
+
+            
 
             //Initialize Select2 Elements
             $('.select2').select2()
