@@ -84,17 +84,18 @@ class ProdutoController extends Controller
 
     public function updateProdutoQ(Request $request, Produto $Produto)
     {
-
+        // dd($request->all());
         //VALIDAÇÂO
         $validator = Validator::make($request->all(), [
             'produto_designacao' => 'required',
-            'produto_cas' => 'required',
+            'produto_cas' => 'required|regex:/[^A-Za-z]+$/',
             'produto_peso' => 'required|regex:/^[0-9]{1,3}(,[0-9]{3})*(\.[0-9]+)*$/',
-            'produto_stock_minimo' => 'required'
+            'produto_stock_minimo' => 'required|regex:/^[0-9]+$/'
         ]);
 
         if ($validator->fails()) {
-            return redirect('ficha/editar/' . $Produto->id)->withErrors($validator)->withInput();
+            // dd($Produto->id);
+            return redirect()->back()->withErrors($validator)->withInput();
         }else{
         //ADD NA BD
 
@@ -131,7 +132,7 @@ class ProdutoController extends Controller
             $Produto->advertencias()->sync($ids_advertencias_array);
         }
 
-        return redirect('ficha/' . $Produto->id);
+        return redirect('ficha/' . $Produto->id)->with('status', 'ok');
         }
     }
 
