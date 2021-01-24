@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\Responsavel;
 use App\Models\Solicitante;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
@@ -165,6 +166,9 @@ class ClienteController extends Controller
      */
     public function edit(Cliente $cliente)
     {
+        $responsaveis = Responsavel::where('id_cliente', $cliente->id)->get();
+        $solicitantes = Solicitante::where('id_cliente', $cliente->id)->get();
+        return view('clientes.editar',compact('cliente','responsaveis','solicitantes'));
     }
 
     /**
@@ -174,8 +178,50 @@ class ClienteController extends Controller
      * @param  \App\Models\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Cliente $cliente)
+    public function update(Request $request, Cliente $Cliente)
     {
+        // dd($request->all());
+        //VALIDAÇÂO
+        $validar = Validator::make($request->all(), [
+            'designacao' => 'required',
+            
+        ]);
+
+        if ($validar->fails()) {
+            return redirect()->back()->withErrors($validar)->withInput();
+        }else{
+
+        $Cliente = Cliente::find(request('id'));
+        $Cliente->designacao = request('designacao');
+        $Cliente->responsavel = request('responsavel');
+        $Cliente->solicitante = request('solicitante');
+        $Cliente->obs = request('obvs');
+        $Cliente->save();
+        $data_r = request('responsaveis');
+        $data_r_ex = explode(",", $data_r);
+        $id_cliente = Cliente::all()->last()->id;
+
+        foreach ($data_r_ex as $d) {
+            $Responsavel = Responsavel::find(request('id'));
+            $Responsavel->id_cliente = $id_cliente;
+            $Responsavel->nome = explode(" | ", $d)[0];
+            $Responsavel->email = explode(" | ", $d)[1];
+            $Responsavel->save();
+        }
+
+        $data_s = request('solicitantes');
+        $data_s_ex = explode(",", $data_s);
+
+        foreach ($data_s_ex as $d) {
+            $Solicitante = Solicitante::find(request('id'));
+            $Solicitante->id_cliente = $id_cliente;
+            $Solicitante->nome = explode(" | ", $d)[0];
+            $Solicitante->email = explode(" | ", $d)[1];
+            $Solicitante->save();
+        }
+
+        return redirect('clientes/'. $Cliente->id);
+        }
     }
 
     /**

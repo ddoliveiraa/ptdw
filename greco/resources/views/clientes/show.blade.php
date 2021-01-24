@@ -5,7 +5,7 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ public_path() }}/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="{{ public_path() }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-
+    <link rel="stylesheet" href="{{ public_path() }}/dist/css/toastr.css"/>
 @endsection
 
 @section('content')
@@ -120,7 +120,7 @@
                                             role="button" class="btn btn-block btn-default">{{ __('lang.voltar') }}</a>
                                     </div>
                                     <div class="ml-auto col-3">
-                                        <a href="{{ public_path() }}/clientes/editar" role="button"
+                                        <a href="{{ public_path() }}/clientes/editar/{{$cliente->id}}" role="button"
                                             class="btn btn-block btn-secondary">{{ __('lang.editar') }}</a>
                                     </div>
                                 </div>
@@ -139,8 +139,16 @@
 
     <!-- Select2 -->
     <script src="{{ public_path() }}/plugins/select2/js/select2.full.min.js"></script>
+    <!-- Toastr -->
+    <script src="{{ public_path() }}/dist/js/toastr.min.js"></script>
 
     <script>
+    $(function() {
+            if('{{ Session::get('status')}}'==='ok'){
+                 toastr["success"]("Produto editado com sucesso.", "Produto editado")
+            }
+        })
+        
         $(function() {
             //Initialize Select2 Elements
             $('.select2').select2()

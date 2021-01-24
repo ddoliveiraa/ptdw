@@ -67,10 +67,9 @@ Route::post('/clientes/add/store', 'App\Http\Controllers\ClienteController@store
 Route::get('/clientes/getClientes/', 'App\Http\Controllers\ClienteController@getClientes');
 
 Route::get('/clientes/{cliente}', 'App\Http\Controllers\ClienteController@show');
+Route::get('/clientes/editar/{cliente}', 'App\Http\Controllers\ClienteController@edit');
+Route::put('/clientes/editado/{cliente}', 'App\Http\Controllers\ClienteController@update');
 
-Route::get('/clientes/editar', function () {
-    return view('clientes.editar');
-});
 
 //Operadores
 Route::get('/operadores', 'App\Http\Controllers\OperadorController@index');
