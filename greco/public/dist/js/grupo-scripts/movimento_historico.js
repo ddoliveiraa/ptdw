@@ -18,11 +18,6 @@ for (x of split){
     }
 }
 
-$('input[type=checkbox]').on('change', function(e) {
-    if ($('input[type=checkbox]:checked').length > 4) {
-        $(this).prop('checked', false);
-    }
-});
 
 var entradas = $("#entradas").DataTable({
     "dom": '<"search">frtip l',
@@ -79,6 +74,13 @@ entradas.on('preXhr.dt', function (e, settings, data) {
     data.inicio = $('#intervalo').data('daterangepicker').startDate.format("DD/MM/YYYY");
     data.fim = $('#intervalo').data('daterangepicker').endDate.format("DD/MM/YYYY");
     data.data_val = $('#intervalo').val();
+
+    var pictogramas = [];
+    $('input[type=checkbox]:checked').each(function(){
+        pictogramas.push($(this).val());
+    });
+    
+    data.pictogramas = pictogramas;
 });
 
 //Date range picker
@@ -116,7 +118,12 @@ $('#filter').click(function () {
 
 $("#pictogramas").click(function () {
     $("#modalSelecionarPictograma").modal("show");
-})
+});
+$("#aplicar").click(function () {
+    entradas.draw();
+    saidas.draw();
+});
+
 
 $('#familia').change(function () {
     var familia = $('#familia option:selected').val();

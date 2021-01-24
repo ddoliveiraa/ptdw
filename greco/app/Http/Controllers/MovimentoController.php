@@ -264,6 +264,7 @@ class MovimentoController extends Controller
         $DataValue = $request->get("data_val");
         $DataInicio = $request->get("inicio");
         $DataFim = $request->get("fim");
+        $Pictogramas = $request->get("pictogramas");
 
         ## Read value
         $draw = $request->get('draw');

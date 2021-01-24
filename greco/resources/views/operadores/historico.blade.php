@@ -74,86 +74,6 @@
         </div>
         <!-- /.row -->
         <!-- /.container-fluid -->
-
-        <!-- Default Model Large -->
-        <div class="modal fade" id="modal_add_operador">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">{{ __('lang.adicionar') }} {{ __('lang.operador') }}</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form>
-                        <div class="modal-body">
-                            <div class="form-row">
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label for="nome_operador" class="control-label">{{ __('lang.nome') }}</label>
-                                        <input type="text" class="form-control" id="nome_operador" required>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label for="email_operador" class="control-label">{{ __('lang.email') }}</label>
-                                        <input type="text" class="form-control" id="email_operador" required>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label for="perfil_operador">{{ __('lang.perfil') }}</label>
-                                        <select class="form-control select" id="perfil_operador" style="width: 100%;">
-                                            <option value="" selected disabled>{{ __('lang.selecione o') }}
-                                                {{ __('lang.perfil') }}
-                                            </option>
-                                            <option>Fiel de Armazém</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label for="data_criacao">{{ __('lang.data-criacao') }}</label>
-                                        <div class="input-group date" id="data_criacao" data-target-input="nearest">
-                                            <input type="text" class="form-control datetimepicker-input"
-                                                data-target="#data_criacao" placeholder="DD/MM/YYYY" />
-                                            <div class="input-group-append" data-target="#data_criacao"
-                                                data-toggle="datetimepicker">
-                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label for="obvs">{{ __('lang.observacoes') }}</label>
-                                        <textarea id="obvs" maxlength="100" class="form-control" rows="2"></textarea>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default col-md-3"
-                                data-dismiss="modal">{{ __('lang.cancelar') }}</button>
-                            <button type="submit" class="btn col-md-3 btn-secondary">{{ __('lang.adicionar') }}</button>
-                        </div>
-                    </form>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-
     </section>
     <!-- /.content -->
 
@@ -186,11 +106,4 @@
     <script src="{{ public_path() }}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <script src="{{ public_path() }}/dist/js/grupo-scripts/customDatatables.js"></script>
-
-
-    <script>
-        $('#modal_add_operador').on('shown.bs.modal', function() {
-            $('#nome_operador').focus();
-        });
-    </script>
 @endsection
