@@ -135,7 +135,7 @@ class ProdutoController extends Controller
    */
     public function getProdutos(Request $request)
     {
-
+        var_dump(public_path());
         $tipo = $request->get("tipo");
 
         ## Read value
