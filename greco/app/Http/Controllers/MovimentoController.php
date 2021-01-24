@@ -865,7 +865,7 @@ class MovimentoController extends Controller
         $Entrada->obs = request('obvs');
         $Entrada->save();
 
-        return redirect('movimentos/show_entrada/'. $Entrada->id);
+        return redirect('movimentos/show_entrada/'. $Entrada->id)->with('status', 'ok');
         }
     }
 
