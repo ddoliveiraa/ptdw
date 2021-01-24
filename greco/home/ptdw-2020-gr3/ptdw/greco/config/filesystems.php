@@ -51,7 +51,7 @@ return [
         'images' => [
             'driver' => 'sftp',
             'root' => storage_path('/home/ptdw-2020-gr3/ptdw/greco/storage/app/images'),
-            'url' => env('APP_URL').'/storage/app/images',
+            'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
 
@@ -86,10 +86,7 @@ return [
     */
 
     'links' => [
-        //sftp://ptdw-2020-gr3@estga-dev.clients.ua.pt/home/ptdw-2020-gr3/ptdw/greco/storage/app/images
         public_path('storage') => storage_path('app/public'),
-        //public_path('images') => storage_path('app/public/images'),
-        public_path('images') => storage_path('/home/ptdw-2020-gr3/ptdw/greco/storage/app/images'),
     ],
 
 ];

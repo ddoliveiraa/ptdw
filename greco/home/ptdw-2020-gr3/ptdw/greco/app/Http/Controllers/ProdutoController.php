@@ -13,7 +13,6 @@ use App\Models\recomendacoe;
 use App\Models\advertencia;
 use Carbon;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Storage;
 
 
 class ProdutoController extends Controller
@@ -47,7 +46,7 @@ class ProdutoController extends Controller
             $Produto->stock_min = request('produto_stock_minimo');
             $Produto->condicoes_armazenamento = request('produto_armario');
             $Produto->ventilado = request('customSwitch1');
-            $Produto->ativo = True;
+            
             $Produto->save();
 
             $ids_pictogramas = request('ids_pictogramas');
@@ -83,6 +82,8 @@ class ProdutoController extends Controller
         
     }
 
+    
+
     public function storeNaoQuimico(Request $request){
         
         //VALIDAÇÂO
@@ -95,7 +96,6 @@ class ProdutoController extends Controller
         if ($validator->fails()) {
             return redirect('produtos/add')->withErrors($validator)->withInput();
         }else{
-            
             $fileName = request('produto_foto');
 
             //ADD NA BD
