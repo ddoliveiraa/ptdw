@@ -775,7 +775,7 @@ class MovimentoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Movimento  $movimentos
+     * @param  \App\Models\Entrada  $entrada
      * @return \Illuminate\Http\Response
      */
     public function show(Entrada $entrada)
@@ -791,7 +791,7 @@ class MovimentoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Movimento  $movimentos
+     * @param  \App\Models\Entrada  $entrada
      * @return \Illuminate\Http\Response
      */
     public function edit(Entrada $entrada)
@@ -813,7 +813,7 @@ class MovimentoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Movimento  $movimentos
+     * @param  \App\Models\Entrada  $Entrada
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Entrada $Entrada)
