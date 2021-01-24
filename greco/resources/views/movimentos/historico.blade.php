@@ -99,50 +99,6 @@
                                             <th></th>
                                         </tr>
                                     </thead>
-                                    {{-- <tbody>
-                                        @foreach ($entradas as $entrada)
-                                            <tr>
-                                                <td>{{ $entrada->produto->designacao }}</td>
-                                                <td>Entrada</td>
-                                                <td>{{ $entrada->id_inventario }} - {{ $entrada->id_ordem }}</td>
-                                                <td>S{{ $entrada->sala }} - {{ $entrada->get_armario->armario }} -
-                                                    {{ $entrada->get_prateleira->prateleira }}
-                                                </td>
-                                                <td>{{ $entrada->capacidade }} {{ $entrada->get_unidade->unidade }}</td>
-                                                <td></td>
-                                                <td>{{ $entrada->get_fornecedor->designacao }}</td>
-                                                <td>{{ $entrada->data_entrada }}</td>
-                                                <td>{{ $entrada->validade }}</td>
-                                                <td>{{ $entrada->termino }}</td>
-                                                <td>{{ $entrada->get_operador->nome }}</td>
-                                                <td>{{ $entrada->produto->get_fam->nome }}</td>
-                                                <td>{{ $entrada->produto->get_subfam->nome }}</td>
-                                                <td><a href="{{ public_path() }}/movimentos/show_entrada/{entrada}"> Ver Mais &nbsp<i
-                                                            class="fa fa-arrow-right"></i></a></td>
-                                            </tr>
-                                        @endforeach
-
-                                        @foreach ($saidas as $saida)
-                                            <tr>
-                                                <td>{{ $saida->produto->designacao }}</td>
-                                                <td>Saida</td>
-                                                <td>{{ $saida->id_produto }} - {{ $saida->id_ordem }}</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>{{ $saida->get_cliente->designacao }}</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>{{ $saida->get_operador->nome }}</td>
-                                                <td>{{ $saida->produto->get_fam->nome }}</td>
-                                                <td>{{ $entrada->produto->get_subfam->nome }}</td>
-                                                <td><a href="{{ public_path() }}/movimentos/show_saida/{saida}"> Ver Mais &nbsp<i
-                                                            class="fa fa-arrow-right"></i></a></td>
-                                            </tr>
-                                        @endforeach
-
-                                    </tbody> --}}
                                 </table>
                                 <!-- /.card-body -->
                             </div>
@@ -198,7 +154,7 @@
                                             <ul>
                                                 @foreach ($pictogramas as $pictograma)
                                                     <li>
-                                                        <input type="checkbox" id="cb{{ $pictograma->id }}" />
+                                                        <input type="checkbox" id="cb{{ $pictograma->id }}" value="{{ $pictograma->id }}"/>
                                                         <label for="cb{{ $pictograma->id }}">
                                                             <img src="{{ public_path() }}{{ $pictograma->imagem }}" />
                                                             <p class="text-center">{{ $pictograma->codigo }}</p>
@@ -214,7 +170,7 @@
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default col-md-3" data-dismiss="modal"
                                 tabindex="13">{{ __('lang.cancelar') }}</button>
-                            <button type="button" class="btn btn-secondary col-md-3" data-dismiss="modal"
+                            <button id="aplicar" type="button" class="btn btn-secondary col-md-3" data-dismiss="modal"
                                 tabindex="14">{{ __('lang.aplicar') }}</button>
                         </div>
                     </form>

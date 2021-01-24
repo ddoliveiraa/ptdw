@@ -179,7 +179,7 @@ class ClienteController extends Controller
      */
     public function update(Request $request, Cliente $Cliente)
     {
-        // dd($request->all());
+        dd($request->all());
         //VALIDAÇÂO
         $validar = Validator::make($request->all(), [
             'designacao' => 'required',

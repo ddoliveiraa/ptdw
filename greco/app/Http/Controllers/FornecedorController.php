@@ -6,6 +6,7 @@ use App\Models\Fornecedor;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class FornecedorController extends Controller
 {
@@ -173,6 +174,7 @@ class FornecedorController extends Controller
      */
     public function edit(Fornecedor $fornecedor)
     {
+        return view('fornecedores.editar',compact('fornecedor'));
     }
 
     /**
@@ -182,8 +184,51 @@ class FornecedorController extends Controller
      * @param  \App\Models\Fornecedor  $fornecedor
      * @return \Illuminate\Http\Response
      */
-    public function update(Fornecedor $fornecedor)
+    public function update(Request $request, Fornecedor $Fornecedor)
     {
+        // dd($request->all());
+        //VALIDAÇÂO
+        $validator = Validator::make($request->all(), [
+            'fornecedor_designacao' => 'required',
+            'fornecedor_telefone' => 'required|regex:/^\(\d{2,3}\)\s\d{4}\-\d{3}$/',
+            'fornecedor_morada' => 'required',
+            'fornecedor_localidade' => 'required|regex:/^[A-Za-z]+$/',
+            'fornecedor_codigopostal' => 'required|regex:/^\d{4}(-\d{3})?$/',
+            'fornecedor_email' => 'required|email',
+            'fornecedor_nif' => 'required|regex:/^[0-9]+$/',
+            'fornecedor_condicoesespeciais' => 'required',
+            'fornecedor_nomevendedor1' => 'required',
+            'fornecedor_emailvendedor1' => 'required|email',
+            'fornecedor_telemovelvendedor1' => 'required|regex:/^\(\d{2,3}\)\s\d{4}\-\d{3}$/',
+            'fornecedor_nomevendedor2' => 'required',
+            'fornecedor_emailvendedor2' => 'required|email',
+            'fornecedor_telemovelvendedor2' => 'required|regex:/^\(\d{2,3}\)\s\d{4}\-\d{3}$/',
+
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }else{
+        //ADD NA BD
+        $Fornecedor = Fornecedor::find(request('id'));
+        $Fornecedor->designacao = request('fornecedor_designacao');
+        $Fornecedor->telefone = request('fornecedor_telefone');
+        $Fornecedor->morada = request('fornecedor_morada');
+        $Fornecedor->localidade = request('fornecedor_localidade');
+        $Fornecedor->codigopostal = request('fornecedor_codigopostal');
+        $Fornecedor->email = request('fornecedor_email');
+        $Fornecedor->NIF = request('fornecedor_nif');
+        $Fornecedor->obs = request('obvs');
+        $Fornecedor->condicoes_especiais = request('fornecedor_condicoesespeciais');
+        $Fornecedor->vendedor1 = request('fornecedor_nomevendedor1');
+        $Fornecedor->email1 = request('fornecedor_emailvendedor1');
+        $Fornecedor->telefone1 = request('fornecedor_telemovelvendedor1');
+        $Fornecedor->vendedor2 = request('fornecedor_nomevendedor2');
+        $Fornecedor->email2 = request('fornecedor_emailvendedor2');
+        $Fornecedor->telefone2 = request('fornecedor_telemovelvendedor2');
+        $Fornecedor->save();
+
+        return redirect('fornecedores/' . $Fornecedor->id)->with('status', 'ok');
+        }
     }
 
     /**

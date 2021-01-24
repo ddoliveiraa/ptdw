@@ -127,17 +127,6 @@
             }
     })
 
-    $('#responsaveis').tagEditor();
-        $('#solicitantes').tagEditor();
-
-        $('#selecionarResponsavel').on('click', function() {
-            $('#responsaveis').tagEditor('addTag', $('#responsavel_nome').val()+" | "+$('#responsavel_email').val());
-        });
-
-        $('#selecionarSolicitante').on('click', function() {
-            $('#solicitantes').tagEditor('addTag', $('#solicitante_nome').val()+" | "+$('#solicitante_email').val());
-        });
-
         $(function() {
             //Initialize Select2 Elements
             $('.select2').select2()
