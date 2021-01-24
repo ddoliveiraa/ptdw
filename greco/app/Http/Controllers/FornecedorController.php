@@ -76,7 +76,7 @@ class FornecedorController extends Controller
             $telefone = $record->telefone;
             $NIF = $record->NIF;
             $email = $record->email;
-            $id = "<a href='/~ptdw-2020-gr3/fornecedores/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+            $id = "<a href='".public_path()."/fornecedores/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
 
             $data_arr[] = array(
                 "designacao" => $designacao,

@@ -39,7 +39,7 @@ class SearchController extends Controller
                 $output = '<ul class="list-group" style="display: block; position: relative; z-index: 1">';
 
                 foreach ($data as $row) {
-                    $output .= '<li class="list-group-item"><a href="/ficha/' . $row->id . '"> Produto: ' . $row->designacao . '</a></li>';
+                    $output .= '<li class="list-group-item"><a href="' . public_path() . '/ficha/' . $row->id . '"> Produto: ' . $row->designacao . '</a></li>';
                 }
 
                 $output .= '</ul>';

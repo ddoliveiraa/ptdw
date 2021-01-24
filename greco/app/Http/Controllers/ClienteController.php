@@ -61,7 +61,7 @@ class ClienteController extends Controller
         $data_arr = array();
 
         foreach ($records as $record) {
-            $id = "<a href='/~ptdw-2020-gr3/clientes/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+            $id = "<a href='".public_path()."/clientes/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
             $designacao = $record->designacao;
             $created_at = date('d/m/Y', strtotime($record->created_at));
 
