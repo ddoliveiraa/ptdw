@@ -483,7 +483,7 @@ class MovimentoController extends Controller
             $operador = $record->operador;
             $familia = $record->familia;
             $subfamilia = $record->subfamilia;
-            $link = "<a href='/movimentos/show_entrada/$record->id_entrada'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+            $link = "<a href='/~ptdw-2020-gr3/movimentos/show_entrada/$record->id_entrada'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
 
             $data_arr[] = array(
                 "designacao" => $designacao,
@@ -704,7 +704,7 @@ class MovimentoController extends Controller
             $data = date("d/m/Y", strtotime($record->data));
             $familia = $record->familia;
             $subfamilia = $record->subfamilia;
-            $link = "<a href='/movimentos/show_saida/$record->id_saida'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+            $link = "<a href='/~ptdw-2020-gr3/movimentos/show_saida/$record->id_saida'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
 
             $data_arr[] = array(
                 "designacao" => $designacao,

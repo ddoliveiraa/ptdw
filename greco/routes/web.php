@@ -103,10 +103,12 @@ Route::post('/fornecedores/add/store', 'App\Http\Controllers\FornecedorControlle
 Route::get('/fornecedores/{fornecedor}', 'App\Http\Controllers\FornecedorController@show');
 Route::get('/fornecedores/editar/{fornecedor}', 'App\Http\Controllers\FornecedorController@edit');
 Route::put('/fornecedores/editado/{fornecedor}', 'App\Http\Controllers\FornecedorController@update');
+
+
 //Armazem
-Route::get('/armazem', function () {
-    return view('armazem.index');
-});
+// Route::get('/armazem', function () {
+//     return view('armazem.index');
+// });
 
 //StyleGuide
 

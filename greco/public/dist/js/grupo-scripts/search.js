@@ -1,3 +1,11 @@
+var split = window.location.href.split("/");
+var isServer = "";
+for (x of split) {
+    if (x == "~ptdw-2020-gr3") {
+        isServer = "/~ptdw-2020-gr3";
+    }
+}
+
 $.ajaxSetup({
     headers: {
         'csrftoken': '{{ csrf_token() }}'
@@ -9,7 +17,7 @@ function search() {
     $f = $("#filtro").val();
     $.ajax({
         type: 'get',
-        url: '/search',
+        url:  isServer + '/search',
         data: {
             'search': $s,
             'filtro': $f
@@ -20,7 +28,7 @@ function search() {
     });
 }
 
-if($("#search").val()!=''){
+if ($("#search").val() != '') {
     search();
 }
 
