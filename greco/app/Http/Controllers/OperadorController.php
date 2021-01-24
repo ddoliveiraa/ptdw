@@ -61,7 +61,7 @@ class OperadorController extends Controller
         $data_arr = array();
 
         foreach ($records as $record) {
-            $id = "<a href='/operadores/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+            $id = "<a href='/~ptdw-2020-gr3/operadores/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
             $nome = $record->nome;
             $email = $record->email;
             $perfil = $record->get_perfil->nome;
