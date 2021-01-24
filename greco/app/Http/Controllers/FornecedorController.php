@@ -123,13 +123,17 @@ class FornecedorController extends Controller
             'fornecedor_designacao' => 'required',
             'fornecedor_email' => 'required|email',
             'fornecedor_telefone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:9',
-            'fornecedor_telemovelvendedor1' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/|min:9',
-            'fornecedor_telemovelvendedor2' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/|min:9',
             'fornecedor_localidade' => 'required',
             'fornecedor_nif'=> 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:9|max:9',
             'fornecedor_codigopostal' => 'required|regex:/^\d{4}(-\d{3})?$/',
             'fornecedor_rua' => 'required',
             'fornecedor_numero' => 'required',
+            'fornecedor_nomevendedor1' => 'required',
+            'fornecedor_telemovelvendedor1' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/|min:9',
+            'fornecedor_emailvendedor1' => 'required',
+            'fornecedor_nomevendedor2' => 'required',
+            'fornecedor_emailvendedor2' => 'required',
+            'fornecedor_telemovelvendedor2' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/|min:9'
         ]);
 
         if ($validator->fails()) {

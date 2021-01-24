@@ -141,7 +141,7 @@
 
                                 <div class="form-group">
                                     <label for="fornecedor_condicoesespeciais">{{ __('lang.condicoes especiais') }}</label>
-                                    <textarea id="fornecedor_condicoesespeciais" name="fornecedor_condicoesespeciais" class="form-control" rows="4" value="{{ old('fornecedor_condicoesespeciais') }}" tabindex="11"></textarea>
+                                    <textarea id="fornecedor_condicoesespeciais" name="fornecedor_condicoesespeciais" class="form-control" rows="4" tabindex="11">{{ old('fornecedor_condicoesespeciais') }}</textarea>
                                 </div>
                                 
                                 <!--VENDEDOR 1-->
@@ -160,7 +160,7 @@
                                         <div class="form-group">
                                             <label for="fornecedor_nomevendedor1"
                                                 class="control-label">{{ __('lang.nomefornecedor') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_nomevendedor1" name="fornecedor_nomevendedor1" value="{{ old('fornecedor_nomevendedor1') }}" tabindex="12">
+                                            <input type="text" class="form-control" id="fornecedor_nomevendedor1" name="fornecedor_nomevendedor1" value="{{ old('fornecedor_nomevendedor1') }}" required tabindex="12">
                                         </div>
                                     </div>
                                 </div>
@@ -171,8 +171,7 @@
                                             <label for="fornecedor_emailvendedor1"
                                                 class="control-label">{{ __('lang.email') }}</label>
                                             <input type="text" class="form-control {{ $errors->has('fornecedor_emailvendedor1') ? 'border border-danger' : '' }}"
-                                            id="fornecedor_emailvendedor1" name="fornecedor_emailvendedor1" value="{{ old('fornecedor_emailvendedor1') }}"
-                                                tabindex="13">
+                                            id="fornecedor_emailvendedor1" name="fornecedor_emailvendedor1" value="{{ old('fornecedor_emailvendedor1') }}" required tabindex="13">
                                         </div>
                                     </div>
                                     <div class="col-md-5">
@@ -180,8 +179,7 @@
                                             <label for="fornecedor_telemovelvendedor1"
                                                 class="control-label">{{ __('lang.telemovel') }}</label>
                                             <input type="number" class="form-control {{ $errors->has('fornecedor_telemovelvendedor1') ? 'border border-danger' : '' }}"
-                                            id="fornecedor_telemovelvendedor1" name="fornecedor_telemovelvendedor1" value="{{ old('fornecedor_telemovelvendedor1') }}"
-                                                tabindex="14">
+                                            id="fornecedor_telemovelvendedor1" name="fornecedor_telemovelvendedor1" value="{{ old('fornecedor_telemovelvendedor1') }}" required tabindex="14">
                                         </div>
                                     </div>
                                 </div>
@@ -201,7 +199,7 @@
                                         <div class="form-group">
                                             <label for="fornecedor_nomevendedor2"
                                                 class="control-label">{{ __('lang.nomefornecedor') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_nomevendedor2" name="fornecedor_nomevendedor2" value="{{ old('fornecedor_nomevendedor2') }}" tabindex="15">
+                                            <input type="text" class="form-control" id="fornecedor_nomevendedor2" name="fornecedor_nomevendedor2" value="{{ old('fornecedor_nomevendedor2') }}" required tabindex="15">
                                         </div>
                                     </div>
                                 </div>
@@ -213,7 +211,7 @@
                                             <label for="fornecedor_emailvendedor2"
                                                 class="control-label">{{ __('lang.email') }}</label>
                                             <input type="text" class="form-control {{ $errors->has('fornecedor_emailvendedor2') ? 'border border-danger' : '' }}"
-                                            id="fornecedor_emailvendedor2" name="fornecedor_emailvendedor2" value="{{ old('fornecedor_emailvendedor2') }}" tabindex="16">
+                                            id="fornecedor_emailvendedor2" name="fornecedor_emailvendedor2" value="{{ old('fornecedor_emailvendedor2') }}" required tabindex="16">
                                         </div>
                                     </div>
                                     <div class="col-md-5">
@@ -221,7 +219,7 @@
                                             <label for="fornecedor_telemovelvendedor2"
                                                 class="control-label">{{ __('lang.telemovel') }}</label>
                                             <input type="number" class="form-control {{ $errors->has('fornecedor_telemovelvendedor2') ? 'border border-danger' : '' }}"
-                                            id="fornecedor_telemovelvendedor2" name="fornecedor_telemovelvendedor2" value="{{ old('fornecedor_telemovelvendedor2') }}" tabindex="17">
+                                            id="fornecedor_telemovelvendedor2" name="fornecedor_telemovelvendedor2" value="{{ old('fornecedor_telemovelvendedor2') }}" required tabindex="17">
                                         </div>
                                     </div>
                                 </div>
