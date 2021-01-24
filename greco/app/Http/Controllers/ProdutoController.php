@@ -135,7 +135,6 @@ class ProdutoController extends Controller
    */
     public function getProdutos(Request $request)
     {
-        var_dump(public_path());
         $tipo = $request->get("tipo");
 
         ## Read value
@@ -212,7 +211,7 @@ class ProdutoController extends Controller
         $data_arr = array();
 
         foreach ($records as $record) {
-            $id = "<a href='/~ptdw-2020-gr3/ficha/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+            $id = "<a href='".public_path()."/ficha/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
             $designacao = $record->designacao;
             $formula = $record->formula;
             $CAS = $record->CAS;
