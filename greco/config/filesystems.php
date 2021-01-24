@@ -49,7 +49,7 @@ return [
         ],
 
         'images' => [
-            'driver' => 'sftp',
+            'driver' => 'local',
             'root' => storage_path('/home/ptdw-2020-gr3/ptdw/greco/storage/app/images'),
             'url' => env('APP_URL').'/storage/app/images',
             'visibility' => 'public',
