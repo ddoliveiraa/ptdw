@@ -116,42 +116,46 @@ class FornecedorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
         //VALIDAÇÂO
-        request()->validate([
+        $validator = Validator::make($request->all(), [
             'fornecedor_designacao' => 'required',
             'fornecedor_email' => 'required|email',
             'fornecedor_telefone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:9',
-            'fornecedor_telemovelvendedor1' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:9',
-            'fornecedor_telemovelvendedor2' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:9',
+            'fornecedor_telemovelvendedor1' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/|min:9',
+            'fornecedor_telemovelvendedor2' => 'nullable|regex:/^([0-9\s\-\+\(\)]*)$/|min:9',
             'fornecedor_localidade' => 'required',
-            'fornecedor_nif'=>'required|regex:/^[A-Za-z0-9]*\d+[A-Za-z0-9]*$/',
+            'fornecedor_nif'=> 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:9|max:9',
             'fornecedor_codigopostal' => 'required|regex:/^\d{4}(-\d{3})?$/',
             'fornecedor_rua' => 'required',
             'fornecedor_numero' => 'required',
         ]);
 
-        //ADD NA BD
-        $Fornecedor = new Fornecedor();
-        $Fornecedor->designacao = request('fornecedor_designacao');
-        $Fornecedor->morada = request('fornecedor_rua') . " " . request('fornecedor_numero') . " " . request('fornecedor_lote');
-        $Fornecedor->localidade = request('fornecedor_localidade');
-        $Fornecedor->codigopostal = request('fornecedor_codigopostal');
-        $Fornecedor->telefone = request('fornecedor_telefone');
-        $Fornecedor->NIF = request('fornecedor_nif');
-        $Fornecedor->email = request('fornecedor_email');
-        $Fornecedor->condicoes_especiais = request('fornecedor_condicoesespeciais');
-        $Fornecedor->vendedor1 = request('fornecedor_nomevendedor1');
-        $Fornecedor->telefone1 = request('fornecedor_telemovelvendedor1');
-        $Fornecedor->email1 = request('fornecedor_emailvendedor1');
-        $Fornecedor->vendedor2 = request('fornecedor_nomevendedor2');
-        $Fornecedor->telefone2 = request('fornecedor_telemovelvendedor2');
-        $Fornecedor->email2 = request('fornecedor_emailvendedor2');
-        $Fornecedor->obs = request('fornecedor_observacoes');
-        $Fornecedor->save();
-        
-        return redirect('fornecedores');
+        if ($validator->fails()) {
+            return redirect('fornecedores/add')->with('status', 'erro')->withErrors($validator)->withInput();
+        }else{
+            //ADD NA BD
+            $Fornecedor = new Fornecedor();
+            $Fornecedor->designacao = request('fornecedor_designacao');
+            $Fornecedor->morada = request('fornecedor_rua') . " " . request('fornecedor_numero') . " " . request('fornecedor_lote');
+            $Fornecedor->localidade = request('fornecedor_localidade');
+            $Fornecedor->codigopostal = request('fornecedor_codigopostal');
+            $Fornecedor->telefone = request('fornecedor_telefone');
+            $Fornecedor->NIF = request('fornecedor_nif');
+            $Fornecedor->email = request('fornecedor_email');
+            $Fornecedor->condicoes_especiais = request('fornecedor_condicoesespeciais');
+            $Fornecedor->vendedor1 = request('fornecedor_nomevendedor1');
+            $Fornecedor->telefone1 = request('fornecedor_telemovelvendedor1');
+            $Fornecedor->email1 = request('fornecedor_emailvendedor1');
+            $Fornecedor->vendedor2 = request('fornecedor_nomevendedor2');
+            $Fornecedor->telefone2 = request('fornecedor_telemovelvendedor2');
+            $Fornecedor->email2 = request('fornecedor_emailvendedor2');
+            $Fornecedor->obs = request('fornecedor_observacoes');
+            $Fornecedor->save();
+            
+            return redirect('fornecedores/add')->with('status', 'ok');
+        }
     }
 
     /**

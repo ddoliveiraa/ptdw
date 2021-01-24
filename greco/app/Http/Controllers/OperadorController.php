@@ -258,22 +258,27 @@ class OperadorController extends Controller
     public function addOperador(Request $request)
     {
         //VALIDAÇÂO
-        request()->validate([
+        $validator = Validator::make($request->all(), [
             'nome_operador' => 'required',
             'email_operador' => 'required|email',
             'perfil_operador' => 'required',
-            'data_criacao_input' => 'required',
+            'data_criacao_input' => ['required', 'date_format:d/m/Y'],
         ]);
-        //ADD NA BD
-        $Operador = new Operador();
-        $Operador->nome = request('nome_operador');
-        $Operador->email = request('email_operador');
-        $Operador->perfil = request('perfil_operador');
-        $Operador->data_criacao = request('data_criacao_input');
-        $Operador->obs = request('obvs');
-        $Operador->save();
 
-        return redirect('operadores');
+        if ($validator->fails()) {
+            return redirect('operadores/add')->with('status', 'erro')->withErrors($validator)->withInput();
+        }else{
+            //ADD NA BD
+            $Operador = new Operador();
+            $Operador->nome = request('nome_operador');
+            $Operador->email = request('email_operador');
+            $Operador->perfil = request('perfil_operador');
+            $Operador->data_criacao = request('data_criacao_input');
+            $Operador->obs = request('obvs');
+            $Operador->save();
+
+            return redirect('operadores/add')->with('status', 'ok');
+        }
     }
 
     /**
