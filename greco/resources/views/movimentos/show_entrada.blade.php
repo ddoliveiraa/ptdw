@@ -13,6 +13,9 @@
     <link rel="stylesheet"
         href="{{ public_path() }}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
 
+        <!-- Toastr -->
+    <link rel="stylesheet" href="{{ public_path() }}/dist/css/toastr.css"/>
+
 @endsection
 
 @section('content')
@@ -313,8 +316,16 @@
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="{{ public_path() }}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 
+    <!-- Toastr -->
+    <script src="{{ public_path() }}/dist/js/toastr.min.js"></script>
+
     <script>
         $(function() {
+            $(function() {
+            if('{{ Session::get('status')}}'==='ok'){
+                 toastr["success"]("Entrada editada com sucesso.", "Entrada editada")
+            }
+        });
             //Initialize Select2 Elements
             // $('.select2').select2()
 
