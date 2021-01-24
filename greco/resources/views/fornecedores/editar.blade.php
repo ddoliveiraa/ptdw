@@ -8,7 +8,6 @@
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet" href="{{ public_path() }}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
 
-    <!-- Toastr -->
     <link rel="stylesheet" href="{{ public_path() }}/dist/css/toastr.css"/>
 
 @endsection
@@ -45,15 +44,18 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <!-- form start -->
-                        <form>
+                        <form method="POST" action="/fornecedores/editado/{{$fornecedor->id}}">
+                        @csrf
+                        @method('PUT')
                             <div class="card-body">
+                            <input type="hidden" id="id" name = "id" value="{{$fornecedor->id}}">
                                 <div class="row">
                                     <div class="col-md-7">
                                         <div class="form-group">
                                             <label for="fornecedor_designacao"
                                                 class="control-label">{{ __('lang.nomefornecedor') }}</label>
                                             <input type="text" class="form-control" id="fornecedor_designacao" name="fornecedor_designacao" tabindex="1"
-                                                value="{{$fornecedor->designacao}}" disabled>
+                                                value="{{old('fornecedor_designacao',$fornecedor->designacao)}}">
                                         </div>
                                     </div>
                                     <div class="col-md-5">
@@ -61,7 +63,7 @@
                                             <label for="fornecedor_telefone"
                                                 class="control-label">{{ __('lang.telefone') }}</label>
                                             <input type="text" class="form-control" id="fornecedor_telefone" name="fornecedor_telefone" tabindex="2"
-                                            value="{{$fornecedor->telefone}}" disabled>
+                                            value="{{old('fornecedor_telefone',$fornecedor->telefone)}}">
                                         </div>
                                     </div>
                                 </div>
@@ -69,7 +71,7 @@
                                     <div class="col-md-9">
                                         <div class="form-group">
                                             <label for="fornecedor_morada" class="control-label">{{ __('lang.morada') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_morada" name="fornecedor_morada" tabindex="3" value="{{$fornecedor->morada}}" disabled>
+                                            <input type="text" class="form-control" id="fornecedor_morada" name="fornecedor_morada" tabindex="3" value="{{old('fornecedor_morada',$fornecedor->morada)}}">
                                         </div>
                                     </div>
                                 </div>
@@ -80,7 +82,7 @@
                                             <label for="fornecedor_localidade"
                                                 class="control-label">{{ __('lang.localidade') }}</label>
                                             <input type="text" class="form-control" id="fornecedor_localidade" name="fornecedor_localidade" tabindex="6"
-                                            value="{{$fornecedor->localidade}}" disabled>
+                                            value="{{old('fornecedor_localidade',$fornecedor->localidade)}}">
                                         </div>
                                     </div>
                                     <div class="col-md-5">
@@ -88,7 +90,7 @@
                                             <label for="fornecedor_codigopostal"
                                                 class="control-label">{{ __('lang.codigo postal') }}</label>
                                             <input type="text" class="form-control" id="fornecedor_codigopostal" name="fornecedor_codigopostal" tabindex="7"
-                                            value="{{$fornecedor->codigopostal}}" disabled>
+                                            value="{{old('fornecedor_codigopostal',$fornecedor->codigopostal)}}">
                                         </div>
                                     </div>
                                     
@@ -99,13 +101,13 @@
                                         <div class="form-group">
                                             <label for="fornecedor_email"
                                                 class="control-label">{{ __('lang.email') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_email" name="fornecedor_email" tabindex="8" value="{{$fornecedor->email}}" disabled>
+                                            <input type="text" class="form-control" id="fornecedor_email" name="fornecedor_email" tabindex="8" value="{{old('fornecedor_email',$fornecedor->email)}}">
                                         </div>
                                     </div>
                                     <div class="col-md-5">
                                         <div class="form-group">
                                             <label for="fornecedor_nif" class="control-label">{{ __('lang.nif') }}</label>
-                                            <input type="number" class="form-control" id="fornecedor_nif" name="fornecedor_nif" tabindex="9" value="{{$fornecedor->NIF}}" disabled>
+                                            <input type="number" class="form-control" id="fornecedor_nif" name="fornecedor_nif" tabindex="9" value="{{old('fornecedor_nif',$fornecedor->NIF)}}">
                                         </div>
                                     </div>
                                     
@@ -116,14 +118,14 @@
                                         <div class="form-group">
                                             <label for="fornecedor_observacoes"
                                                 class="control-label">{{ __('lang.observacoes') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_observacoes" name="fornecedor_observacoes" tabindex="10" value="{{$fornecedor->obs}}" disabled>
+                                            <input type="text" class="form-control" id="fornecedor_observacoes" name="fornecedor_observacoes" tabindex="10" value="{{old('fornecedor_observacoes',$fornecedor->obs)}}">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="fornecedor_condicoesespeciais">{{ __('lang.condicoes especiais') }}</label>
-                                    <textarea id="fornecedor_condicoesespeciais" name="fornecedor_condicoesespeciais" class="form-control" rows="4" tabindex="11" disabled>{{$fornecedor->condicoes_especiais}}</textarea>
+                                    <textarea id="fornecedor_condicoesespeciais" name="fornecedor_condicoesespeciais" class="form-control" rows="4" tabindex="11">{{old('fornecedor_condicoesespeciais',$fornecedor->condicoes_especiais)}}</textarea>
                                 </div>
                                 
                                 <!--VENDEDOR 1-->
@@ -142,7 +144,7 @@
                                         <div class="form-group">
                                             <label for="fornecedor_nomevendedor1"
                                                 class="control-label">{{ __('lang.nomefornecedor') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_nomevendedor1" name="fornecedor_nomevendedor1" tabindex="12" value="{{$fornecedor->vendedor1}}" disabled>
+                                            <input type="text" class="form-control" id="fornecedor_nomevendedor1" name="fornecedor_nomevendedor1" tabindex="12" value="{{old('fornecedor_nomevendedor1',$fornecedor->vendedor1)}}">
                                         </div>
                                     </div>
                                 </div>
@@ -153,7 +155,7 @@
                                             <label for="fornecedor_emailvendedor1"
                                                 class="control-label">{{ __('lang.email') }}</label>
                                             <input type="text" class="form-control" id="fornecedor_emailvendedor1" name="fornecedor_emailvendedor1"
-                                                tabindex="13" value="{{$fornecedor->email1}}" disabled>
+                                                tabindex="13" value="{{old('fornecedor_emailvendedor1',$fornecedor->email1)}}">
                                         </div>
                                     </div>
                                     <div class="col-md-5">
@@ -161,7 +163,7 @@
                                             <label for="fornecedor_telemovelvendedor1"
                                                 class="control-label">{{ __('lang.telemovel') }}</label>
                                             <input type="text" class="form-control" id="fornecedor_telemovelvendedor1" name="fornecedor_telemovelvendedor1"
-                                                tabindex="14" value="{{$fornecedor->telefone1}}" disabled>
+                                                tabindex="14" value="{{old('fornecedor_telemovelvendedor1',$fornecedor->telefone1)}}">
                                         </div>
                                     </div>
                                 </div>
@@ -181,7 +183,7 @@
                                         <div class="form-group">
                                             <label for="fornecedor_nomevendedor2"
                                                 class="control-label">{{ __('lang.nomefornecedor') }}</label>
-                                            <input type="text" class="form-control" id="fornecedor_nomevendedor2" name="fornecedor_nomevendedor2" tabindex="15" value="{{$fornecedor->vendedor2}}" disabled>
+                                            <input type="text" class="form-control" id="fornecedor_nomevendedor2" name="fornecedor_nomevendedor2" tabindex="15" value="{{old('fornecedor_nomevendedor2',$fornecedor->vendedor2)}}">
                                         </div>
                                     </div>
                                 </div>
@@ -193,7 +195,7 @@
                                             <label for="fornecedor_emailvendedor2"
                                                 class="control-label">{{ __('lang.email') }}</label>
                                             <input type="text" class="form-control" id="fornecedor_emailvendedor2" name="fornecedor_emailvendedor2"
-                                                tabindex="16" value="{{$fornecedor->email2}}" disabled>
+                                                tabindex="16" value="{{old('fornecedor_emailvendedor2',$fornecedor->email2)}}">
                                         </div>
                                     </div>
                                     <div class="col-md-5">
@@ -201,7 +203,7 @@
                                             <label for="fornecedor_telemovelvendedor2"
                                                 class="control-label">{{ __('lang.telemovel') }}</label>
                                             <input type="text" class="form-control" id="fornecedor_telemovelvendedor2" name="fornecedor_telemovelvendedor2"
-                                                tabindex="17" value="{{$fornecedor->telefone2}}" disabled>
+                                                tabindex="17" value="{{old('fornecedor_telemovelvendedor2',$fornecedor->telefone2)}}">
                                         </div>
                                     </div>
                                 </div>
@@ -211,12 +213,12 @@
                             <div class="card-footer">
                                 <div class="row">
                                 <div class="col-md-3">
-                                        <a href="{{ public_path() }}/fornecedores" role="button"
+                                        <a href="{{ public_path() }}/fornecedores/{{$fornecedor->id}}" role="button"
                                             class="btn btn-block btn-default">{{ __('lang.voltar') }}</a>
                                     </div>
                                     <div class="ml-auto col-3">
-                                        <a href="{{ public_path() }}/fornecedores/editar/{{$fornecedor->id}}" role="button"
-                                            class="btn btn-block btn-secondary">{{ __('lang.editar') }}</a>
+                                    <button id="guardar" type="submit"
+                                            class="btn btn-block btn-secondary" tabindex="12">{{ __('lang.guardar') }}</button>
                                     </div>
                                 </div>
                             </div>
@@ -247,11 +249,11 @@
     <script src="{{ public_path() }}/dist/js/toastr.min.js"></script>
 
     <script>
-    $(function() {
-            if('{{ Session::get('status')}}'==='ok'){
-                 toastr["success"]("Fornecedor editado com sucesso.", "Fornecedor editado")
+$(function() {
+            if('{{ $errors->count() > 0}}') {
+                toastr["error"]("Por favor reveja os campos.", "Erro ao editar Fornecedor")
             }
-        });
+});
     </script>
 
 @endsection
