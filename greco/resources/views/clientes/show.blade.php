@@ -145,7 +145,7 @@
     <script>
     $(function() {
             if('{{ Session::get('status')}}'==='ok'){
-                 toastr["success"]("Produto editado com sucesso.", "Produto editado")
+                 toastr["success"]("Cliente editado com sucesso.", "Cliente editado")
             }
         })
         

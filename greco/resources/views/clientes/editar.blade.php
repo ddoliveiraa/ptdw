@@ -52,12 +52,12 @@
                                         <div class="form-group">
                                             <label for="designacao">{{ __('lang.designacao') }}</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="designacao" name="designacao" value="{{$cliente->designacao}}">
+                                                <input type="text" class="form-control" id="designacao" name="designacao" value="{{old('designacao',$cliente->designacao)}}">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>{{ __('lang.responsavel') }}</label>
@@ -80,7 +80,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             
 
                             <div class="form-group">
@@ -97,6 +97,8 @@
                                     class="btn btn-block btn-default">{{ __('lang.cancelar') }}</a>
                             </div>
                             <div class="ml-auto col-3">
+                                <input id="ids_responsaveis" name="ids_responsaveis" type="hidden">
+                                <input id="ids_solicitantes" name="ids_solicitantes" type="hidden">
                             <button id="guardar" type="submit"
                                 class="btn btn-block btn-secondary" tabindex="12">{{ __('lang.guardar') }}</button>
                             </div>
@@ -125,6 +127,9 @@
             if('{{ $errors->count() > 0}}') {
                 toastr["error"]("Por favor reveja os campos.", "Erro ao editar Cliente")
             }
+
+            $('#ids_responsaveis').val($('#responsavel').val());
+            $('#ids_solicitantes').val($('#solicitante').val());
     })
 
         $(function() {

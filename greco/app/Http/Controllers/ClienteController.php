@@ -179,7 +179,7 @@ class ClienteController extends Controller
      */
     public function update(Request $request, Cliente $Cliente)
     {
-        dd($request->all());
+        // dd($request->all());
         //VALIDAÇÂO
         $validar = Validator::make($request->all(), [
             'designacao' => 'required',
@@ -192,36 +192,14 @@ class ClienteController extends Controller
 
         $Cliente = Cliente::find(request('id'));
         $Cliente->designacao = request('designacao');
-        $Cliente->responsavel = request('responsavel');
-        $Cliente->solicitante = request('solicitante');
         $Cliente->obs = request('obvs');
         $Cliente->save();
-        $data_r = request('responsaveis');
-        $data_r_ex = explode(",", $data_r);
-        $id_cliente = Cliente::all()->last()->id;
+        
 
-        foreach ($data_r_ex as $d) {
-            $Responsavel = Responsavel::find(request('id'));
-            $Responsavel->id_cliente = $id_cliente;
-            $Responsavel->nome = explode(" | ", $d)[0];
-            $Responsavel->email = explode(" | ", $d)[1];
-            $Responsavel->save();
-        }
-
-        $data_s = request('solicitantes');
-        $data_s_ex = explode(",", $data_s);
-
-        foreach ($data_s_ex as $d) {
-            $Solicitante = Solicitante::find(request('id'));
-            $Solicitante->id_cliente = $id_cliente;
-            $Solicitante->nome = explode(" | ", $d)[0];
-            $Solicitante->email = explode(" | ", $d)[1];
-            $Solicitante->save();
-        }
-
-        return redirect('clientes/'. $Cliente->id);
+        return redirect('clientes/'. $Cliente->id)->with('status', 'ok');
         }
     }
+    
 
     /**
      * Remove the specified resource from storage.
