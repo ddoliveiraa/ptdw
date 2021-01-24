@@ -212,7 +212,7 @@ class ProdutoController extends Controller
         $data_arr = array();
 
         foreach ($records as $record) {
-            $id = "<a href='/ficha/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+            $id = "<a href='/~ptdw-2020-gr3/ficha/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
             $designacao = $record->designacao;
             $formula = $record->formula;
             $CAS = $record->CAS;
