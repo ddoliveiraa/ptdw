@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="{{ public_path() }}/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="{{ public_path() }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <link rel="stylesheet" href="{{ public_path() }}/dist/css/jquery.tag-editor.css">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{{ public_path() }}/dist/css/toastr.css"/>
 
 @endsection
 
@@ -50,7 +52,7 @@
                                         <div class="form-group">
                                             <label for="designacao">{{ __('lang.designacao') }}</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="designacao" name="designacao" required>
+                                                <input type="text" class="form-control" id="designacao" name="designacao" value="{{ old('designacao') }}" required>
                                             </div>
                                         </div>
                                     </div>
@@ -61,7 +63,7 @@
                                             <label for="responsavel"
                                                 class="control-label">{{ __('lang.responsavel') }}</label>
                                             <div class="input-group margin">
-                                                <input id="responsaveis" name="responsaveis" type="text" data-role="tagsinput">
+                                                <input id="responsaveis" name="responsaveis" type="text" data-role="tagsinput" value="{{ old('responsaveis') }}">
                                                 <span class="input-group-btn">
                                                     <button type="button" class="btn btn-secondary btn-flat"
                                                         data-toggle="modal"
@@ -76,7 +78,7 @@
                                         <div class="form-group">
                                             <label class="control-label">{{ __('lang.solicitante') }}s</label>
                                             <div class="input-group margin">
-                                                <input id="solicitantes" name="solicitantes" type="text" data-role="tagsinput">
+                                                <input id="solicitantes" name="solicitantes" type="text" data-role="tagsinput" value="{{ old('solicitantes') }}">
                                                 <span class="input-group-btn">
                                                     <button type="button" class="btn btn-secondary btn-flat"
                                                         data-toggle="modal"
@@ -90,7 +92,7 @@
 
                             <div class="form-group">
                                 <label for="obvs">{{ __('lang.observacoes') }}</label>
-                                <textarea id="obvs" name="obvs" class="form-control" rows="4"></textarea>
+                                <textarea id="obvs" name="obvs" class="form-control" rows="4">{{ old('obvs') }}</textarea>
                             </div>
                         </div>
                     
@@ -151,7 +153,7 @@
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default col-md-3" data-dismiss="modal"
                             id="cancelarResponsavel" tabindex="13">{{ __('lang.cancelar') }}</button>
-                            <button type="button" class="btn btn-secondary col-md-3" data-dismiss="modal"
+                            <button type="button" class="btn btn-secondary col-md-3"
                             id="selecionarResponsavel" tabindex="14">{{ __('lang.selecionar') }}</button>
                         </div>
                     </form>
@@ -196,7 +198,7 @@
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default col-md-3" data-dismiss="modal"
                             id="cancelarSolicitante" tabindex="13">{{ __('lang.cancelar') }}</button>
-                            <button type="button" class="btn btn-secondary col-md-3" data-dismiss="modal"
+                            <button type="button" class="btn btn-secondary col-md-3"
                             id="selecionarSolicitante" tabindex="14">{{ __('lang.selecionar') }}</button>
                         </div>
                     </form>
@@ -214,20 +216,68 @@
     <script src="{{ public_path() }}/plugins/select2/js/select2.full.min.js"></script>
     <script type="text/javascript" src="{{ public_path() }}/dist/js/grupo-scripts/jquery.tag-editor.min.js"></script>
     <script type="text/javascript" src="{{ public_path() }}/dist/js/grupo-scripts/jquery.caret.min.js"></script>
+    <!-- Toastr -->
+    <script src="{{ public_path() }}/dist/js/toastr.min.js"></script>
+
     <script>
     
+        function validateEmail(email) {
+            const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+
         $('#responsaveis').tagEditor();
         $('#solicitantes').tagEditor();
 
         $('#selecionarResponsavel').on('click', function() {
-            $('#responsaveis').tagEditor('addTag', $('#responsavel_nome').val()+" | "+$('#responsavel_email').val());
+            if(validateEmail($('#responsavel_email').val())){
+                $("#responsavel_email").removeClass("border border-danger");
+            }else{
+                $("#responsavel_email").addClass("border border-danger")
+            }
+            
+            if($('#responsavel_nome').val() != ""){
+                $("#responsavel_nome").removeClass("border border-danger");
+            }else{
+                $("#responsavel_nome").addClass("border border-danger")
+            }
+
+            if(validateEmail($('#responsavel_email').val()) && $('#responsavel_nome').val() != ""){
+                $('#responsaveis').tagEditor('addTag', $('#responsavel_nome').val()+" | "+$('#responsavel_email').val());
+                $('#modalSelecionarResponsavel').modal('hide');
+            }
         });
 
         $('#selecionarSolicitante').on('click', function() {
-            $('#solicitantes').tagEditor('addTag', $('#solicitante_nome').val()+" | "+$('#solicitante_email').val());
+            if(validateEmail($('#solicitante_email').val())){
+                $("#solicitante_email").removeClass("border border-danger");
+            }else{
+                $("#solicitante_email").addClass("border border-danger")
+            }
+            
+            if($('#solicitante_nome').val() != ""){
+                $("#solicitante_nome").removeClass("border border-danger");
+            }else{
+                $("#solicitante_nome").addClass("border border-danger")
+            }
+
+            if(validateEmail($('#solicitante_email').val()) && $('#solicitante_nome').val() != ""){
+                $('#solicitantes').tagEditor('addTag', $('#solicitante_nome').val()+" | "+$('#solicitante_email').val());
+                $('#modalSelecionarSolicitante').modal('hide');
+            }
+            
         });
 
         $(function() {
+            //Status não quimicos
+            if('{{ Session::get('status')}}'==='erro') {
+                toastr["error"]("Por favor verifique os dados introduzidos.", "Erro ao adicionar cliente");
+            };
+
+            if('{{ Session::get('status')}}'==='ok'){
+                toastr["success"]("Cliente adicionado na base de dados com sucesso.", "Nova cliente adicionado");
+            }
+
             //Initialize Select2 Elements
             $('.select2').select2()
 

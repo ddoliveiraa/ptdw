@@ -767,7 +767,7 @@ class MovimentoController extends Controller
             $Saida->obs = request('obvs');
             $Saida->save();
 
-            return redirect('movimentos/saida')->with('status', 'ok');;
+            return redirect('movimentos/saida')->with('status', 'ok');
         }
     }
 

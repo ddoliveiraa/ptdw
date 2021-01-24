@@ -7,6 +7,7 @@ use App\Models\Cliente;
 use App\Models\Responsavel;
 use App\Models\Solicitante;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class ClienteController extends Controller
 {
@@ -112,37 +113,48 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        $Cliente = new Cliente();
-        $Cliente->designacao = request('designacao');
-        $Cliente->obs = request('obvs');
-        $Cliente->save();
+        //VALIDAÇÂO
+        $validator = Validator::make($request->all(), [
+            'designacao' => 'required',
+            'responsaveis' => 'required',
+            'solicitantes' => 'required'
+        ]);
+        
+        if ($validator->fails()) {
+            return redirect('clientes/add')->with('status', 'erro')->withErrors($validator)->withInput();
+        }else{
+            $Cliente = new Cliente();
+            $Cliente->designacao = request('designacao');
+            $Cliente->obs = request('obvs');
+            $Cliente->save();
 
-        $data_r = request('responsaveis');
-        $data_r_ex = explode(",", $data_r);
-        $id_cliente = Cliente::all()->last()->id;
+            $data_r = request('responsaveis');
+            $data_r_ex = explode(",", $data_r);
+            $id_cliente = Cliente::all()->last()->id;
 
-        foreach ($data_r_ex as $d) {
-            $Responsavel = new Responsavel();
-            $Responsavel->id_cliente = $id_cliente;
-            $Responsavel->nome = explode(" | ", $d)[0];
-            $Responsavel->email = explode(" | ", $d)[1];
-            $Responsavel->save();
+            foreach ($data_r_ex as $d) {
+                $Responsavel = new Responsavel();
+                $Responsavel->id_cliente = $id_cliente;
+                $Responsavel->nome = explode(" | ", $d)[0];
+                $Responsavel->email = explode(" | ", $d)[1];
+                $Responsavel->save();
+            }
+
+            $data_s = request('solicitantes');
+            $data_s_ex = explode(",", $data_s);
+
+            foreach ($data_s_ex as $d) {
+                $Solicitante = new Solicitante();
+                $Solicitante->id_cliente = $id_cliente;
+                $Solicitante->nome = explode(" | ", $d)[0];
+                $Solicitante->email = explode(" | ", $d)[1];
+                $Solicitante->save();
+            }
+
+            return redirect('clientes/add')->with('status', 'ok');
         }
-
-        $data_s = request('solicitantes');
-        $data_s_ex = explode(",", $data_s);
-
-        foreach ($data_s_ex as $d) {
-            $Solicitante = new Solicitante();
-            $Solicitante->id_cliente = $id_cliente;
-            $Solicitante->nome = explode(" | ", $d)[0];
-            $Solicitante->email = explode(" | ", $d)[1];
-            $Solicitante->save();
-        }
-
-        return redirect('clientes');
     }
 
     /**

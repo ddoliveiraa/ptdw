@@ -119,7 +119,7 @@
 
                                 <div class="form-group">
                                     <label for="obvs">{{ __('lang.observacoes') }}</label>
-                                    <textarea id="obvs" name="obvs" class="form-control" rows="4"></textarea>
+                                    <textarea id="obvs" name="obvs" class="form-control" rows="4">{{ old('obvs') }}</textarea>
                                 </div>
                             </div>
 
