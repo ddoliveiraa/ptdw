@@ -5,6 +5,8 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ public_path() }}/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="{{ public_path() }}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{{ public_path() }}/dist/css/toastr.css"/>
 
 @endsection
 
@@ -47,12 +49,18 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="produto">{{ __('lang.produto') }}</label>
-                                            <select id="produto" name="produto" class="form-control select2bs4" style="width: 100%;" required>
+                                            <select id="produto" name="produto" class="form-control select2bs4" style="width: 100%;" value="{{ old('produto') }}" required>
+                                                @if(Session::get('status')!=='erro')
                                                 <option value="" selected disabled>{{ __('lang.selecione o') }}
                                                     {{ __('lang.produto') }}
                                                 </option>
+                                                @endif
                                                 @foreach ($produtos_com_entrada as $p)
-                                                    <option value="{{  $p->id }}">{{ $p->designacao }}</option>
+                                                    @if(old('produto') == $p->id)
+                                                        <option value="{{ $p->id }}" selected>{{ $p->designacao }}</option>
+                                                    @else
+                                                        <option value="{{ $p->id }}">{{ $p->designacao }}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>
@@ -63,7 +71,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="n_embalagem">{{ __('lang.n-embalagem') }}</label>
-                                            <select class="form-control select2bs4" id="n_embalagem" name="n_embalagem" disabled required
+                                            <select class="form-control select2bs4" id="n_embalagem" name="n_embalagem" disabled value="{{ old('n_embalagem') }} required"
                                                 style="width: 100%;">
                                                 <option value="" selected disabled>{{ __('lang.selecione o') }}
                                                     {{ __('lang.n-embalagem') }}
@@ -77,12 +85,18 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="cliente">{{ __('lang.cliente') }}</label>
-                                            <select id="cliente" name="cliente" class="form-control select2bs4" style="width: 100%;" required>
+                                            <select id="cliente" name="cliente" class="form-control select2bs4" style="width: 100%;" value="{{ old('cliente') }}" required>
+                                                @if(Session::get('status')!=='erro')
                                                 <option value="" selected disabled>{{ __('lang.selecione o') }}
                                                     {{ __('lang.cliente') }}
                                                 </option>
+                                                @endif
                                                 @foreach ($clientes as $c)
-                                                    <option value="{{  $c->id }}">{{ $c->designacao }}</option>
+                                                @if(old('cliente') == $c->id)
+                                                    <option value="{{ $c->id }}" selected>{{ $c->designacao }}</option>
+                                                    @else
+                                                    <option value="{{ $c->id }}">{{ $c->designacao }}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>
@@ -93,7 +107,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="solicitante">{{ __('lang.solicitante') }}</label>
-                                            <select id="solicitante" name="solicitante" disabled required
+                                            <select id="solicitante" name="solicitante" disabled required value="{{ old('solicitante') }}"
                                                 class="form-control select2bs4" style="width: 100%;">
                                                 <option value="" selected disabled>{{ __('lang.selecione o') }}
                                                     {{ __('lang.solicitante') }}
@@ -132,6 +146,8 @@
 
     <!-- Select2 -->
     <script src="{{ public_path() }}/plugins/select2/js/select2.full.min.js"></script>
+    <!-- Toastr -->
+    <script src="{{ public_path() }}/dist/js/toastr.min.js"></script>
 
     <script>
 
@@ -140,18 +156,17 @@
             $('#n_ordem_tmp').val(val[1]);
         });
 
-        $("#produto").change(function() {
-            $("#n_embalagem").empty();
-            $produto = $('#produto').val();
-            $('#n_embalagem').attr("disabled", false);
-            console.log($produto);
+        function setEmbalagens(produto){
             $.ajax({
                 type: 'get',
                 url: '/movimentos/saida/getEmbalagensProdutos',
                 data: {
-                    'produto': $produto,
+                    'produto': produto,
                 },
                 success: function (data) {
+                    $("#n_embalagem").empty();
+                    $('#n_embalagem').attr("disabled", false);
+
                     data.forEach(function(d) {
                         $("#n_embalagem").append(new Option(d.id_inventario+"-"+d.id_ordem, d.id));
                     });
@@ -160,27 +175,46 @@
                     $('#n_ordem_tmp').val(val[1]);
                 }
             });
+        }
+
+        $("#produto").change(function() {       
+            setEmbalagens($('#produto').val());
         });
 
-        $("#cliente").change(function() {
-            $("#solicitante").empty();
-            $cliente = $('#cliente').val();
-            $('#solicitante').attr("disabled", false);
+        function setSolicitantes(cliente){
             $.ajax({
                 type: 'get',
                 url: '/movimentos/saidaSolicitantes',
                 data: {
-                    'cliente': $cliente,
+                    'cliente': cliente,
                 },
                 success: function (data) {
+                    $("#solicitante").empty();
+                    $('#solicitante').attr("disabled", false);
+
                     data.forEach(function(d) {
                         $("#solicitante").append(new Option(d.nome, d.id));
                     })
                 }
             });
+        }
+
+        $("#cliente").change(function() {
+            setSolicitantes($('#cliente').val());
         });
 
         $(function() {
+            //Status não quimicos
+            if('{{ Session::get('status')}}'==='erro') {
+                toastr["error"]("Por favor verifique os dados introduzidos.", "Erro ao adicionar saida");
+                setEmbalagens($('#produto').val());
+                setSolicitantes($('#cliente').val());
+            };
+
+            if('{{ Session::get('status')}}'==='ok'){
+                    toastr["success"]("Saida introduzida na base de dados com sucesso.", "Nova saida criada");
+            }
+
             //Initialize Select2 Elements
             $('.select2').select2()
 

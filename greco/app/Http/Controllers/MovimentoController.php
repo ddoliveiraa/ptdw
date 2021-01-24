@@ -745,25 +745,30 @@ class MovimentoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function storeSaida(Request $request){
+
         //VALIDAÇÂO
-        request()->validate([
+        $validator = Validator::make($request->all(), [
             'cliente' => 'required',
             'produto' => 'required',
             'n_ordem_tmp' => 'required',
-            'solicitante' => 'required',
+            'solicitante' => 'required'
         ]);
         
-        //ADD NA BD
-        $Saida = new Saida();
-        $Saida->id_cliente = request('cliente');
-        $Saida->id_produto = request('produto');
-        $Saida->id_ordem = request('n_ordem_tmp');
-        $Saida->id_solicitante = request('solicitante');
-        $Saida->id_operador = 1;
-        $Saida->obs = request('obvs');
-        $Saida->save();
+        if ($validator->fails()) {
+            return redirect('movimentos/saida')->with('status', 'erro')->withErrors($validator)->withInput();
+        }else{
+            //ADD NA BD
+            $Saida = new Saida();
+            $Saida->id_cliente = request('cliente');
+            $Saida->id_produto = request('produto');
+            $Saida->id_ordem = request('n_ordem_tmp');
+            $Saida->id_solicitante = request('solicitante');
+            $Saida->id_operador = 1;
+            $Saida->obs = request('obvs');
+            $Saida->save();
 
-        return redirect('movimentos/saida');
+            return redirect('movimentos/saida')->with('status', 'ok');;
+        }
     }
 
     /**
