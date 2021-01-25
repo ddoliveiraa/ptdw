@@ -196,5 +196,12 @@ saidas.on('preXhr.dt', function (e, settings, data) {
     data.inicio = $('#intervalo').data('daterangepicker').startDate.format("DD/MM/YYYY");
     data.fim = $('#intervalo').data('daterangepicker').endDate.format("DD/MM/YYYY");
     data.data_val = $('#intervalo').val();
+
+    var pictogramas = [];
+    $('input[type=checkbox]:checked').each(function(){
+        pictogramas.push($(this).val());
+    });
+    
+    data.pictogramas = pictogramas;
 });
 

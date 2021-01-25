@@ -182,7 +182,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form method="POST" action="/editar/produtos_q/{{$produtos->id}}">
+                    <form method="POST" action="{{ public_path() }}/editar/produtos_q/{{$produtos->id}}">
                          @csrf <!-- Cross Site Request Forgery -->
                          @method('PUT')   
                         <div class="modal-body">

@@ -32,7 +32,8 @@ class MovimentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getNEmbalagem(Request $request){
+    public function getNEmbalagem(Request $request)
+    {
         if ($request->ajax()) {
             $id_inventario = $request->produto;
             $id_ordem = Entrada::where('id_inventario', $id_inventario)->max('id_ordem') + 1;
@@ -46,7 +47,8 @@ class MovimentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getPrateleira(Request $request){
+    public function getPrateleira(Request $request)
+    {
         if ($request->ajax()) {
             $id_armario = $request->armario;
             $data = prateleira::where('id_armario', $id_armario)->get();
@@ -63,19 +65,20 @@ class MovimentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function storeEntradaQ(Request $request){// QUIMICOS
+    public function storeEntradaQ(Request $request)
+    { // QUIMICOS
 
         //VALIDAÇÂO
 
         $validator = Validator::make($request->all(), [
             'data_entrada_input' => ['required', 'date_format:d/m/Y'],
-            'data_abertura_input' => ['nullable:date','date_format:d/m/Y', 'after_or_equal:data_entrada_input'],
+            'data_abertura_input' => ['nullable:date', 'date_format:d/m/Y', 'after_or_equal:data_entrada_input'],
             'data_validade_input' => ['date_format:d/m/Y', 'after_or_equal:data_entrada_input']
         ]);
 
         if ($validator->fails()) {
             return redirect('movimentos/entrada')->with('status', 'erro_quimico')->withErrors($validator)->withInput();
-        }else{
+        } else {
             //ADD NA BD
             $id_inventario = request('produto'); //request('produto') está a receber o id
             $id_ordem = Entrada::where('id_inventario', $id_inventario)->max('id_ordem') + 1;
@@ -114,8 +117,9 @@ class MovimentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function storeEntradaNQ(Request $request){// NAO QUIMICOS
-       
+    public function storeEntradaNQ(Request $request)
+    { // NAO QUIMICOS
+
         //VALIDAÇÂO
         $validator = Validator::make($request->all(), [
             'data_entrada_nq_input' => ['required', 'date_format:d/m/Y'],
@@ -125,7 +129,7 @@ class MovimentoController extends Controller
 
         if ($validator->fails()) {
             return redirect('movimentos/entrada')->with('status', 'erro_naoquimico')->withErrors($validator)->withInput();
-        }else{
+        } else {
             //ADD NA BD
             $id_inventario = request('produto_nq'); //request('produto') está a receber o id
             $id_ordem = Entrada::where('id_inventario', $id_inventario)->max('id_ordem') + 1;
@@ -196,15 +200,16 @@ class MovimentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getEmbalagensProdutos(Request $request){
+    public function getEmbalagensProdutos(Request $request)
+    {
         if ($request->ajax()) {
             $id_produto = $request->produto;
-            
-            $entradas = Entrada::whereNotExists( function ($query) use ($id_produto) {
+
+            $entradas = Entrada::whereNotExists(function ($query) use ($id_produto) {
                 $query->select(DB::raw(1))
-                ->from('saidas')
-                ->whereRaw('entradas.id_ordem = saidas.id_ordem');
-            })->where('entradas.id_inventario', '=', $id_produto)->orderBy('entradas.id_ordem')->get();       
+                    ->from('saidas')
+                    ->whereRaw('entradas.id_ordem = saidas.id_ordem');
+            })->where('entradas.id_inventario', '=', $id_produto)->orderBy('entradas.id_ordem')->get();
 
             return $entradas;
         }
@@ -266,6 +271,17 @@ class MovimentoController extends Controller
         $DataFim = $request->get("fim");
         $Pictogramas = $request->get("pictogramas");
 
+        $produtos_ids = array();
+
+        if ($Pictogramas != null) {
+            foreach ($Pictogramas as $pid) {
+                $prdutosFiltred = pictograma::find($pid)->produtos()->select('produtos.id')->get();
+                foreach ($prdutosFiltred as $p) {
+                    $produtos_ids[] = $p->id;
+                }
+            }
+        }
+
         ## Read value
         $draw = $request->get('draw');
         $start = $request->get("start");
@@ -284,35 +300,70 @@ class MovimentoController extends Controller
         if ($DataValue == "Periodo") {
 
             if ($familiaValue == "Familia") {
-                // Total records
-                $totalRecords = DB::table('entradaview')->select('count(*) as allcount')->count();
-                $totalRecordswithFilter = DB::table('entradaview')->select('count(*) as allcount')
-                    ->where(function ($query) use ($searchValue) {
-                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
-                    })->count();
 
-                // Fetch records
-                $records = DB::table('entradaview')->orderBy($columnName, $columnSortOrder)
-                    ->where(function ($query) use ($searchValue) {
-                        $query->where('entradaview.designacao', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
-                    })->select('entradaview.*')
-                    ->skip($start)
-                    ->take($rowperpage)
-                    ->get();
+                if ($Pictogramas == null) {
+
+                    $totalRecords = DB::table('entradaview')->select('count(*) as allcount')->count();
+                    $totalRecordswithFilter = DB::table('entradaview')->select('count(*) as allcount')
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                        })->count();
+
+                    // Fetch records
+                    $records = DB::table('entradaview')->orderBy($columnName, $columnSortOrder)
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('entradaview.designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                        })->select('entradaview.*')
+                        ->skip($start)
+                        ->take($rowperpage)
+                        ->get();
+                } else {
+                    // Total records
+                    $totalRecords = DB::table('entradaview')->select('count(*) as allcount')->count();
+                    $totalRecordswithFilter = DB::table('entradaview')->select('count(*) as allcount')
+                        ->whereIn('entradaview.id_produto', $produtos_ids)
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                        })->count();
+
+                    // Fetch records
+                    $records = DB::table('entradaview')->orderBy($columnName, $columnSortOrder)
+                        ->whereIn('entradaview.id_produto', $produtos_ids)
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('entradaview.designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                        })->select('entradaview.*')
+                        ->skip($start)
+                        ->take($rowperpage)
+                        ->get();
+                }
             } else if ($familiaValue == "Não Químico" && !($subfamiliaValue == "Sub-Familia")) {
                 $totalRecords = DB::table('entradaview')->select('count(*) as allcount')->count();
                 $totalRecordswithFilter = DB::table('entradaview')->where('familia', 'ilike', $familiaValue)->where('subfamilia', 'ilike', $subfamiliaValue)->select('count(*) as allcount')
@@ -343,66 +394,135 @@ class MovimentoController extends Controller
                     ->take($rowperpage)
                     ->get();
             } else {
-                $totalRecords = DB::table('entradaview')->select('count(*) as allcount')->count();
-                $totalRecordswithFilter = DB::table('entradaview')->where('familia', 'ilike', $familiaValue)->select('count(*) as allcount')
-                    ->where(function ($query) use ($searchValue) {
-                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
-                    })->count();
+                if ($Pictogramas == null) {
 
-                // Fetch records
-                $records = DB::table('entradaview')->where('familia', 'ilike', $familiaValue)->orderBy($columnName, $columnSortOrder)
-                    ->where(function ($query) use ($searchValue) {
-                        $query->where('entradaview.designacao', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
-                    })->select('entradaview.*')
-                    ->skip($start)
-                    ->take($rowperpage)
-                    ->get();
+                    $totalRecords = DB::table('entradaview')->select('count(*) as allcount')->count();
+                    $totalRecordswithFilter = DB::table('entradaview')->where('familia', 'ilike', $familiaValue)->select('count(*) as allcount')
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                        })->count();
+
+                    // Fetch records
+                    $records = DB::table('entradaview')->where('familia', 'ilike', $familiaValue)->orderBy($columnName, $columnSortOrder)
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('entradaview.designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                        })->select('entradaview.*')
+                        ->skip($start)
+                        ->take($rowperpage)
+                        ->get();
+                } else {
+                    $totalRecords = DB::table('entradaview')->select('count(*) as allcount')->count();
+                    $totalRecordswithFilter = DB::table('entradaview')->where('familia', 'ilike', $familiaValue)->select('count(*) as allcount')
+                        ->whereIn('entradaview.id_produto', $produtos_ids)
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                        })->count();
+
+                    // Fetch records
+                    $records = DB::table('entradaview')->where('familia', 'ilike', $familiaValue)->orderBy($columnName, $columnSortOrder)
+                        ->whereIn('entradaview.id_produto', $produtos_ids)
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('entradaview.designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                        })->select('entradaview.*')
+                        ->skip($start)
+                        ->take($rowperpage)
+                        ->get();
+                }
             }
         } else {
             if ($familiaValue == "Familia") {
-                // Total records
-                $totalRecords = DB::table('entradaview')->select('count(*) as allcount')->count();
-                $totalRecordswithFilter = DB::table('entradaview')->select('count(*) as allcount')->WhereBetween('data_entrada', [$DataInicio, $DataFim])
-                    ->where(function ($query) use ($searchValue) {
-                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
-                    })->count();
 
-                // Fetch records
-                $records = DB::table('entradaview')->WhereBetween('data_entrada', [$DataInicio, $DataFim])->orderBy($columnName, $columnSortOrder)
-                    ->where(function ($query) use ($searchValue) {
-                        $query->where('entradaview.designacao', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
-                    })->select('entradaview.*')
-                    ->skip($start)
-                    ->take($rowperpage)
-                    ->get();
+                if ($Pictogramas == null) {
+                    // Total records
+                    $totalRecords = DB::table('entradaview')->select('count(*) as allcount')->count();
+                    $totalRecordswithFilter = DB::table('entradaview')->select('count(*) as allcount')->WhereBetween('data_entrada', [$DataInicio, $DataFim])
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                        })->count();
+
+                    // Fetch records
+                    $records = DB::table('entradaview')->WhereBetween('data_entrada', [$DataInicio, $DataFim])->orderBy($columnName, $columnSortOrder)
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('entradaview.designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                        })->select('entradaview.*')
+                        ->skip($start)
+                        ->take($rowperpage)
+                        ->get();
+                } else {
+                    $totalRecords = DB::table('entradaview')->select('count(*) as allcount')->count();
+                    $totalRecordswithFilter = DB::table('entradaview')->select('count(*) as allcount')
+                        ->whereIn('entradaview.id_produto', $produtos_ids)
+                        ->WhereBetween('data_entrada', [$DataInicio, $DataFim])
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                        })->count();
+
+                    // Fetch records
+                    $records = DB::table('entradaview')->whereIn('entradaview.id_produto', $produtos_ids)
+                        ->WhereBetween('data_entrada', [$DataInicio, $DataFim])->orderBy($columnName, $columnSortOrder)
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('entradaview.designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                        })->select('entradaview.*')
+                        ->skip($start)
+                        ->take($rowperpage)
+                        ->get();
+                }
             } else if ($familiaValue == "Não Químico" && !($subfamiliaValue == "Sub-Familia")) {
                 $totalRecords = DB::table('entradaview')->select('count(*) as allcount')->count();
                 $totalRecordswithFilter = DB::table('entradaview')->where('familia', 'ilike', $familiaValue)->where('subfamilia', 'ilike', $subfamiliaValue)->WhereBetween('data_entrada', [$DataInicio, $DataFim])->select('count(*) as allcount')
@@ -433,34 +553,67 @@ class MovimentoController extends Controller
                     ->take($rowperpage)
                     ->get();
             } else {
-                $totalRecords = DB::table('entradaview')->select('count(*) as allcount')->count();
-                $totalRecordswithFilter = DB::table('entradaview')->where('familia', 'ilike', $familiaValue)->WhereBetween('data_entrada', [$DataInicio, $DataFim])->select('count(*) as allcount')
-                    ->where(function ($query) use ($searchValue) {
-                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
-                    })->count();
+                if ($Pictogramas == null) {
+                    $totalRecords = DB::table('entradaview')->select('count(*) as allcount')->count();
+                    $totalRecordswithFilter = DB::table('entradaview')->where('familia', 'ilike', $familiaValue)->WhereBetween('data_entrada', [$DataInicio, $DataFim])->select('count(*) as allcount')
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                        })->count();
 
-                // Fetch records
-                $records = DB::table('entradaview')->where('familia', 'ilike', $familiaValue)->WhereBetween('data_entrada', [$DataInicio, $DataFim])->orderBy($columnName, $columnSortOrder)
-                    ->where(function ($query) use ($searchValue) {
-                        $query->where('entradaview.designacao', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
-                            ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
-                    })->select('entradaview.*')
-                    ->skip($start)
-                    ->take($rowperpage)
-                    ->get();
+                    // Fetch records
+                    $records = DB::table('entradaview')->where('familia', 'ilike', $familiaValue)->WhereBetween('data_entrada', [$DataInicio, $DataFim])->orderBy($columnName, $columnSortOrder)
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('entradaview.designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                        })->select('entradaview.*')
+                        ->skip($start)
+                        ->take($rowperpage)
+                        ->get();
+                } else {
+                    $totalRecords = DB::table('entradaview')->select('count(*) as allcount')->count();
+                    $totalRecordswithFilter = DB::table('entradaview')->where('familia', 'ilike', $familiaValue)->whereIn('entradaview.id_produto', $produtos_ids)
+                        ->WhereBetween('data_entrada', [$DataInicio, $DataFim])->select('count(*) as allcount')
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                        })->count();
+
+                    // Fetch records
+                    $records = DB::table('entradaview')->where('familia', 'ilike', $familiaValue)->whereIn('entradaview.id_produto', $produtos_ids)
+                        ->WhereBetween('data_entrada', [$DataInicio, $DataFim])->orderBy($columnName, $columnSortOrder)
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('entradaview.designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.armario', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.capacidade', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.fornecedor', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.operador', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.familia', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('entradaview.subfamilia', 'ilike', '%' . $searchValue . '%');
+                        })->select('entradaview.*')
+                        ->skip($start)
+                        ->take($rowperpage)
+                        ->get();
+                }
             }
         }
 
@@ -483,7 +636,7 @@ class MovimentoController extends Controller
             $operador = $record->operador;
             $familia = $record->familia;
             $subfamilia = $record->subfamilia;
-            $link = "<a href='".public_path()."/movimentos/show_entrada/$record->id_entrada'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+            $link = "<a href='" . public_path() . "/movimentos/show_entrada/$record->id_entrada'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
 
             $data_arr[] = array(
                 "designacao" => $designacao,
@@ -522,6 +675,18 @@ class MovimentoController extends Controller
         $DataValue = $request->get("data_val");
         $DataInicio = $request->get("inicio");
         $DataFim = $request->get("fim");
+        $Pictogramas = $request->get("pictogramas");
+
+        $produtos_ids = array();
+
+        if ($Pictogramas != null) {
+            foreach ($Pictogramas as $pid) {
+                $prdutosFiltred = pictograma::find($pid)->produtos()->select('produtos.id')->get();
+                foreach ($prdutosFiltred as $p) {
+                    $produtos_ids[] = $p->id;
+                }
+            }
+        }
 
         ## Read value
         $draw = $request->get('draw');
@@ -540,157 +705,272 @@ class MovimentoController extends Controller
 
         if ($DataValue == "Periodo") {
             if ($familiaValue == "Familia") {
-                // Total records
-                $totalRecords = DB::table('saidaview')->select('count(*) as allcount')->count();
-                $totalRecordswithFilter = DB::table('saidaview')->select('count(*) as allcount')
-                    ->where(function ($query) use ($searchValue) {
-                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
-                    })->count();
+                if ($Pictogramas == null) {
+                    // Total records
+                    $totalRecords = DB::table('saidaview')->select('count(*) as allcount')->count();
+                    $totalRecordswithFilter = DB::table('saidaview')->select('count(*) as allcount')
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                        })->count();
 
-                // Fetch records
-                $records =  DB::table('saidaview')->orderBy($columnName, $columnSortOrder)
-                    ->where(function ($query) use ($searchValue) {
-                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
-                    })
-                    ->select('saidaview.*')
-                    ->skip($start)
-                    ->take($rowperpage)
-                    ->get();
+                    // Fetch records
+                    $records =  DB::table('saidaview')->orderBy($columnName, $columnSortOrder)
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                        })
+                        ->select('saidaview.*')
+                        ->skip($start)
+                        ->take($rowperpage)
+                        ->get();
+                } else {
+                    $totalRecords = DB::table('saidaview')->select('count(*) as allcount')->count();
+                    $totalRecordswithFilter = DB::table('saidaview')->select('count(*) as allcount')
+                        ->whereIn('saidaview.id_produto', $produtos_ids)
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                        })->count();
+
+                    // Fetch records
+                    $records =  DB::table('saidaview')->orderBy($columnName, $columnSortOrder)
+                        ->whereIn('saidaview.id_produto', $produtos_ids)
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                        })
+                        ->select('saidaview.*')
+                        ->skip($start)
+                        ->take($rowperpage)
+                        ->get();
+                }
             } else if ($familiaValue == "Não Químico" && !($subfamiliaValue == "Sub-Familia")) {
                 // Total records
                 $totalRecords = DB::table('saidaview')->select('count(*) as allcount')->count();
                 $totalRecordswithFilter = DB::table('saidaview')->where('familia', 'ilike', $familiaValue)->where('subfamilia', 'ilike', $subfamiliaValue)->select('count(*) as allcount')
                     ->where(function ($query) use ($searchValue) {
                         $query->where('designacao', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                            ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
                     })->count();
 
                 // Fetch records
                 $records =  DB::table('saidaview')->where('familia', 'ilike', $familiaValue)->where('subfamilia', 'ilike', $subfamiliaValue)->orderBy($columnName, $columnSortOrder)
                     ->where(function ($query) use ($searchValue) {
                         $query->where('designacao', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                            ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
                     })
                     ->select('saidaview.*')
                     ->skip($start)
                     ->take($rowperpage)
                     ->get();
             } else {
-                // Total records
-                $totalRecords = DB::table('saidaview')->select('count(*) as allcount')->count();
-                $totalRecordswithFilter = DB::table('saidaview')->where('familia', 'ilike', $familiaValue)->select('count(*) as allcount')
-                    ->where(function ($query) use ($searchValue) {
-                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
-                    })->count();
+                if ($Pictogramas == null) {
+                    // Total records
+                    $totalRecords = DB::table('saidaview')->select('count(*) as allcount')->count();
 
-                // Fetch records
-                $records =  DB::table('saidaview')->where('familia', 'ilike', $familiaValue)->orderBy($columnName, $columnSortOrder)
-                    ->where(function ($query) use ($searchValue) {
-                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
-                    })
-                    ->select('saidaview.*')
-                    ->skip($start)
-                    ->take($rowperpage)
-                    ->get();
+                    $totalRecordswithFilter = DB::table('saidaview')->where('familia', 'ilike', $familiaValue)->select('count(*) as allcount')
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                        })->count();
+
+                    // Fetch records
+                    $records =  DB::table('saidaview')->where('familia', 'ilike', $familiaValue)->orderBy($columnName, $columnSortOrder)
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                        })
+                        ->select('saidaview.*')
+                        ->skip($start)
+                        ->take($rowperpage)
+                        ->get();
+                } else {
+                    $totalRecords = DB::table('saidaview')->select('count(*) as allcount')->count();
+                    $totalRecordswithFilter = DB::table('saidaview')->where('familia', 'ilike', $familiaValue)->select('count(*) as allcount')
+                        ->whereIn('saidaview.id_produto', $produtos_ids)
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                        })->count();
+
+                    // Fetch records
+                    $records =  DB::table('saidaview')->where('familia', 'ilike', $familiaValue)
+                        ->whereIn('saidaview.id_produto', $produtos_ids)->orderBy($columnName, $columnSortOrder)
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                        })
+                        ->select('saidaview.*')
+                        ->skip($start)
+                        ->take($rowperpage)
+                        ->get();
+                }
             }
         } else {
             if ($familiaValue == "Familia") {
-                // Total records
-                $totalRecords = DB::table('saidaview')->select('count(*) as allcount')->count();
-                $totalRecordswithFilter = DB::table('saidaview')->select('count(*) as allcount')->WhereBetween('data', [$DataInicio, $DataFim])
-                    ->where(function ($query) use ($searchValue) {
-                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
-                    })->count();
+                if ($Pictogramas == null) {
+                    // Total records
+                    $totalRecords = DB::table('saidaview')->select('count(*) as allcount')->count();
+                    $totalRecordswithFilter = DB::table('saidaview')->select('count(*) as allcount')->WhereBetween('data', [$DataInicio, $DataFim])
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                        })->count();
 
-                // Fetch records
-                $records =  DB::table('saidaview')->WhereBetween('data', [$DataInicio, $DataFim])->orderBy($columnName, $columnSortOrder)
-                    ->where(function ($query) use ($searchValue) {
-                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
-                    })
-                    ->select('saidaview.*')
-                    ->skip($start)
-                    ->take($rowperpage)
-                    ->get();
+                    // Fetch records
+                    $records =  DB::table('saidaview')->WhereBetween('data', [$DataInicio, $DataFim])->orderBy($columnName, $columnSortOrder)
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                        })
+                        ->select('saidaview.*')
+                        ->skip($start)
+                        ->take($rowperpage)
+                        ->get();
+                } else {
+                    // Total records
+                    $totalRecords = DB::table('saidaview')->select('count(*) as allcount')->count();
+                    $totalRecordswithFilter = DB::table('saidaview')->select('count(*) as allcount')
+                        ->whereIn('saidaview.id_produto', $produtos_ids)->WhereBetween('data', [$DataInicio, $DataFim])
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                        })->count();
+
+                    // Fetch records
+                    $records =  DB::table('saidaview')->whereIn('saidaview.id_produto', $produtos_ids)
+                        ->WhereBetween('data', [$DataInicio, $DataFim])->orderBy($columnName, $columnSortOrder)
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                        })
+                        ->select('saidaview.*')
+                        ->skip($start)
+                        ->take($rowperpage)
+                        ->get();
+                }
             } else if ($familiaValue == "Não Químico" && !($subfamiliaValue == "Sub-Familia")) {
                 // Total records
                 $totalRecords = DB::table('saidaview')->select('count(*) as allcount')->count();
                 $totalRecordswithFilter = DB::table('saidaview')->where('familia', 'ilike', $familiaValue)->where('subfamilia', 'ilike', $subfamiliaValue)->WhereBetween('data', [$DataInicio, $DataFim])->select('count(*) as allcount')
                     ->where(function ($query) use ($searchValue) {
                         $query->where('designacao', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                            ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
                     })->count();
 
                 // Fetch records
                 $records =  DB::table('saidaview')->where('familia', 'ilike', $familiaValue)->where('subfamilia', 'ilike', $subfamiliaValue)->WhereBetween('data', [$DataInicio, $DataFim])->orderBy($columnName, $columnSortOrder)
                     ->where(function ($query) use ($searchValue) {
                         $query->where('designacao', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                            ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                            ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
                     })
                     ->select('saidaview.*')
                     ->skip($start)
                     ->take($rowperpage)
                     ->get();
             } else {
-                // Total records
-                $totalRecords = DB::table('saidaview')->select('count(*) as allcount')->count();
-                $totalRecordswithFilter = DB::table('saidaview')->where('familia', 'ilike', $familiaValue)->WhereBetween('data', [$DataInicio, $DataFim])->select('count(*) as allcount')
-                    ->where(function ($query) use ($searchValue) {
-                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
-                    })->count();
+                if ($Pictogramas == null) {
+                    // Total records
+                    $totalRecords = DB::table('saidaview')->select('count(*) as allcount')->count();
+                    $totalRecordswithFilter = DB::table('saidaview')->where('familia', 'ilike', $familiaValue)->WhereBetween('data', [$DataInicio, $DataFim])->select('count(*) as allcount')
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                        })->count();
 
-                // Fetch records
-                $records =  DB::table('saidaview')->where('familia', 'ilike', $familiaValue)->WhereBetween('data', [$DataInicio, $DataFim])->orderBy($columnName, $columnSortOrder)
-                    ->where(function ($query) use ($searchValue) {
-                        $query->where('designacao', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
-                        ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
-                    })
-                    ->select('saidaview.*')
-                    ->skip($start)
-                    ->take($rowperpage)
-                    ->get();
+                    // Fetch records
+                    $records =  DB::table('saidaview')->where('familia', 'ilike', $familiaValue)->WhereBetween('data', [$DataInicio, $DataFim])->orderBy($columnName, $columnSortOrder)
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                        })
+                        ->select('saidaview.*')
+                        ->skip($start)
+                        ->take($rowperpage)
+                        ->get();
+                } else {
+                    // Total records
+                    $totalRecords = DB::table('saidaview')->select('count(*) as allcount')->count();
+                    $totalRecordswithFilter = DB::table('saidaview')->where('familia', 'ilike', $familiaValue)->whereIn('entradaview.id_produto', $produtos_ids)
+                        ->WhereBetween('data', [$DataInicio, $DataFim])->select('count(*) as allcount')
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                        })->count();
+
+                    // Fetch records
+                    $records =  DB::table('saidaview')->where('familia', 'ilike', $familiaValue)->whereIn('entradaview.id_produto', $produtos_ids)
+                        ->WhereBetween('data', [$DataInicio, $DataFim])->orderBy($columnName, $columnSortOrder)
+                        ->where(function ($query) use ($searchValue) {
+                            $query->where('designacao', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('id_produto', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('cliente', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('solicitante', 'ilike', '%' . $searchValue . '%')
+                                ->orWhere('operador', 'ilike', '%' . $searchValue . '%');
+                        })
+                        ->select('saidaview.*')
+                        ->skip($start)
+                        ->take($rowperpage)
+                        ->get();
+                }
             }
         }
         $data_arr = array();
@@ -704,7 +984,7 @@ class MovimentoController extends Controller
             $data = date("d/m/Y", strtotime($record->data));
             $familia = $record->familia;
             $subfamilia = $record->subfamilia;
-            $link = "<a href='".public_path()."/movimentos/show_saida/$record->id_saida'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+            $link = "<a href='" . public_path() . "/movimentos/show_saida/$record->id_saida'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
 
             $data_arr[] = array(
                 "designacao" => $designacao,
@@ -745,7 +1025,8 @@ class MovimentoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeSaida(Request $request){
+    public function storeSaida(Request $request)
+    {
 
         //VALIDAÇÂO
         $validator = Validator::make($request->all(), [
@@ -754,10 +1035,10 @@ class MovimentoController extends Controller
             'n_ordem_tmp' => 'required',
             'solicitante' => 'required'
         ]);
-        
+
         if ($validator->fails()) {
             return redirect('movimentos/saida')->with('status', 'erro')->withErrors($validator)->withInput();
-        }else{
+        } else {
             //ADD NA BD
             $Saida = new Saida();
             $Saida->id_cliente = request('cliente');
@@ -806,7 +1087,7 @@ class MovimentoController extends Controller
         $unidades = unidade::all();
         $iva = taxa_iva::all();
         $texturas_viscosidades = textura_viscosidade::all();
-        return view('movimentos.editar', compact('entrada', 'fornecedor', 'armario', 'prateleira', 'tipoembalagem', 'estados', 'cor', 'texturas_viscosidades','marca','unidades','iva'));
+        return view('movimentos.editar', compact('entrada', 'fornecedor', 'armario', 'prateleira', 'tipoembalagem', 'estados', 'cor', 'texturas_viscosidades', 'marca', 'unidades', 'iva'));
     }
 
     /**
@@ -836,36 +1117,36 @@ class MovimentoController extends Controller
             // 'cor' => 'required',
             // 'peso' => 'required',
             'data_entrada_input' => ['required', 'date_format:d/m/Y'],
-            'data_abertura_input' => ['nullable','date_format:d/m/Y', 'after_or_equal:data_entrada_input'],
+            'data_abertura_input' => ['nullable', 'date_format:d/m/Y', 'after_or_equal:data_entrada_input'],
             'data_validade_input' => ['date_format:d/m/Y', 'after_or_equal:data_entrada_input'],
         ]);
 
         if ($validar->fails()) {
-            return redirect('/movimentos/editar/'. $Entrada->id)->withErrors($validar)->withInput();
-        }else{
+            return redirect('/movimentos/editar/' . $Entrada->id)->withErrors($validar)->withInput();
+        } else {
 
-        $Entrada = Entrada::find(request('id'));
-        $Entrada->referencia = request('referencia');
-        $Entrada->unidade = request('unidades');
-        $Entrada->tipo_embalagem = request('tipo_embalagem');
-        $Entrada->capacidade = request('cap_embalagem');
-        $Entrada->fornecedor = request('fornecedor');
-        $Entrada->marca = request('marca');
-        $Entrada->armario = request('armario');
-        $Entrada->prateleira = request('prateleira');
-        $Entrada->iva = request('iva');
-        $Entrada->preco = request('preco');
-        $Entrada->estado_fisico = request('estado');
-        $Entrada->textura_viscosidade = request('textura');
-        $Entrada->cor = request('cor');
-        $Entrada->peso_bruto = request('peso');
-        $Entrada->data_entrada = request('data_entrada_input');
-        $Entrada->data_abertura = request('data_abertura_input');
-        $Entrada->data_validade = request('data_validade_input');
-        $Entrada->obs = request('obvs');
-        $Entrada->save();
+            $Entrada = Entrada::find(request('id'));
+            $Entrada->referencia = request('referencia');
+            $Entrada->unidade = request('unidades');
+            $Entrada->tipo_embalagem = request('tipo_embalagem');
+            $Entrada->capacidade = request('cap_embalagem');
+            $Entrada->fornecedor = request('fornecedor');
+            $Entrada->marca = request('marca');
+            $Entrada->armario = request('armario');
+            $Entrada->prateleira = request('prateleira');
+            $Entrada->iva = request('iva');
+            $Entrada->preco = request('preco');
+            $Entrada->estado_fisico = request('estado');
+            $Entrada->textura_viscosidade = request('textura');
+            $Entrada->cor = request('cor');
+            $Entrada->peso_bruto = request('peso');
+            $Entrada->data_entrada = request('data_entrada_input');
+            $Entrada->data_abertura = request('data_abertura_input');
+            $Entrada->data_validade = request('data_validade_input');
+            $Entrada->obs = request('obvs');
+            $Entrada->save();
 
-        return redirect('movimentos/show_entrada/'. $Entrada->id)->with('status', 'ok');
+            return redirect('movimentos/show_entrada/' . $Entrada->id)->with('status', 'ok');
         }
     }
 
