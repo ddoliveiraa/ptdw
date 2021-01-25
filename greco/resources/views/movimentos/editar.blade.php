@@ -409,7 +409,7 @@
             $armario = $('#armario').val();
             $.ajax({
                 type: 'get',
-                url: {{ public_path() }} + '/movimentos/entradaPrateleira',
+                url: '{{ public_path() }}/movimentos/entradaPrateleira',
                 data: {
                     'armario': $armario,
                 },
