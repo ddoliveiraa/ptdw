@@ -307,7 +307,6 @@ class ProdutoController extends Controller
 
     public function updateProdutoQ(Request $request, Produto $Produto)
     {
-        dd($request->all());
         //VALIDAÇÂO
         $validator = Validator::make($request->all(), [
             'produto_designacao' => 'required',
