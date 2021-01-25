@@ -860,7 +860,7 @@
         function setEmbalagem(produto, id){
             $.ajax({
                 type: 'get',
-                url: '/movimentos/entradaNEmbalagem',
+                url: {{ public_path() }} + '/movimentos/entradaNEmbalagem',
                 data: {
                     'produto': produto,
                 },
@@ -883,7 +883,7 @@
         function setPrateleira(armario, id){
             $.ajax({
                 type: 'get',
-                url: '/movimentos/entradaPrateleira',
+                url: {{ public_path() }} + '/movimentos/entradaPrateleira',
                 data: {
                     'armario': armario,
                 },

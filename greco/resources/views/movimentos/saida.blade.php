@@ -159,7 +159,7 @@
         function setEmbalagens(produto){
             $.ajax({
                 type: 'get',
-                url: '/movimentos/saida/getEmbalagensProdutos',
+                url: {{ public_path() }} + '/movimentos/saida/getEmbalagensProdutos',
                 data: {
                     'produto': produto,
                 },
@@ -184,7 +184,7 @@
         function setSolicitantes(cliente){
             $.ajax({
                 type: 'get',
-                url: '/movimentos/saidaSolicitantes',
+                url: {{ public_path() }} + '/movimentos/saidaSolicitantes',
                 data: {
                     'cliente': cliente,
                 },
