@@ -74,7 +74,7 @@
                             </div>
 
                             <div class="card-footer">
-                                <div class="row">
+                                <div class="row justify-content-between">
                                     <div class="col-md-3">
                                         <a href="{{ public_path() }}/ficha" role="button"
                                             class="btn btn-block btn-default" tabindex="11">{{ __('lang.cancelar') }}</a>

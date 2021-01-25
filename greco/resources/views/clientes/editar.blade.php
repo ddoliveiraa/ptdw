@@ -91,7 +91,7 @@
                     
 
                     <div class="card-footer">
-                        <div class="row">
+                        <div class="row justify-content-between">
                             <div class="col-md-3">
                                 <a href="{{ public_path() }}/clientes/{{$cliente->id}}" role="button"
                                     class="btn btn-block btn-default">{{ __('lang.cancelar') }}</a>
