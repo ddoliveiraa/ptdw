@@ -40,7 +40,7 @@
             <div class="row">
             <div class="col-md-8 offset-md-2">
                     <div class="card card-primary">
-                    <form method="POST" action="/editar/produtos_q/{{$produtos->id}}">
+                    <form method="POST" action="{{ public_path() }}/editar/produtos_q/{{$produtos->id}}">
                         @csrf
                         @method('PUT')         
                             <div class="card-body">

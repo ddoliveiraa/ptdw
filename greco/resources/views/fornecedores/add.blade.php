@@ -43,7 +43,7 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <!-- form start -->
-                        <form method="POST" action="/fornecedores/add/store">
+                        <form method="POST" action="{{ public_path() }}/fornecedores/add/store">
                             @csrf
                             <div class="card-body">
                                 

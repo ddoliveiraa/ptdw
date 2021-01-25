@@ -250,7 +250,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form method="POST" action="/produtos_q">
+                    <form method="POST" action="{{ public_path() }}/produtos_q">
                          @csrf <!-- Cross Site Request Forgery -->
                         <div class="modal-body">
                             <div class="form-row">

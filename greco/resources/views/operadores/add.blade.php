@@ -43,7 +43,7 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <!-- form start -->
-                        <form method="POST" action="/operadores/add/addOperador">
+                        <form method="POST" action="{{ public_path() }}/operadores/add/addOperador">
                             @csrf
                             <div class="card-body">
                                 <div class="row">

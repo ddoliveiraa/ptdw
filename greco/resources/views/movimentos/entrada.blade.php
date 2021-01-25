@@ -63,7 +63,7 @@
                         <div class="tab-pane fade show active" id="quimico" role="tabpanel" aria-labelledby="quimico-tab">
                             <div class="card card-primary">
                                 <!-- form start -->
-                                <form method="POST" action="/movimentos/add/entrada_quimico">
+                                <form method="POST" action="{{ public_path() }}/movimentos/add/entrada_quimico">
                                     @csrf <!-- Cross Site Request Forgery -->
                                     <div class="card-body">
                                         <div class="row">
@@ -427,7 +427,7 @@
                             <div class="card card-primary">
                                 <!-- form start -->
 
-                                <form method="POST" action="/movimentos/add/entrada_naoquimico">
+                                <form method="POST" action="{{ public_path() }}/movimentos/add/entrada_naoquimico">
                                     @csrf <!-- Cross Site Request Forgery -->
                                     <div class="card-body">
                                         <div class="row">

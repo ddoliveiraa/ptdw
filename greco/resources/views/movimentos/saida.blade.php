@@ -42,7 +42,7 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <!-- form start -->
-                        <form method="POST" action="/movimentos/add/saida">
+                        <form method="POST" action="{{ public_path() }}/movimentos/add/saida">
                             @csrf
                             <div class="card-body">
                                 <div class="row">

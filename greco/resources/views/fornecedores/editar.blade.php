@@ -44,7 +44,7 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <!-- form start -->
-                        <form method="POST" action="/fornecedores/editado/{{$fornecedor->id}}">
+                        <form method="POST" action="{{ public_path() }}/fornecedores/editado/{{$fornecedor->id}}">
                         @csrf
                         @method('PUT')
                             <div class="card-body">
