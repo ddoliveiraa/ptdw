@@ -151,6 +151,13 @@ $('#sub-familia').change(function () {
     saidas.draw();
 });
 
+$('#entrada-tab').click(function(){
+    entradas.draw();
+});
+$('#saida-tab').click(function(){
+    saida.draw();
+});
+
 
 var saidas = $("#saidas").DataTable({
     "dom": '<"search">frtip l',
