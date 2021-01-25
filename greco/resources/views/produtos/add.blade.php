@@ -336,7 +336,7 @@
             $('#guardar').on('click', function() {
 
                 $.ajax({
-                    url: '/produtos_q',
+                    url: {{ public_path() }} + '/produtos_q',
                     type: "Get",
                     dataType: 'json',//this will expect a json response
                     data:{pictograma:$('#produto_pictogramas').val()}, 

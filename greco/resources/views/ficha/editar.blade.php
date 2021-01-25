@@ -283,7 +283,7 @@ let pictogramas = [];
          $('#guardar').on('click', function() {
 
         $.ajax({
-            url: '/editar/produtos_q/{{$produtos->id}}',
+            url: {{ public_path() }}+'/editar/produtos_q/{{$produtos->id}}',
             type: "Get",
             dataType: 'json', //this will expect a json response
             data:{pictograma:$('#produto_pictogramas').val()}, 
