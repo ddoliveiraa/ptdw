@@ -198,19 +198,19 @@ class FornecedorController extends Controller
         //VALIDAÇÂO
         $validator = Validator::make($request->all(), [
             'fornecedor_designacao' => 'required',
-            'fornecedor_telefone' => 'required|regex:/^\(\d{2,3}\)\s\d{4}\-\d{3}$/',
+            'fornecedor_telefone' => ['required', 'regex:/^9[1236][0-9]{7}$|^2[3-9][1-9][0-9]{6}$|^2[12][0-9]{7}$/'],
             'fornecedor_morada' => 'required',
-            'fornecedor_localidade' => 'required|regex:/^[A-Za-z]+$/',
+            'fornecedor_localidade' => ['required', 'regex:/^[A-Za-z]+$|^[A-Za-z]+ [A-Za-z]+$/'],
             'fornecedor_codigopostal' => 'required|regex:/^\d{4}(-\d{3})?$/',
             'fornecedor_email' => 'required|email',
             'fornecedor_nif' => 'required|regex:/^[0-9]+$/',
             'fornecedor_condicoesespeciais' => 'required',
             'fornecedor_nomevendedor1' => 'required',
             'fornecedor_emailvendedor1' => 'required|email',
-            'fornecedor_telemovelvendedor1' => 'required|regex:/^\(\d{2,3}\)\s\d{4}\-\d{3}$/',
+            'fornecedor_telemovelvendedor1' => ['required', 'regex:/^9[1236][0-9]{7}$|^2[3-9][1-9][0-9]{6}$|^2[12][0-9]{7}$/'],
             'fornecedor_nomevendedor2' => 'required',
             'fornecedor_emailvendedor2' => 'required|email',
-            'fornecedor_telemovelvendedor2' => 'required|regex:/^\(\d{2,3}\)\s\d{4}\-\d{3}$/',
+            'fornecedor_telemovelvendedor2' => ['required', 'regex:/^9[1236][0-9]{7}$|^2[3-9][1-9][0-9]{6}$|^2[12][0-9]{7}$/'],
 
         ]);
         if ($validator->fails()) {
