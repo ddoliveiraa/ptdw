@@ -107,6 +107,8 @@ $("#pictogramas").show(1);
 $('#filter').click(function () {
     $('#familia').val('Familia');
     $('#sub-familia').val('Sub-Familia');
+    $('#sub-familia').hide(1);
+    $("#pictogramas").show(1);
     $('#movimento').val('Movimento');
     $('input[type=checkbox]').prop('checked', false);
     $('#intervalo').val('Periodo');
@@ -135,6 +137,7 @@ $('#familia').change(function () {
     if (familia == "Não Químico") {
         $('#sub-familia').show(1);
         $("#pictogramas").hide(1);
+        $('input[type=checkbox]').prop('checked', false);
     } else {
         $('#sub-familia').hide(1);
         $('#sub-familia').val('Sub-Familia');
