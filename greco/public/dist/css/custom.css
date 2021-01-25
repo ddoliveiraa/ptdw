@@ -149,6 +149,12 @@
 }
 
 /*----------------Movimentos--------------*/
+div.dataTables_processing{
+    background-color: #17a2b8;
+    color: white;
+    z-index: 100;
+    border: 1px solid #148192;
+}
 
 /*----------------Historico--------------*/
 
