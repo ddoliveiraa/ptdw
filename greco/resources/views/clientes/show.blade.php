@@ -58,7 +58,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="responsavel_nome">{{ __('lang.responsavel') }} - {{ __('lang.nome') }}</label>
-                                            @foreach($responsaveis as $responsavel)
+                                            @foreach($cliente->responsaveis as $responsavel)
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="responsavel_nome"
                                                     value="{{$responsavel->nome}}" disabled>
@@ -69,7 +69,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="responsavel_email">{{ __('lang.responsavel') }} - {{ __('lang.email') }}</label>
-                                            @foreach($responsaveis as $responsavel)
+                                            @foreach($cliente->responsaveis as $responsavel)
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="responsavel_email"
                                                     value="{{$responsavel->email}}" disabled>
@@ -85,7 +85,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="responsavel_nome">{{ __('lang.solicitante') }} - {{ __('lang.nome') }}</label>
-                                            @foreach($solicitantes as $solicitante)
+                                            @foreach($cliente->solicitantes as $solicitante)
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="responsavel_nome"
                                                     value="{{$solicitante->nome}}" disabled>
@@ -96,7 +96,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="solicitante_email">{{ __('lang.solicitante') }} - {{ __('lang.email') }}</label>
-                                            @foreach($solicitantes as $solicitante)
+                                            @foreach($cliente->solicitantes as $solicitante)
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="responsavel_email"
                                                     value="{{$solicitante->email}}" disabled>

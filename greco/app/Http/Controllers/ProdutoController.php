@@ -274,8 +274,7 @@ class ProdutoController extends Controller
     public function show(Produto $produto)
     {
         $time = Carbon\Carbon::now();
-        $entradas = Entrada::where('id_inventario', $produto->id)->get();
-        return view('ficha.show', compact('produto', 'entradas', 'time'));
+        return view('ficha.show', compact('produto', 'time'));
     }
 
     /**

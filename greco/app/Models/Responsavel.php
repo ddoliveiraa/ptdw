@@ -12,6 +12,6 @@ class Responsavel extends Model
 
     public function clientes()
     {
-        return $this->belongsTo(Cliente::class);
+        return $this->belongsTo(Cliente::class, 'id_cliente');
     }
 }

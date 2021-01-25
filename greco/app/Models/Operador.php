@@ -11,17 +11,6 @@ class Operador extends Model
     protected $table = 'operadors';
     protected $fillable = ['nome','email','perfil','obs','data_criacao'];
 
-
-    public function entradas()
-    {
-        return $this->hasMany(Entrada::class);
-    }
-
-    public function saidas()
-    {
-        return $this->hasMany(Saida::class);
-    }
-
     public function get_perfil()
    {
        return $this->belongsTo(Perfil::class, 'perfil');
