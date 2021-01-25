@@ -96,7 +96,7 @@
                                 <a href="{{ public_path() }}/clientes/{{$cliente->id}}" role="button"
                                     class="btn btn-block btn-default">{{ __('lang.cancelar') }}</a>
                             </div>
-                            <div class="ml-auto col-3">
+                            <div class="col-md-3">
                                 <input id="ids_responsaveis" name="ids_responsaveis" type="hidden">
                                 <input id="ids_solicitantes" name="ids_solicitantes" type="hidden">
                             <button id="guardar" type="submit"

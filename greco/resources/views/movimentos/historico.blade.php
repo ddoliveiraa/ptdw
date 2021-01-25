@@ -154,11 +154,8 @@
                                             <ul>
                                                 @foreach ($pictogramas as $pictograma)
                                                     <li>
-                                                        <input type="checkbox" id="cb{{ $pictograma->id }}" value="{{ $pictograma->id }}"/>
-                                                        <label for="cb{{ $pictograma->id }}">
-                                                            <img src="{{ public_path() }}{{ $pictograma->imagem }}" />
-                                                            <p class="text-center">{{ $pictograma->codigo }}</p>
-                                                        </label>
+                                                        <input type="checkbox" name="picto" id="cb{{ $pictograma->id }}" value="{{ $pictograma->id }}"/>
+                                                        <label for="cb{{ $pictograma->id }}"><img src="{{ public_path() }}{{ $pictograma->imagem }}" /><p class="text-center">{{ $pictograma->codigo }}</p></label>
                                                     </li>
                                                 @endforeach
                                             </ul>

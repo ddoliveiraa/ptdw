@@ -114,7 +114,7 @@
                                         <a href="{{ public_path() }}/operadores" role="button"
                                             class="btn btn-block btn-default">{{ __('lang.cancelar') }}</a>
                                     </div>
-                                    <div class="ml-auto col-3">
+                                    <div class="col-md-3">
                                         <button type="submit" class="btn btn-block btn-secondary">{{ __('lang.guardar') }}</button>
                                     </div>
                                 </div>

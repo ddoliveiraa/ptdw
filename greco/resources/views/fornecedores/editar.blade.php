@@ -216,7 +216,7 @@
                                         <a href="{{ public_path() }}/fornecedores/{{$fornecedor->id}}" role="button"
                                             class="btn btn-block btn-default">{{ __('lang.voltar') }}</a>
                                     </div>
-                                    <div class="ml-auto col-3">
+                                    <div class="col-md-3">
                                     <button id="guardar" type="submit"
                                             class="btn btn-block btn-secondary" tabindex="12">{{ __('lang.guardar') }}</button>
                                     </div>

@@ -103,7 +103,7 @@
                                 <a href="{{ public_path() }}/clientes" role="button"
                                     class="btn btn-block btn-default">{{ __('lang.cancelar') }}</a>
                             </div>
-                            <div class="ml-auto col-3">
+                            <div class="col-md-3">
                             <button type="submit"
                                 id="guardar" name="guardar" class="btn btn-block btn-secondary">{{ __('lang.adicionar') }}</button>
                             </div>
