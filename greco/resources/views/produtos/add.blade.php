@@ -57,7 +57,7 @@
                             <div class="card card-primary">
 
                                 <!-- form start -->
-                                <form method="POST" action="/produtos_q">
+                                <form method="POST" action="{{ public_path() }}/produtos_q">
                                     @csrf <!-- Cross Site Request Forgery -->
                                     <div class="card-body">
                                         <div class="row">
@@ -172,7 +172,7 @@
                             <div class="card card-primary">
 
                                 <!-- form start -->
-                                <form method="POST" action="/produtos_nq" enctype="multipart/form-data">
+                                <form method="POST" action="{{ public_path() }}/produtos_nq" enctype="multipart/form-data">
                                     @csrf <!-- Cross Site Request Forgery -->
                                     <div class="card-body">
                                         <div class="row">
@@ -261,7 +261,7 @@
                                                 @foreach ($pictogramas as $p)
                                                     <li>
                                                         <input type="checkbox" name="picto" id="cb{{ $p->id }}" value="{{ $p->nome }}" />
-                                                        <label for="cb{{ $p->id }}"><img src="{{ $p->imagem }}" /><p class="text-center">{{ $p->codigo }}</p></label>
+                                                        <label for="cb{{ $p->id }}"><img src="{{ public_path() }}{{ $p->imagem }}" /><p class="text-center">{{ $p->codigo }}</p></label>
                                                     </li>
                                                 @endforeach
                                             </ul>
