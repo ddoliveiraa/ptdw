@@ -140,7 +140,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">{{ __('lang.filtrar') }} {{ __('lang.pictograma') }}s</h4>
+                        <h4 class="modal-title">{{ __('lang.filtrar') }} {{ __('lang.pictograma') }}</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

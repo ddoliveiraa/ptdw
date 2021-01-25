@@ -119,6 +119,11 @@ $('#filter').click(function () {
 $("#pictogramas").click(function () {
     $("#modalSelecionarPictograma").modal("show");
 });
+$('input[type=checkbox]').on('change', function(e) {
+    if ($('input[type=checkbox]:checked').length > 1) {
+        $(this).prop('checked', false);
+    }
+});
 $("#aplicar").click(function () {
     entradas.draw();
     saidas.draw();
