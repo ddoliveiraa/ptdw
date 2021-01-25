@@ -13,6 +13,6 @@ class Fornecedor extends Model
 
     public function entradas()
     {
-        return $this->hasMany(Entrada::class);
+        return $this->hasMany(Entrada::class, 'fornecedor');
     }
 }
