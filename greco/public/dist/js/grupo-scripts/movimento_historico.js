@@ -155,7 +155,7 @@ $('#entrada-tab').click(function(){
     entradas.draw();
 });
 $('#saida-tab').click(function(){
-    saida.draw();
+    saidas.draw();
 });
 
 
