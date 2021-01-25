@@ -195,7 +195,7 @@
                                                     <li>
                                                         <input type="checkbox" name="picto" id="cb{{ $p->id }}" value="{{ $p->nome }}" @foreach($produtos->pictogramas as $pic) @if($pic->id == $p->id)
                                                         checked @endif @endforeach required/>
-                                                        <label for="cb{{ $p->id }}"><img src="{{ $p->imagem }}" /><p class="text-center">{{ $p->nome }}</p></label>
+                                                        <label for="cb{{ $p->id }}"><img src="{{ public_path() }}{{ $p->imagem }}" /><p class="text-center">{{ $p->codigo }}</p></label>
                                                     </li>
                                                 @endforeach
                                             </ul>
