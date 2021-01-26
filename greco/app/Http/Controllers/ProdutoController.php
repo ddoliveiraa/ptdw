@@ -14,6 +14,7 @@ use App\Models\advertencia;
 use Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManager;
 
 
 class ProdutoController extends Controller
@@ -109,6 +110,7 @@ class ProdutoController extends Controller
             if($fileName){
                 $imageName = time().'.'.$request->produto_foto->extension(); 
                 $Produto->foto = $imageName;
+                //$request->produto_foto->move(public_path('dist/img/Images'), $imageName);
                 $request->produto_foto->storeAs('/images', $imageName);
             }
 
@@ -273,11 +275,24 @@ class ProdutoController extends Controller
 
     public function show(Produto $produto)
     {
-        $path = 'images/'.$produto->foto;
-        $foto = Storage::path($path);
+        /*
+        $path = storage_path('app/images/'.$produto->foto);
+        $image = file($path);
+        */
+        $image = $produto->foto;
         $time = Carbon\Carbon::now();
-        return view('ficha.show', compact('produto', 'time', 'foto'));
+        return view('ficha.show', compact('produto', 'time', 'image'));
     }
+    /*
+    public function getImage(Produto $produto)
+    { 
+        $produto = $request->produto;
+        $path = storage_path('app/images/'.$produto->foto);
+
+        if (file_exists($path)) {
+            return file($path);
+        }
+    }*/
 
     /**
      * Show the form for editing the specified resource.
