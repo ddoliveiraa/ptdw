@@ -236,10 +236,23 @@ class MovimentoController extends Controller
      */
     public function showSaida()
     {
+        /*
         $entradas = Entrada::select('id_inventario')->distinct();
         $produtos_com_entrada = Produto::joinSub($entradas, 'ent', function ($join) {
             $join->on('produtos.id', '=', 'ent.id_inventario');
         })->get();
+        */
+
+        $entradas = Entrada::select('id_inventario')->whereNotExists(function ($query) {
+            $query->select(DB::raw(1))
+                ->from('saidas')
+                ->whereRaw('entradas.id_ordem = saidas.id_ordem')
+                ->whereRaw('entradas.id_inventario = saidas.id_produto');
+        });
+
+        $produtos_com_entrada = Produto::joinSub($entradas, 'ent', function ($join) {
+            $join->on('produtos.id', '=', 'ent.id_inventario');
+        })->distinct()->get();
 
         $clientes = Cliente::all();
         $solicitantes = Solicitante::all();
