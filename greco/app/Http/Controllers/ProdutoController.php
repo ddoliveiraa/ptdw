@@ -273,7 +273,8 @@ class ProdutoController extends Controller
 
     public function show(Produto $produto)
     {
-        $foto = Storage::get('images/'.$produto->foto);
+        $path = 'images/'.$produto->foto;
+        $foto = Storage::path($path);
         $time = Carbon\Carbon::now();
         return view('ficha.show', compact('produto', 'time', 'foto'));
     }
