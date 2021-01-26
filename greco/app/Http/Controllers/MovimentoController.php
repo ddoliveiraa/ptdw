@@ -224,7 +224,7 @@ class MovimentoController extends Controller
     {
         if ($request->ajax()) {
             $id_cliente = $request->cliente;
-            return Solicitante::where('id_cliente', $id_cliente)->get();
+            return Solicitante::where('id_cliente', $id_cliente)->distinct()->get();
         }
     }
 

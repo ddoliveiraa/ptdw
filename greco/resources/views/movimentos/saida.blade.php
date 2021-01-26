@@ -184,7 +184,7 @@
         function setSolicitantes(cliente){
             $.ajax({
                 type: 'get',
-                url: + '{{ public_path() }}/movimentos/saidaSolicitantes',
+                url: '{{ public_path() }}/movimentos/saidaSolicitantes',
                 data: {
                     'cliente': cliente,
                 },
