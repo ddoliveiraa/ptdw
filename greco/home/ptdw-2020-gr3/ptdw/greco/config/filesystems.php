@@ -48,13 +48,6 @@ return [
             'root' => storage_path('app'),
         ],
 
-        'images' => [
-            'driver' => 'sftp',
-            'root' => storage_path('/home/ptdw-2020-gr3/ptdw/greco/storage/app/images'),
-            'url' => env('APP_URL').'/storage',
-            'visibility' => 'public',
-        ],
-
         'public' => [
             'driver' => 'local',
             'root' => storage_path('/ptdw-2020-gr3/app/public'),

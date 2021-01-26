@@ -109,7 +109,7 @@ class ProdutoController extends Controller
 
             if($fileName){
                 $imageName = time().'.'.$request->produto_foto->extension();  
-                $request->produto_foto->move(public_path('images'), $imageName);
+                $request->produto_foto->storeAs('/images', $imageName);
             }
 
             $Produto->save();

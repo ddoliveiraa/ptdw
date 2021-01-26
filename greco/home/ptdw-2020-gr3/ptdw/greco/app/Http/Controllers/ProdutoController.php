@@ -13,6 +13,7 @@ use App\Models\recomendacoe;
 use App\Models\advertencia;
 use Carbon;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 
 class ProdutoController extends Controller
@@ -46,7 +47,7 @@ class ProdutoController extends Controller
             $Produto->stock_min = request('produto_stock_minimo');
             $Produto->condicoes_armazenamento = request('produto_armario');
             $Produto->ventilado = request('customSwitch1');
-            
+            $Produto->ativo = True;
             $Produto->save();
 
             $ids_pictogramas = request('ids_pictogramas');
@@ -82,8 +83,6 @@ class ProdutoController extends Controller
         
     }
 
-    
-
     public function storeNaoQuimico(Request $request){
         
         //VALIDAÇÂO
@@ -96,6 +95,7 @@ class ProdutoController extends Controller
         if ($validator->fails()) {
             return redirect('produtos/add')->withErrors($validator)->withInput();
         }else{
+            
             $fileName = request('produto_foto');
 
             //ADD NA BD
@@ -109,7 +109,7 @@ class ProdutoController extends Controller
 
             if($fileName){
                 $imageName = time().'.'.$request->produto_foto->extension();  
-                $request->produto_foto->move(public_path('images'), $imageName);
+                $request->produto_foto->storeAs('/images', $imageName);
             }
 
             $Produto->save();
@@ -135,7 +135,6 @@ class ProdutoController extends Controller
    */
     public function getProdutos(Request $request)
     {
-
         $tipo = $request->get("tipo");
 
         ## Read value
@@ -212,7 +211,7 @@ class ProdutoController extends Controller
         $data_arr = array();
 
         foreach ($records as $record) {
-            $id = "<a href='/ficha/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+            $id = "<a href='".public_path()."/ficha/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
             $designacao = $record->designacao;
             $formula = $record->formula;
             $CAS = $record->CAS;
@@ -275,8 +274,7 @@ class ProdutoController extends Controller
     public function show(Produto $produto)
     {
         $time = Carbon\Carbon::now();
-        $entradas = Entrada::where('id_inventario', $produto->id)->get();
-        return view('ficha.show', compact('produto', 'entradas', 'time'));
+        return view('ficha.show', compact('produto', 'time'));
     }
 
     /**
@@ -309,7 +307,6 @@ class ProdutoController extends Controller
 
     public function updateProdutoQ(Request $request, Produto $Produto)
     {
-        // dd($request->all());
         //VALIDAÇÂO
         $validator = Validator::make($request->all(), [
             'produto_designacao' => 'required',
