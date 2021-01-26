@@ -36,7 +36,6 @@ Route::post('/produtos_nq', 'App\Http\Controllers\ProdutoController@storeNaoQuim
 
 //Ficha
 Route::get('/ficha/{produto}', 'App\Http\Controllers\ProdutoController@show');
-//Route::get('/image', 'App\Http\Controllers\ProdutoController@getImage');
 Route::get('/ficha/editar/{produtos}', 'App\Http\Controllers\ProdutoController@edit');
 Route::get('/ficha/editar_nq/{produtos}', 'App\Http\Controllers\ProdutoController@edit_nq');
 Route::put('/editar/produtos_q/{produtos}', 'App\Http\Controllers\ProdutoController@updateProdutoQ');

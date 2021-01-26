@@ -128,7 +128,7 @@
                                             </div>
                                         @else
                                             <div class="pictogramas">
-                                                <img src="{{ public_path('images') }}\{{ $produto->foto }}" alt="">
+                                                <img src="{{ public_path('images') }}\{{ $produto->foto }}" alt="{{ $produto->nome }}">
                                             </div>
                                         @endif 
                                     </div>
@@ -258,20 +258,6 @@
 
     <script>
         $(function() {
-
-            function getImage(){
-                $.ajax({
-                    type: 'get',
-                    url: '{{ public_path() }}/image',
-                    data: {
-                        'produto': '{{$produto->foto}}',
-                    },
-                    success: function (data) {
-                        $('#pictogramas').append("<img src='data'/>");
-                    }
-                });
-            }
-
 
             if('{{ Session::get('status')}}'==='ok'){
                  toastr["success"]("Produto editado com sucesso.", "Produto editado")

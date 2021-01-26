@@ -275,24 +275,10 @@ class ProdutoController extends Controller
 
     public function show(Produto $produto)
     {
-        /*
-        $path = storage_path('app/images/'.$produto->foto);
-        $image = file($path);
-        */
         $image = $produto->foto;
         $time = Carbon\Carbon::now();
         return view('ficha.show', compact('produto', 'time', 'image'));
     }
-    /*
-    public function getImage(Produto $produto)
-    { 
-        $produto = $request->produto;
-        $path = storage_path('app/images/'.$produto->foto);
-
-        if (file_exists($path)) {
-            return file($path);
-        }
-    }*/
 
     /**
      * Show the form for editing the specified resource.
