@@ -102,13 +102,13 @@ class ProdutoController extends Controller
             $Produto = new Produto();
             $Produto->familia = 2;
             $Produto->designacao = request('produto_designacao_nq');
-            $Produto->foto = $fileName;
             $Produto->sub_familia = request('produto_subfamilia_nq');
             $Produto->stock_min = request('produto_stock_minimo_nq');
             $Produto->ativo = True;
 
             if($fileName){
-                $imageName = time().'.'.$request->produto_foto->extension();  
+                $imageName = time().'.'.$request->produto_foto->extension(); 
+                $Produto->foto = $imageName;
                 $request->produto_foto->storeAs('/images', $imageName);
             }
 
@@ -273,8 +273,9 @@ class ProdutoController extends Controller
 
     public function show(Produto $produto)
     {
+        $foto = Storage::get('images/'.$produto->foto);
         $time = Carbon\Carbon::now();
-        return view('ficha.show', compact('produto', 'time'));
+        return view('ficha.show', compact('produto', 'time', 'foto'));
     }
 
     /**

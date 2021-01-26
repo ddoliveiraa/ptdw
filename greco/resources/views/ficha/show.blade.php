@@ -128,7 +128,7 @@
                                             </div>
                                         @else
                                             <div class="pictogramas">
-                                                <img src="{{ public_path() }}{{ $produto->foto }}" alt="{{ $produto->designacao }}">
+                                                <img src="{{ $foto }}" alt="{{ $foto }}">
                                             </div>
                                         @endif 
                                     </div>
