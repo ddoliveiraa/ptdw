@@ -159,14 +159,14 @@
         function setEmbalagens(produto){
             $.ajax({
                 type: 'get',
-                url:  '{{ public_path() }}/movimentos/saida/getEmbalagensProdutos',
+                url: '{{ public_path() }}/movimentos/saida/getEmbalagensProdutos',
                 data: {
                     'produto': produto,
                 },
                 success: function (data) {
                     $("#n_embalagem").empty();
                     $('#n_embalagem').attr("disabled", false);
-
+                    console.log(produto)
                     data.forEach(function(d) {
                         $("#n_embalagem").append(new Option(d.id_inventario+"-"+d.id_ordem, d.id));
                     });
@@ -177,7 +177,7 @@
             });
         }
 
-        $("#produto").change(function() {       
+        $("#produto").change(function() { 
             setEmbalagens($('#produto').val());
         });
 

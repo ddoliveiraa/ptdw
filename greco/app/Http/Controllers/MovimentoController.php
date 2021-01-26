@@ -204,12 +204,13 @@ class MovimentoController extends Controller
     {
         if ($request->ajax()) {
             $id_produto = $request->produto;
-
+            
             $entradas = Entrada::whereNotExists(function ($query) use ($id_produto) {
                 $query->select(DB::raw(1))
                     ->from('saidas')
-                    ->whereRaw('entradas.id_ordem = saidas.id_ordem');
-            })->where('entradas.id_inventario', '=', $id_produto)->orderBy('entradas.id_ordem')->get();
+                    ->whereRaw('entradas.id_ordem = saidas.id_ordem')
+                    ->whereRaw('entradas.id_inventario = saidas.id_produto');
+            })->where('id_inventario', '=', $id_produto)->orderBy('id_ordem')->get();
 
             return $entradas;
         }
