@@ -18,7 +18,7 @@ return [
     'registar saida' => 'Log Exit',
     'historico' => 'History',
     'clientes' => 'Clients',
-    'operadores' => 'Operatores',
+    'operadores' => 'Operators',
     'fornecedores' => 'Suppliers',
     'armazem' => 'Warehouse',
     'cliente' => 'Client',
@@ -42,6 +42,7 @@ return [
     'voltar' => 'Go Back',
     'aplicar' => 'Apply',
     'filtrar' => 'Filter by',
+    'novo' => 'New',
 
     /* Pesquisa*/
     'pesquisa' => 'Search',
@@ -89,9 +90,6 @@ return [
     'TAmbiente' => 'In Ambient Temperatures',
     'TAlta' => 'In High Temperatures',
     'TMAlta' => 'In Extremely High Temperatures',
-    'metal' => 'Metal',
-    'vidro' => 'Glass',
-    'plastico' => 'Plastic',
     'outro' => 'Other',
 
 
@@ -154,7 +152,7 @@ return [
     'fornecedor' => 'Supplier',
     'cliente' => 'Client',
     'n de ordem' => 'Order Number',
-    'embalagem' => 'Packing',
+    'embalagem' => 'Package',
     'localização' => 'Location',
     'data registo' => 'Registration Date',
     'movimento' => 'Movement',
@@ -174,13 +172,13 @@ return [
 
     'historico operadores' => 'Operator History',
     'operacao' => 'Operation',
-    'data-operacao' => 'Operations Date',
+    'data-operacao' => 'Operation Date',
     'lista' => 'Operators List',
-    'novo' => 'New',
+    
 
     /*Armazém*/
     'produtos-quimicos' => 'Chemical Products',
-    'produtos-n-quimicos' => 'Non-Chemicals Products',
+    'produtos-n-quimicos' => 'Non-Chemical Products',
     'localizacoes' => 'Locations',
 
     /*Date Pickers*/
