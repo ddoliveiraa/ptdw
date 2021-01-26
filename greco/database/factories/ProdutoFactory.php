@@ -32,7 +32,7 @@ class ProdutoFactory extends Factory
             //'anexo_sds'=> $this -> faker -> file($sourceDir = '/tmp', $targetDir = '/tmp'),
             // 'stock'=> $this -> faker -> name,
             'stock_min'=> $this -> faker -> numberBetween($min = 1, $max = 10),
-            'foto'=> $this -> faker -> imageUrl(200, 200, 'cats'),
+            'foto'=> '/dist/img/placeholder.png',
             'sub_familia'=> $this -> faker -> numberBetween($min = 1, $max = 4), 
             'ativo' => 1
         ];

@@ -12,21 +12,17 @@ class Cliente extends Model
 
     public function responsaveis()
     {
-        return $this->hasMany(Responsavel::class);
+        return $this->hasMany(Responsavel::class, 'id_cliente');
     }
 
     public function solicitantes()
     {
-        return $this->hasMany(Solicitante::class);
+        return $this->hasMany(Solicitante::class, 'id_cliente');
     }
 
     public function saidas()
     {
-        return $this->hasMany(Saida::class);
+        return $this->hasMany(Saida::class, 'id_cliente');
     }
 
-    public function entradas()
-    {
-        return $this->hasMany(Entrada::class);
-    }
 }

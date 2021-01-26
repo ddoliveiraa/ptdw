@@ -61,7 +61,7 @@ class ClienteController extends Controller
         $data_arr = array();
 
         foreach ($records as $record) {
-            $id = "<a href='/~ptdw-2020-gr3/clientes/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+            $id = "<a href='".public_path()."/clientes/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
             $designacao = $record->designacao;
             $created_at = date('d/m/Y', strtotime($record->created_at));
 
@@ -92,9 +92,7 @@ class ClienteController extends Controller
 
     public function show(Cliente $cliente)
     {
-        $responsaveis = Responsavel::where('id_cliente', $cliente->id)->get();
-        $solicitantes = Solicitante::where('id_cliente', $cliente->id)->get();
-        return view('clientes.show',compact('cliente','responsaveis','solicitantes'));
+        return view('clientes.show',compact('cliente'));
     }
 
     /**

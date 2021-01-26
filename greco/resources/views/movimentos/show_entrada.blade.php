@@ -279,12 +279,12 @@
                             </div>
 
                             <div class="card-footer">
-                                <div class="row">
+                                <div class="row justify-content-between">
                                     <div class="col-md-3">
                                         <a href="{{ public_path() }}/movimentos/historico" role="button"
                                             class="btn btn-block btn-default">{{ __('lang.voltar') }}</a>
                                     </div>
-                                    <div class="ml-auto col-3">
+                                    <div class="col-md-3">
                                         <a href="{{ public_path() }}/movimentos/editar/{{$entrada->id}}" role="button"
                                             class="btn btn-block btn-secondary">{{ __('lang.editar') }}</a>
                                     </div>

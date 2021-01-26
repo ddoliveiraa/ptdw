@@ -186,7 +186,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($entradas as $entrada)
+                                @foreach ($produto->entradas as $entrada)
                                     @if(empty($entrada->data_termino))  
                                             <tr>
                                                 <td>{{ $entrada->capacidade }} ml</td>

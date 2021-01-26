@@ -135,7 +135,6 @@ class ProdutoController extends Controller
    */
     public function getProdutos(Request $request)
     {
-
         $tipo = $request->get("tipo");
 
         ## Read value
@@ -212,7 +211,7 @@ class ProdutoController extends Controller
         $data_arr = array();
 
         foreach ($records as $record) {
-            $id = "<a href='/~ptdw-2020-gr3/ficha/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+            $id = "<a href='".public_path()."/ficha/$record->id'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
             $designacao = $record->designacao;
             $formula = $record->formula;
             $CAS = $record->CAS;
@@ -275,8 +274,7 @@ class ProdutoController extends Controller
     public function show(Produto $produto)
     {
         $time = Carbon\Carbon::now();
-        $entradas = Entrada::where('id_inventario', $produto->id)->get();
-        return view('ficha.show', compact('produto', 'entradas', 'time'));
+        return view('ficha.show', compact('produto', 'time'));
     }
 
     /**
@@ -309,7 +307,6 @@ class ProdutoController extends Controller
 
     public function updateProdutoQ(Request $request, Produto $Produto)
     {
-        dd($request->all());
         //VALIDAÇÂO
         $validator = Validator::make($request->all(), [
             'produto_designacao' => 'required',

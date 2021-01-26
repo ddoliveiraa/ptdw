@@ -40,7 +40,7 @@
             <div class="row">
             <div class="col-md-8 offset-md-2">
                     <div class="card card-primary">
-                    <form method="POST" action="/editar/produtos_q/{{$produtos->id}}">
+                    <form method="POST" action="{{ public_path() }}/editar/produtos_q/{{$produtos->id}}">
                         @csrf
                         @method('PUT')         
                             <div class="card-body">
@@ -182,7 +182,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form method="POST" action="/editar/produtos_q/{{$produtos->id}}">
+                    <form method="POST" action="{{ public_path() }}/editar/produtos_q/{{$produtos->id}}">
                          @csrf <!-- Cross Site Request Forgery -->
                          @method('PUT')   
                         <div class="modal-body">
@@ -195,7 +195,7 @@
                                                     <li>
                                                         <input type="checkbox" name="picto" id="cb{{ $p->id }}" value="{{ $p->nome }}" @foreach($produtos->pictogramas as $pic) @if($pic->id == $p->id)
                                                         checked @endif @endforeach required/>
-                                                        <label for="cb{{ $p->id }}"><img src="{{ $p->imagem }}" /><p class="text-center">{{ $p->nome }}</p></label>
+                                                        <label for="cb{{ $p->id }}"><img src="{{ public_path() }}{{ $p->imagem }}" /><p class="text-center">{{ $p->codigo }}</p></label>
                                                     </li>
                                                 @endforeach
                                             </ul>
@@ -283,7 +283,7 @@ let pictogramas = [];
          $('#guardar').on('click', function() {
 
         $.ajax({
-            url: '/editar/produtos_q/{{$produtos->id}}',
+            url: '{{ public_path() }}/editar/produtos_q/{{$produtos->id}}',
             type: "Get",
             dataType: 'json', //this will expect a json response
             data:{pictograma:$('#produto_pictogramas').val()}, 

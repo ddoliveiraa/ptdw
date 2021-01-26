@@ -52,7 +52,7 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <!-- form start -->
-                        <form method="POST" action="/operadores/editar/editado/{{$operador->id}}">
+                        <form method="POST" action="{{ public_path() }}/operadores/editar/editado/{{$operador->id}}">
                             @csrf
                             @method('PUT')  
                             <div class="card-body">
@@ -114,12 +114,12 @@
                             </div>
 
                             <div class="card-footer">
-                                <div class="row">
+                                <div class="row justify-content-between">
                                     <div class="col-md-3">
                                         <a href="{{ public_path() }}/operadores/{{$operador->id}}" role="button"
                                             class="btn btn-block btn-default">{{ __('lang.cancelar') }}</a>
                                     </div>
-                                    <div class="ml-auto col-3">
+                                    <div class="col-md-3">
                                         <button type="submit" class="btn btn-block btn-secondary">{{ __('lang.guardar') }}</button>
                                     </div>
                                 </div>

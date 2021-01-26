@@ -13,12 +13,12 @@ class Produto extends Model
 
    public function entradas() 
    {
-      return $this->belongsToMany(Entrada::class);
+      return $this->hasMany(Entrada::class, 'id_inventario');
    }
 
    public function saidas() 
    {
-      return $this->belongsToMany(Saida::class);
+      return $this->hasMany(Saida::class , 'id_produto');
    }
 
    public function get_fam()

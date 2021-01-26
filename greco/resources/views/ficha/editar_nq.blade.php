@@ -40,7 +40,7 @@
             <div class="row">
             <div class="col-md-8 offset-md-2">
                     <div class="card card-primary">
-                    <form method="POST" action="/editar/produtos_nq/{{$produtos->id}}">
+                    <form method="POST" action="{{ public_path() }}/editar/produtos_nq/{{$produtos->id}}">
                         @csrf
                         @method('PUT')         
                             <div class="card-body">
@@ -74,7 +74,7 @@
                             </div>
 
                             <div class="card-footer">
-                                <div class="row">
+                                <div class="row justify-content-between">
                                     <div class="col-md-3">
                                         <a href="{{ public_path() }}/ficha" role="button"
                                             class="btn btn-block btn-default" tabindex="11">{{ __('lang.cancelar') }}</a>

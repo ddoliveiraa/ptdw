@@ -107,6 +107,8 @@ $("#pictogramas").show(1);
 $('#filter').click(function () {
     $('#familia').val('Familia');
     $('#sub-familia').val('Sub-Familia');
+    $('#sub-familia').hide(1);
+    $("#pictogramas").show(1);
     $('#movimento').val('Movimento');
     $('input[type=checkbox]').prop('checked', false);
     $('#intervalo').val('Periodo');
@@ -119,6 +121,11 @@ $('#filter').click(function () {
 $("#pictogramas").click(function () {
     $("#modalSelecionarPictograma").modal("show");
 });
+$('input[type=checkbox]').on('change', function(e) {
+    if ($('input[type=checkbox]:checked').length > 1) {
+        $(this).prop('checked', false);
+    }
+});
 $("#aplicar").click(function () {
     entradas.draw();
     saidas.draw();
@@ -130,6 +137,7 @@ $('#familia').change(function () {
     if (familia == "Não Químico") {
         $('#sub-familia').show(1);
         $("#pictogramas").hide(1);
+        $('input[type=checkbox]').prop('checked', false);
     } else {
         $('#sub-familia').hide(1);
         $('#sub-familia').val('Sub-Familia');
@@ -140,6 +148,13 @@ $('#familia').change(function () {
 });
 $('#sub-familia').change(function () {
     entradas.draw();
+    saidas.draw();
+});
+
+$('#entrada-tab').click(function(){
+    entradas.draw();
+});
+$('#saida-tab').click(function(){
     saidas.draw();
 });
 
@@ -196,5 +211,12 @@ saidas.on('preXhr.dt', function (e, settings, data) {
     data.inicio = $('#intervalo').data('daterangepicker').startDate.format("DD/MM/YYYY");
     data.fim = $('#intervalo').data('daterangepicker').endDate.format("DD/MM/YYYY");
     data.data_val = $('#intervalo').val();
+
+    var pictogramas = [];
+    $('input[type=checkbox]:checked').each(function(){
+        pictogramas.push($(this).val());
+    });
+    
+    data.pictogramas = pictogramas;
 });
 

@@ -43,7 +43,7 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <!-- form start -->
-                        <form method="POST" action="/operadores/add/addOperador">
+                        <form method="POST" action="{{ public_path() }}/operadores/add/addOperador">
                             @csrf
                             <div class="card-body">
                                 <div class="row">
@@ -109,12 +109,12 @@
                             </div>
 
                             <div class="card-footer">
-                                <div class="row">
+                                <div class="row justify-content-between">
                                     <div class="col-md-3">
                                         <a href="{{ public_path() }}/operadores" role="button"
                                             class="btn btn-block btn-default">{{ __('lang.cancelar') }}</a>
                                     </div>
-                                    <div class="ml-auto col-3">
+                                    <div class="col-md-3">
                                         <button type="submit" class="btn btn-block btn-secondary">{{ __('lang.guardar') }}</button>
                                     </div>
                                 </div>

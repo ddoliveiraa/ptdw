@@ -42,7 +42,7 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <!-- form start -->
-                        <form method="POST" action="/clientes/editado/{{$cliente->id}}">
+                        <form method="POST" action="{{ public_path() }}/clientes/editado/{{$cliente->id}}">
                         @csrf
                         @method('PUT') 
                             <div class="card-body">
@@ -91,12 +91,12 @@
                     
 
                     <div class="card-footer">
-                        <div class="row">
+                        <div class="row justify-content-between">
                             <div class="col-md-3">
                                 <a href="{{ public_path() }}/clientes/{{$cliente->id}}" role="button"
                                     class="btn btn-block btn-default">{{ __('lang.cancelar') }}</a>
                             </div>
-                            <div class="ml-auto col-3">
+                            <div class="col-md-3">
                                 <input id="ids_responsaveis" name="ids_responsaveis" type="hidden">
                                 <input id="ids_solicitantes" name="ids_solicitantes" type="hidden">
                             <button id="guardar" type="submit"
