@@ -59,7 +59,7 @@
                             <table id="clientes" class="table table-bordered table-striped">
                                 <thead class="bg-dark">
                                     <tr>
-                                        <th>{{ __('lang.designacao') }}</th>
+                                        <th>{{ __('lang.entidade') }}</th>
                                         <th>{{ __('lang.data de registo') }}</th>
                                         <th></th>
                                     </tr>

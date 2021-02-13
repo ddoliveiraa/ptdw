@@ -1,4 +1,17 @@
 /*CUSTOM*/
+/*Layout*/
+
+.navbar-grad {
+    background: linear-gradient(180deg, rgba(52, 58, 64, 1) 0%, rgba(50, 75, 80, 1) 57%, rgba(0, 48, 68, 1) 100%);
+}
+
+.nav-treeview{
+    background-color: rgba(255, 255, 255, 0.07) !important;
+    border-radius: 0.25rem;
+}
+.nav-treeview .nav-item .active{
+    background-color: rgba(255, 255, 255, 0.7) !important;
+}
 
 /*HOME*/
 
@@ -8,10 +21,6 @@
     height: 100%;
     box-shadow: none;
     border-radius: 0.3rem 0 0 0.3rem;
-}
-
-.navbar-grad {
-    background: linear-gradient(180deg, rgba(52, 58, 64, 1) 0%, rgba(50, 75, 80, 1) 57%, rgba(0, 48, 68, 1) 100%);
 }
 
 /*----------------PRODUTOS----------------*/

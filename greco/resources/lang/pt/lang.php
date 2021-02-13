@@ -134,8 +134,8 @@ return [
     'data' => 'Data',
     'data de registo' => 'Data de Registo',
     'observacoes' => 'Observações',
-    'familia' => 'Familia',
-    'sub-familia' => 'Sub-Familia',
+    'familia' => 'Família',
+    'sub-familia' => 'Sub-Família',
     'vidro' => 'Vidro',
     'plastico' => 'Plástico',
     'metal' => 'Metal',
@@ -158,9 +158,11 @@ return [
     'movimento' => 'Movimento',
     'operador' => 'Operador',
     'intervalo' => 'Intervalo',
+    'limpar' => 'Limpar',
 
     /*Clientes*/
     'responsavel' => 'Responsável',
+    'entidade' => 'Entidade',
     
 
     /*Operadores*/

@@ -39,9 +39,9 @@ var produtos = $("#tabelaprodutos").DataTable({
         { data: 'formula' },
         { data: 'CAS' },
         { data: 'familia' },
-        { data: 'stock' },
-        { data: 'stock_min' },
-        { data: 'id' },
+        { data: 'stock', width: '1.25rem' },
+        { data: 'stock_min', width: '1.25rem' },
+        { data: 'id', width: '3.75rem'},
     ],
     "language": {
         "url": datatables_lang,
@@ -51,6 +51,7 @@ var produtos = $("#tabelaprodutos").DataTable({
         [10, 25, 50, -1],
         [10, 25, 50, todo]
     ],
+    "fixedColmuns": true,
     "autoWidth": false,
     "buttons": [{
         extend: 'csvHtml5',

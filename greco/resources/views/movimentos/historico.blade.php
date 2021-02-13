@@ -60,7 +60,7 @@
                                 <input type="text" class="col-md-12 form-control" id="intervalo">
                                 <button id="pictogramas"
                                     class="col-md-12 btn btn-secondary">{{ __('lang.pictograma') }}s</button>
-                                <button id="filter" class="btn btn-danger btn-block">Reset</button>
+                                <button id="filter" class="btn btn-danger btn-block">{{ __('lang.limpar') }}</button>
                             </div>
                         </div>
                     </div>

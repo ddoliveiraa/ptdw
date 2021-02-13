@@ -37,7 +37,7 @@ var entradas = $("#entradas").DataTable({
         { data: 'operador' },
         { data: 'familia' },
         { data: 'subfamilia' },
-        { data: 'link' },
+        { data: 'link', width: '3.75rem' },
     ],
     "language": {
         "url": datatables_lang,
@@ -45,6 +45,7 @@ var entradas = $("#entradas").DataTable({
     "order": [[5, 'desc']],
     "responsive": true,
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, todo]],
+    "fixedColmuns":true,
     "autoWidth": false,
     "columnDefs": [{
         "targets": [2, 7, 8, 10],
@@ -166,15 +167,15 @@ var saidas = $("#saidas").DataTable({
     "serverSide": true,
     "ajax": isServer + "/movimentos/historico/getSaidas/",
     "columns": [
-        { data: 'designacao' },
-        { data: 'id_produto' },
+        { data: 'designacao', width: '150px'},
+        { data: 'id_produto', width: '20px' },
         { data: 'cliente' },
         { data: 'solicitante' },
         { data: 'operador' },
         { data: 'data' },
         { data: 'familia' },
         { data: 'subfamilia' },
-        { data: 'link' },
+        { data: 'link' , width: '3.75rem'},
     ],
     "language": {
         "url": datatables_lang,
@@ -182,7 +183,8 @@ var saidas = $("#saidas").DataTable({
     "order": [[5, 'desc']],
     "responsive": true,
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, todo]],
-    "autoWidth": false,
+    "fixedColmuns": true,
+    "autoWidth":false,
     "columnDefs": [{
         "targets": [6,7],
         "visible": false

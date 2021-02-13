@@ -158,9 +158,11 @@ return [
     'movimento' => 'Movement',
     'operador' => 'Operator',
     'intervalo' => 'Date',
+    'limpar' => 'Clear',
     
     /*Clientes*/
     'responsavel' => 'Person In Charge',
+    'entidade' => 'Entity',
 
 
     /*Operadores*/
