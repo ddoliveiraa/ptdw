@@ -37,7 +37,7 @@ var entradas = $("#entradas").DataTable({
         { data: 'operador' },
         { data: 'familia' },
         { data: 'subfamilia' },
-        { data: 'link', width: '3.75rem' },
+        { data: 'link', width: '5rem', orderable: false},
     ],
     "language": {
         "url": datatables_lang,
@@ -66,7 +66,8 @@ var entradas = $("#entradas").DataTable({
     ],
     "initComplete": function () {
         entradas.buttons().container().appendTo('#entradas_filter');
-        $('#entradas_length').appendTo('#entradas_filter');  
+        $('#entradas_length').appendTo('#entradas_filter');
+        $(':input').removeClass("form-control-sm custom-select custom-select-sm"); 
     }
 });
 entradas.on('preXhr.dt', function (e, settings, data) {
@@ -175,7 +176,7 @@ var saidas = $("#saidas").DataTable({
         { data: 'data' },
         { data: 'familia' },
         { data: 'subfamilia' },
-        { data: 'link' , width: '3.75rem'},
+        { data: 'link', width: '5rem', orderable: false},
     ],
     "language": {
         "url": datatables_lang,
@@ -205,6 +206,7 @@ var saidas = $("#saidas").DataTable({
     "initComplete": function () {
         saidas.buttons().container().appendTo('#saidas_filter');
         $('#saidas_length').appendTo('#saidas_filter');
+        $(':input').removeClass("form-control-sm custom-select custom-select-sm");
     }
 });
 saidas.on('preXhr.dt', function (e, settings, data) {

@@ -24,6 +24,12 @@
 }
 
 /*----------------PRODUTOS----------------*/
+#tipo{
+    float: none;
+    display: inline-block;
+    width: auto;
+    margin-left: 0.5rem;
+}
 
 .check-pictogram ul {
     list-style-type: none;
@@ -185,6 +191,13 @@ div.dataTables_processing{
     margin-left: 0.6rem;
 }
 
+.buttons-html5{
+    margin-right: 0.4rem !important;
+    border-radius: 0.25rem !important;
+}
+.buttons-print{
+    border-radius: 0.25rem !important;
+}
 
 .page-item.active .page-link {
     color: #fff !important;

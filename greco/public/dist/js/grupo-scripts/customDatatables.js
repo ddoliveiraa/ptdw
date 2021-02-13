@@ -19,6 +19,7 @@ if (locale == "PT") {
 }
 
 
+
 var split = window.location.href.split("/");
 var isServer = "";
 for (x of split){
@@ -26,6 +27,8 @@ for (x of split){
         isServer = "/~ptdw-2020-gr3";
     }
 }
+
+$
 
 
 var produtos = $("#tabelaprodutos").DataTable({
@@ -41,7 +44,7 @@ var produtos = $("#tabelaprodutos").DataTable({
         { data: 'familia' },
         { data: 'stock', width: '1.25rem' },
         { data: 'stock_min', width: '1.25rem' },
-        { data: 'id', width: '3.75rem'},
+        { data: 'id', width: '5rem', orderable: false},
     ],
     "language": {
         "url": datatables_lang,
@@ -69,8 +72,8 @@ var produtos = $("#tabelaprodutos").DataTable({
     "initComplete": function () {
         produtos.buttons().container().appendTo('div.toolbar');
         var selects = $("<select></select>").attr('id', 'tipo');
-        selects.addClass('form-control select col-md-1');
-        $('div.toolbar').append(selects);
+        selects.addClass('form-control form-control-sm select');
+        $(selects).insertAfter('input.form-control.form-control-sm');
         $('#tipo').append(new Option(Ttodos, "todos"));
         $('#tipo').append(new Option(Tquimico, "quimico"));
         $('#tipo').append(new Option(TnaoQuimico, "naoquimico"));
@@ -82,6 +85,8 @@ var produtos = $("#tabelaprodutos").DataTable({
         $('#tipo').change(function () {
             produtos.draw();
         });
+        $(':input').removeClass("form-control-sm custom-select custom-select-sm");
+        $
     }
 });
 
@@ -99,7 +104,7 @@ var clientes = $("#clientes").DataTable({
     "columns": [
         {data: 'designacao'},
         {data: 'created_at'},
-        {data: 'id'},
+        {data: 'id', width: '5rem', orderable: false},
     ],
     "language": {
         "url": datatables_lang,
@@ -127,6 +132,7 @@ var clientes = $("#clientes").DataTable({
     "initComplete": function () {
         clientes.buttons().container().appendTo('div.toolbar');
         $('#clientes_length').appendTo('#clientes_filter');
+        $(':input').removeClass("form-control-sm custom-select custom-select-sm");
     }
 });
 
@@ -144,7 +150,7 @@ var fornecedores = $("#fornecedores").DataTable({
         {data: 'telefone'},
         {data: 'email'},
         {data: 'NIF'},
-        { data: 'id'},
+        { data: 'id', width: '5rem', orderable: false},
     ],
     "language": {
         "url": datatables_lang,
@@ -172,6 +178,7 @@ var fornecedores = $("#fornecedores").DataTable({
     "initComplete": function () {
         fornecedores.buttons().container().appendTo('div.toolbar');
         $('#fornecedores_length').appendTo('#fornecedores_filter');
+        $(':input').removeClass("form-control-sm custom-select custom-select-sm");
     }
 });
 
@@ -207,7 +214,7 @@ var OpIndex = $("#operadores_index").DataTable({
         {data: 'perfil'},
         {data: 'data_criacao'},
         {data: 'data_desativacao'},
-        {data: 'id'},
+        {data: 'id', width: '5rem', orderable: false},
     ],
     "language": {
         "url": datatables_lang,
@@ -235,6 +242,7 @@ var OpIndex = $("#operadores_index").DataTable({
     "initComplete": function () {
         OpIndex.buttons().container().appendTo('div.toolbar');
         $('#operadores_index_length').appendTo('#operadores_index_filter');
+        $(':input').removeClass("form-control-sm custom-select custom-select-sm");
     }
 });
 
@@ -249,7 +257,7 @@ var OpHis = $("#operadores_historico").DataTable({
         {data: 'perfil'},
         {data: 'operacao'},
         {data: 'data'},
-        {data: 'id'},
+        {data: 'id', width: '5rem', orderable: false},
     ],
     "language": {
         "url": datatables_lang,
@@ -278,6 +286,7 @@ var OpHis = $("#operadores_historico").DataTable({
     "initComplete": function () {
         OpHis.buttons().container().appendTo('div.toolbar');
         $('#operadores_historico_length').appendTo('#operadores_historico_filter');
+        $(':input').removeClass("form-control-sm custom-select custom-select-sm");
     }
 });
 
@@ -292,7 +301,7 @@ var operador_show = $('#operadores_show').DataTable({
     "columns": [
         {data: 'data'},
         {data: 'operacao'},
-        {data: 'id'},
+        {data: 'id', width: '5rem', orderable: false},
     ],
     "language": {
         "url": datatables_lang,
