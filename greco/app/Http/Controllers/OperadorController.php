@@ -137,9 +137,11 @@ class OperadorController extends Controller
             $operacao = $record->get_operacao->operacao;
             $data = date('d/m/Y', strtotime($record->data));
             if($operacao == "Registo Entrada"){
-                $id = "<a href='".public_path()."/movimentos/show_entrada/$record->id_registo'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+                $id = "<a href='".public_path()."/movimentos/show_entrada/$record->id_registo'> Ver Entrada &nbsp<i class='fa fa-arrow-right'></i></a>";
+                $operacao = "Entrada";
             } else {
-                $id = "<a href='".public_path()."/movimentos/show_saida/$record->id_registo'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+                $id = "<a href='".public_path()."/movimentos/show_saida/$record->id_registo'> Ver Saída &nbsp<i class='fa fa-arrow-right'></i></a>";
+                $operacao = "Saída";
             }
 
             $data_arr[] = array(
@@ -214,9 +216,11 @@ class OperadorController extends Controller
             $operacao = $record->get_operacao->operacao;
             $data = date('d/m/Y', strtotime($record->data));
             if($operacao == "Registo Entrada"){
-                $id = "<a href='".public_path()."/movimentos/show_entrada/$record->id_registo'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+                $id = "<a href='".public_path()."/movimentos/show_entrada/$record->id_registo'> Ver Entrada &nbsp<i class='fa fa-arrow-right'></i></a>";
+                $operacao = "Entrada";
             } else {
-                $id = "<a href='".public_path()."/movimentos/show_saida/$record->id_registo'> Ver Mais &nbsp<i class='fa fa-arrow-right'></i></a>";
+                $id = "<a href='".public_path()."/movimentos/show_saida/$record->id_registo'> Ver Saída &nbsp<i class='fa fa-arrow-right'></i></a>";
+                $operacao = "Saída";
             }
             
             

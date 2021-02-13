@@ -256,8 +256,8 @@ var OpHis = $("#operadores_historico").DataTable({
         {data: 'operador'},
         {data: 'perfil'},
         {data: 'operacao'},
-        {data: 'data'},
-        {data: 'id', width: '5rem', orderable: false},
+        {data: 'data', width: '20px'},
+        {data: 'id', width: '6.5rem', orderable: false},
     ],
     "language": {
         "url": datatables_lang,
@@ -301,7 +301,7 @@ var operador_show = $('#operadores_show').DataTable({
     "columns": [
         {data: 'data'},
         {data: 'operacao'},
-        {data: 'id', width: '5rem', orderable: false},
+        {data: 'id', width: '6.5rem', orderable: false},
     ],
     "language": {
         "url": datatables_lang,
