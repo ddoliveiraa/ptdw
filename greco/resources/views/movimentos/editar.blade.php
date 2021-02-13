@@ -25,6 +25,7 @@
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="{{ public_path() }}">Home</a></li>
                         <li class="breadcrumb-item"><a href="">{{ __('lang.movimentos') }}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ public_path() }}/movimentos/historico">{{ __('lang.historico') }}</a></li>
                         <li class="breadcrumb-item active">{{ __('lang.editar') }} {{ __('lang.entrada') }}</li>
                     </ol>
                 </div>

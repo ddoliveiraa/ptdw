@@ -150,14 +150,12 @@
                                     </div>
 
                                     <div class="card-footer">
-                                        <div class="row justify-content-end">
-                                            <div class="col-md-3">
-                                                <input id="ids_pictogramas" name="ids_pictogramas" value="{{ old('ids_pictogramas') }}" type="hidden">
-                                                <input id="ids_recomendacoes" name="ids_recomendacoes" value="{{ old('ids_recomendacoes') }}" type="hidden">
-                                                <input id="ids_advertencias" name="ids_advertencias" value="{{ old('ids_advertencias') }}" type="hidden">
-                                                <button type="submit"
-                                                    class="btn btn-block btn-secondary">{{ __('lang.guardar') }}</button>
-                                            </div>
+                                        <div class="row justify-content-between">
+                                            <a role="button" class="btn btn-default col-md-3" href="{{ public_path() }}/produtos">{{ __('lang.cancelar') }}</a>
+                                            <input id="ids_pictogramas" name="ids_pictogramas" value="{{ old('ids_pictogramas') }}" type="hidden">
+                                            <input id="ids_recomendacoes" name="ids_recomendacoes" value="{{ old('ids_recomendacoes') }}" type="hidden">
+                                            <input id="ids_advertencias" name="ids_advertencias" value="{{ old('ids_advertencias') }}" type="hidden">
+                                            <button type="submit" class="btn col-md-3 btn-secondary">{{ __('lang.guardar') }}</button>
                                         </div>
                                     </div>
 
@@ -217,11 +215,9 @@
                                     </div>
 
                                     <div class="card-footer">
-                                        <div class="row justify-content-end">
-                                            <div class="col-md-3">
-                                                <button type="submit"
-                                                    id="guardar" class="btn btn-block btn-secondary">{{ __('lang.guardar') }}</button>
-                                            </div>
+                                        <div class="row justify-content-between">
+                                            <a role="button" class="btn btn-default col-md-3" href="{{ public_path() }}/produtos">{{ __('lang.cancelar') }}</a>
+                                            <button type="submit" id="guardar" class="btn btn-secondary col-md-3">{{ __('lang.guardar') }}</button>
                                         </div>
                                     </div>
 
