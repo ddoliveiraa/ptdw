@@ -103,7 +103,7 @@ var clientes = $("#clientes").DataTable({
     "ajax": isServer + "/clientes/getClientes/",
     "columns": [
         {data: 'designacao'},
-        {data: 'created_at'},
+        {data: 'created_at', width: '7.5rem'},
         {data: 'id', width: '5rem', orderable: false},
     ],
     "language": {
