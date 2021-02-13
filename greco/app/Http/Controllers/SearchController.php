@@ -14,7 +14,7 @@ class SearchController extends Controller
         if ($request->ajax()) {
             $s = $request->search;
             if ($request->filtro == "todos") {
-                $data = Produto::where('designacao', 'LIKE', "%$s%")
+                $data = Produto::where('designacao', 'ILIKE', "%$s%")
                     ->orWhere('formula', 'ILIKE', "%$s%")
                     ->orWhere('CAS', 'ILIKE', "%$s%")
                     ->orWhere('id', 'ILIKE', "%$s%")->take(5)->get();
