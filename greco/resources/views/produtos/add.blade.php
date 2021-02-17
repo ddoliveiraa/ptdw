@@ -138,7 +138,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <div class="custom-control custom-switch">
+                                                    <div class="custom-control custom-checkbox">
                                                         <input type="checkbox" class="custom-control-input" name="customSwitch1" id="customSwitch1" value="{{ old('customSwitch1') }}">
                                                         <label class="custom-control-label"
                                                             for="customSwitch1">{{ __('lang.armario ventilado') }}</label>

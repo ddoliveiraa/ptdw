@@ -94,7 +94,7 @@ var produtos = $("#tabelaprodutos").DataTable({
 
 
 
-// Tabelas com pesquisa e botoes de exportar (Clientes.index, Fornecedores.index)
+// Clientes.index
 var clientes = $("#clientes").DataTable({
     "dom": '<"toolbar">frtip l',
     "info": true,
@@ -136,6 +136,7 @@ var clientes = $("#clientes").DataTable({
     }
 });
 
+//Fornecedores.index
 var fornecedores = $("#fornecedores").DataTable({
     "dom": '<"toolbar">frtip l',
     "info": true,
@@ -201,7 +202,7 @@ $('#existencias').DataTable({
 
 });
 
-//Operadores.index
+//Operadores.index operadores
 var OpIndex = $("#operadores_index").DataTable({
     "dom": '<"toolbar">frtip l',
     "info": true,
@@ -240,12 +241,13 @@ var OpIndex = $("#operadores_index").DataTable({
     },
     ],
     "initComplete": function () {
-        OpIndex.buttons().container().appendTo('div.toolbar');
+        OpIndex.buttons().container().appendTo('#operadores_index_filter');
         $('#operadores_index_length').appendTo('#operadores_index_filter');
         $(':input').removeClass("form-control-sm custom-select custom-select-sm");
     }
 });
 
+//Operadores.index historico total
 var OpHis = $("#operadores_historico").DataTable({
     "dom": '<"toolbar">frtip l',
     "info": true,
@@ -284,11 +286,12 @@ var OpHis = $("#operadores_historico").DataTable({
     },
     ],
     "initComplete": function () {
-        OpHis.buttons().container().appendTo('div.toolbar');
+        OpHis.buttons().container().appendTo('#operadores_historico_filter');
         $('#operadores_historico_length').appendTo('#operadores_historico_filter');
         $(':input').removeClass("form-control-sm custom-select custom-select-sm");
     }
 });
+
 
 // Operadores.show
 var operador_show = $('#operadores_show').DataTable({

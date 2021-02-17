@@ -132,8 +132,6 @@
                                             role="button" class="btn btn-block btn-default">{{ __('lang.voltar') }}</a>
                                     </div>
                                     <div class="col-md-3">
-                                        <a href="{{ public_path() }}/movimentos/editar" role="button"
-                                            class="btn btn-block btn-secondary">{{ __('lang.editar') }}</a>
                                     </div>
                                 </div>
                             </div>
