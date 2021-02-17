@@ -186,7 +186,10 @@ div.dataTables_processing{
 }
 
 #entradas_filter .dt-buttons, 
-#saidas_filter .dt-buttons, .dataTables_length {
+#saidas_filter .dt-buttons, 
+#operadores_index_filter .dt-buttons,
+#operadores_historico_filter .dt-buttons,
+.dataTables_length {
     float: right;
     margin-left: 0.6rem;
 }
@@ -228,6 +231,9 @@ div.dataTables_filter {
 /*-----------------Clientes---------------*/
 
 /*----------------Operadores--------------*/
+.float-add-right{
+    float: right;
+}
 
 /*-----------------Armazem----------------*/
 

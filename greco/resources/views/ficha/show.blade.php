@@ -88,7 +88,7 @@
                                             @if ($produto->ventilado == true)
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <div class="custom-control custom-switch">
+                                                        <div class="custom-control custom-checkbox">
                                                             <input type="checkbox" checked data-toggle="toggle" class="custom-control-input" id="customSwitch1"
                                                             disabled tabindex="7">
                                                             <label class="custom-control-label"
@@ -100,7 +100,7 @@
                                             @else
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <div class="custom-control custom-switch">
+                                                        <div class="custom-control custom-checkbox">
                                                             <input type="checkbox" class="custom-control-input" id="customSwitch1"
                                                             disabled tabindex="7">
                                                             <label class="custom-control-label"

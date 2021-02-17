@@ -136,7 +136,7 @@
                                     <div class="col-md-6">
                                     
                                         <div class="form-group">
-                                            <div class="custom-control custom-switch">
+                                            <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" @if($produtos->ventilado == true) checked data-toggle="toggle"  @endif class="custom-control-input" id="customSwitch1" name="customSwitch1" tabindex="10">
                                                 <label class="custom-control-label"
                                                     for="customSwitch1" value="{{old('customSwitch1', $produtos->ventilado) }}">{{ __('lang.armario ventilado') }}</label>

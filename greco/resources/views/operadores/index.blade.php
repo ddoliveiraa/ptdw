@@ -43,39 +43,66 @@
 
     <section class="content">
         <div class="container-fluid">
-
-            <div class="row justify-content-end">
-                <div class="col-md-2 mb-2 mt-2">
-                    <a href="{{ public_path() }}/operadores/historico" class="btn btn-secondary btn-block"
-                        role="button">{{ __('lang.historico') }}</a>
-                </div>
-                <div class="col-md-2 mb-2 mt-2">
-                    <a role="button" href="{{ public_path() }}/operadores/add"
-                        class="btn btn-block btn-secondary">{{ __('lang.adicionar') }}</a>
-                </div>
-            </div>
-
             <div class="row">
                 <div class="col-12">
-                    <div class="card">
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <table id="operadores_index" class="table table-bordered table-striped">
-                                <thead class="bg-dark">
-                                    <tr>
-                                        <th>{{ __('lang.nome') }}</th>
-                                        <th>{{ __('lang.email') }}</th>
-                                        <th>{{ __('lang.perfil') }}</th>
-                                        <th>{{ __('lang.data-criacao') }}</th>
-                                        <th>{{ __('lang.data-desativ') }}</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                            </table>
+                    <ul class="nav nav-tabs" id="OperadoresTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="operador-tab" data-toggle="tab" href="#operador" role="tab"
+                                aria-controls="operador" aria-selected="true">{{ __('lang.operadores') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="historico-tab" data-toggle="tab" href="#historico" role="tab"
+                                aria-controls="historico" aria-selected="false"> {{ __('lang.historico') }}</a>
+                        </li>
+                        <li class="nav-item ml-auto col-2">
+                            <a role="button" href="{{ public_path() }}/operadores/add"
+                                class="btn btn-block btn-secondary ">{{ __('lang.adicionar') }}</a>
+                        </li>
+                    </ul>
+                    <!-- tab-content -->
+                    <div class="tab-content" id="OperadorTabs">
+                        <div class="tab-pane fade show active" id="operador" role="tabpanel" aria-labelledby="operador-tab">
+                            <div class="card">
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <table id="operadores_index" class="table table-bordered table-striped">
+                                        <thead class="bg-dark">
+                                            <tr>
+                                                <th>{{ __('lang.nome') }}</th>
+                                                <th>{{ __('lang.email') }}</th>
+                                                <th>{{ __('lang.perfil') }}</th>
+                                                <th>{{ __('lang.data-criacao') }}</th>
+                                                <th>{{ __('lang.data-desativ') }}</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
                         </div>
-                        <!-- /.card-body -->
+                        <div class="tab-pane fade" id="historico" role="tabpanel" aria-labelledby="historico-tab">
+                            <div class="card">
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <table id="operadores_historico" class="table table-bordered table-striped">
+                                        <thead class="bg-dark">
+                                            <tr>
+                                                <th>{{ __('lang.operador') }}</th>
+                                                <th>{{ __('lang.perfil') }}</th>
+                                                <th>{{ __('lang.operacao') }}</th>
+                                                <th>{{ __('lang.data') }}</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
                     </div>
-                    <!-- /.card -->
                 </div>
                 <!-- /.col -->
             </div>
