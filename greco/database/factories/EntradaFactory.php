@@ -25,7 +25,7 @@ class EntradaFactory extends Factory
             'id_inventario'=> $this -> faker -> numberBetween($min = 1, $max = 300),
             'id_ordem'=> $this -> faker -> numberBetween($min = 1, $max = 20),
             'sala'=> 1,
-            'armario'=> $this -> faker -> numberBetween($min = 1, $max = 2),
+            'armario'=> $this -> faker -> numberBetween($min = 1, $max = 3),
             'prateleira'=> 1 ,
             'fornecedor'=> $this -> faker -> numberBetween($min = 1, $max = 50),
             'marca'=> $this -> faker -> numberBetween($min = 1, $max = 5),

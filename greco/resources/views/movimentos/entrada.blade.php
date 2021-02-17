@@ -251,9 +251,9 @@
                                                         @endif
                                                         @foreach ($ivas as $i)
                                                             @if(old('iva') == $i->id)
-                                                                <option value="{{ $i->id }}" selected>{{ $i->nome*100 }}%</option>
+                                                                <option value="{{ $i->id }}" selected>{{ $i->nome }}%</option>
                                                             @else
-                                                                <option value="{{ $i->id }}">{{ $i->nome*100 }}%</option>
+                                                                <option value="{{ $i->id }}">{{ $i->nome }}%</option>
                                                             @endif
                                                         @endforeach
                                                     </select>
