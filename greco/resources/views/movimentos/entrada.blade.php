@@ -71,11 +71,6 @@
                                                 <div class="form-group">
                                                     <label for="produto">{{ __('lang.produto') }}</label>
                                                     <select id="produto" name="produto" value="{{ old('produto') }}" class="form-control select2bs4" style="width: 100%;" required>
-                                                        @if(Session::get('status')!=='erro_quimico')
-                                                        <option selected disabled>{{ __('lang.selecione o') }}
-                                                            {{ __('lang.produto') }}
-                                                        </option>
-                                                        @endif
                                                         @foreach ($produtos as $p)
                                                             @if(old('produto') == $p->id)
                                                                 <option value="{{ $p->id }}" selected>{{ $p->designacao }}</option>
@@ -109,11 +104,6 @@
                                                     <label for="unidades">{{ __('lang.unidades') }}</label>
                                                     <select id="unidades" name="unidades" class="form-control select2bs4" value="{{ old('unidades') }}" required
                                                         style="width: 100%;">
-                                                        @if(Session::get('status')!=='erro_quimico')
-                                                        <option value="" selected disabled>{{ __('lang.selecionar') }}
-                                                            {{ __('lang.unidades') }}
-                                                        </option>
-                                                        @endif
                                                         @foreach ($unidades as $u)
                                                             @if(old('unidades') == $u->id)
                                                                 <option value="{{ $u->id }}" selected>{{ $u->unidade }}</option>
@@ -132,11 +122,6 @@
                                                     <label for="tipo_embalagem">{{ __('lang.tipo de embalagem') }}</label>
                                                     <select id="tipo_embalagem" name="tipo_embalagem" class="form-control select2bs4" value="{{ old('tipo_embalagem') }}" required
                                                         style="width: 100%;">
-                                                        @if(Session::get('status')!=='erro_quimico')
-                                                        <option value="" selected disabled>{{ __('lang.insira o') }}
-                                                            {{ __('lang.tipo de embalagem') }}
-                                                        </option>
-                                                        @endif
                                                         @foreach ($tipoembalagem as $te)
                                                             @if(old('tipo_embalagem') == $te->id)
                                                             <option value="{{ $te->id }}" selected>{{ $te->nome }}</option>
@@ -164,11 +149,6 @@
                                                     <label for="fornecedor">{{ __('lang.fornecedor') }}</label>
                                                     <select id="fornecedor" name="fornecedor" class="form-control select2bs4" value="{{ old('fornecedor') }}" required
                                                         style="width: 100%;">
-                                                        @if(Session::get('status')!=='erro_quimico')
-                                                        <option value="" selected disabled>{{ __('lang.selecione o') }}
-                                                            {{ __('lang.fornecedor') }}
-                                                        </option>
-                                                        @endif
                                                         @foreach ($fornecedores as $f)
                                                             @if(old('fornecedor') == $f->id)
                                                             <option value="{{ $f->id }}" selected>{{ $f->designacao }}</option>
@@ -184,11 +164,6 @@
                                                 <div class="form-group">
                                                     <label for="marca">{{ __('lang.nome da marca') }}</label>
                                                     <select id="marca" name="marca" class="form-control select2bs4" style="width: 100%;" value="{{ old('marca') }}" required>
-                                                        @if(Session::get('status')!=='erro_quimico')
-                                                        <option value="" selected disabled>{{ __('lang.selecione o') }}
-                                                            {{ __('lang.nome da marca') }}
-                                                        </option>
-                                                        @endif
                                                         @foreach ($marcas as $m)
                                                             @if(old('marca') == $m->id)
                                                             <option value="{{ $m->id }}" selected>{{ $m->marca }}</option>
@@ -207,11 +182,6 @@
                                                     <label for="armario">{{ __('lang.armario') }}</label>
                                                     <select id="armario" name="armario" class="form-control select2bs4" value="{{ old('armario') }}" required
                                                         style="width: 100%;">
-                                                        @if(Session::get('status')!=='erro_quimico')
-                                                        <option value="" selected disabled>{{ __('lang.selecione o') }}
-                                                            {{ __('lang.armario') }}
-                                                        </option>
-                                                        @endif
                                                         @foreach ($armarios as $a)
                                                             @if(old('armario') == $a->id)
                                                                 <option value="{{  $a->id }}" selected>{{ $a->armario }}</option>
@@ -228,11 +198,6 @@
                                                     <label for="prateleira">{{ __('lang.prataleira') }}</label>
                                                     <select id="prateleira" name="prateleira" class="form-control select2bs4" value="{{ old('prateleira') }}" required
                                                         style="width: 100%;" disabled>
-                                                        @if(Session::get('status')!=='erro_quimico')
-                                                        <option value="" selected disabled>{{ __('lang.selecione a') }}
-                                                            {{ __('lang.prataleira') }}
-                                                        </option>
-                                                        @endif
                                                     </select>
                                                 </div>
                                             </div>
@@ -244,11 +209,6 @@
                                                     <label for="iva">{{ __('lang.taxa de iva') }}</label>
                                                     <select id="iva" name="iva" class="form-control select2bs4" value="{{ old('iva') }}" required
                                                         style="width: 100%;">
-                                                        @if(Session::get('status')!=='erro_quimico')
-                                                        <option value="" selected disabled>{{ __('lang.selecione a') }}
-                                                            {{ __('lang.taxa de iva') }}
-                                                        </option>
-                                                        @endif
                                                         @foreach ($ivas as $i)
                                                             @if(old('iva') == $i->id)
                                                                 <option value="{{ $i->id }}" selected>{{ $i->nome }}%</option>
@@ -282,11 +242,6 @@
                                                     <label for="estado">{{ __('lang.estado fisico') }}</label>
                                                     <select id="estado" name="estado" class="form-control select2bs4" value="{{ old('estado') }}" required
                                                         style="width: 100%;">
-                                                        @if(Session::get('status')!=='erro_quimico')
-                                                        <option value="" selected disabled>{{ __('lang.selecione o') }}
-                                                            {{ __('lang.estado fisico') }}
-                                                        </option>
-                                                        @endif
                                                         @foreach ($estados as $e)
                                                             @if(old('estado') == $e->id)
                                                                 <option value="{{ $e->id }}" selected>{{ $e->estado_fisico }}</option>
@@ -303,11 +258,6 @@
                                                     <label for="textura">{{ __('lang.textura/viscosidade') }}</label>
                                                     <select id="textura" name="textura" class="form-control select2bs4" value="{{ old('textura') }}" required
                                                         style="width: 100%;">
-                                                        @if(Session::get('status')!=='erro_quimico')
-                                                        <option value="" selected disabled>{{ __('lang.selecione a') }}
-                                                            {{ __('lang.textura/viscosidade') }}
-                                                        </option>
-                                                        @endif
                                                         @foreach ($texturas_viscosidades as $tv)
                                                             @if(old('textura') == $tv->id)
                                                                 <option value="{{ $tv->id }}" selected>{{ $tv->textura_viscosidade }}</option>
@@ -325,11 +275,6 @@
                                                 <div class="form-group">
                                                     <label for="cor">Cor</label>
                                                     <select id="cor" name="cor" class="form-control select2bs4" style="width: 100%;" value="{{ old('cor') }}" required>
-                                                        @if(Session::get('status')!=='erro_quimico')
-                                                        <option value="" selected disabled>{{ __('lang.selecione a') }}
-                                                            {{ __('lang.cor') }}
-                                                        </option>
-                                                        @endif
                                                         @foreach ($cores as $c)
                                                             @if(old('cor') == $c->id)
                                                                 <option value="{{ $c->id }}" selected>{{ $c->cor }}</option>
@@ -436,11 +381,6 @@
                                                     <label for="produto_nq">{{ __('lang.produto') }}</label>
                                                     <select id="produto_nq" name="produto_nq" class="form-control select2bs4" value="{{ old('produto_nq') }}" required
                                                         style="width: 100%;">
-                                                        @if(Session::get('status')!=='erro_naoquimico')
-                                                            <option value="" selected disabled>{{ __('lang.selecione o') }}
-                                                                {{ __('lang.produto') }}
-                                                            </option>
-                                                        @endif
                                                         @foreach ($produtosnq as $p)
                                                             @if(old('produto_nq') == $p->id)
                                                                 <option value="{{ $p->id }}" selected>{{ $p->designacao }}</option>
@@ -476,11 +416,6 @@
                                                     <label for="unidades_nq">{{ __('lang.unidades') }}</label>
                                                     <select id="unidades_nq" name="unidades_nq" class="form-control select2bs4" value="{{ old('unidades_nq') }}" required
                                                         style="width: 100%;">
-                                                        @if(Session::get('status')!=='erro_naoquimico')
-                                                            <option value="" selected disabled>{{ __('lang.selecionar') }}
-                                                                {{ __('lang.unidades') }}
-                                                            </option>
-                                                        @endif
                                                         @foreach ($unidades as $u)
                                                             @if(old('unidades_nq') == $u->id)
                                                                 <option value="{{ $u->id }}" selected>{{ $u->unidade }}</option>
@@ -500,11 +435,6 @@
                                                         for="tipo_embalagem_nq">{{ __('lang.tipo de embalagem') }}</label>
                                                     <select id="tipo_embalagem_nq" name="tipo_embalagem_nq" class="form-control select2bs4" value="{{ old('tipo_embalagem_nq') }}" required
                                                         style="width: 100%;">
-                                                        @if(Session::get('status')!=='erro_naoquimico')
-                                                            <option value="" selected disabled>{{ __('lang.insira o') }}
-                                                                {{ __('lang.tipo de embalagem') }}
-                                                            </option>
-                                                        @endif
                                                         @foreach ($tipoembalagem as $te)
                                                             @if(old('tipo_embalagem_nq') == $te->id)
                                                                 <option value="{{ $te->id }}" selected>{{ $te->nome }}</option>
@@ -532,11 +462,6 @@
                                                     <label for="fornecedor_nq">{{ __('lang.fornecedor') }}</label>
                                                     <select id="fornecedor_nq" name="fornecedor_nq" class="form-control select2bs4" value="{{ old('fornecedor_nq') }}" required
                                                         style="width: 100%;">
-                                                        @if(Session::get('status')!=='erro_naoquimico')
-                                                            <option value="" selected disabled>{{ __('lang.selecione o') }}
-                                                                {{ __('lang.fornecedor') }}
-                                                            </option>
-                                                        @endif
                                                         @foreach ($fornecedores as $f)
                                                             @if(old('fornecedor_nq') == $f->id)
                                                                 <option value="{{ $f->id }}" selected>{{ $f->designacao }}</option>
@@ -552,11 +477,6 @@
                                                 <div class="form-group">
                                                     <label for="marca_nq">{{ __('lang.nome da marca') }}</label>
                                                     <select id="marca_nq" name="marca_nq" class="form-control select2bs4" style="width: 100%;" value="{{ old('marca_nq') }}" required>
-                                                        @if(Session::get('status')!=='erro_naoquimico')
-                                                            <option value="" selected disabled>{{ __('lang.selecione o') }}
-                                                                {{ __('lang.nome da marca') }}
-                                                            </option>
-                                                        @endif
                                                         @foreach ($marcas as $m)
                                                             @if(old('marca_nq') == $m->id)
                                                                 <option value="{{ $m->id }}" selected>{{ $m->marca }}</option>
@@ -575,11 +495,6 @@
                                                     <label for="armario_nq">{{ __('lang.armario') }}</label>
                                                     <select id="armario_nq" name="armario_nq" class="form-control select2bs4" value="{{ old('armario_nq') }}" required
                                                         style="width: 100%;">
-                                                        @if(Session::get('status')!=='erro_naoquimico')
-                                                            <option value="" selected disabled>{{ __('lang.selecione o') }}
-                                                                {{ __('lang.armario') }}
-                                                            </option>
-                                                        @endif
                                                         @foreach ($armarios as $a)
                                                             @if(old('armario_nq') == $a->id)
                                                                 <option value="{{ $a->id }}" selected>{{ $a->armario }}</option>
@@ -610,11 +525,6 @@
                                                     <label for="iva_nq">{{ __('lang.taxa de iva') }}</label>
                                                     <select id="iva_nq" name="iva_nq" class="form-control select2bs4" value="{{ old('iva_nq') }}" required
                                                     style="width: 100%;">
-                                                    @if(Session::get('status')!=='erro_naoquimico')
-                                                        <option value="" selected disabled>{{ __('lang.selecione a') }}
-                                                            {{ __('lang.taxa de iva') }}
-                                                        </option>
-                                                    @endif
                                                     @foreach ($ivas as $i)
                                                         @if(old('iva_nq') == $i->id)
                                                             <option value="{{ $i->id }}" selected>{{ $i->nome*100 }}%</option>
@@ -646,11 +556,6 @@
                                                     <label for="cor_nq">Cor</label>
                                                     <select id="cor_nq" name="cor_nq" class="form-control select2bs4" value="{{ old('cor_nq') }}" required
                                                         style="width: 100%;">
-                                                        @if(Session::get('status')!=='erro_naoquimico')
-                                                            <option value="" selected disabled>{{ __('lang.selecione a') }}
-                                                                {{ __('lang.cor') }}
-                                                            </option>
-                                                        @endif
                                                         @foreach ($cores as $c)
                                                             @if(old('cor_nq') == $c->id)
                                                                 <option value="{{ $c->id }}" selected>{{ $c->cor }}</option>

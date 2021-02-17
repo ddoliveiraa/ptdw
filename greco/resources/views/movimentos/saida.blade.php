@@ -50,11 +50,6 @@
                                         <div class="form-group">
                                             <label for="produto">{{ __('lang.produto') }}</label>
                                             <select id="produto" name="produto" class="form-control select2bs4" style="width: 100%;" value="{{ old('produto') }}" required>
-                                                @if(Session::get('status')!=='erro')
-                                                <option value="" selected disabled>{{ __('lang.selecione o') }}
-                                                    {{ __('lang.produto') }}
-                                                </option>
-                                                @endif
                                                 @foreach ($produtos_com_entrada as $p)
                                                     @if(old('produto') == $p->id)
                                                         <option value="{{ $p->id }}" selected>{{ $p->designacao }}</option>
@@ -86,11 +81,6 @@
                                         <div class="form-group">
                                             <label for="cliente">{{ __('lang.cliente') }}</label>
                                             <select id="cliente" name="cliente" class="form-control select2bs4" style="width: 100%;" value="{{ old('cliente') }}" required>
-                                                @if(Session::get('status')!=='erro')
-                                                <option value="" selected disabled>{{ __('lang.selecione o') }}
-                                                    {{ __('lang.cliente') }}
-                                                </option>
-                                                @endif
                                                 @foreach ($clientes as $c)
                                                 @if(old('cliente') == $c->id)
                                                     <option value="{{ $c->id }}" selected>{{ $c->designacao }}</option>

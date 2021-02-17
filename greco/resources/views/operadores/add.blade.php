@@ -72,11 +72,6 @@
                                         <div class="form-group">
                                             <label for="perfil_operador">{{ __('lang.perfil') }}</label>
                                             <select class="form-control select" id="perfil_operador" name="perfil_operador" value="{{ old('perfil_operador') }}" style="width: 100%;" required>
-                                                @if(Session::get('status')!=='erro')
-                                                    <option value="" selected disabled>{{ __('lang.selecione o') }}
-                                                        {{ __('lang.perfil') }}
-                                                    </option>
-                                                @endif
                                                 @foreach ($perfis as $p)
                                                 @if(old('perfil_operador') == $p->id)
                                                     <option value="{{ $p->id }}" selected>{{ $p->nome }}</option>
