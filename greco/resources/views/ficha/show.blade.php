@@ -128,7 +128,7 @@
                                             </div>
                                         @else
                                             <div class="pictogramas">
-                                                <img src="{{ public_path('images') }}\{{ $produto->foto }}" alt="{{ $produto->nome }}">
+                                                <img src="{{ public_path('images') }}/{{ $produto->foto }}" alt="{{ $produto->nome }}">
                                             </div>
                                         @endif 
                                     </div>
