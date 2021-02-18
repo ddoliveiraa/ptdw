@@ -128,7 +128,7 @@
                                             </div>
                                         @else
                                             <div class="pictogramas">
-                                                <img src="http://estga-dev.clients.ua.pt/ptdw-2020-gr3/ptdw/greco/storage/app/images/{{ $produto->foto }}" alt="{{ $produto->nome }}">
+                                                <img src="{{ public_path('images') }}/{{ $produto->foto }}" alt="{{ $produto->nome }}">
                                             </div>
                                         @endif 
                                     </div>
